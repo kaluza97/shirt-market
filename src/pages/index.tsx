@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Link from 'next/link'
+import Link from 'next/link';
 
 const Paragraph = styled.p`
   font-size: 30px;
@@ -8,7 +8,7 @@ const Paragraph = styled.p`
 
 export default function Home() {
   return (
-    <div >
+    <div>
       <Paragraph>Hello, Emotion!</Paragraph>
       <li>
         <Link href="/about">About Us</Link>

@@ -11,7 +11,9 @@ export default function Home() {
     <div>
       <Paragraph>Hello, Emotion!</Paragraph>
       <li>
-        <Link href="/about">About Us</Link>
+        <Link href="/about">
+          About Us
+          </Link>
       </li>
     </div>
   );

@@ -1,13 +1,13 @@
 import React from 'react';
-import SignInWithEmailPassword from '@/components/SignInWithEmailAndPassword';
+import SignInWithEmailPassword from '@/components/SignIn/SignInWithEmailAndPassword';
 
-export const AuthPage = () => {
-    return (
-        <>
-            <p>auth page</p>
-            <SignInWithEmailPassword />
-        </>
-    )
-}
+const AuthPage = () => {
+  return (
+    <>
+      <p>auth page</p>
+      <SignInWithEmailPassword />
+    </>
+  );
+};
 
 export default AuthPage;

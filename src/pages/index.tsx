@@ -1,20 +1,21 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { SignOut } from '@/components/SignOut/SignOut';
+import { FC } from 'react';
 
 const Paragraph = styled.p`
   font-size: 30px;
   color: blue;
 `;
 
-const Home = () => {
+const Home: FC = () => {
   return (
     <div>
       <Paragraph>Hello, Emotion!</Paragraph>
       <li>
         <Link href="/about">
           About Us
-          </Link>
+        </Link>
       </li>
       <SignOut />
     </div>

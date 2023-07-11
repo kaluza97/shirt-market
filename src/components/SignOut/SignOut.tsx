@@ -1,17 +1,17 @@
-import Button from '@mui/material/Button';
+import { FC, useContext } from 'react';
 import { AuthContext } from '@/context/AuthContext';
-import { useContext } from 'react';
+import Button from '@mui/material/Button';
 
-export const SignOut = () => {
-  const { logout } = useContext(AuthContext);
+export const SignOut: FC = () => {
+    const { logout } = useContext(AuthContext);
 
-  const handleLogout = () => {
-    logout();
-  };
+    const handleLogout = () => {
+        logout();
+    };
 
-  return (
-    <Button variant="outlined" onClick={handleLogout}>
-      Logout
-    </Button>
-  );
+    return (
+        <Button variant="outlined" onClick={handleLogout}>
+            Logout
+        </Button>
+    );
 };

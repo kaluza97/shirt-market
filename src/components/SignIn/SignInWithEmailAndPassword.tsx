@@ -1,31 +1,24 @@
-import { useState, ChangeEvent, FormEvent, useContext } from 'react';
+import { useState, ChangeEvent, FormEvent, useContext, FC } from 'react';
 import { auth } from '@/firebase/firebaseConfig';
-import { Input } from '@mui/material';
+import { Button, Input } from '@mui/material';
 import { AuthContext } from '@/context/AuthContext';
 
-interface SignInForm {
-  email: string;
-  password: string;
-}
-
-const SignInWithEmailPassword: React.FC = () => {
+export const SignInWithEmailPassword: FC = () => {
   const { login } = useContext(AuthContext);
-  const [signInForm, setSignInForm] = useState<SignInForm>({
-    email: '',
-    password: '',
-  });
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login(auth, signInForm.email, signInForm.password);
+    login(auth, email, password);
   };
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setSignInForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
   };
 
   return (
@@ -35,20 +28,18 @@ const SignInWithEmailPassword: React.FC = () => {
         name="email"
         placeholder="email"
         type="email"
-        value={signInForm.email}
-        onChange={handleChange}
+        value={email}
+        onChange={handleEmailChange}
       />
       <Input
         required
         name="password"
         placeholder="password"
         type="password"
-        value={signInForm.password}
-        onChange={handleChange}
+        value={password}
+        onChange={handlePasswordChange}
       />
-      <button type="submit">Sign In</button>
+      <Button type="submit">Sign In</Button>
     </form>
   );
 };
-
-export default SignInWithEmailPassword;

@@ -1,11 +1,11 @@
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 type Props = {
   header: ReactNode;
   content: ReactNode;
 };
 
-export const Layout = ({ header, content }: Props) => {
+export const Layout: FC<Props> = ({ header, content }) => {
   return (
     <>
       {header}

@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext, useEffect, useState } from 'react';
+import React, { FC, ReactNode, createContext, useEffect, useState } from 'react';
 import { auth } from '@/firebase/firebaseConfig';
 import {
     signInWithEmailAndPassword,
@@ -8,7 +8,8 @@ import {
 import { useRouter } from 'next/router';
 
 interface AuthContextProps {
-    user: UserCredential | null;
+    userData: UserCredential | null;
+    authError: string | null,
     login: (auth: Auth, email: string, password: string) => void;
     logout: () => void;
 }
@@ -18,25 +19,22 @@ interface AuthProviderProps {
 }
 
 const AuthContext = createContext<AuthContextProps>({
-    user: null,
+    userData: null,
+    authError: null,
     login: () => { },
     logout: () => { },
 });
 
-const AuthProvider = ({ children }: AuthProviderProps) => {
+const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const router = useRouter();
-    const [user, setUser] = useState<UserCredential | null>(null);
+    const [userData, setUser] = useState<UserCredential | null>(null);
+    const [authError, setAuthError] = useState<string | null>(null);
 
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((user) => {
-            setUser(user as unknown as UserCredential | null);
-        });
-        return () => unsubscribe();
-    }, []);
+        const unsubscribe = auth.onAuthStateChanged((userData) => {
+            setUser(userData as UserCredential | null);
 
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((user) => {
-            if (user) {
+            if (userData) {
                 router.push('/');
             } else {
                 router.push('/auth');
@@ -47,22 +45,24 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
     const login = async (auth: Auth, email: string, password: string) => {
         try {
+            setAuthError(null);
             await signInWithEmailAndPassword(auth, email, password);
         } catch (error) {
-            console.log(error);
+            setAuthError(error as string);
         }
     };
 
     const logout = async () => {
         try {
+            setAuthError(null);
             await auth.signOut();
         } catch (error) {
-            console.log(error);
+            setAuthError(error as string);
         }
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ userData, authError, login, logout }}>
             {children}
         </AuthContext.Provider>
     );

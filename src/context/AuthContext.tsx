@@ -3,13 +3,14 @@ import { auth } from '@/firebase/firebaseConfig';
 import {
     signInWithEmailAndPassword,
     Auth,
-    UserCredential,
 } from 'firebase/auth';
 import { useRouter } from 'next/router';
+import { FirebaseError } from '@firebase/util';
+import { z, ZodType } from 'zod';
+
 
 interface AuthContextProps {
-    userData: UserCredential | null;
-    authError: string | null,
+    authError: FirebaseError,
     login: (auth: Auth, email: string, password: string) => void;
     logout: () => void;
 }
@@ -18,51 +19,55 @@ interface AuthProviderProps {
     children: ReactNode;
 }
 
+const initialAuthError: FirebaseError = { code: '', name: '', message: '' };
+
+const AuthErrorSchema: ZodType<FirebaseError> = z.object({
+    code: z.string(),
+    name: z.string(),
+    message: z.string(),
+});
+
 const AuthContext = createContext<AuthContextProps>({
-    userData: null,
-    authError: null,
+    authError: initialAuthError,
     login: () => { },
     logout: () => { },
 });
 
 const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const router = useRouter();
-    const [userData, setUser] = useState<UserCredential | null>(null);
-    const [authError, setAuthError] = useState<string | null>(null);
+    const [authError, setAuthError] = useState<FirebaseError>(initialAuthError);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((userData) => {
-            setUser(userData as UserCredential | null);
-
-            if (userData) {
-                router.push('/');
-            } else {
-                router.push('/auth');
-            }
+            userData ? router.push('/') : router.push('/login');
         });
         return () => unsubscribe();
     }, [auth.onAuthStateChanged]);
 
     const login = async (auth: Auth, email: string, password: string) => {
         try {
-            setAuthError(null);
+            setAuthError(initialAuthError);
             await signInWithEmailAndPassword(auth, email, password);
         } catch (error) {
-            setAuthError(error as string);
+            const parsedError = AuthErrorSchema.safeParse(error);
+            if (parsedError.success) setAuthError(parsedError.data);
+            else setAuthError({ code: 'Something went wrong. Please try again later.', name: '', message: 'Parse error' });
         }
     };
 
     const logout = async () => {
         try {
-            setAuthError(null);
+            setAuthError(initialAuthError);
             await auth.signOut();
         } catch (error) {
-            setAuthError(error as string);
+            const parsedError = AuthErrorSchema.safeParse(error);
+            if (parsedError.success) setAuthError(parsedError.data);
+            else setAuthError({ code: 'Something went wrong. Please try again later.', name: '', message: 'Parse error' });
         }
     };
 
     return (
-        <AuthContext.Provider value={{ userData, authError, login, logout }}>
+        <AuthContext.Provider value={{ authError, login, logout }}>
             {children}
         </AuthContext.Provider>
     );

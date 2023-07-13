@@ -33,6 +33,7 @@ const SignInForm: FC = () => {
                             sx={{
                                 color: Colors.primary,
                                 visibility: authError.code ? 'visible' : 'hidden',
+                                textAlign: 'center',
                             }}
                         >{`Error: ${authError.code}`}</Typography>
                     </ErrorMessageWrapper>

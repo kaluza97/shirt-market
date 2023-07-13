@@ -31,7 +31,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
       }
     });
     return () => unsubscribe();
-  }, [router, auth]);
+  }, [router]);
 
   const login = async (auth: Auth, email: string, password: string) => {
     try {

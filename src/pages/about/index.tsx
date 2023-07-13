@@ -1,16 +1,11 @@
 import { FC } from 'react';
-import { SignOut } from '@/components/SignOut/SignOut.component';
 import { Layout } from '@/components/Layout/Layout.component';
 import NavigationMenu from '@/components/NavigationMenu/NavigationMenu.component';
 
-const Home: FC = () => {
+const About: FC = () => {
   return (
-    <Layout
-      header={<NavigationMenu />}
-      content={<SignOut />}
-    />
-
+    <Layout header={<NavigationMenu />} content={<div>About</div>} />
   );
 };
 
-export default Home;
+export default About;

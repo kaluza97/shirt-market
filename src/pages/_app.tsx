@@ -18,6 +18,6 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       </Provider>
     </AuthProvider>
   );
-}
+};
 
 export default App;

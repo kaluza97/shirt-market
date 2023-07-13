@@ -1,17 +1,11 @@
-import React, { FC, useContext } from 'react';
-import { SignInWithEmailPassword } from '@/components/SignIn/SignInWithEmailAndPassword';
-import { AuthContext } from '@/context/AuthContext';
+import React, { FC } from 'react';
+import SignInForm from '@/components/SignIn/SingInForm.component';
 
 const LoginPage: FC = () => {
-    const { authError } = useContext(AuthContext);
 
-    return (
-        <>
-            <p>Login</p>
-            <SignInWithEmailPassword />
-            <p>{authError.code}</p>
-        </>
-    );
+  return (
+    <SignInForm />
+  );
 };
 
 export default LoginPage;

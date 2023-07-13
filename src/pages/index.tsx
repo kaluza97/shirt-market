@@ -1,24 +1,15 @@
-import styled from '@emotion/styled';
-import Link from 'next/link';
-import { SignOut } from '@/components/SignOut/SignOut';
 import { FC } from 'react';
-
-const Paragraph = styled.p`
-  font-size: 30px;
-  color: blue;
-`;
+import { SignOut } from '@/components/SignOut/SignOut.component';
+import { Layout } from '@/components/Layout/Layout.component';
+import NavigationMenu from '@/components/NavigationMenu/NavigationMenu.component';
 
 const Home: FC = () => {
   return (
-    <div>
-      <Paragraph>Hello, Emotion!</Paragraph>
-      <li>
-        <Link href="/about">
-          About Us
-        </Link>
-      </li>
-      <SignOut />
-    </div>
+    <Layout
+      header={<NavigationMenu />}
+      content={<SignOut />}
+    />
+
   );
 };
 

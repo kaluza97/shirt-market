@@ -1,9 +1,10 @@
 import { FC } from 'react';
-import { Layout } from '@/components/Layout/Layout';
+import { Layout } from '@/components/Layout/Layout.component';
+import NavigationMenu from '@/components/NavigationMenu/NavigationMenu.component';
 
 const About: FC = () => {
   return (
-    <Layout header={<div>MenuNavigation</div>} content={<div>About</div>} />
+    <Layout header={<NavigationMenu />} content={<div>About</div>} />
   );
 };
 

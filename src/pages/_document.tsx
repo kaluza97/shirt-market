@@ -11,6 +11,6 @@ const Document: FC = () => {
       </body>
     </Html>
   );
-}
+};
 
 export default Document;

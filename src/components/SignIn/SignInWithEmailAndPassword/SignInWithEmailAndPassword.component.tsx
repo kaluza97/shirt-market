@@ -1,11 +1,18 @@
 import { useState, ChangeEvent, FormEvent, useContext, FC } from 'react';
 import { auth } from '@/firebase/firebaseConfig';
-import { Button, TextField, Typography } from '@mui/material';
+import { Button, TextField, ThemeProvider, Typography } from '@mui/material';
 import { AuthContext } from '@/context/AuthContext';
-import { Colors } from '@/styles/variables';
+import {
+  ErrorMessage,
+  ErrorMessageWrapper,
+  InputText,
+  Paragraph,
+  SubmitButton,
+} from './SignInWithEmailAndPassword.styles';
+import { mainTheme } from '@/styles/material.styles';
 
 export const SignInWithEmailPassword: FC = () => {
-  const { login } = useContext(AuthContext);
+  const { login, authError } = useContext(AuthContext);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -24,55 +31,52 @@ export const SignInWithEmailPassword: FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Typography color={Colors.primary}>Email Address</Typography>
-      <TextField
-        variant="outlined"
-        value={email}
-        onChange={handleEmailChange}
-        required
-        fullWidth
-        name="email"
-        autoComplete="email"
-        autoFocus
-        size="small"
-        sx={{
-          marginTop: '5px',
-          marginBottom: '10px',
-          backgroundColor: `${Colors.white}`,
-          border: `1px solid ${Colors.primary}`,
-          borderRadius: '5px',
-        }}
-      />
-      <Typography color={Colors.primary}>Password</Typography>
-      <TextField
-        value={password}
-        onChange={handlePasswordChange}
-        variant="outlined"
-        required
-        fullWidth
-        name="password"
-        type="password"
-        autoComplete="password"
-        size="small"
-        sx={{
-          marginTop: '5px',
-          marginBottom: '10px',
-          backgroundColor: `${Colors.white}`,
-          border: `1px solid ${Colors.primary}`,
-          borderRadius: '5px',
-        }}
-      />
-      <Button type="submit" fullWidth variant="contained" color="primary"
-        sx={{
-          marginTop: '16px',
-          backgroundColor: `${Colors.primary}`,
-          color: `${Colors.black}`,
-          '&:hover': {
-            backgroundColor: `${Colors.primary}`,
-          },
-        }}>
-        Sign In
-      </Button>
+      <ThemeProvider theme={mainTheme}>
+        <TextField
+          variant="standard"
+          label="Email Address"
+          value={email}
+          onChange={handleEmailChange}
+          required
+          fullWidth
+          name="email"
+          autoComplete="email"
+          autoFocus
+          size="small"
+          InputLabelProps={{ shrink: true }}
+          sx={InputText}
+        />
+        <TextField
+          value={password}
+          label="Password"
+          onChange={handlePasswordChange}
+          variant="standard"
+          required
+          fullWidth
+          name="password"
+          type="password"
+          autoComplete="password"
+          size="small"
+          InputLabelProps={{ shrink: true }}
+          sx={InputText}
+        />
+        <Typography component="p" sx={Paragraph}>
+          Forgot password?
+        </Typography>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          size="large"
+          sx={SubmitButton}
+        >
+          Sign In
+        </Button>
+      </ThemeProvider>
+      <ErrorMessageWrapper isVisible={!!authError.code}>
+        <Typography sx={ErrorMessage}>{`Error: ${authError.code}`}</Typography>
+      </ErrorMessageWrapper>
     </form>
   );
 };

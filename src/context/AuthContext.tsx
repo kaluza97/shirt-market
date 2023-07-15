@@ -13,8 +13,8 @@ const initialAuthError: FirebaseError = { code: '', name: '', message: '' };
 
 const AuthContext = createContext<AuthContextProps>({
   authError: initialAuthError,
-  login: () => { },
-  logout: () => { },
+  login: () => {},
+  logout: () => {},
 });
 
 const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
@@ -25,8 +25,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const unsubscribe = auth.onAuthStateChanged((userData) => {
       if (userData) {
         router.push('/');
-      }
-      else {
+      } else {
         router.push('/login');
       }
     });

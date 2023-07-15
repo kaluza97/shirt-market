@@ -1,4 +1,4 @@
-import { LinkMenu, NavigationMenuWrapper } from "./NavigationMenu.styles";
+import { LinkMenu, NavigationMenuWrapper } from './NavigationMenu.styles';
 
 const NavigationMenu = () => {
   return (

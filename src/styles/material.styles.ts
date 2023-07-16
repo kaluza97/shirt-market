@@ -1,16 +1,16 @@
 import { createTheme } from '@mui/material/styles';
-import { Colors } from './variables';
+import { Colors, FontFamily } from './variables';
 
 export const mainTheme = createTheme({
-  palette: {
-    primary: {
-      main: Colors.primary,
+    palette: {
+        primary: {
+            main: Colors.primary,
+        },
+        secondary: {
+            main: Colors.secondary,
+        },
     },
-    secondary: {
-      main: Colors.secondary,
+    typography: {
+        fontFamily: FontFamily.main,
     },
-  },
-  typography: {
-    fontFamily: 'Open Sans, sans-serif',
-  },
 });

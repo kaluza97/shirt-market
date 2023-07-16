@@ -21,7 +21,7 @@ const Description: FC = () => {
         description: 'Our online shop is a great place to buy your favourite products'
     },
     {
-        src: 'happyClient',
+        src: 'happyClients',
         alt: 'Happy Clients',
         description: 'Join the group of satisfied customers'
     }]
@@ -34,7 +34,7 @@ const Description: FC = () => {
                         <Image
                             src={`/assets/${src}.jpg`}
                             alt={alt}
-                            width={200}
+                            width={210}
                             height={200}
                         />
                         <Typography component='h2' variant='h6' sx={TextDescription}>

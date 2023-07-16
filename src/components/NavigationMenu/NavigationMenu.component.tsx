@@ -1,11 +1,11 @@
-import { LinkMenu, NavigationMenuWrapper } from './NavigationMenu.styles';
+import { LinkMenu, NavigationMenuContainer } from './NavigationMenu.styles';
 
 const NavigationMenu = () => {
   return (
-    <NavigationMenuWrapper>
+    <NavigationMenuContainer>
       <LinkMenu href="/">Home</LinkMenu>
       <LinkMenu href="/about">About</LinkMenu>
-    </NavigationMenuWrapper>
+    </NavigationMenuContainer>
   );
 };
 

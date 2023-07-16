@@ -4,7 +4,7 @@ import { SxProps } from '@mui/material';
 
 interface ErrorMessageInterface {
   isVisible: boolean;
-}
+};
 
 export const ErrorMessageContainer = styled.div<ErrorMessageInterface>`
   margin-top: 16px;
@@ -16,5 +16,4 @@ export const ErrorMessage: SxProps = {
   fontFamily: `${FontFamily.main}`,
   fontSize: `${FontSizes.middle}`,
   color: `${Colors.red}`,
-
 };

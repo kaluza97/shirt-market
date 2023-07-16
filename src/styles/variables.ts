@@ -11,7 +11,7 @@ export const Colors = {
 
 export const Breakpoints = {
   tablet: '650px',
-  desktop: '1200px',
+  desktop: '1100px',
 };
 
 export const FontSizes = {

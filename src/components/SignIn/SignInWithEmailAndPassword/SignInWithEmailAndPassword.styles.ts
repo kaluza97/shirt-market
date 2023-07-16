@@ -26,19 +26,4 @@ export const SubmitButton: SxProps = {
   padding: '10px',
 };
 
-interface ErrorMessageInterface {
-  isVisible: boolean;
-}
 
-export const ErrorMessageWrapper = styled.div<ErrorMessageInterface>`
-  margin-top: 16px;
-  visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
-`;
-
-export const ErrorMessage: SxProps = {
-  textAlign: 'center',
-  fontFamily: `${FontFamily.main}`,
-  fontSize: `${FontSizes.middle}`,
-  color: `${Colors.red}`,
-
-};

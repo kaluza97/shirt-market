@@ -1,6 +1,6 @@
 export const Colors = {
-  primary: '#3EB489',
-  secondary: '#3C4647',
+  primary: '#3eb489',
+  secondary: '#3c4647',
   white: '#fff',
   black: '#000',
   red: '#f44336',
@@ -10,9 +10,8 @@ export const Colors = {
 };
 
 export const Breakpoints = {
-  xs: '450px',
-  md: '900px',
-  lg: '1200px',
+  tablet: '650px',
+  desktop: '1200px',
 };
 
 export const FontSizes = {

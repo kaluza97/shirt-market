@@ -3,16 +3,15 @@ import { auth } from '@/firebase/firebaseConfig';
 import { Button, TextField, ThemeProvider, Typography } from '@mui/material';
 import { AuthContext } from '@/context/AuthContext';
 import {
-  ErrorMessage,
-  ErrorMessageWrapper,
   InputText,
   Paragraph,
   SubmitButton,
 } from './SignInWithEmailAndPassword.styles';
 import { mainTheme } from '@/styles/material.styles';
+import { AuthError } from '@/components/ErrorMessages/AuthError.component';
 
 export const SignInWithEmailPassword: FC = () => {
-  const { login, authError } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -74,9 +73,7 @@ export const SignInWithEmailPassword: FC = () => {
           Sign In
         </Button>
       </ThemeProvider>
-      <ErrorMessageWrapper isVisible={!!authError.code}>
-        <Typography sx={ErrorMessage}>{`Error: ${authError.code}`}</Typography>
-      </ErrorMessageWrapper>
+      <AuthError />
     </form>
   );
 };

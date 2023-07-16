@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Colors, FontFamily, FontSizes } from '@/styles/variables';
+import { Breakpoints, Colors, FontFamily, FontSizes } from '@/styles/variables';
 import { SxProps } from '@mui/material';
 
 export const AuthContainer = styled.div`
@@ -7,8 +7,11 @@ export const AuthContainer = styled.div`
 `;
 
 export const FormContent = styled.div`
-text-align: center;
+  text-align: center;
   padding: 50px 30px 0 30px;
+  @media (min-width: ${Breakpoints.tablet}) {
+    padding: 50px 100px 0 100px;
+  }
 `;
 
 export const TabPanel: SxProps = {
@@ -33,27 +36,4 @@ export const TextLogo: SxProps = {
 export const TextNormal: SxProps = {
   color: `${Colors.white}`,
   textAlign: 'center',
-};
-
-
-export const Svg = styled.svg`
-position: relative;
-bottom: -5px;
-left: 0;
-`;
-
-export const Footer = styled.footer`
-width: 100%;
-position: absolute;
-bottom: 0;
-left: 0;
-color: ${Colors.black};
-`;
-
-
-export const TextFooter: SxProps = {
-  color: `${Colors.white}`,
-  textAlign: 'center',
-  backgroundColor: `${Colors.primary}`,
-  padding: '10px 0',
 };

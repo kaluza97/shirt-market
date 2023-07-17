@@ -1,5 +1,4 @@
-import { Colors, FontFamily, FontSizes, ResetAutofill } from '@/styles/variables';
-import styled from '@emotion/styled';
+import { Colors, FontSizes, ResetAutofill } from '@/styles/variables';
 import { SxProps } from '@mui/system';
 
 export const InputText: SxProps = {
@@ -25,5 +24,3 @@ export const SubmitButton: SxProps = {
   marginTop: '30px',
   padding: '10px',
 };
-
-

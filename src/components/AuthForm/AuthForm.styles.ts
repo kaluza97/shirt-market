@@ -3,27 +3,27 @@ import { Breakpoints, Colors, FontFamily, FontSizes } from '@/styles/variables';
 import { SxProps } from '@mui/material';
 
 export const AuthContainer = styled.div`
-width: 100%;
-height: 100%;
-@media (min-width: ${Breakpoints.desktop}) {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+  width: 100%;
+  height: 100%;
+  @media (min-width: ${Breakpoints.desktop}) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const FormContainer = styled.div`
-width: 100%;
-@media (min-width: ${Breakpoints.desktop}) {
-  display: flex;
-  width: 40vw;
-  height: 100vh;
-}
+  width: 100%;
+  @media (min-width: ${Breakpoints.desktop}) {
+    display: flex;
+    width: 40vw;
+    height: 100vh;
+  }
 `;
 
 export const FormContent = styled.div`
   text-align: center;
-   padding: 50px 30px 0 30px;
+  padding: 50px 30px 0 30px;
 
   @media (min-width: ${Breakpoints.tablet}) {
     padding: 50px 100px 0 100px;

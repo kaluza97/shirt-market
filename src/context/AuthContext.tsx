@@ -11,15 +11,15 @@ import {
   AuthContextProps,
   AuthProviderProps,
   AuthErrorSchema,
-} from './AuthContext.interface';
+} from '@/context/AuthContext.interface';
 
 const initialAuthError: FirebaseError = { code: '', name: '', message: '' };
 
 const AuthContext = createContext<AuthContextProps>({
   authError: initialAuthError,
-  login: () => {},
-  register: () => {},
-  logout: () => {},
+  login: () => { },
+  register: () => { },
+  logout: () => { },
 });
 
 const AuthProvider: FC<AuthProviderProps> = ({ children }) => {

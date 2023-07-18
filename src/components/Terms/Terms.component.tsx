@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Link, TermsContainer } from './Terms.styles';
+import { Link, TermsContainer } from '@/components/Terms/Terms.styles';
 import { Checkbox, FormControlLabel } from '@mui/material';
 
 export const Terms: FC = () => {

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { FooterContainer, Link, Svg, textFooter } from './Footer.styles';
+import { FooterContainer, Link, Svg, textFooter } from '@/components/Footer/Footer.styles';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
 

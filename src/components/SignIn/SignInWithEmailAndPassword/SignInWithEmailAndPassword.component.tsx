@@ -7,7 +7,7 @@ import {
   inputText,
   paragraph,
   submitButton,
-} from './SignInWithEmailAndPassword.styles';
+} from '@/components/SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.styles';
 import { AuthError } from '@/components/ErrorMessages/AuthError.component';
 
 export const SignInWithEmailPassword: FC = () => {

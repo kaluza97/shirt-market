@@ -5,10 +5,10 @@ import { TextField, Button } from '@mui/material';
 import {
   inputText,
   submitButton,
-} from '../SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.styles';
-import { AuthError } from '../ErrorMessages/AuthError.component';
+} from '@/components/SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.styles';
+import { AuthError } from '@/components/ErrorMessages/AuthError.component';
 import { Terms } from '@/components/Terms/Terms.component';
-import { SignUpFormWrapper } from './SingUp.styles';
+import { SignUpFormWrapper } from '@/components/SignUp/SingUp.styles';
 
 export const SignUp: FC = () => {
   const auth = getAuth();

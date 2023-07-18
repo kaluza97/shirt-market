@@ -11,7 +11,7 @@ import {
     tabItem,
     tabPanel,
     textLogo,
-} from './AuthForm.styles';
+} from '@/components/AuthForm/AuthForm.styles';
 
 const AuthForm: FC = () => {
     type LoginOrRegister = 'login' | 'register';

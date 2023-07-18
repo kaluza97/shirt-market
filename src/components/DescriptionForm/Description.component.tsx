@@ -4,7 +4,7 @@ import {
   DesktopContent,
   DesktopDescriptionItem,
   textDescription,
-} from './Description.styles';
+} from '@/components/DescriptionForm/Description.styles';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
 import { DescriptionItems } from '@/data/authData';

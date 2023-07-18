@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { Colors, FontFamily } from './variables';
+import { Colors, FontFamily } from '@/styles/variables';
 
 export const mainTheme = createTheme({
   palette: {

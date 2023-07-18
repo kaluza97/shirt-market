@@ -1,13 +1,13 @@
 import { useState, ChangeEvent, FormEvent, useContext, FC } from 'react';
 import { auth } from '@/firebase/firebaseConfig';
-import { Button, TextField, ThemeProvider, Typography } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
 import { AuthContext } from '@/context/AuthContext';
 import {
-  InputText,
-  Paragraph,
-  SubmitButton,
+  SignInFormWrapper,
+  inputText,
+  paragraph,
+  submitButton,
 } from './SignInWithEmailAndPassword.styles';
-import { mainTheme } from '@/styles/material.styles';
 import { AuthError } from '@/components/ErrorMessages/AuthError.component';
 
 export const SignInWithEmailPassword: FC = () => {
@@ -30,8 +30,8 @@ export const SignInWithEmailPassword: FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ThemeProvider theme={mainTheme}>
+    <SignInFormWrapper>
+      <form onSubmit={handleSubmit}>
         <TextField
           variant="standard"
           label="Email Address"
@@ -44,7 +44,7 @@ export const SignInWithEmailPassword: FC = () => {
           autoFocus
           size="small"
           InputLabelProps={{ shrink: true }}
-          sx={InputText}
+          sx={inputText}
         />
         <TextField
           value={password}
@@ -58,9 +58,9 @@ export const SignInWithEmailPassword: FC = () => {
           autoComplete="password"
           size="small"
           InputLabelProps={{ shrink: true }}
-          sx={InputText}
+          sx={inputText}
         />
-        <Typography component="p" sx={Paragraph}>
+        <Typography component="p" sx={paragraph}>
           Forgot password?
         </Typography>
         <Button
@@ -69,12 +69,12 @@ export const SignInWithEmailPassword: FC = () => {
           variant="contained"
           color="primary"
           size="large"
-          sx={SubmitButton}
+          sx={submitButton}
         >
           Sign In
         </Button>
-      </ThemeProvider>
-      <AuthError />
-    </form>
+        <AuthError />
+      </form>
+    </SignInFormWrapper>
   );
 };

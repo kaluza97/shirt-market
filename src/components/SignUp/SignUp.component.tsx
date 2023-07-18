@@ -1,15 +1,14 @@
 import React, { ChangeEvent, FC, FormEvent, useContext, useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import { AuthContext } from '@/context/AuthContext';
-import { mainTheme } from '@/styles/material.styles';
-import { ThemeProvider } from '@emotion/react';
-import { TextField, Button, FormControlLabel, Checkbox } from '@mui/material';
+import { TextField, Button } from '@mui/material';
 import {
-  InputText,
-  SubmitButton,
+  inputText,
+  submitButton,
 } from '../SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.styles';
-import { Link, TermsContainer } from './SignUp.styles';
 import { AuthError } from '../ErrorMessages/AuthError.component';
+import { Terms } from '@/components/Terms/Terms.component';
+import { SignUpFormWrapper } from './SingUp.styles';
 
 export const SignUp: FC = () => {
   const auth = getAuth();
@@ -30,18 +29,11 @@ export const SignUp: FC = () => {
     setPassword(e.target.value);
   };
 
-  const terms = () => (
-    <TermsContainer>
-      <p>this is an example of</p>
-      <Link href="https://www.termsfeed.com/blog/sample-terms-and-conditions-template/">
-        terms
-      </Link>
-    </TermsContainer>
-  );
+
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ThemeProvider theme={mainTheme}>
+    <SignUpFormWrapper>
+      <form onSubmit={handleSubmit}>
         <TextField
           variant="standard"
           label="Email Address"
@@ -53,7 +45,7 @@ export const SignUp: FC = () => {
           autoFocus
           size="small"
           InputLabelProps={{ shrink: true }}
-          sx={InputText}
+          sx={inputText}
         />
         <TextField
           value={password}
@@ -66,22 +58,22 @@ export const SignUp: FC = () => {
           type="password"
           size="small"
           InputLabelProps={{ shrink: true }}
-          sx={InputText}
+          sx={inputText}
         />
-        <FormControlLabel required control={<Checkbox />} label={terms()} />
+        <Terms />
         <Button
           type="submit"
           fullWidth
           variant="contained"
           color="primary"
           size="large"
-          sx={SubmitButton}
+          sx={submitButton}
         >
           Sign Up
         </Button>
-      </ThemeProvider>
-      <AuthError />
-    </form>
+        <AuthError />
+      </form>
+    </SignUpFormWrapper>
   );
 };
 

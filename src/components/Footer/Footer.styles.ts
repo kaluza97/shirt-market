@@ -15,7 +15,7 @@ export const Link = styled.a`
   text-align: center;
 `;
 
-export const TextFooter: SxProps = {
+export const textFooter: SxProps = {
   fontFamily: `${FontFamily.main}`,
   color: `${Colors.white}`,
   display: 'flex',
@@ -35,7 +35,7 @@ export const TextFooter: SxProps = {
 
 export const Svg = styled.svg`
   position: relative;
-  bottom: -5px;
+  top: 5px;
   fill: ${Colors.primary};
   @media (min-width: ${Breakpoints.tablet}) {
     display: none;

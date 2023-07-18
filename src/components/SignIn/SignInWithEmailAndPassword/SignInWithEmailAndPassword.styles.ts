@@ -1,7 +1,14 @@
-import { Colors, FontSizes, ResetAutofill } from '@/styles/variables';
+import styled from '@emotion/styled';
+import { Breakpoints, Colors, FontSizes, ResetAutofill } from '@/styles/variables';
 import { SxProps } from '@mui/system';
 
-export const InputText: SxProps = {
+export const SignInFormWrapper = styled.div`
+@media (min-width: ${Breakpoints.desktop}) {
+  width: 350px;
+}
+`;
+
+export const inputText: SxProps = {
   paddingTop: '5px',
   marginBottom: '20px',
   color: `${Colors.text}`,
@@ -10,14 +17,14 @@ export const InputText: SxProps = {
   },
 };
 
-export const Paragraph: SxProps = {
+export const paragraph: SxProps = {
   fontSize: `${FontSizes.middle}`,
   textAlign: 'left',
   fontWeight: 'bold',
   color: `${Colors.text}`,
 };
 
-export const SubmitButton: SxProps = {
+export const submitButton: SxProps = {
   fontSize: `${FontSizes.small}`,
   color: `${Colors.white}`,
   fontWeight: 'bold',

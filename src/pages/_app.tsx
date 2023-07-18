@@ -4,7 +4,9 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { store } from '@/redux/store';
 import type { AppProps } from 'next/app';
 import { AuthProvider } from '@/context/AuthContext';
+import { ThemeProvider } from '@mui/material/styles';
 import '@/styles/globals.css';
+import { mainTheme } from '@/styles/material.styles';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   const queryClient = new QueryClient();
@@ -13,7 +15,9 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
     <AuthProvider>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          <Component {...pageProps} />
+          <ThemeProvider theme={mainTheme}>
+            <Component {...pageProps} />
+          </ThemeProvider>
         </QueryClientProvider>
       </Provider>
     </AuthProvider>

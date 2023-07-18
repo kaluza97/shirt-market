@@ -31,7 +31,7 @@ export const DesktopDescriptionItem = styled.div`
   }
 `;
 
-export const TextDescription: SxProps = {
+export const textDescription: SxProps = {
   fontFamily: `${FontFamily.main}`,
   color: `${Colors.text}`,
   margin: '0 50px',

@@ -3,31 +3,13 @@ import {
   DesktopContainer,
   DesktopContent,
   DesktopDescriptionItem,
-  TextDescription,
+  textDescription,
 } from './Description.styles';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
+import { DescriptionItems } from '@/data/authData';
 
 const Description: FC = () => {
-  const DescriptionItems = [
-    {
-      src: 'delivery',
-      alt: 'Courier with delivery',
-      description:
-        'Fast delivery - our couriers will deliver the ordered product within 2 business days',
-    },
-    {
-      src: 'shopping',
-      alt: 'Woman shopping in an online store',
-      description:
-        'Our online shop is a great place to buy your favourite products',
-    },
-    {
-      src: 'happyClients',
-      alt: 'Happy Clients',
-      description: 'Join the group of satisfied customers',
-    },
-  ];
 
   return (
     <DesktopContainer>
@@ -37,10 +19,10 @@ const Description: FC = () => {
             <Image
               src={`/assets/${src}.jpg`}
               alt={alt}
-              width={210}
-              height={200}
+              width={150}
+              height={150}
             />
-            <Typography component="h2" variant="h6" sx={TextDescription}>
+            <Typography component="h2" variant="h6" sx={textDescription}>
               {description}
             </Typography>
           </DesktopDescriptionItem>

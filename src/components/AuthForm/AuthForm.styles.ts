@@ -16,7 +16,7 @@ export const FormContainer = styled.div`
   width: 100%;
   @media (min-width: ${Breakpoints.desktop}) {
     display: flex;
-    width: 40vw;
+    width: 50%;
     height: 100vh;
   }
 `;
@@ -33,19 +33,19 @@ export const FormContent = styled.div`
   }
 `;
 
-export const TabPanel: SxProps = {
+export const tabPanel: SxProps = {
   color: `${Colors.text}`,
   boxShadow: `0 4px 4px -2px ${Colors.shadow}`,
   marginBottom: '30px',
   marginTop: '50px',
 };
 
-export const TabItem: SxProps = {
+export const tabItem: SxProps = {
   fontSize: `${FontSizes.middle}`,
   fontWeight: 'bold',
 };
 
-export const TextLogo: SxProps = {
+export const textLogo: SxProps = {
   fontFamily: `${FontFamily.logoText}`,
   marginTop: '5px',
   color: `${Colors.text}`,

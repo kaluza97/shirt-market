@@ -1,24 +1,24 @@
-import { useState, ChangeEvent, FormEvent, useContext, FC } from 'react';
-import { auth } from '@/firebase/firebaseConfig';
-import { Button, TextField, Typography } from '@mui/material';
+import React, { ChangeEvent, FC, FormEvent, useContext, useState } from 'react';
+import { getAuth } from 'firebase/auth';
 import { AuthContext } from '@/context/AuthContext';
+import { TextField, Button } from '@mui/material';
 import {
-  SignInFormWrapper,
   inputText,
-  paragraph,
   submitButton,
 } from '@/components/SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.styles';
 import { AuthError } from '@/components/ErrorMessages/AuthError.component';
+import { Terms } from '@/components/Terms/Terms.component';
+import { SignUpFormWrapper } from '@/components/SignUp/SingUp.styles';
 
-export const SignInWithEmailPassword: FC = () => {
-  const { login } = useContext(AuthContext);
-
+export const SignUp: FC = () => {
+  const auth = getAuth();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const { register } = useContext(AuthContext);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login(auth, email, password);
+    register(auth, email, password);
   };
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +30,7 @@ export const SignInWithEmailPassword: FC = () => {
   };
 
   return (
-    <SignInFormWrapper>
+    <SignUpFormWrapper>
       <form onSubmit={handleSubmit}>
         <TextField
           variant="standard"
@@ -39,8 +39,7 @@ export const SignInWithEmailPassword: FC = () => {
           onChange={handleEmailChange}
           required
           fullWidth
-          name="email"
-          autoComplete="email"
+          name="registerEmail"
           autoFocus
           size="small"
           InputLabelProps={{ shrink: true }}
@@ -53,16 +52,13 @@ export const SignInWithEmailPassword: FC = () => {
           variant="standard"
           required
           fullWidth
-          name="password"
+          name="registerPassword"
           type="password"
-          autoComplete="password"
           size="small"
           InputLabelProps={{ shrink: true }}
           sx={inputText}
         />
-        <Typography component="p" sx={paragraph}>
-          Forgot password?
-        </Typography>
+        <Terms />
         <Button
           type="submit"
           fullWidth
@@ -71,10 +67,12 @@ export const SignInWithEmailPassword: FC = () => {
           size="large"
           sx={submitButton}
         >
-          Sign In
+          Sign Up
         </Button>
         <AuthError />
       </form>
-    </SignInFormWrapper>
+    </SignUpFormWrapper>
   );
 };
+
+export default SignUp;

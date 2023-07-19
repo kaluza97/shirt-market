@@ -6,6 +6,7 @@ import { ZodType, z } from 'zod';
 export interface AuthContextProps {
   authError: FirebaseError;
   login: (auth: Auth, email: string, password: string) => void;
+  register: (auth: Auth, email: string, password: string) => void;
   logout: () => void;
 }
 

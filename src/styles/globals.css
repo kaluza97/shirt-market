@@ -1,17 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&family=Pacifico&display=swap');
 
 * {
-    font-family: Roboto;
     margin: 0;
     padding: 0;
-}
-
-body {
-    background-color: black;
 }
 
 a {
     outline: none;
     color: black;
     text-decoration: none;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+html {
+    font-size: 62.5%;
 }

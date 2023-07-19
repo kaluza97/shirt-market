@@ -15,13 +15,13 @@ export const Breakpoints = {
 };
 
 export const FontSizes = {
-  small: '14px',
-  middle: '16px',
-  large: '18px',
-  xl: '22px',
+  small: '1.4rem',
+  middle: '1.6rem',
+  large: '1.8rem',
+  xl: '2.2rem',
 };
 
-export const ResetAutofill = '0 0 0 30px white inset';
+export const ResetAutofill = '0 0 0 3rem white inset';
 
 export const FontFamily = {
   main: 'Open Sans, sans-serif',

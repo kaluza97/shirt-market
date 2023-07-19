@@ -7,7 +7,7 @@ interface ErrorMessageInterface {
 }
 
 export const ErrorMessageContainer = styled.div<ErrorMessageInterface>`
-  margin-top: 16px;
+  margin-top: 1.6rem;
   visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
 `;
 

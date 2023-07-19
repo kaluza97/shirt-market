@@ -11,6 +11,7 @@ export const mainTheme = createTheme({
     },
   },
   typography: {
+    fontSize: 18,
     fontFamily: FontFamily.main,
   },
 });

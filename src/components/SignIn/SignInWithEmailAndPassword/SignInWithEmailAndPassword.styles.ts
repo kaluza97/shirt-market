@@ -4,13 +4,14 @@ import { SxProps } from '@mui/system';
 
 export const SignInFormWrapper = styled.div`
 @media (min-width: ${Breakpoints.desktop}) {
-  width: 350px;
+  width: 35rem;
 }
 `;
 
 export const inputText: SxProps = {
-  paddingTop: '5px',
-  marginBottom: '20px',
+  fontSize: `${FontSizes.middle}`,
+  paddingTop: '0.5rem',
+  marginBottom: '2rem',
   color: `${Colors.text}`,
   'input:-webkit-autofill': {
     WebkitBoxShadow: ResetAutofill,
@@ -28,6 +29,6 @@ export const submitButton: SxProps = {
   fontSize: `${FontSizes.small}`,
   color: `${Colors.white}`,
   fontWeight: 'bold',
-  marginTop: '30px',
-  padding: '10px',
+  marginTop: '3rem',
+  padding: '1rem',
 };

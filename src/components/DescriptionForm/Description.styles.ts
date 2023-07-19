@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Breakpoints, Colors, FontFamily } from '@/styles/variables';
+import { Breakpoints, Colors, FontFamily, FontSizes } from '@/styles/variables';
 import { SxProps } from '@mui/material';
 
 export const DesktopContainer = styled.div`
@@ -16,7 +16,7 @@ export const DesktopContent = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 50px 50px 0 50px;
+    padding: 1rem 5rem 0 5rem;
   }
 `;
 
@@ -27,12 +27,13 @@ export const DesktopDescriptionItem = styled.div`
     flex-direction: row;
     align-items: center;
     width: 100%;
-    height: 200px;
+    margin-top: 2rem;
   }
 `;
 
 export const textDescription: SxProps = {
+  fontSize: `${FontSizes.middle}`,
   fontFamily: `${FontFamily.main}`,
   color: `${Colors.text}`,
-  margin: '0 50px',
+  margin: '0 5rem',
 };

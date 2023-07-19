@@ -6,10 +6,10 @@ export const NavigationMenuContainer = styled.div`
   display: flex;
   flex-direction: row;
   background-color: ${Colors.primary};
-  padding: 10px;
+  padding: 1rem;
 `;
 
 export const LinkMenu = styled(Link)`
   font-size: ${FontSizes.large};
-  padding: 10px;
+  padding: 1rem;
 `;

@@ -14,15 +14,15 @@ const Description: FC = () => {
   return (
     <DesktopContainer>
       <DesktopContent>
-        {DescriptionItems.map(({ src, alt, description }, index) => (
-          <DesktopDescriptionItem key={index}>
+        {DescriptionItems.map(({ src, alt, description }) => (
+          <DesktopDescriptionItem key={src}>
             <Image
               src={`/assets/${src}.jpg`}
               alt={alt}
               width={150}
               height={150}
             />
-            <Typography component="h2" variant="h6" sx={textDescription}>
+            <Typography component="h2" sx={textDescription}>
               {description}
             </Typography>
           </DesktopDescriptionItem>

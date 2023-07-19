@@ -10,7 +10,6 @@ import Image from 'next/image';
 import { DescriptionItems } from '@/data/authData';
 
 const Description: FC = () => {
-
   return (
     <DesktopContainer>
       <DesktopContent>

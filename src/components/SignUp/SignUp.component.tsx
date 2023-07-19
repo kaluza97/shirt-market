@@ -29,8 +29,6 @@ export const SignUp: FC = () => {
     setPassword(e.target.value);
   };
 
-
-
   return (
     <SignUpFormWrapper>
       <form onSubmit={handleSubmit}>

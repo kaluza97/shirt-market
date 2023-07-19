@@ -19,7 +19,6 @@ export const FormContainer = styled.div`
   @media (min-width: ${Breakpoints.desktop}) {
     display: flex;
     width: 50%;
-
   }
 `;
 

@@ -1,11 +1,16 @@
 import styled from '@emotion/styled';
-import { Breakpoints, Colors, FontSizes, ResetAutofill } from '@/styles/variables';
+import {
+  Breakpoints,
+  Colors,
+  FontSizes,
+  ResetAutofill,
+} from '@/styles/variables';
 import { SxProps } from '@mui/system';
 
 export const SignInFormWrapper = styled.div`
-@media (min-width: ${Breakpoints.desktop}) {
-  width: 35rem;
-}
+  @media (min-width: ${Breakpoints.desktop}) {
+    width: 35rem;
+  }
 `;
 
 export const inputText: SxProps = {

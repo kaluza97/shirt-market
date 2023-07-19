@@ -1,4 +1,7 @@
-import { LinkMenu, NavigationMenuContainer } from '@/components/NavigationMenu/NavigationMenu.styles';
+import {
+  LinkMenu,
+  NavigationMenuContainer,
+} from '@/components/NavigationMenu/NavigationMenu.styles';
 
 const NavigationMenu = () => {
   return (

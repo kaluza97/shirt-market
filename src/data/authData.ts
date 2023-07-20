@@ -1,4 +1,11 @@
-export const DescriptionItems = [
+type Props = {
+  src: string;
+  alt: string;
+  description: string;
+};
+
+
+export const descriptionItems: Props[] = [
   {
     src: 'delivery',
     alt: 'Courier with delivery',

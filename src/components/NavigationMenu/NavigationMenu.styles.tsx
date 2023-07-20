@@ -1,15 +1,8 @@
-import { Colors, FontSizes } from '@/styles/variables';
-import styled from '@emotion/styled';
-import Link from 'next/link';
+import { SxProps } from '@mui/material';
 
-export const NavigationMenuContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  background-color: ${Colors.primary};
-  padding: 1rem;
-`;
-
-export const LinkMenu = styled(Link)`
-  font-size: ${FontSizes.large};
-  padding: 1rem;
-`;
+export const NavigationMenuContainer: SxProps = {
+  position: 'fixed',
+  bottom: 0,
+  left: 0,
+  right: 0,
+};

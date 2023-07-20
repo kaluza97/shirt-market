@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   Auth,
   createUserWithEmailAndPassword,
+  User,
 } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { FirebaseError } from '@firebase/util';
@@ -17,25 +18,28 @@ const initialAuthError: FirebaseError = { code: '', name: '', message: '' };
 
 const AuthContext = createContext<AuthContextProps>({
   authError: initialAuthError,
-  login: () => {},
-  register: () => {},
-  logout: () => {},
+  user: null,
+  login: () => { },
+  register: () => { },
+  logout: () => { },
 });
 
 const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const router = useRouter();
   const [authError, setAuthError] = useState<FirebaseError>(initialAuthError);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userData) => {
       if (userData) {
-        router.push('/');
+        setUser(userData);
       } else {
+        setUser(null);
         router.push('/login');
       }
     });
     return () => unsubscribe();
-  }, [router]);
+  }, []);
 
   const login = async (auth: Auth, email: string, password: string) => {
     try {
@@ -90,7 +94,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ authError, register, login, logout }}>
+    <AuthContext.Provider value={{ authError, user, register, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -46,7 +46,7 @@ export const tabItem: SxProps = {
   fontWeight: 'bold',
 };
 
-export const textLogo: SxProps = {
+export const logoText: SxProps = {
   fontFamily: `${FontFamily.logoText}`,
   marginTop: '0.5rem',
   color: `${Colors.text}`,

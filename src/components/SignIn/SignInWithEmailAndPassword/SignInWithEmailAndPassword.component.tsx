@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent, useContext, FC } from 'react';
+import { useState, ChangeEvent, FormEvent, useContext, FC, useEffect } from 'react';
 import { auth } from '@/firebase/firebaseConfig';
 import { Button, TextField, Typography } from '@mui/material';
 import { AuthContext } from '@/context/AuthContext';
@@ -9,12 +9,18 @@ import {
   submitButton,
 } from '@/components/SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.styles';
 import { AuthError } from '@/components/ErrorMessages/AuthError.component';
+import { useRouter } from 'next/router';
 
 export const SignInWithEmailPassword: FC = () => {
-  const { login } = useContext(AuthContext);
+  const { login, user } = useContext(AuthContext);
+  const router = useRouter();
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  useEffect(() => {
+    user && router.push('/');
+  }, [user]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

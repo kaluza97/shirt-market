@@ -4,12 +4,12 @@ import {
   DesktopContent,
   DesktopDescriptionItem,
   descriptionText,
-} from '@/components/DescriptionForm/Description.styles';
+} from '@/components/Description/Description.styles';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
 import { descriptionItems } from '@/data/authData';
 
-const Description: FC = () => {
+export const Description: FC = () => {
   return (
     <DesktopContainer>
       <DesktopContent>
@@ -32,4 +32,3 @@ const Description: FC = () => {
   );
 };
 
-export default Description;

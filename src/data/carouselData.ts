@@ -5,11 +5,11 @@ type Props = {
 
 export const carouselItems: Props[] = [
   {
-    name: "Random Name #1",
-    description: "Probably the most random thing you have ever seen!"
+    name: "New collection",
+    description: "Check out the latest offer with fashionable t-shirts!"
   },
   {
-    name: "Random Name #2",
-    description: "Hello World!"
+    name: "Special offer",
+    description: "Special promotion! With the code HAPPYUSER you will get a 10% rabat!"
   }
 ];

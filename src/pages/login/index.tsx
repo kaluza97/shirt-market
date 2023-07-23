@@ -1,5 +1,5 @@
 import React, { FC, useContext, useEffect } from 'react';
-import AuthForm from '@/components/AuthForm/AuthForm.component';
+import AuthForm from '@/components/Auth/AuthForm.component';
 import { Footer } from '@/components/Footer/Footer.component';
 import { useRouter } from 'next/router';
 import { AuthContext } from '@/context/AuthContext';

@@ -1,7 +1,6 @@
 import React, { FC, SyntheticEvent, useState } from 'react';
 import { SignInWithEmailPassword } from '@/components/SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.component';
 import SignUp from '@/components/SignUp/SignUp.component';
-import Description from '@/components/DescriptionForm/Description.component';
 import { Tab, Tabs, Typography } from '@mui/material';
 import Image from 'next/image';
 import {
@@ -11,15 +10,17 @@ import {
     tabItem,
     tabPanel,
     logoText,
-} from '@/components/AuthForm/AuthForm.styles';
+} from '@/components/Auth/AuthForm.styles';
+import { LoginOrRegisterType } from './AuthForm.types';
+import { Description } from '../Description/Description.component';
+
 
 const AuthForm: FC = () => {
-    type LoginOrRegister = 'login' | 'register';
-    const [value, setValue] = useState<LoginOrRegister>('login');
+    const [value, setValue] = useState<LoginOrRegisterType>('login');
 
     const handleChange = (
         _event: SyntheticEvent,
-        newValue: LoginOrRegister
+        newValue: LoginOrRegisterType
     ) => {
         setValue(newValue);
     };

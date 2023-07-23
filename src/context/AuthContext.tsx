@@ -12,7 +12,7 @@ import {
   AuthContextProps,
   AuthProviderProps,
   AuthErrorSchema,
-} from '@/context/AuthContext.interface';
+} from '@/context/AuthContext.types';
 
 const initialAuthError: FirebaseError = { code: '', name: '', message: '' };
 

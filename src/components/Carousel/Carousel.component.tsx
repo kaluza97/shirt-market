@@ -1,27 +1,19 @@
 import { FC } from 'react';
-import Button from '@mui/material/Button';
-import { Paper } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
 import { carouselItems } from '@/data/carouselData';
-import Image from 'next/image';
+import { carouselContainer, carouselDescriptionText, carouselNameText } from './Carousel.styles';
+
 
 export const SliderCarousel: FC = () => {
 
   return (
-    <Carousel>
+    <Carousel indicatorIconButtonProps={{ style: { display: 'none' } }}>
       {
         carouselItems.map(({ name, description }) => (
-          <Paper key={name} sx={{ height: '80vh' }}>
-            <h2>{name}</h2>
-            <p>{description}</p>
-            <Image
-              src={`/assets/model.jpg`}
-              alt='hahah'
-              fill
-            />
-            <Button className="CheckButton">
-              Check it out!
-            </Button>
+          <Paper key={name} sx={carouselContainer}>
+            <Typography sx={carouselNameText}>{name}</Typography>
+            <Typography sx={carouselDescriptionText}>{description}</Typography>
           </Paper>
         ))
       }

@@ -4,7 +4,6 @@ type Props = {
   description: string;
 };
 
-
 export const descriptionItems: Props[] = [
   {
     src: 'delivery',

@@ -4,57 +4,56 @@ import SignUp from '@/components/SignUp/SignUp.component';
 import { Tab, Tabs, Typography } from '@mui/material';
 import Image from 'next/image';
 import {
-    AuthContainer,
-    FormContainer,
-    FormContent,
-    tabItem,
-    tabPanel,
-    logoText,
+  AuthContainer,
+  FormContainer,
+  FormContent,
+  tabItem,
+  tabPanel,
+  logoText,
 } from '@/components/Auth/AuthForm.styles';
 import { LoginOrRegisterType } from './AuthForm.types';
 import { Description } from '../Description/Description.component';
 
-
 const AuthForm: FC = () => {
-    const [value, setValue] = useState<LoginOrRegisterType>('login');
+  const [value, setValue] = useState<LoginOrRegisterType>('login');
 
-    const handleChange = (
-        _event: SyntheticEvent,
-        newValue: LoginOrRegisterType
-    ) => {
-        setValue(newValue);
-    };
+  const handleChange = (
+    _event: SyntheticEvent,
+    newValue: LoginOrRegisterType
+  ) => {
+    setValue(newValue);
+  };
 
-    return (
-        <AuthContainer>
-            <FormContainer>
-                <FormContent>
-                    <Image
-                        src="/assets/shirt.png"
-                        width={50}
-                        height={50}
-                        alt="Green shirt"
-                    />
-                    <Typography component="h1" variant="h5" sx={logoText}>
-                        Shirt Market
-                    </Typography>
-                    <Tabs
-                        value={value}
-                        onChange={handleChange}
-                        aria-label="Panel with login or register"
-                        sx={tabPanel}
-                        variant="fullWidth"
-                    >
-                        <Tab value="login" label="Login" sx={tabItem} />
-                        <Tab value="register" label="Register" sx={tabItem} />
-                    </Tabs>
-                    {value === 'login' && <SignInWithEmailPassword />}
-                    {value === 'register' && <SignUp />}
-                </FormContent>
-            </FormContainer>
-            <Description />
-        </AuthContainer>
-    );
+  return (
+    <AuthContainer>
+      <FormContainer>
+        <FormContent>
+          <Image
+            src="/assets/shirt.png"
+            width={50}
+            height={50}
+            alt="Green shirt"
+          />
+          <Typography component="h1" variant="h5" sx={logoText}>
+            Shirt Market
+          </Typography>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="Panel with login or register"
+            sx={tabPanel}
+            variant="fullWidth"
+          >
+            <Tab value="login" label="Login" sx={tabItem} />
+            <Tab value="register" label="Register" sx={tabItem} />
+          </Tabs>
+          {value === 'login' && <SignInWithEmailPassword />}
+          {value === 'register' && <SignUp />}
+        </FormContent>
+      </FormContainer>
+      <Description />
+    </AuthContainer>
+  );
 };
 
 export default AuthForm;

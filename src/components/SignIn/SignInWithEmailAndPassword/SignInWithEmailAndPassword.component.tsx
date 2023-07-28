@@ -1,5 +1,13 @@
-import { useState, ChangeEvent, FormEvent, useContext, FC, useEffect } from 'react';
+import {
+  useState,
+  ChangeEvent,
+  FormEvent,
+  useContext,
+  FC,
+  useEffect,
+} from 'react';
 import { auth } from '@/firebase/firebaseConfig';
+import { useRouter } from 'next/router';
 import { Button, TextField, Typography } from '@mui/material';
 import { AuthContext } from '@/context/AuthContext';
 import {
@@ -9,7 +17,6 @@ import {
   submitButton,
 } from '@/components/SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.styles';
 import { AuthError } from '@/components/ErrorMessages/AuthError.component';
-import { useRouter } from 'next/router';
 
 export const SignInWithEmailPassword: FC = () => {
   const { login, user } = useContext(AuthContext);

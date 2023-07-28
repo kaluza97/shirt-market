@@ -5,8 +5,8 @@ import { store } from '@/redux/store';
 import type { AppProps } from 'next/app';
 import { AuthProvider } from '@/context/AuthContext';
 import { ThemeProvider } from '@mui/material/styles';
-import '@/styles/globals.css';
 import { mainTheme } from '@/styles/material.styles';
+import '@/styles/globals.css';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   const queryClient = new QueryClient();

@@ -1,13 +1,13 @@
+import { FC, SyntheticEvent, useState } from 'react';
 import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import { SyntheticEvent, useState } from 'react';
 import { NavigationMenuContainer } from './NavigationMenu.styles';
 
-const NavigationMenu = () => {
+export const NavigationMenu: FC = () => {
   const [navigationItem, setNavigationItem] = useState<number>(0);
 
   return (
@@ -21,13 +21,19 @@ const NavigationMenu = () => {
       >
         <BottomNavigationAction label="Home" icon={<HomeOutlinedIcon />} />
         <BottomNavigationAction label="Browse" icon={<SearchOutlinedIcon />} />
-        <BottomNavigationAction label="Favorites" icon={<FavoriteBorderOutlinedIcon />} />
-        <BottomNavigationAction label="Basket" icon={<ShoppingCartOutlinedIcon />} />
-        <BottomNavigationAction label="Profile" icon={<PersonOutlineOutlinedIcon />} />
+        <BottomNavigationAction
+          label="Favorites"
+          icon={<FavoriteBorderOutlinedIcon />}
+        />
+        <BottomNavigationAction
+          label="Basket"
+          icon={<ShoppingCartOutlinedIcon />}
+        />
+        <BottomNavigationAction
+          label="Profile"
+          icon={<PersonOutlineOutlinedIcon />}
+        />
       </BottomNavigation>
-
     </Paper>
   );
 };
-
-export default NavigationMenu;

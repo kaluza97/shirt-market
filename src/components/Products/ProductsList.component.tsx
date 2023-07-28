@@ -1,53 +1,57 @@
-import React, { FC } from "react";
-import useSWR from "swr";
-import Image from "next/image";
-import Typography from "@mui/material/Typography";
-import { ProductType } from "@/components/Products/ProductsList.types";
-import { fetcher, truncateTextToThreeWords } from "@/utils/utils";
-import { CircularLoading } from "../CircularLoading/CircularLoading.component";
-import { ErrorMessage } from "../ErrorMessages/ErrorMessage.component";
-import { Box, Card, CardActions, CardContent } from "@mui/material";
-import { ProductsListContainer, card, cardContainer, cardHeaderText, cardText, cardTitleText, productContainer } from "@/components/Products/ProductsList.styles";
+import React, { FC, useEffect, useState } from 'react';
+import Image from 'next/image';
+import Typography from '@mui/material/Typography';
+import { CircularLoading } from '@/components/CircularLoading/CircularLoading.component';
+import { Box } from '@mui/material';
+import {
+  ProductsListContainer,
+  headerTitle,
+  imgPrice,
+  imgTitle,
+  productBox,
+  productContainer,
+} from '@/components/Products/ProductsList.styles';
+import { firestore } from '@/firebase/firebaseConfig';
+import { collection, getDocs } from 'firebase/firestore';
+import { ProductType, productsListSchema } from './ProductsList.types';
 
 export const ProductsList: FC = () => {
+  const [shirtsData, setShirtsData] = useState<ProductType[]>([]);
 
-    const url = `https://fakestoreapi.com/products/category/men's clothing`;
-    const { data, error, isLoading } = useSWR<ProductType[]>(url, fetcher);
+  const fetchPost = async () => {
+    await getDocs(collection(firestore, 'shirts')).then((snapshot) => {
+      const data = snapshot.docs.map((doc) => doc.data());
+      const validatedData = productsListSchema.safeParse(data);
+      if (validatedData.success) {
+        setShirtsData(validatedData.data);
+      } else {
+        alert('Error in data retrieved from Firestore');
+      }
+    });
+  };
 
-    const product = data?.map(({ image, title, price }) => (
-        <Box sx={cardContainer}>
-            <Card sx={card}>
-                <CardContent>
-                    <Image
-                        src={image}
-                        alt={title}
-                        width={140}
-                        height={170}
-                        priority
-                    />
+  useEffect(() => {
+    fetchPost();
+  }, []);
 
-                </CardContent>
-            </Card >
-            <Typography sx={cardTitleText}>
-                {truncateTextToThreeWords(title)}
-            </Typography>
-            <Typography sx={cardText}>
-                {price} $
-            </Typography>
-        </Box>
-    ));
+  const product = shirtsData?.map(({ img, name, price }) => (
+    <Box sx={productBox} key={name}>
+      <Image src={img} alt={name} width={200} height={250} priority />
 
-    return (
-        <ProductsListContainer>
-            <Typography component='h3' variant='h4' sx={cardHeaderText}>
-                New bestsellers products
-            </Typography>
-            <Box sx={productContainer}>
-                {isLoading ? <CircularLoading /> : product}
-                <ErrorMessage errorMessage={error?.message} />
-            </Box>
-        </ProductsListContainer>
-    );
+      <Typography sx={imgTitle}>{name}</Typography>
+      <Typography sx={imgPrice}>{price} $</Typography>
+    </Box>
+  ));
+
+  return (
+    <ProductsListContainer>
+      <Typography component="h3" variant="h3" sx={headerTitle}>
+        New bestsellers products
+      </Typography>
+      <Box sx={productContainer}>
+        <CircularLoading fetchingData={!!product} />
+        {product}
+      </Box>
+    </ProductsListContainer>
+  );
 };
-
-

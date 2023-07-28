@@ -1,15 +1,18 @@
 type Props = {
   name: string;
   description: string;
+  link?: string;
 };
 
-export const carouselItems: Props[] = [
+export const carouselData: Props[] = [
   {
-    name: "New collection",
-    description: "Check out the latest offer with fashionable t-shirts!"
+    name: 'New collection',
+    description: 'Check out the latest offer with fashionable t-shirts!',
+    link: '/collections/new',
   },
   {
-    name: "Special offer",
-    description: "Special promotion! With the code HAPPYUSER you will get a 10% rabat!"
-  }
+    name: 'Shopping discount with code',
+    description:
+      'Special promotion! With the code HAPPYUSER you will get a 10% rabat!',
+  },
 ];

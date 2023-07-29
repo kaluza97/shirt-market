@@ -39,7 +39,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
       }
     });
     return () => unsubscribe();
-  }, []);
+  });
 
   const login = async (auth: Auth, email: string, password: string) => {
     try {

@@ -13,9 +13,7 @@ export const LinkStyled = styled(Link)`
   color: ${Colors.primary};
 `;
 
-export const carouselContainer: SxProps = {
-
-};
+export const carouselContainer: SxProps = {};
 
 export const carouselContent: SxProps = {
   textAlign: 'center',
@@ -25,7 +23,6 @@ export const carouselContent: SxProps = {
   height: '8rem',
   borderRadius: '0',
 };
-
 
 export const carouselNameText: SxProps = {
   fontSize: FontSizes.large,

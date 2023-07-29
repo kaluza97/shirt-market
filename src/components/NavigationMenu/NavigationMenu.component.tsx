@@ -1,6 +1,9 @@
-import { FC, useState } from 'react';
+import { FC, useState, MouseEvent } from 'react';
 import { IconButton, Menu, MenuItem } from '@mui/material';
-import { IconContainer, NavigationContainer } from '@/components/NavigationMenu/NavigationMenu.styles';
+import {
+  IconContainer,
+  NavigationContainer,
+} from '@/components/NavigationMenu/NavigationMenu.styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Logo } from '@/components/Logo/Logo.component';
 import { useRouter } from 'next/router';
@@ -10,7 +13,7 @@ export const NavigationMenu: FC = () => {
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const { push } = useRouter();
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
     setMenuAnchor(event.currentTarget);
   };
   const handleClose = () => {
@@ -25,17 +28,10 @@ export const NavigationMenu: FC = () => {
   return (
     <NavigationContainer>
       <Logo />
-      <IconButton
-        aria-label="more"
-        onClick={handleClick}
-      >
+      <IconButton aria-label="more" onClick={handleClick}>
         <MenuIcon fontSize="large" />
       </IconButton>
-      <Menu
-        anchorEl={menuAnchor}
-        open={!!menuAnchor}
-        onClose={handleClose}
-      >
+      <Menu anchorEl={menuAnchor} open={!!menuAnchor} onClose={handleClose}>
         {navigationData.map(({ name, path, icon }) => (
           <MenuItem
             key={path}

@@ -10,7 +10,7 @@ const LoginPage: FC = () => {
 
   useEffect(() => {
     user && push('/');
-  }, []);
+  });
 
   return (
     <>

@@ -22,18 +22,14 @@ export const ProductsList: FC = () => {
   }, []);
 
   return (
-    <>
-      {
-        shirtsData?.map(({ img, name, price }) => (
-          <Suspense fallback={<CircularProgress />}>
-            <Box sx={productBox} key={name}>
-              <Image src={img} alt={name} width={200} height={250} priority />
-              <Typography sx={imgTitle}>{name}</Typography>
-              <Typography sx={imgPrice}>{price} $</Typography>
-            </Box>
-          </Suspense>
-        ))
-      }
-    </>
+    <Suspense fallback={<CircularProgress />}>
+      {shirtsData?.map(({ img, name, price }) => (
+        <Box sx={productBox} key={name}>
+          <Image src={img} alt={name} width={200} height={250} priority />
+          <Typography sx={imgTitle}>{name}</Typography>
+          <Typography sx={imgPrice}>{price} $</Typography>
+        </Box>
+      ))}
+    </Suspense>
   );
 };

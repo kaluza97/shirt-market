@@ -1,5 +1,11 @@
 import styled from '@emotion/styled';
-import { Breakpoints, Colors, FontFamily, FontSizes, FontWeights } from '@/styles/variables';
+import {
+  Breakpoints,
+  Colors,
+  FontFamily,
+  FontSizes,
+  FontWeights,
+} from '@/styles/variables';
 import { SxProps } from '@mui/material';
 
 export const AuthContainer = styled.div`

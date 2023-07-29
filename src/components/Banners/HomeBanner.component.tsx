@@ -4,10 +4,6 @@ import { HomeBannerContainer } from '@/components/Banners/HomeBanner.styles';
 import { bannerData } from '@/data/bannerData';
 
 export const HomeBanner: FC = () => {
-  const handleClick = () => {
-    console.info('You clicked the Chip.');
-  };
-
   return (
     <HomeBannerContainer>
       <Card>
@@ -15,7 +11,7 @@ export const HomeBanner: FC = () => {
           <Suspense fallback={<CircularProgress />} key={src}>
             <CardMedia
               component="img"
-              height="600"
+              height="601"
               image={`/assets/${src}.jpg`}
               alt={alt}
             />

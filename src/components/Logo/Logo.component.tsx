@@ -1,6 +1,10 @@
 import { FC } from 'react';
 import { Typography } from '@mui/material';
-import { LogoContainer, logoText, LogoImage } from '@/components/Logo/Logo.styles';
+import {
+  LogoContainer,
+  logoText,
+  LogoImage,
+} from '@/components/Logo/Logo.styles';
 
 export const Logo: FC = () => (
   <LogoContainer>

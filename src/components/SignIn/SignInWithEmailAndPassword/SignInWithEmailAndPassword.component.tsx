@@ -27,7 +27,7 @@ export const SignInWithEmailPassword: FC = () => {
 
   useEffect(() => {
     user && push('/');
-  }, [user]);
+  }, [user, push]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

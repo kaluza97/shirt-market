@@ -9,7 +9,6 @@ import {
 import { ProductsList } from '@/components/Products/ProductsList.component';
 
 export const ProductsWrapper: FC = () => {
-
   return (
     <ProductsListContainer>
       <Typography component="h3" variant="h3" sx={headerTitle}>

@@ -12,7 +12,7 @@ export const HomeBanner: FC = () => {
             <CardMedia
               component="img"
               height="600"
-              image={`/assets/${src}.jpg`}
+              image={`/assets/${src}.jpg`
               alt={alt}
             />
           </Suspense>

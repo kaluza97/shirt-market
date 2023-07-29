@@ -11,7 +11,7 @@ export const HomeBanner: FC = () => {
           <Suspense fallback={<CircularProgress />} key={src}>
             <CardMedia
               component="img"
-              height="601"
+              height="600"
               image={`/assets/${src}.jpg`}
               alt={alt}
             />

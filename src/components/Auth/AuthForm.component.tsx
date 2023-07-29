@@ -15,13 +15,13 @@ import { LoginOrRegisterType } from './AuthForm.types';
 import { Description } from '../Description/Description.component';
 
 const AuthForm: FC = () => {
-  const [value, setValue] = useState<LoginOrRegisterType>('login');
+  const [auth, setAuth] = useState<LoginOrRegisterType>('login');
 
   const handleChange = (
     _event: SyntheticEvent,
     newValue: LoginOrRegisterType
   ) => {
-    setValue(newValue);
+    setAuth(newValue);
   };
 
   return (
@@ -38,7 +38,7 @@ const AuthForm: FC = () => {
             Shirt Market
           </Typography>
           <Tabs
-            value={value}
+            value={auth}
             onChange={handleChange}
             aria-label="Panel with login or register"
             sx={tabPanel}
@@ -47,8 +47,8 @@ const AuthForm: FC = () => {
             <Tab value="login" label="Login" sx={tabItem} />
             <Tab value="register" label="Register" sx={tabItem} />
           </Tabs>
-          {value === 'login' && <SignInWithEmailPassword />}
-          {value === 'register' && <SignUp />}
+          {auth === 'login' && <SignInWithEmailPassword />}
+          {auth === 'register' && <SignUp />}
         </FormContent>
       </FormContainer>
       <Description />

@@ -19,13 +19,13 @@ const initialAuthError: FirebaseError = { code: '', name: '', message: '' };
 const AuthContext = createContext<AuthContextProps>({
   authError: initialAuthError,
   user: null,
-  login: () => {},
-  register: () => {},
-  logout: () => {},
+  login: () => { },
+  register: () => { },
+  logout: () => { },
 });
 
 const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
-  const router = useRouter();
+  const { push } = useRouter();
   const [authError, setAuthError] = useState<FirebaseError>(initialAuthError);
   const [user, setUser] = useState<User | null>(null);
 
@@ -35,7 +35,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         setUser(userData);
       } else {
         setUser(null);
-        router.push('/login');
+        push('/login');
       }
     });
     return () => unsubscribe();

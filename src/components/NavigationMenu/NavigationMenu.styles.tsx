@@ -1,8 +1,15 @@
-import { SxProps } from '@mui/material';
+import styled from '@emotion/styled';
 
-export const NavigationMenuContainer: SxProps = {
-  position: 'fixed',
-  bottom: 0,
-  left: 0,
-  right: 0,
-};
+export const NavigationContainer = styled.div`
+padding: 1rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+`;
+
+export const IconContainer = styled.div`
+margin-top: 0.5rem;
+margin-right: 1rem;
+`;
+
+

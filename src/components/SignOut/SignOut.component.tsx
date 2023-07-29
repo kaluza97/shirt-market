@@ -1,9 +1,11 @@
-import { FC, useContext } from 'react';
+import { FC, ReactNode, useContext } from 'react';
 import { AuthContext } from '@/context/AuthContext';
-import Button from '@mui/material/Button';
-import { logoutButton } from './SignOut.styles';
 
-export const SignOut: FC = () => {
+type Props = {
+  children: ReactNode;
+};
+
+export const SignOutWrapper: FC<Props> = ({ children }) => {
   const { logout } = useContext(AuthContext);
 
   const handleLogout = () => {
@@ -11,8 +13,8 @@ export const SignOut: FC = () => {
   };
 
   return (
-    <Button variant="text" onClick={handleLogout} sx={logoutButton}>
-      Logout
-    </Button>
+    <div onClick={handleLogout}>
+      {children}
+    </div>
   );
 };

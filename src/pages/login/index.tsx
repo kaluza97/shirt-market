@@ -6,10 +6,10 @@ import { AuthContext } from '@/context/AuthContext';
 
 const LoginPage: FC = () => {
   const { user } = useContext(AuthContext);
-  const router = useRouter();
+  const { push } = useRouter();
 
   useEffect(() => {
-    user && router.push('/');
+    user && push('/');
   }, []);
 
   return (

@@ -20,13 +20,13 @@ import { AuthError } from '@/components/ErrorMessages/AuthError.component';
 
 export const SignInWithEmailPassword: FC = () => {
   const { login, user } = useContext(AuthContext);
-  const router = useRouter();
+  const { push } = useRouter();
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
   useEffect(() => {
-    user && router.push('/');
+    user && push('/');
   }, [user]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

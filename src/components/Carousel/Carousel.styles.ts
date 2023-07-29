@@ -1,4 +1,4 @@
-import { Colors, FontFamily, FontSizes } from '@/styles/variables';
+import { Colors, FontFamily, FontSizes, FontWeights } from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 import Link from 'next/link';
@@ -14,6 +14,10 @@ export const LinkStyled = styled(Link)`
 `;
 
 export const carouselContainer: SxProps = {
+
+};
+
+export const carouselContent: SxProps = {
   textAlign: 'center',
   backgroundColor: Colors.secondary,
   color: Colors.text,
@@ -22,9 +26,10 @@ export const carouselContainer: SxProps = {
   borderRadius: '0',
 };
 
+
 export const carouselNameText: SxProps = {
   fontSize: FontSizes.large,
-  fontWeight: 'bold',
+  fontWeight: `${FontWeights.bold}`,
   marginBottom: '0.5rem',
 };
 

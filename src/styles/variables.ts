@@ -23,6 +23,14 @@ export const FontSizes = {
   xl: '2.2rem',
 };
 
+export const FontWeights = {
+  extraThin: '100',
+  thin: '300',
+  normal: '400',
+  bold: '700',
+  extraBold: '900',
+};
+
 export const ResetAutofill = '0 0 0 3rem white inset';
 
 export const FontFamily = {

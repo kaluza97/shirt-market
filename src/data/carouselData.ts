@@ -1,10 +1,10 @@
-type Props = {
+type CarouselItem = {
   name: string;
   description: string;
   link?: string;
 };
 
-export const carouselData: Props[] = [
+export const carouselData: Array<CarouselItem> = [
   {
     name: 'New collection',
     description: 'Check out the latest offer with fashionable t-shirts!',

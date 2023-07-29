@@ -3,6 +3,7 @@ import {
   Breakpoints,
   Colors,
   FontSizes,
+  FontWeights,
   ResetAutofill,
 } from '@/styles/variables';
 import { SxProps } from '@mui/system';
@@ -26,14 +27,14 @@ export const inputText: SxProps = {
 export const paragraph: SxProps = {
   fontSize: `${FontSizes.middle}`,
   textAlign: 'left',
-  fontWeight: 'bold',
+  fontWeight: `${FontWeights.bold}`,
   color: `${Colors.text}`,
 };
 
 export const submitButton: SxProps = {
   fontSize: `${FontSizes.small}`,
   color: `${Colors.white}`,
-  fontWeight: 'bold',
+  fontWeight: `${FontWeights.bold}`,
   marginTop: '3rem',
   padding: '1rem',
 };

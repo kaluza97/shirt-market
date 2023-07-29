@@ -19,9 +19,9 @@ const initialAuthError: FirebaseError = { code: '', name: '', message: '' };
 const AuthContext = createContext<AuthContextProps>({
   authError: initialAuthError,
   user: null,
-  login: () => { },
-  register: () => { },
-  logout: () => { },
+  login: () => {},
+  register: () => {},
+  logout: () => {},
 });
 
 const AuthProvider: FC<AuthProviderProps> = ({ children }) => {

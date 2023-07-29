@@ -12,9 +12,5 @@ export const SignOutWrapper: FC<Props> = ({ children }) => {
     logout();
   };
 
-  return (
-    <div onClick={handleLogout}>
-      {children}
-    </div>
-  );
+  return <div onClick={handleLogout}>{children}</div>;
 };

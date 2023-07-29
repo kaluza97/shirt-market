@@ -1,21 +1,20 @@
 import { FC, useState } from 'react';
 import { IconButton, Menu, MenuItem } from '@mui/material';
-import { IconContainer, NavigationContainer } from './NavigationMenu.styles';
+import { IconContainer, NavigationContainer } from '@/components/NavigationMenu/NavigationMenu.styles';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Logo } from '../Logo/Logo.component';
+import { Logo } from '@/components/Logo/Logo.component';
 import { useRouter } from 'next/router';
 import { navigationData } from '@/data/navigationData';
 
 export const NavigationMenu: FC = () => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const { push } = useRouter();
-  const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+    setMenuAnchor(event.currentTarget);
   };
   const handleClose = () => {
-    setAnchorEl(null);
+    setMenuAnchor(null);
   };
 
   const handleMenuItemClick = (route: string) => {
@@ -28,31 +27,25 @@ export const NavigationMenu: FC = () => {
       <Logo />
       <IconButton
         aria-label="more"
-        id="long-button"
-        aria-controls={open ? 'long-menu' : undefined}
-        aria-expanded={open ? 'true' : undefined}
-        aria-haspopup="true"
         onClick={handleClick}
       >
-        <MenuIcon fontSize='large' />
+        <MenuIcon fontSize="large" />
       </IconButton>
       <Menu
-        MenuListProps={{
-          'aria-labelledby': 'demo-customized-button',
-        }}
-        anchorEl={anchorEl}
-        open={open}
+        anchorEl={menuAnchor}
+        open={!!menuAnchor}
         onClose={handleClose}
       >
-
-        {navigationData.map(({ name, path, icon }) =>
-          <MenuItem key={path} onClick={() => handleMenuItemClick(path)} disableRipple >
-            <IconContainer>
-              {icon}
-            </IconContainer>
+        {navigationData.map(({ name, path, icon }) => (
+          <MenuItem
+            key={path}
+            onClick={() => handleMenuItemClick(path)}
+            disableRipple
+          >
+            <IconContainer>{icon}</IconContainer>
             {name}
           </MenuItem>
-        )}
+        ))}
       </Menu>
     </NavigationContainer>
   );

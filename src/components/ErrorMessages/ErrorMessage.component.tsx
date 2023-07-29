@@ -6,7 +6,7 @@ import {
 } from '@/components/ErrorMessages/Error.styles';
 
 type Props = {
-  errorMessage: string | undefined;
+  errorMessage?: string;
 };
 
 export const ErrorMessage: FC<Props> = (errorMessage) => {

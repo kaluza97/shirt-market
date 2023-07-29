@@ -1,9 +1,9 @@
-type Props = {
+type BannerItem = {
   src: string;
   alt: string;
 };
 
-export const bannerData: Props[] = [
+export const bannerData: Array<BannerItem> = [
   {
     src: 'summerCollection',
     alt: 'Fasion model in summer collection',

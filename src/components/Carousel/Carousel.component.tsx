@@ -5,15 +5,16 @@ import { carouselData } from '@/data/carouselData';
 import {
   LinkStyled,
   carouselContainer,
+  carouselContent,
   carouselDescriptionText,
   carouselNameText,
-} from './Carousel.styles';
+} from '@/components/Carousel/Carousel.styles';
 
 export const SliderCarousel: FC = () => {
   return (
-    <Carousel indicatorIconButtonProps={{ style: { display: 'none' } }}>
+    <Carousel sx={carouselContainer} IndicatorIcon={null}>
       {carouselData.map(({ name, description, link }) => (
-        <Paper key={name} sx={carouselContainer}>
+        <Paper key={name} sx={carouselContent}>
           <Typography sx={carouselNameText}>{name}</Typography>
           <Typography sx={carouselDescriptionText}>{description}</Typography>
           {link && <LinkStyled href="/about">Check offer!</LinkStyled>}

@@ -1,4 +1,4 @@
-import { Colors, FontSizes } from '@/styles/variables';
+import { Colors, FontSizes, FontWeights } from '@/styles/variables';
 import styled from '@emotion/styled';
 
 export const TermsContainer = styled.div`
@@ -10,7 +10,7 @@ export const TermsContainer = styled.div`
 
 export const Link = styled.a`
   margin-left: 0.5rem;
-  font-weight: bold;
+  font-weight: ${FontWeights.bold};
   text-decoration: underline;
   color: ${Colors.text};
   &:hover {

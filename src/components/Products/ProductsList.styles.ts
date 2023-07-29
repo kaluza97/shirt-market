@@ -1,9 +1,9 @@
-import { Colors, FontFamily, FontSizes } from '@/styles/variables';
+import { Colors, FontFamily, FontSizes, FontWeights } from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 
 export const ProductsListContainer = styled.div`
-  padding: 1rem;
+  padding: 0 1rem 0 1rem;
   textalign: 'center';
 `;
 
@@ -24,13 +24,13 @@ export const productBox: SxProps = {
 export const imgTitle: SxProps = {
   fontSize: FontSizes.small,
   fontFamily: FontFamily.main,
-  fontWeight: 'bold',
+  fontWeight: `${FontWeights.bold}`,
   color: Colors.text,
 };
 
 export const headerTitle: SxProps = {
   fontFamily: FontFamily.main,
-  fontWeight: 'bold',
+  fontWeight: `${FontWeights.bold}`,
   color: Colors.text,
   marginBottom: '2rem',
 };

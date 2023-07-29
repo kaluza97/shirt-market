@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Breakpoints, Colors, FontFamily, FontSizes } from '@/styles/variables';
+import { Breakpoints, Colors, FontFamily, FontSizes, FontWeights } from '@/styles/variables';
 import { SxProps } from '@mui/material';
 
 export const AuthContainer = styled.div`
@@ -43,12 +43,12 @@ export const tabPanel: SxProps = {
 
 export const tabItem: SxProps = {
   fontSize: `${FontSizes.middle}`,
-  fontWeight: 'bold',
+  fontWeight: `${FontWeights.bold}`,
 };
 
 export const logoText: SxProps = {
   fontFamily: `${FontFamily.logoText}`,
   marginTop: '0.5rem',
   color: `${Colors.text}`,
-  fontWeight: 'bold',
+  fontWeight: `${FontWeights.bold}`,
 };

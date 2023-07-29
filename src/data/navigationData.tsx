@@ -5,37 +5,36 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
-type Props = {
-    name: string;
-    path: string;
-    icon: ReactElement;
+type NavigationItem = {
+  name: string;
+  path: string;
+  icon: ReactElement;
 };
 
-export const navigationData: Props[] = [
-    {
-        name: 'Home',
-        path: '/',
-        icon: <HomeOutlinedIcon />,
-    },
-    {
-        name: 'Browse',
-        path: 'browse',
-        icon: <SearchOutlinedIcon />,
-    },
-    {
-        name: 'Favorites',
-        path: 'favorites',
-        icon: <FavoriteBorderOutlinedIcon />,
-    },
-    {
-        name: 'Basket',
-        path: 'basket',
-        icon: <ShoppingCartOutlinedIcon />,
-
-    },
-    {
-        name: 'Profile',
-        path: 'profile',
-        icon: <PersonOutlineOutlinedIcon />,
-    },
+export const navigationData: Array<NavigationItem> = [
+  {
+    name: 'Home',
+    path: '/',
+    icon: <HomeOutlinedIcon />,
+  },
+  {
+    name: 'Browse',
+    path: 'browse',
+    icon: <SearchOutlinedIcon />,
+  },
+  {
+    name: 'Favorites',
+    path: 'favorites',
+    icon: <FavoriteBorderOutlinedIcon />,
+  },
+  {
+    name: 'Basket',
+    path: 'basket',
+    icon: <ShoppingCartOutlinedIcon />,
+  },
+  {
+    name: 'Profile',
+    path: 'profile',
+    icon: <PersonOutlineOutlinedIcon />,
+  },
 ];

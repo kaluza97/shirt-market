@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import shirtsReducer from '@/redux/slices/ProductsSlice';
+import shirtsReducer from '@/redux/slices/Products/ProductsSlice';
+import cartReducer from './slices/Cart/CartSlice';
 
 export const store = configureStore({
   reducer: {
     shirts: shirtsReducer,
+    cart: cartReducer,
   },
 });
 

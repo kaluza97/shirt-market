@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import { Breakpoints, Colors, FontFamily, FontSizes } from '@/styles/variables';
 import { SxProps } from '@mui/material';
+import Link from 'next/link';
+
 
 export const FooterContainer = styled.footer`
   width: 100%;
@@ -11,7 +13,7 @@ export const FooterContainer = styled.footer`
   align-items: center;
 `;
 
-export const Link = styled.a`
+export const LinkStyled = styled(Link)`
   text-align: center;
 `;
 

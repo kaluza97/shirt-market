@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { Typography } from '@mui/material';
 import {
   errorText,
@@ -6,15 +6,28 @@ import {
 } from '@/components/ErrorMessages/Error.styles';
 
 type Props = {
-  errorMessage?: string;
+  errorMessage?: Error;
+  time?: number;
 };
 
-export const ErrorMessage: FC<Props> = (errorMessage) => {
-  return (
-    <ErrorMessageContainer isVisible={!!errorMessage.errorMessage}>
-      <Typography
-        sx={errorText}
-      >{`Error: ${errorMessage.errorMessage}`}</Typography>
+export const ErrorMessage: FC<Props> = ({ errorMessage, time = 5000 }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (errorMessage) {
+      setIsVisible(true);
+
+      const timeout = setTimeout(() => {
+        setIsVisible(false);
+      }, time);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [errorMessage, time]);
+
+  return isVisible && errorMessage ? (
+    <ErrorMessageContainer isVisible={isVisible}>
+      <Typography sx={errorText}>{`Error: ${errorMessage}`}</Typography>
     </ErrorMessageContainer>
-  );
+  ) : null;
 };

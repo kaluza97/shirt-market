@@ -1,5 +1,7 @@
 import { Colors, FontSizes, FontWeights } from '@/styles/variables';
 import styled from '@emotion/styled';
+import Link from 'next/link';
+
 
 export const TermsContainer = styled.div`
   display: flex;
@@ -8,7 +10,7 @@ export const TermsContainer = styled.div`
   font-size: ${FontSizes.middle};
 `;
 
-export const Link = styled.a`
+export const LinkStyled = styled(Link)`
   margin-left: 0.5rem;
   font-weight: ${FontWeights.bold};
   text-decoration: underline;

@@ -5,7 +5,7 @@ import {
   ProductsListContainer,
   headerTitle,
   productContainer,
-} from '@/components/Products/ProductsList.styles';
+} from '@/components/Products/Products.styles';
 import { ProductsList } from '@/components/Products/ProductsList.component';
 
 export const ProductsWrapper: FC = () => {

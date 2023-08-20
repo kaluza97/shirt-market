@@ -1,15 +1,9 @@
 import React, { FC, Suspense, useEffect } from 'react';
-import Image from 'next/image';
-import Typography from '@mui/material/Typography';
-import { Box, CircularProgress } from '@mui/material';
-import {
-  imgPrice,
-  imgTitle,
-  productBox,
-} from '@/components/Products/ProductsList.styles';
-import { RootState } from '@/redux/store';
+import { CircularProgress, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchShirtsDataAsync } from '@/redux/slices/ProductsThunk';
+import { RootState } from '@/redux/store';
+import { fetchShirtsDataAsync } from '@/redux/slices/Products/ProductsThunk';
+import ProductItem from '@/components/Products/ProductItem.component';
 
 
 export const ProductsList: FC = () => {
@@ -28,15 +22,10 @@ export const ProductsList: FC = () => {
     return <Typography>Error: {error}</Typography>;
   }
 
-
   return (
     <Suspense fallback={<CircularProgress />}>
-      {data?.map(({ img, name, price }) => (
-        <Box sx={productBox} key={name}>
-          <Image src={img} alt={name} width={200} height={250} priority />
-          <Typography sx={imgTitle}>{name}</Typography>
-          <Typography sx={imgPrice}>{price} $</Typography>
-        </Box>
+      {data?.map(({ id, img, name, price }) => (
+        <ProductItem key={name} id={id} img={img} name={name} price={price} />
       ))}
     </Suspense>
   );

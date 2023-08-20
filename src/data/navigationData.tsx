@@ -19,22 +19,22 @@ export const navigationData: Array<NavigationItem> = [
   },
   {
     name: 'Browse',
-    path: 'browse',
+    path: '/browse',
     icon: <SearchOutlinedIcon />,
   },
   {
     name: 'Favorites',
-    path: 'favorites',
+    path: '/favorites',
     icon: <FavoriteBorderOutlinedIcon />,
   },
   {
-    name: 'Basket',
-    path: 'basket',
+    name: 'Cart',
+    path: '/cart',
     icon: <ShoppingCartOutlinedIcon />,
   },
   {
     name: 'Profile',
-    path: 'profile',
+    path: '/profile',
     icon: <PersonOutlineOutlinedIcon />,
   },
 ];

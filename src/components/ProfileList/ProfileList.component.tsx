@@ -21,7 +21,7 @@ export const ProfileList: FC = () => (
         <ListItemIcon>
           <ShoppingCartOutlinedIcon />
         </ListItemIcon>
-        <ListItemText primary="Basket" />
+        <ListItemText primary="Cart" />
       </ListItemButton>
     </ListItem>
     <SignOutWrapper>

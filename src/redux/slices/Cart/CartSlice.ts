@@ -9,19 +9,14 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        addToCart: (
-            state,
-            action: PayloadAction<{ id: number; size: Size; totalQuantities: number }>
-        ) => {
+        addToCart: (state, action: PayloadAction<{ id: number; size: Size; totalQuantities: number }>) => {
             const { id, size, totalQuantities } = action.payload;
             const existingItem = state.items.find(item => item.id === id);
+
             if (existingItem && existingItem.quantities[size] < totalQuantities) {
-                existingItem.quantities = {
-                    ...existingItem.quantities,
-                    [size]: existingItem.quantities[size] + 1,
-                };
+                existingItem.quantities[size]++;
             } else {
-                const newItem = {
+                state.items.push({
                     id,
                     quantities: {
                         S: 0,
@@ -30,24 +25,18 @@ const cartSlice = createSlice({
                         XL: 0,
                         [size]: 1,
                     },
-                };
-                state.items.push(newItem);
+                });
             }
         },
-        removeFromCart: (
-            state,
-            action: PayloadAction<{ id: number; size: Size }>
-        ) => {
+        removeFromCart: (state, action: PayloadAction<{ id: number; size: Size }>) => {
             const { id, size } = action.payload;
             const itemIndex = state.items.findIndex(item => item.id === id);
 
             if (itemIndex !== -1) {
-                const newQuantities = {
-                    ...state.items[itemIndex].quantities,
-                    [size]: Math.max(state.items[itemIndex].quantities[size] - 1, 0),
-                };
+                const { quantities } = state.items[itemIndex];
+                const newQuantities = { ...quantities, [size]: Math.max(quantities[size] - 1, 0) };
 
-                if (newQuantities.S + newQuantities.M + newQuantities.L + newQuantities.XL === 0) {
+                if (Object.values(newQuantities).reduce((sum, value) => sum + value, 0) === 0) {
                     state.items.splice(itemIndex, 1);
                 } else {
                     state.items[itemIndex].quantities = newQuantities;

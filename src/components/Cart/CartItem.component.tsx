@@ -15,7 +15,7 @@ const CartItem: FC<CartItemProps> = ({ itemId }) => {
                 const fetchedProduct = await fetchProductById(itemId);
                 setProduct(fetchedProduct);
             } catch (error) {
-                alert(error)
+                alert(error);
             }
         };
 

@@ -16,6 +16,7 @@ import { ProductType } from '@/components/Products/ProductsList.types';
 import { fetchProductById } from '@/api/fetchProductById';
 import { Size } from '@/redux/slices/Cart/CartSlice.interface';
 import { ErrorMessage } from '../ErrorMessages/ErrorMessage.component';
+import { AppDispatch } from '@/redux/store';
 
 
 interface ProductDetailItemProps {
@@ -23,7 +24,7 @@ interface ProductDetailItemProps {
 }
 
 export const ProductDetailItem: FC<ProductDetailItemProps> = ({ id }) => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const [product, setProduct] = useState<ProductType | null>(null);
     const [selectedSize, setSelectedSize] = useState<Size>('S');
     const [error, setError] = useState<null | Error>(null);

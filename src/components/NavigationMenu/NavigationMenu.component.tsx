@@ -29,7 +29,7 @@ export const NavigationMenu: FC = () => {
     <NavigationContainer>
       <Logo />
       <IconButton aria-label="more" onClick={handleClick}>
-        <MenuIcon fontSize="large" />
+        <MenuIcon />
       </IconButton>
       <Menu anchorEl={menuAnchor} open={!!menuAnchor} onClose={handleClose}>
         {navigationData.map(({ name, path, icon }) => (

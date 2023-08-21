@@ -10,11 +10,11 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import {
   listLogoutContainer,
   listItemText,
-} from '@/components/ProfileList/ProfileList.styles';
+} from '@/components/ProfileMenu/ProfileMenu.styles';
 import { SignOutWrapper } from '@/components/SignOut/SignOut.component';
 import LogoutIcon from '@mui/icons-material/Logout';
 
-export const ProfileList: FC = () => (
+export const ProfileMenu: FC = () => (
   <List>
     <ListItem disablePadding>
       <ListItemButton>

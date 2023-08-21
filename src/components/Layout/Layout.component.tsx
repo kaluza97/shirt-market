@@ -5,11 +5,9 @@ type Props = {
   content: ReactNode;
 };
 
-export const Layout: FC<Props> = ({ header, content }) => {
-  return (
-    <>
-      {header}
-      {content}
-    </>
-  );
-};
+export const Layout: FC<Props> = ({ header, content }) => (
+  <>
+    {header}
+    {content}
+  </>
+);

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Layout } from '@/components/Layout/Layout.component';
 import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
-import { ProfileList } from '@/components/ProfileList/ProfileList.component';
+import { ProfileMenu } from '@/components/ProfileMenu/ProfileMenu.component';
 
 const Profile: FC = () => {
   return (
@@ -9,7 +9,7 @@ const Profile: FC = () => {
       header={<NavigationMenu />}
       content={
         <div>
-          <ProfileList />
+          <ProfileMenu />
         </div>
       }
     />

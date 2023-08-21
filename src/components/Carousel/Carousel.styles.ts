@@ -9,16 +9,15 @@ export const carousel: SxProps = {
 
 export const LinkStyled = styled(Link)`
   font-size: ${FontSizes.small};
-  font-family: ${FontFamily.main};
+  font-family: ${FontFamily.sans};
   color: ${Colors.primary};
 `;
 
-export const carouselContainer: SxProps = {};
 
 export const carouselContent: SxProps = {
   textAlign: 'center',
   backgroundColor: Colors.secondary,
-  color: Colors.text,
+  color: Colors.blackLight,
   padding: '1rem',
   height: '8rem',
   borderRadius: '0',
@@ -32,6 +31,6 @@ export const carouselNameText: SxProps = {
 
 export const carouselDescriptionText: SxProps = {
   fontSize: FontSizes.small,
-  fontFamily: FontFamily.main,
+  fontFamily: FontFamily.sans,
   marginBottom: '0.5rem',
 };

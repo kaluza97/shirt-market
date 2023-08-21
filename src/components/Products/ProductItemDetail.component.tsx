@@ -14,16 +14,15 @@ import Image from 'next/image';
 import { addToCart, removeFromCart } from '@/redux/slices/Cart/CartSlice';
 import { ProductType } from '@/components/Products/ProductsList.types';
 import { fetchProductById } from '@/api/fetchProductById';
-import { Size } from '@/redux/slices/Cart/CartSlice.interface';
-import { ErrorMessage } from '@/components/ErrorMessages/ErrorMessage.component';
+import { Size } from '@/redux/slices/Cart/Cart.types';
 import { AppDispatch } from '@/redux/store';
 
 
-interface ProductDetailItemProps {
+interface Props {
     id: number;
 }
 
-export const ProductDetailItem: FC<ProductDetailItemProps> = ({ id }) => {
+export const ProductItemDetail: FC<Props> = ({ id }) => {
     const dispatch = useDispatch<AppDispatch>();
     const [product, setProduct] = useState<ProductType | null>(null);
     const [selectedSize, setSelectedSize] = useState<Size>('S');
@@ -62,7 +61,7 @@ export const ProductDetailItem: FC<ProductDetailItemProps> = ({ id }) => {
     return (
         <Box>
             {error ? (
-                <ErrorMessage errorMessage={error} />
+                <p>Product not found.</p>
             ) : (
                 <>
                     <Image src={product.img} alt={product.name} width={200} height={250} priority />

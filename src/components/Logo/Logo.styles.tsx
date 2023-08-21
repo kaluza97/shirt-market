@@ -14,8 +14,8 @@ export const LogoImage = styled(Image)`
 `;
 
 export const logoText: SxProps = {
-  fontFamily: `${FontFamily.logoText}`,
+  fontFamily: `${FontFamily.pacifico}`,
   fontSize: `${FontSizes.large}`,
-  color: `${Colors.text}`,
+  color: `${Colors.blackLight}`,
   fontWeight: `${FontWeights.bold}`,
 };

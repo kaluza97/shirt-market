@@ -1,5 +1,5 @@
 export interface CartType {
-    items: CartItem[];
+    items: Array<CartItem>;
 }
 
 interface CartItem {

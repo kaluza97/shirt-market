@@ -22,9 +22,13 @@ export const ProductsList: FC = () => {
     return <Typography>Error: {error}</Typography>;
   }
 
+  if (!data) {
+    return null;
+  }
+
   return (
     <Suspense fallback={<CircularProgress />}>
-      {data?.map(({ id, img, name, price, totalQuantity }) => (
+      {data.map(({ id, img, name, price, totalQuantity }) => (
         <div key={name}>
           <ProductItem id={id} img={img} name={name} price={price} totalQuantity={totalQuantity} />
         </div>

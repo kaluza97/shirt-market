@@ -23,20 +23,20 @@ export const productBox: SxProps = {
 
 export const imgTitle: SxProps = {
   fontSize: FontSizes.small,
-  fontFamily: FontFamily.main,
+  fontFamily: FontFamily.sans,
   fontWeight: `${FontWeights.bold}`,
-  color: Colors.text,
+  color: Colors.blackLight,
 };
 
 export const headerTitle: SxProps = {
-  fontFamily: FontFamily.main,
+  fontFamily: FontFamily.sans,
   fontWeight: `${FontWeights.bold}`,
-  color: Colors.text,
+  color: Colors.blackLight,
   marginBottom: '2rem',
 };
 
 export const imgPrice: SxProps = {
   fontSize: FontSizes.small,
-  fontFamily: FontFamily.main,
-  color: Colors.text,
+  fontFamily: FontFamily.sans,
+  color: Colors.blackLight,
 };

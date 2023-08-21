@@ -18,7 +18,7 @@ export const inputText: SxProps = {
   fontSize: `${FontSizes.middle}`,
   paddingTop: '0.5rem',
   marginBottom: '2rem',
-  color: `${Colors.text}`,
+  color: `${Colors.blackLight}`,
   'input:-webkit-autofill': {
     WebkitBoxShadow: ResetAutofill,
   },
@@ -28,7 +28,7 @@ export const paragraph: SxProps = {
   fontSize: `${FontSizes.middle}`,
   textAlign: 'left',
   fontWeight: `${FontWeights.bold}`,
-  color: `${Colors.text}`,
+  color: `${Colors.blackLight}`,
 };
 
 export const submitButton: SxProps = {

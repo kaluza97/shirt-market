@@ -7,7 +7,7 @@ const sizeSchema = z.object({
   XL: z.number(),
 });
 
-const productSchema = z.object({
+export const productSchema = z.object({
   id: z.number(),
   img: z.string(),
   name: z.string(),

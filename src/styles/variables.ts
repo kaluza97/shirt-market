@@ -6,8 +6,7 @@ export const Colors = {
   black: '#000',
   red: '#f44336',
   shadow: '#d3d3d3',
-  text: '#3C4647',
-  brightText: '#adadad',
+  blackLight: '#3C4647',
 };
 
 export const Breakpoints = {
@@ -34,6 +33,6 @@ export const FontWeights = {
 export const ResetAutofill = '0 0 0 3rem white inset';
 
 export const FontFamily = {
-  main: 'Open Sans, sans-serif',
-  logoText: 'Pacifico, cursive',
+  sans: 'Open Sans, sans-serif',
+  pacifico: 'Pacifico, cursive',
 };

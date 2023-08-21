@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductType } from '@/components/Products/ProductsList.types';
 import { fetchShirtsDataAsync } from '@/redux/slices/Products/ProductsThunk';
-import { ShirtType } from '@/redux/slices/Products/ProductSlice.interface';
+import { ShirtType } from '@/redux/slices/Products/Product.types';
 
 const initialState: ShirtType = {
     id: 0,
@@ -27,7 +27,7 @@ const shirtsSlice = createSlice({
             })
             .addCase(fetchShirtsDataAsync.rejected, (state) => {
                 state.loading = false;
-                state.error = false;
+                state.error = true;
             });
     },
 });

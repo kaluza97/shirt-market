@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartType, Size } from '@/redux/slices/Cart/CartSlice.interface';
+import { CartType, Size } from '@/redux/slices/Cart/Cart.types';
 
 const initialState: CartType = {
     items: [],
@@ -16,6 +16,7 @@ const cartSlice = createSlice({
             if (existingItem && existingItem.quantities[size] < totalQuantities) {
                 existingItem.quantities[size]++;
             } else {
+                // ..spread operator
                 state.items.push({
                     id,
                     quantities: {

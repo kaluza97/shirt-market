@@ -41,7 +41,7 @@ export const FormContent = styled.div`
 `;
 
 export const tabPanel: SxProps = {
-  color: `${Colors.text}`,
+  color: `${Colors.blackLight}`,
   boxShadow: `0 0.4rem 0.4rem -0.2rem ${Colors.shadow}`,
   marginBottom: '3rem',
   marginTop: '5rem',
@@ -53,8 +53,8 @@ export const tabItem: SxProps = {
 };
 
 export const logoText: SxProps = {
-  fontFamily: `${FontFamily.logoText}`,
+  fontFamily: `${FontFamily.pacifico}`,
   marginTop: '0.5rem',
-  color: `${Colors.text}`,
+  color: `${Colors.blackLight}`,
   fontWeight: `${FontWeights.bold}`,
 };

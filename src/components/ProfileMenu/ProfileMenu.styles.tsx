@@ -14,7 +14,7 @@ export const LogoImage = styled(Image)`
 
 export const listContainer: SxProps = {
   backgroundColor: Colors.secondary,
-  color: Colors.text,
+  color: Colors.blackLight,
 };
 
 export const listLogoutContainer: SxProps = {
@@ -23,6 +23,6 @@ export const listLogoutContainer: SxProps = {
 };
 
 export const listItemText: SxProps = {
-  fontFamily: FontFamily.main,
+  fontFamily: FontFamily.sans,
   fontSize: FontSizes.large,
 };

@@ -18,7 +18,7 @@ export const LinkStyled = styled(Link)`
 `;
 
 export const textFooter: SxProps = {
-  fontFamily: `${FontFamily.main}`,
+  fontFamily: `${FontFamily.sans}`,
   fontSize: `${FontSizes.middle}`,
   color: `${Colors.white}`,
   display: 'flex',

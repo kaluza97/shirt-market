@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductType } from '@/components/Products/ProductsList.types';
 import { fetchShirtsDataAsync } from '@/redux/slices/Products/ProductsThunk';
-import { ShirtsState } from './ProductSlice.interface';
+import { ShirtType } from '@/redux/slices/Products/ProductSlice.interface';
 
-const initialState: ShirtsState = {
+const initialState: ShirtType = {
     id: 0,
     data: [],
     loading: false,

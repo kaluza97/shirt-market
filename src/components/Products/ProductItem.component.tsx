@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
 import { imgPrice, imgTitle, productBox } from '@/components/Products/Products.styles';
 import { useRouter } from 'next/router';
-import { ProductType } from './ProductsList.types';
+import { ProductType } from "@/components/Products/ProductsList.types";
 
 
 const ProductItem: FC<ProductType> = ({ id, img, name, price }) => {

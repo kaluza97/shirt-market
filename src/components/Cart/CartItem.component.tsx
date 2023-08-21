@@ -1,36 +1,19 @@
 import React, { FC, useEffect, useState } from 'react';
-import { ProductType } from '../Products/ProductsList.types';
+import { ProductType } from "@/components/Products/ProductsList.types";
 import { fetchProductById } from '@/api/fetchProductById';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 
-interface CartItemProps {
-    itemId: number;
-}
 
-const CartItem: FC<CartItemProps> = ({ itemId }) => {
-    const [product, setProduct] = useState<ProductType | null>(null);
+export const CartItem: FC = () => {
+    const cartItems = useSelector((state: RootState) => state.cart.items);
 
-    useEffect(() => {
-        const fetchProduct = async () => {
-            try {
-                const fetchedProduct = await fetchProductById(itemId);
-                setProduct(fetchedProduct);
-            } catch (error) {
-                alert(error);
-            }
-        };
-
-        fetchProduct();
-    }, [itemId]);
-
-    if (!product) {
-        return null;
-    }
+    console.log(cartItems)
 
     return (
         <div>
-
+            <p>hahah</p>
         </div>
     );
 };
 
-export default CartItem;

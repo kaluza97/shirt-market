@@ -15,7 +15,7 @@ import { addToCart, removeFromCart } from '@/redux/slices/Cart/CartSlice';
 import { ProductType } from '@/components/Products/ProductsList.types';
 import { fetchProductById } from '@/api/fetchProductById';
 import { Size } from '@/redux/slices/Cart/CartSlice.interface';
-import { ErrorMessage } from '../ErrorMessages/ErrorMessage.component';
+import { ErrorMessage } from '@/components/ErrorMessages/ErrorMessage.component';
 import { AppDispatch } from '@/redux/store';
 
 

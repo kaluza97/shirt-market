@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductType } from '@/components/Products/ProductsList.types';
-import { fetchShirtsDataAsync } from '@/redux/slices/Products/ProductsThunk';
+import { fetchProducts } from '@/redux/slices/Products/ProductsThunk';
 import { ShirtType } from '@/redux/slices/Products/Product.types';
 
 const initialState: ShirtType = {
@@ -16,16 +16,16 @@ const shirtsSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchShirtsDataAsync.pending, (state) => {
+            .addCase(fetchProducts.pending, (state) => {
                 state.loading = true;
                 state.error = false;
             })
-            .addCase(fetchShirtsDataAsync.fulfilled, (state, action: PayloadAction<Array<ProductType>>) => {
+            .addCase(fetchProducts.fulfilled, (state, action: PayloadAction<Array<ProductType>>) => {
                 state.data = action.payload;
                 state.loading = false;
                 state.error = false;
             })
-            .addCase(fetchShirtsDataAsync.rejected, (state) => {
+            .addCase(fetchProducts.rejected, (state) => {
                 state.loading = false;
                 state.error = true;
             });

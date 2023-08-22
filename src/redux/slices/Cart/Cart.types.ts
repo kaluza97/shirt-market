@@ -1,15 +1,12 @@
 export interface CartType {
-    items: Array<CartItem>;
-}
-
-interface CartItem {
-    id: number;
-    quantities: {
-        S: number;
-        M: number;
-        L: number;
-        XL: number;
-    };
+    cart: Array<CartItem>;
 }
 
 export type Size = 'S' | 'M' | 'L' | 'XL';
+
+export interface CartItem {
+    id: number;
+    quantities: {
+        [key in Size]: number;
+    };
+};

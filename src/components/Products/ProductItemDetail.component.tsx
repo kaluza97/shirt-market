@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     Box,
     CircularProgress,
@@ -15,26 +15,30 @@ import { addToCart, removeFromCart } from '@/redux/slices/Cart/CartSlice';
 import { ProductType } from '@/components/Products/ProductsList.types';
 import { fetchProductById } from '@/api/fetchProductById';
 import { Size } from '@/redux/slices/Cart/Cart.types';
-import { AppDispatch } from '@/redux/store';
-
+import { RootState } from '@/redux/store';
+import { SelectChangeEvent } from '@mui/material';
 
 interface Props {
     id: number;
 }
 
 export const ProductItemDetail: FC<Props> = ({ id }) => {
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useDispatch();
     const [product, setProduct] = useState<ProductType | null>(null);
+    const [error, setError] = useState<string | null>(null);
     const [selectedSize, setSelectedSize] = useState<Size>('S');
-    const [error, setError] = useState<null | Error>(null);
+    const selectedSizeQuantity = useSelector((state: RootState) => {
+        const item = state.cart.cart.find((item) => item.id === id);
+        return item?.quantities[selectedSize] || 0;
+    });
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const fetchedProduct = await fetchProductById(id);
                 setProduct(fetchedProduct);
-            } catch (error) {
-                setError(error as Error);
+            } catch (_error) {
+                setError('An error occurred while fetching the product.');
             }
         };
 
@@ -42,54 +46,53 @@ export const ProductItemDetail: FC<Props> = ({ id }) => {
     }, [id]);
 
     const handleAddToCart = () => {
-        if (product) {
-            dispatch(addToCart({ id, size: selectedSize, totalQuantities: product.totalQuantity[selectedSize] }));
+        if (product && selectedSizeQuantity < product.totalQuantity[selectedSize]) {
+            dispatch(addToCart({ id, size: selectedSize }));
+        } else {
+            setError(`No more ${selectedSize} size available.`);
         }
     };
 
     const handleRemoveFromCart = () => {
-        if (product) {
-            dispatch(removeFromCart({ id, size: selectedSize }));
-        }
+        dispatch(removeFromCart({ id, size: selectedSize }));
+    };
+
+    const handleSizeChange = (e: SelectChangeEvent<Size>) => {
+        setSelectedSize(e.target.value as Size);
     };
 
     if (!product) {
         return <CircularProgress />;
     }
 
-
     return (
         <Box>
-            {error ? (
-                <p>Product not found.</p>
-            ) : (
-                <>
-                    <Image src={product.img} alt={product.name} width={200} height={250} priority />
-                    <Typography>{product.name}</Typography>
-                    <Typography>{`${product.price} $`}</Typography>
-                    <Typography>S: {product.totalQuantity.S}</Typography>
-                    <Typography>M: {product.totalQuantity.M}</Typography>
-                    <Typography>L: {product.totalQuantity.L}</Typography>
-                    <Typography>XL: {product.totalQuantity.XL}</Typography>
-                </>
-            )}
+
+
+            <Image src={product.img} alt={product.name} width={200} height={250} priority />
+            <Typography>{product.name}</Typography>
+            <Typography>{`${product.price} $`}</Typography>
+            {Object.keys(product.totalQuantity).map(size => (
+                <Typography key={size}>{size}: {product.totalQuantity[size as Size]}</Typography>
+            ))}
+            {error && <Typography>{error}</Typography>}
             <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                 <InputLabel id="size-label">Size</InputLabel>
                 <Select
                     labelId="size-label"
                     id="size-select"
                     value={selectedSize}
-                    onChange={(e) => setSelectedSize(e.target.value as 'S' | 'M' | 'L' | 'XL')}
+                    onChange={handleSizeChange}
                     label="Size"
                 >
-                    <MenuItem value="S">S</MenuItem>
-                    <MenuItem value="M">M</MenuItem>
-                    <MenuItem value="L">L</MenuItem>
-                    <MenuItem value="XL">XL</MenuItem>
+                    {Object.keys(product.totalQuantity).map(size => (
+                        <MenuItem key={size} value={size}>{size}</MenuItem>
+                    ))}
                 </Select>
             </FormControl>
 
             <div>
+                <Typography>{selectedSize}: {selectedSizeQuantity}</Typography>
                 <Button onClick={handleAddToCart}>Add to cart</Button>
                 <Button onClick={handleRemoveFromCart}>Remove from cart</Button>
             </div>

@@ -2,7 +2,7 @@ import React, { FC, Suspense, useEffect } from 'react';
 import { CircularProgress, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@/redux/store';
-import { fetchShirtsDataAsync } from '@/redux/slices/Products/ProductsThunk';
+import { fetchProducts } from '@/redux/slices/Products/ProductsThunk';
 import ProductItem from '@/components/Products/ProductItem.component';
 
 
@@ -11,7 +11,7 @@ export const ProductsList: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchShirtsDataAsync());
+    dispatch(fetchProducts());
   }, [dispatch]);
 
   if (loading) {

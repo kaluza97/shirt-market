@@ -1,29 +1,29 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartType, Size } from '@/redux/slices/Cart/Cart.types';
+import { CartItem, CartType, Size } from '@/redux/slices/Cart/Cart.types';
 
 const initialState: CartType = {
-    items: [],
+    cart: [],
 };
 
 const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        addToCart: (state, action: PayloadAction<{ id: number; size: Size; totalQuantities: number }>) => {
-            const { id, size, totalQuantities } = action.payload;
-            const existingItem = state.items.find(item => item.id === id);
+        addToCart: (state, action: PayloadAction<{ id: number; size: Size }>) => {
+            const { id, size } = action.payload;
+            const existingCartItem = state.cart.find(item => item.id === id);
 
-            if (existingItem && existingItem.quantities[size] < totalQuantities) {
-                existingItem.quantities[size]++;
+            if (existingCartItem) {
+                state.cart = state.cart.map(item =>
+                    item.id === id
+                        ? { ...item, quantities: { ...item.quantities, [size]: item.quantities[size] + 1 } }
+                        : item
+                );
             } else {
-                // ..spread operator
-                state.items.push({
+                state.cart.push({
                     id,
                     quantities: {
-                        S: 0,
-                        M: 0,
-                        L: 0,
-                        XL: 0,
+                        ...(['S', 'M', 'L', 'XL'].reduce((acc, val) => ({ ...acc, [val]: 0 }), {}) as CartItem['quantities']),
                         [size]: 1,
                     },
                 });
@@ -31,18 +31,17 @@ const cartSlice = createSlice({
         },
         removeFromCart: (state, action: PayloadAction<{ id: number; size: Size }>) => {
             const { id, size } = action.payload;
-            const itemIndex = state.items.findIndex(item => item.id === id);
-
-            if (itemIndex !== -1) {
-                const { quantities } = state.items[itemIndex];
-                const newQuantities = { ...quantities, [size]: Math.max(quantities[size] - 1, 0) };
-
-                if (Object.values(newQuantities).reduce((sum, value) => sum + value, 0) === 0) {
-                    state.items.splice(itemIndex, 1);
-                } else {
-                    state.items[itemIndex].quantities = newQuantities;
-                }
-            }
+            state.cart = state.cart.map(item =>
+                item.id === id
+                    ? {
+                        ...item,
+                        quantities: {
+                            ...item.quantities,
+                            [size]: Math.max(item.quantities[size] - 1, 0),
+                        },
+                    }
+                    : item
+            );
         },
     },
 });

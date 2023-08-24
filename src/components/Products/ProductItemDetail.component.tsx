@@ -76,7 +76,7 @@ export const ProductItemDetail: FC<Props> = ({ id }) => {
                 <Typography key={size}>{size}: {product.totalQuantity[size as Size]}</Typography>
             ))}
             {error && <Typography>{error}</Typography>}
-            <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+            <FormControl variant="standard">
                 <InputLabel id="size-label">Size</InputLabel>
                 <Select
                     labelId="size-label"
@@ -86,7 +86,8 @@ export const ProductItemDetail: FC<Props> = ({ id }) => {
                     label="Size"
                 >
                     {Object.keys(product.totalQuantity).map(size => (
-                        <MenuItem key={size} value={size}>{size}</MenuItem>
+                        <MenuItem key={size} value={size} disabled={product.totalQuantity[size as Size] === 0}
+                        >{size}</MenuItem>
                     ))}
                 </Select>
             </FormControl>

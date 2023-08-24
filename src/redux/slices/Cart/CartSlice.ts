@@ -23,8 +23,7 @@ const cartSlice = createSlice({
                 state.cart.push({
                     id,
                     quantities: {
-                        ...(['S', 'M', 'L', 'XL'].reduce((acc, val) => ({ ...acc, [val]: 0 }), {}) as CartItem['quantities']),
-                        [size]: 1,
+                        ...(['S', 'M', 'L', 'XL'].reduce((acc, val) => ({ ...acc, [val]: val === size ? 1 : 0 }), {}) as CartItem['quantities']),
                     },
                 });
             }
@@ -37,8 +36,8 @@ const cartSlice = createSlice({
                         ...item,
                         quantities: {
                             ...item.quantities,
-                            [size]: Math.max(item.quantities[size] - 1, 0),
-                        },
+                            [size]: item.quantities[size] > 0 ? item.quantities[size] - 1 : 0,
+                        }
                     }
                     : item
             );

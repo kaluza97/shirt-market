@@ -18,21 +18,21 @@ export const LinkStyled = styled(Link)`
 `;
 
 export const textFooter: SxProps = {
-  fontFamily: `${FontFamily.sans}`,
-  fontSize: `${FontSizes.middle}`,
-  color: `${Colors.white}`,
+  fontFamily: FontFamily.sans,
+  fontSize: FontSizes.middle,
+  color: Colors.white,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: `${Colors.primary}`,
+  backgroundColor: Colors.primary,
   padding: '1rem 0',
   [`@media screen and (min-width: ${Breakpoints.tablet})`]: {
     padding: '1rem 0',
-    backgroundColor: `${Colors.secondary}`,
+    backgroundColor: Colors.secondary,
   },
   [`@media screen and (min-width: ${Breakpoints.desktop})`]: {
     padding: '2rem 0',
-    backgroundColor: `${Colors.primary}`,
+    backgroundColor: Colors.primary,
   },
 };
 

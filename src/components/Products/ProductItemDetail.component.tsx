@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+
 import {
     Box,
     CircularProgress,
@@ -15,8 +15,8 @@ import { addToCart, removeFromCart } from '@/redux/slices/Cart/CartSlice';
 import { ProductType } from '@/components/Products/ProductsList.types';
 import { fetchProductById } from '@/api/fetchProductById';
 import { Size } from '@/redux/slices/Cart/Cart.types';
-import { RootState } from '@/redux/store';
 import { SelectChangeEvent } from '@mui/material';
+import { useDispatch, useSelector } from '@/redux/hooks';
 
 interface Props {
     id: number;
@@ -27,7 +27,7 @@ export const ProductItemDetail: FC<Props> = ({ id }) => {
     const [product, setProduct] = useState<ProductType | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [selectedSize, setSelectedSize] = useState<Size>('S');
-    const selectedSizeQuantity = useSelector((state: RootState) => {
+    const selectedSizeQuantity = useSelector((state) => {
         const item = state.cart.cart.find((item) => item.id === id);
         return item?.quantities[selectedSize] || 0;
     });
@@ -71,7 +71,7 @@ export const ProductItemDetail: FC<Props> = ({ id }) => {
 
             <Image src={product.img} alt={product.name} width={200} height={250} priority />
             <Typography>{product.name}</Typography>
-            <Typography>{`${product.price} $`}</Typography>
+            <Typography>{product.price} $</Typography>
             {Object.keys(product.totalQuantity).map(size => (
                 <Typography key={size}>{size}: {product.totalQuantity[size as Size]}</Typography>
             ))}

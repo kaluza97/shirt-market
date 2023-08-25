@@ -24,13 +24,13 @@ export const productBox: SxProps = {
 export const imgTitle: SxProps = {
   fontSize: FontSizes.small,
   fontFamily: FontFamily.sans,
-  fontWeight: `${FontWeights.bold}`,
+  fontWeight: FontWeights.bold,
   color: Colors.blackLight,
 };
 
 export const headerTitle: SxProps = {
   fontFamily: FontFamily.sans,
-  fontWeight: `${FontWeights.bold}`,
+  fontWeight: FontWeights.bold,
   color: Colors.blackLight,
   marginBottom: '2rem',
 };

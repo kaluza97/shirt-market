@@ -1,4 +1,4 @@
-import { ProductType, productsListSchema } from "@/components/Products/ProductsList.types";
+import { ProductType, productSchema } from "@/components/Products/ProductsList.types";
 import { firestore } from "@/firebase/firebaseConfig";
 import { query, collection, getDocs, where } from "firebase/firestore";
 
@@ -9,10 +9,10 @@ export const fetchProductById = async (id: number): Promise<ProductType | null> 
 
     if (!snapshot.empty) {
         const productData = snapshot.docs[0].data();
-        const validatedProduct = productsListSchema.safeParse([productData]);
+        const validatedProduct = productSchema.safeParse(productData);
 
         if (validatedProduct.success) {
-            return validatedProduct.data[0];
+            return validatedProduct.data;
         }
     }
 

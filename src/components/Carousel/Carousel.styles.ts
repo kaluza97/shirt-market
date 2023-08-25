@@ -25,7 +25,7 @@ export const carouselContent: SxProps = {
 
 export const carouselNameText: SxProps = {
   fontSize: FontSizes.large,
-  fontWeight: `${FontWeights.bold}`,
+  fontWeight: FontWeights.bold,
   marginBottom: '0.5rem',
 };
 

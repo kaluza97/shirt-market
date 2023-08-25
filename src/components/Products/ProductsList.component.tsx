@@ -1,14 +1,14 @@
 import React, { FC, Suspense, useEffect } from 'react';
 import { CircularProgress, Typography } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '@/redux/store';
 import { fetchProducts } from '@/redux/slices/Products/ProductsThunk';
 import ProductItem from '@/components/Products/ProductItem.component';
+import { useDispatch, useSelector } from '@/redux/hooks';
 
 
 export const ProductsList: FC = () => {
-  const { data, loading, error } = useSelector((state: RootState) => state.shirts);
-  const dispatch = useDispatch<AppDispatch>();
+  const { data, loading, error } = useSelector((state) => state.shirts);
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(fetchProducts());

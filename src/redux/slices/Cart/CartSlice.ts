@@ -5,6 +5,13 @@ const initialState: CartType = {
     cart: [],
 };
 
+const initialQuantities: CartItem['quantities'] = {
+    S: 0,
+    M: 0,
+    L: 0,
+    XL: 0,
+};
+
 const cartSlice = createSlice({
     name: 'cart',
     initialState,
@@ -20,27 +27,20 @@ const cartSlice = createSlice({
                         : item
                 );
             } else {
-                state.cart.push({
+                const newCartItem = {
                     id,
-                    quantities: {
-                        ...(['S', 'M', 'L', 'XL'].reduce((acc, val) => ({ ...acc, [val]: val === size ? 1 : 0 }), {}) as CartItem['quantities']),
-                    },
-                });
+                    quantities: initialQuantities
+                };
+                newCartItem.quantities[size] = 1;
+                state.cart.push(newCartItem);
             }
         },
         removeFromCart: (state, action: PayloadAction<{ id: number; size: Size }>) => {
             const { id, size } = action.payload;
-            state.cart = state.cart.map(item =>
-                item.id === id
-                    ? {
-                        ...item,
-                        quantities: {
-                            ...item.quantities,
-                            [size]: item.quantities[size] > 0 ? item.quantities[size] - 1 : 0,
-                        }
-                    }
-                    : item
-            );
+            const cartItem = state.cart.find(item => item.id === id);
+            if (cartItem && cartItem.quantities[size] > 0) {
+                cartItem.quantities[size] -= 1;
+            }
         },
     },
 });

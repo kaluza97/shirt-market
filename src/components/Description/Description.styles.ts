@@ -32,8 +32,8 @@ export const DesktopDescriptionItem = styled.div`
 `;
 
 export const descriptionText: SxProps = {
-  fontSize: `${FontSizes.middle}`,
-  fontFamily: `${FontFamily.sans}`,
-  color: `${Colors.blackLight}`,
+  fontSize: FontSizes.middle,
+  fontFamily: FontFamily.sans,
+  color: Colors.blackLight,
   margin: '0 5rem',
 };

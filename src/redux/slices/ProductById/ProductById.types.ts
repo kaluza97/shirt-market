@@ -1,7 +1,7 @@
-import { ProductType } from "@/components/Products/Products.types";
+import { ProductType } from '@/components/Products/Products.types';
 
 export interface ProductState {
-    data: ProductType | null;
-    loading: boolean;
-    error: boolean;
+  data: ProductType | null;
+  loading: boolean;
+  error: boolean;
 }

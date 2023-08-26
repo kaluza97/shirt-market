@@ -35,10 +35,12 @@ const cartSlice = createSlice({
             } else {
                 const newCartItem = {
                     id,
-                    quantities: initialQuantities,
+                    quantities: {
+                        ...initialQuantities,
+                        [size]: 1,
+                    },
                 };
-                newCartItem.quantities[size] = 1;
-                state.cart.push(newCartItem);
+                state.cart = [...state.cart, newCartItem];
             }
         },
         removeFromCart: (

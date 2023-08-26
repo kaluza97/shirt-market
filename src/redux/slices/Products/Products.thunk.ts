@@ -9,8 +9,8 @@ import { query, collection, getDocs } from 'firebase/firestore';
 export const fetchProducts = createAsyncThunk<Array<ProductType>, void>(
   'shirts/fetchProducts',
   async () => {
-    const limitDataRef = query(collection(firestore, 'shirts'));
-    const snapshot = await getDocs(limitDataRef);
+    const dataRef = query(collection(firestore, 'shirts'));
+    const snapshot = await getDocs(dataRef);
     const data = snapshot.docs.map((doc) => doc.data());
     const validatedData = productsListSchema.safeParse(data);
     if (!validatedData.success) {

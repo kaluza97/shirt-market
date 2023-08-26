@@ -5,19 +5,18 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 
 export const fetchProductById = createAsyncThunk(
     'shirts/fetchProductById',
-    async (id: number): Promise<ProductType | null> => {
-        const productsRef = collection(firestore, 'shirts');
-        const queryRef = query(productsRef, where('id', '==', id));
+    async (id: number): Promise<ProductType> => {
+        const dataRef = collection(firestore, 'shirts');
+        const queryRef = query(dataRef, where('id', '==', id));
         const snapshot = await getDocs(queryRef);
         if (!snapshot.empty) {
             const productData = snapshot.docs[0].data();
-            const validatedProduct = productSchema.safeParse(productData);
+            const validatedData = productSchema.safeParse(productData);
 
-            if (validatedProduct.success) {
-                return validatedProduct.data;
+            if (validatedData.success) {
+                return validatedData.data;
             }
         }
-
-        return null;
+        throw new Error('Error in data retrieved from Firestore');
     }
 );

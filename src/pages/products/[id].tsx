@@ -4,7 +4,7 @@ import { Box, Typography } from '@mui/material';
 import { imgTitle, productBox } from '@/components/Products/Products.styles';
 import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
 import { Layout } from '@/components/Layout/Layout.component';
-import { ProductItemDetail } from '@/components/Products/ProductItemDetail.component';
+import { ProductDetail } from '@/components/Products/components/ProductDetail/ProductDetail.component';
 
 const ProductDetailPage: FC = () => {
     const router = useRouter();
@@ -16,7 +16,7 @@ const ProductDetailPage: FC = () => {
             content={
                 <Box sx={productBox}>
                     {id ? (
-                        <ProductItemDetail id={Number(id)} />
+                        <ProductDetail id={Number(id)} />
                     ) : (
                         <Typography sx={imgTitle}>Product not found.</Typography>
                     )}

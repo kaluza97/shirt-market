@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Paper, Typography } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
-import { carouselData } from '@/data/carouselData';
+import { carouselData } from '@/data/carousel.data';
 import {
   LinkStyled,
   carouselContent,

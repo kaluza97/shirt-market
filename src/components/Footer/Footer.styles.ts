@@ -3,7 +3,6 @@ import { Breakpoints, Colors, FontFamily, FontSizes } from '@/styles/variables';
 import { SxProps } from '@mui/material';
 import Link from 'next/link';
 
-
 export const FooterContainer = styled.footer`
   width: 100%;
   position: absolute;

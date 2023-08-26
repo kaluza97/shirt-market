@@ -9,7 +9,7 @@ import {
 import { auth } from '@/firebase/firebaseConfig';
 import { useRouter } from 'next/router';
 import { Button, TextField, Typography } from '@mui/material';
-import { AuthContext } from '@/context/AuthContext';
+import { AuthContext } from '@/context/Auth.context';
 import {
   SignInFormWrapper,
   inputText,

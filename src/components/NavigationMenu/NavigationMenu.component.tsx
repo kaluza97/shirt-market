@@ -7,7 +7,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import { Logo } from '@/components/Logo/Logo.component';
 import { useRouter } from 'next/router';
-import { navigationData } from '@/data/navigationData';
+import { navigationData } from '@/data/navigation.data';
 
 export const NavigationMenu: FC = () => {
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);

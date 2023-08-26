@@ -13,7 +13,6 @@ export const LinkStyled = styled(Link)`
   color: ${Colors.primary};
 `;
 
-
 export const carouselContent: SxProps = {
   textAlign: 'center',
   backgroundColor: Colors.secondary,

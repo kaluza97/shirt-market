@@ -7,7 +7,7 @@ import {
 } from '@/components/Description/Description.styles';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
-import { descriptionItems } from '@/data/authData';
+import { descriptionItems } from '@/data/auth.data';
 
 export const Description: FC = () => {
   return (

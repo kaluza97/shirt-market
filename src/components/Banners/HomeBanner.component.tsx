@@ -1,7 +1,7 @@
 import React, { FC, Suspense } from 'react';
 import { Card, CardMedia, CircularProgress } from '@mui/material';
 import { HomeBannerContainer } from '@/components/Banners/HomeBanner.styles';
-import { bannerData } from '@/data/bannerData';
+import { bannerData } from '@/data/banner.data';
 
 export const HomeBanner: FC = () => {
   return (

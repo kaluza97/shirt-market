@@ -4,9 +4,9 @@ export interface CartType {
 
 export type Size = 'S' | 'M' | 'L' | 'XL';
 
+export type Quantities = { [key in Size]: number };
+
 export interface CartItem {
     id: number;
-    quantities: {
-        [key in Size]: number;
-    };
-};
+    quantities: Quantities;
+}

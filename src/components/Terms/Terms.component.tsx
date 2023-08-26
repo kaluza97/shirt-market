@@ -7,9 +7,7 @@ export const Terms: FC = () => {
   const terms = () => (
     <TermsContainer>
       <p>This is an example of</p>
-      <LinkStyled href={privacyPolicyLink}>
-        terms
-      </LinkStyled>
+      <LinkStyled href={privacyPolicyLink}>terms</LinkStyled>
     </TermsContainer>
   );
 

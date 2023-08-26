@@ -1,16 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProductType } from '@/components/Products/ProductsList.types';
-import { fetchProducts } from '@/redux/slices/Products/ProductsThunk';
+import { ProductType } from '@/components/Products/Products.types';
+import { fetchProducts } from '@/redux/slices/Products/Products.thunk';
 import { ShirtType } from '@/redux/slices/Products/Product.types';
 
 const initialState: ShirtType = {
-    id: 0,
     data: [],
     loading: false,
     error: false,
 };
 
-const shirtsSlice = createSlice({
+const productsSlice = createSlice({
     name: 'shirts',
     initialState,
     reducers: {},
@@ -20,11 +19,14 @@ const shirtsSlice = createSlice({
                 state.loading = true;
                 state.error = false;
             })
-            .addCase(fetchProducts.fulfilled, (state, action: PayloadAction<Array<ProductType>>) => {
-                state.data = action.payload;
-                state.loading = false;
-                state.error = false;
-            })
+            .addCase(
+                fetchProducts.fulfilled,
+                (state, action: PayloadAction<Array<ProductType>>) => {
+                    state.data = action.payload;
+                    state.loading = false;
+                    state.error = false;
+                }
+            )
             .addCase(fetchProducts.rejected, (state) => {
                 state.loading = false;
                 state.error = true;
@@ -32,4 +34,4 @@ const shirtsSlice = createSlice({
     },
 });
 
-export default shirtsSlice.reducer;
+export default productsSlice.reducer;

@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from 'react';
-
 import {
     Box,
     CircularProgress,
@@ -11,21 +10,19 @@ import {
     Select,
 } from '@mui/material';
 import Image from 'next/image';
-import { addToCart, removeFromCart } from '@/redux/slices/Cart/CartSlice';
-import { ProductType } from '@/components/Products/ProductsList.types';
-import { fetchProductById } from '@/api/fetchProductById';
+import { addToCart, removeFromCart } from '@/redux/slices/Cart/Cart.slice';
 import { Size } from '@/redux/slices/Cart/Cart.types';
 import { SelectChangeEvent } from '@mui/material';
 import { useDispatch, useSelector } from '@/redux/hooks';
+import { fetchProductById } from '@/redux/slices/ProductById/ProductById.thunk';
 
 interface Props {
     id: number;
 }
 
-export const ProductItemDetail: FC<Props> = ({ id }) => {
+export const ProductDetail: FC<Props> = ({ id }) => {
     const dispatch = useDispatch();
-    const [product, setProduct] = useState<ProductType | null>(null);
-    const [error, setError] = useState<string | null>(null);
+    const { data, loading, error } = useSelector((state) => state.productById);
     const [selectedSize, setSelectedSize] = useState<Size>('S');
     const selectedSizeQuantity = useSelector((state) => {
         const item = state.cart.cart.find((item) => item.id === id);
@@ -33,23 +30,13 @@ export const ProductItemDetail: FC<Props> = ({ id }) => {
     });
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const fetchedProduct = await fetchProductById(id);
-                setProduct(fetchedProduct);
-            } catch (_error) {
-                setError('An error occurred while fetching the product.');
-            }
-        };
+        dispatch(fetchProductById(id));
+    }, [dispatch]);
 
-        fetchData();
-    }, [id]);
 
     const handleAddToCart = () => {
-        if (product && selectedSizeQuantity < product.totalQuantity[selectedSize]) {
+        if (data && selectedSizeQuantity < data.totalQuantity[selectedSize]) {
             dispatch(addToCart({ id, size: selectedSize }));
-        } else {
-            setError(`No more ${selectedSize} size available.`);
         }
     };
 
@@ -61,19 +48,33 @@ export const ProductItemDetail: FC<Props> = ({ id }) => {
         setSelectedSize(e.target.value as Size);
     };
 
-    if (!product) {
+    if (loading) {
         return <CircularProgress />;
+    }
+
+    if (error) {
+        return <Typography>Error: {error}</Typography>;
+    }
+
+    if (!data) {
+        return null;
     }
 
     return (
         <Box>
-
-
-            <Image src={product.img} alt={product.name} width={200} height={250} priority />
-            <Typography>{product.name}</Typography>
-            <Typography>{product.price} $</Typography>
-            {Object.keys(product.totalQuantity).map(size => (
-                <Typography key={size}>{size}: {product.totalQuantity[size as Size]}</Typography>
+            <Image
+                src={data.img}
+                alt={data.name}
+                width={200}
+                height={250}
+                priority
+            />
+            <Typography>{data.name}</Typography>
+            <Typography>{data.price} $</Typography>
+            {Object.keys(data.totalQuantity).map((size) => (
+                <Typography key={size}>
+                    {size}: {data.totalQuantity[size as Size]}
+                </Typography>
             ))}
             {error && <Typography>{error}</Typography>}
             <FormControl variant="standard">
@@ -85,15 +86,21 @@ export const ProductItemDetail: FC<Props> = ({ id }) => {
                     onChange={handleSizeChange}
                     label="Size"
                 >
-                    {Object.keys(product.totalQuantity).map(size => (
-                        <MenuItem key={size} value={size} disabled={product.totalQuantity[size as Size] === 0}
-                        >{size}</MenuItem>
+                    {Object.keys(data.totalQuantity).map((size) => (
+                        <MenuItem
+                            key={size}
+                            value={size}
+                            disabled={data.totalQuantity[size as Size] === 0}
+                        >
+                            {size}
+                        </MenuItem>
                     ))}
                 </Select>
             </FormControl>
-
             <div>
-                <Typography>{selectedSize}: {selectedSizeQuantity}</Typography>
+                <Typography>
+                    {selectedSize}: {selectedSizeQuantity}
+                </Typography>
                 <Button onClick={handleAddToCart}>Add to cart</Button>
                 <Button onClick={handleRemoveFromCart}>Remove from cart</Button>
             </div>

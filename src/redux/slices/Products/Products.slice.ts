@@ -10,7 +10,7 @@ const initialState: ShirtType = {
 };
 
 const productsSlice = createSlice({
-    name: 'shirts',
+    name: 'products',
     initialState,
     reducers: {},
     extraReducers: (builder) => {

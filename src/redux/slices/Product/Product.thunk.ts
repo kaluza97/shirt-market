@@ -4,7 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 
 export const fetchProductById = createAsyncThunk(
-    'shirts/fetchProductById',
+    'products/fetchProductById',
     async (id: number): Promise<ProductType> => {
         const dataRef = collection(firestore, 'shirts');
         const queryRef = query(dataRef, where('id', '==', id));

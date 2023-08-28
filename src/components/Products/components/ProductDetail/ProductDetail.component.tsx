@@ -14,7 +14,7 @@ import { addToCart, removeFromCart } from '@/redux/slices/Cart/Cart.slice';
 import { Size } from '@/redux/slices/Cart/Cart.types';
 import { SelectChangeEvent } from '@mui/material';
 import { useDispatch, useSelector } from '@/redux/hooks';
-import { fetchProductById } from '@/redux/slices/ProductById/ProductById.thunk';
+import { fetchProductById } from '@/redux/slices/Product/Product.thunk';
 
 interface Props {
     id: number;

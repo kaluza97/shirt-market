@@ -15,7 +15,7 @@ export const CartWrapper: FC = () => {
           <Typography sx={headerText}>Your cart is empty.</Typography>
           <Image
             src={`/assets/emptyCart.jpg`}
-            alt='empty shopping cart'
+            alt="empty shopping cart"
             width={200}
             height={120}
             priority

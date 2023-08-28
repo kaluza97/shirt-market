@@ -4,10 +4,7 @@ import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.compo
 import React, { FC } from 'react';
 
 const Cart: FC = () => (
-    <Layout
-        header={<NavigationMenu />}
-        content={<CartWrapper />}
-    />
+  <Layout header={<NavigationMenu />} content={<CartWrapper />} />
 );
 
 export default Cart;

@@ -24,4 +24,3 @@ export const ProductsItem: FC<ProductType> = ({ id, img, name, price }) => {
     </Box>
   );
 };
-

@@ -1,10 +1,10 @@
 import { FC, useContext } from 'react';
 import { Typography } from '@mui/material';
-import { AuthContext } from '@/context/AuthContext';
+import { AuthContext } from '@/context/Auth.context';
 import {
   errorText,
   ErrorMessageContainer,
-} from '@/components/ErrorMessages/AuthError.styles';
+} from '@/components/ErrorMessages/Error.styles';
 
 export const AuthError: FC = () => {
   const { authError } = useContext(AuthContext);

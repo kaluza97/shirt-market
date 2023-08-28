@@ -1,15 +1,48 @@
+import { FC, useState, MouseEvent } from 'react';
+import { IconButton, Menu, MenuItem } from '@mui/material';
 import {
-  LinkMenu,
-  NavigationMenuContainer,
+  IconContainer,
+  NavigationContainer,
 } from '@/components/NavigationMenu/NavigationMenu.styles';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Logo } from '@/components/Logo/Logo.component';
+import { useRouter } from 'next/router';
+import { navigationData } from '@/data/navigation.data';
 
-const NavigationMenu = () => {
+export const NavigationMenu: FC = () => {
+  const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
+  const { push } = useRouter();
+
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
+    setMenuAnchor(event.currentTarget);
+  };
+  const handleClose = () => {
+    setMenuAnchor(null);
+  };
+
+  const handleMenuItemClick = (route: string) => {
+    handleClose();
+    push(route);
+  };
+
   return (
-    <NavigationMenuContainer>
-      <LinkMenu href="/">Home</LinkMenu>
-      <LinkMenu href="/about">About</LinkMenu>
-    </NavigationMenuContainer>
+    <NavigationContainer>
+      <Logo />
+      <IconButton aria-label="more" onClick={handleClick}>
+        <MenuIcon />
+      </IconButton>
+      <Menu anchorEl={menuAnchor} open={!!menuAnchor} onClose={handleClose}>
+        {navigationData.map(({ name, path, icon }) => (
+          <MenuItem
+            key={path}
+            onClick={() => handleMenuItemClick(path)}
+            disableRipple
+          >
+            <IconContainer>{icon}</IconContainer>
+            {name}
+          </MenuItem>
+        ))}
+      </Menu>
+    </NavigationContainer>
   );
 };
-
-export default NavigationMenu;

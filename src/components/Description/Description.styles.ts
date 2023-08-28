@@ -6,7 +6,6 @@ export const DesktopContainer = styled.div`
   display: none;
   @media (min-width: ${Breakpoints.desktop}) {
     display: flex;
-    width: 60vw;
   }
 `;
 
@@ -27,13 +26,14 @@ export const DesktopDescriptionItem = styled.div`
     flex-direction: row;
     align-items: center;
     width: 100%;
+    padding: 1rem;
     margin-top: 2rem;
   }
 `;
 
-export const textDescription: SxProps = {
-  fontSize: `${FontSizes.middle}`,
-  fontFamily: `${FontFamily.main}`,
-  color: `${Colors.text}`,
+export const descriptionText: SxProps = {
+  fontSize: FontSizes.middle,
+  fontFamily: FontFamily.sans,
+  color: Colors.blackLight,
   margin: '0 5rem',
 };

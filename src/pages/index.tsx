@@ -1,10 +1,21 @@
 import { FC } from 'react';
-import { SignOut } from '@/components/SignOut/SignOut.component';
+import { HomeBanner } from '@/components/Banners/HomeBanner.component';
 import { Layout } from '@/components/Layout/Layout.component';
-import NavigationMenu from '@/components/NavigationMenu/NavigationMenu.component';
+import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
+import { ProductsWrapper } from '@/components/Products/components/ProductsWrapper/ProductsWrapper.component';
+import { SliderCarousel } from '@/components/Carousel/Carousel.component';
 
-const Home: FC = () => {
-  return <Layout header={<NavigationMenu />} content={<SignOut />} />;
-};
+const Home: FC = () => (
+  <Layout
+    header={<NavigationMenu />}
+    content={
+      <>
+        <SliderCarousel />
+        <ProductsWrapper />
+        <HomeBanner />
+      </>
+    }
+  />
+);
 
 export default Home;

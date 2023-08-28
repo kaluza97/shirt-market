@@ -1,14 +1,13 @@
 import { FC } from 'react';
-import { Link, TermsContainer } from '@/components/Terms/Terms.styles';
 import { Checkbox, FormControlLabel } from '@mui/material';
+import { LinkStyled, TermsContainer } from '@/components/Terms/Terms.styles';
+import { privacyPolicyLink } from '@/constants/links';
 
 export const Terms: FC = () => {
   const terms = () => (
     <TermsContainer>
-      <p>this is an example of</p>
-      <Link href="https://www.termsfeed.com/blog/sample-terms-and-conditions-template/">
-        terms
-      </Link>
+      <p>This is an example of</p>
+      <LinkStyled href={privacyPolicyLink}>terms</LinkStyled>
     </TermsContainer>
   );
 

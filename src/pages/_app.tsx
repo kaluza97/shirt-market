@@ -3,10 +3,10 @@ import { Provider } from 'react-redux';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { store } from '@/redux/store';
 import type { AppProps } from 'next/app';
-import { AuthProvider } from '@/context/AuthContext';
+import { AuthProvider } from '@/context/Auth.context';
 import { ThemeProvider } from '@mui/material/styles';
-import '@/styles/globals.css';
 import { mainTheme } from '@/styles/material.styles';
+import '@/styles/globals.css';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   const queryClient = new QueryClient();

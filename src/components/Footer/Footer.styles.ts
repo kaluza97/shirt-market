@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Breakpoints, Colors, FontFamily, FontSizes } from '@/styles/variables';
 import { SxProps } from '@mui/material';
+import Link from 'next/link';
 
 export const FooterContainer = styled.footer`
   width: 100%;
@@ -11,26 +12,26 @@ export const FooterContainer = styled.footer`
   align-items: center;
 `;
 
-export const Link = styled.a`
+export const LinkStyled = styled(Link)`
   text-align: center;
 `;
 
 export const textFooter: SxProps = {
-  fontFamily: `${FontFamily.main}`,
-  fontSize: `${FontSizes.middle}`,
-  color: `${Colors.white}`,
+  fontFamily: FontFamily.sans,
+  fontSize: FontSizes.middle,
+  color: Colors.white,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: `${Colors.primary}`,
+  backgroundColor: Colors.primary,
   padding: '1rem 0',
   [`@media screen and (min-width: ${Breakpoints.tablet})`]: {
     padding: '1rem 0',
-    backgroundColor: `${Colors.secondary}`,
+    backgroundColor: Colors.secondary,
   },
   [`@media screen and (min-width: ${Breakpoints.desktop})`]: {
     padding: '2rem 0',
-    backgroundColor: `${Colors.primary}`,
+    backgroundColor: Colors.primary,
   },
 };
 

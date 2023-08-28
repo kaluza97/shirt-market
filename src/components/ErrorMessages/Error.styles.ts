@@ -13,7 +13,7 @@ export const ErrorMessageContainer = styled.div<ErrorMessageInterface>`
 
 export const errorText: SxProps = {
   textAlign: 'center',
-  fontFamily: `${FontFamily.main}`,
-  fontSize: `${FontSizes.middle}`,
-  color: `${Colors.red}`,
+  fontFamily: FontFamily.sans,
+  fontSize: FontSizes.middle,
+  color: Colors.red,
 };

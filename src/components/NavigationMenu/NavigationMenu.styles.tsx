@@ -1,15 +1,13 @@
-import { Colors, FontSizes } from '@/styles/variables';
 import styled from '@emotion/styled';
-import Link from 'next/link';
 
-export const NavigationMenuContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  background-color: ${Colors.primary};
+export const NavigationContainer = styled.div`
   padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
-export const LinkMenu = styled(Link)`
-  font-size: ${FontSizes.large};
-  padding: 1rem;
+export const IconContainer = styled.div`
+  margin-top: 0.5rem;
+  margin-right: 1rem;
 `;

@@ -1,17 +1,16 @@
-import { FC, useContext } from 'react';
-import { AuthContext } from '@/context/AuthContext';
-import Button from '@mui/material/Button';
+import { FC, ReactNode, useContext } from 'react';
+import { AuthContext } from '@/context/Auth.context';
 
-export const SignOut: FC = () => {
+type Props = {
+  children: ReactNode;
+};
+
+export const SignOutWrapper: FC<Props> = ({ children }) => {
   const { logout } = useContext(AuthContext);
 
   const handleLogout = () => {
     logout();
   };
 
-  return (
-    <Button variant="outlined" onClick={handleLogout}>
-      Logout
-    </Button>
-  );
+  return <div onClick={handleLogout}>{children}</div>;
 };

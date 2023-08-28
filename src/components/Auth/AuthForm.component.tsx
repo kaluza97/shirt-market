@@ -1,7 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { FC, SyntheticEvent, useState } from 'react';
 import { SignInWithEmailPassword } from '@/components/SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.component';
 import SignUp from '@/components/SignUp/SignUp.component';
-import Description from '@/components/DescriptionForm/Description.component';
 import { Tab, Tabs, Typography } from '@mui/material';
 import Image from 'next/image';
 import {
@@ -10,18 +9,19 @@ import {
   FormContent,
   tabItem,
   tabPanel,
-  textLogo,
-} from '@/components/AuthForm/AuthForm.styles';
+  logoText,
+} from '@/components/Auth/AuthForm.styles';
+import { LoginOrRegisterType } from '@/components/Auth/AuthForm.types';
+import { Description } from '@/components/Description/Description.component';
 
 const AuthForm: FC = () => {
-  type LoginOrRegister = 'login' | 'register';
-  const [value, setValue] = useState<LoginOrRegister>('login');
+  const [auth, setAuth] = useState<LoginOrRegisterType>('login');
 
   const handleChange = (
-    _event: React.SyntheticEvent,
-    newValue: LoginOrRegister
+    _event: SyntheticEvent,
+    newValue: LoginOrRegisterType
   ) => {
-    setValue(newValue);
+    setAuth(newValue);
   };
 
   return (
@@ -34,11 +34,11 @@ const AuthForm: FC = () => {
             height={50}
             alt="Green shirt"
           />
-          <Typography component="h1" variant="h5" sx={textLogo}>
+          <Typography component="h1" variant="h5" sx={logoText}>
             Shirt Market
           </Typography>
           <Tabs
-            value={value}
+            value={auth}
             onChange={handleChange}
             aria-label="Panel with login or register"
             sx={tabPanel}
@@ -47,8 +47,8 @@ const AuthForm: FC = () => {
             <Tab value="login" label="Login" sx={tabItem} />
             <Tab value="register" label="Register" sx={tabItem} />
           </Tabs>
-          {value === 'login' && <SignInWithEmailPassword />}
-          {value === 'register' && <SignUp />}
+          {auth === 'login' && <SignInWithEmailPassword />}
+          {auth === 'register' && <SignUp />}
         </FormContent>
       </FormContainer>
       <Description />

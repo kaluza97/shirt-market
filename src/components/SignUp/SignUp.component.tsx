@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FC, FormEvent, useContext, useState } from 'react';
 import { getAuth } from 'firebase/auth';
-import { AuthContext } from '@/context/AuthContext';
+import { AuthContext } from '@/context/Auth.context';
 import { TextField, Button } from '@mui/material';
 import {
   inputText,

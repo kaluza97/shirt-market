@@ -1,7 +1,15 @@
-import { useState, ChangeEvent, FormEvent, useContext, FC } from 'react';
+import {
+  useState,
+  ChangeEvent,
+  FormEvent,
+  useContext,
+  FC,
+  useEffect,
+} from 'react';
 import { auth } from '@/firebase/firebaseConfig';
+import { useRouter } from 'next/router';
 import { Button, TextField, Typography } from '@mui/material';
-import { AuthContext } from '@/context/AuthContext';
+import { AuthContext } from '@/context/Auth.context';
 import {
   SignInFormWrapper,
   inputText,
@@ -11,10 +19,15 @@ import {
 import { AuthError } from '@/components/ErrorMessages/AuthError.component';
 
 export const SignInWithEmailPassword: FC = () => {
-  const { login } = useContext(AuthContext);
+  const { login, user } = useContext(AuthContext);
+  const { push } = useRouter();
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  useEffect(() => {
+    user && push('/');
+  }, [user, push]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

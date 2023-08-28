@@ -3,25 +3,26 @@ import {
   DesktopContainer,
   DesktopContent,
   DesktopDescriptionItem,
-  textDescription,
-} from '@/components/DescriptionForm/Description.styles';
+  descriptionText,
+} from '@/components/Description/Description.styles';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
-import { DescriptionItems } from '@/data/authData';
+import { descriptionItems } from '@/data/auth.data';
 
-const Description: FC = () => {
+export const Description: FC = () => {
   return (
     <DesktopContainer>
       <DesktopContent>
-        {DescriptionItems.map(({ src, alt, description }) => (
+        {descriptionItems.map(({ src, alt, description }) => (
           <DesktopDescriptionItem key={src}>
             <Image
               src={`/assets/${src}.jpg`}
               alt={alt}
               width={150}
               height={150}
+              priority
             />
-            <Typography component="h2" sx={textDescription}>
+            <Typography component="h2" sx={descriptionText}>
               {description}
             </Typography>
           </DesktopDescriptionItem>
@@ -30,5 +31,3 @@ const Description: FC = () => {
     </DesktopContainer>
   );
 };
-
-export default Description;

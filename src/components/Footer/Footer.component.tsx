@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import {
   FooterContainer,
-  Link,
+  LinkStyled,
   Svg,
   textFooter,
 } from '@/components/Footer/Footer.styles';
@@ -18,22 +18,22 @@ export const Footer: FC = () => (
     </Svg>
     <Typography component="h3" sx={textFooter}>
       Website created by Piotr Kałużny
-      <Link href="https://www.linkedin.com/in/piotr-kaluzny-066183177/">
+      <LinkStyled href="https://www.linkedin.com/in/piotr-kaluzny-066183177/">
         <Image
           src="/assets/linkedin.png"
           width={50}
           height={50}
           alt="Linkedin icon"
         />
-      </Link>
-      <Link href="https://github.com/kaluza97">
+      </LinkStyled>
+      <LinkStyled href="https://github.com/kaluza97">
         <Image
           src="/assets/github.png"
           width={50}
           height={50}
           alt="Github icon"
         />
-      </Link>
+      </LinkStyled>
     </Typography>
   </FooterContainer>
 );

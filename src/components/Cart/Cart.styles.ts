@@ -5,14 +5,15 @@ import { SxProps } from '@mui/material';
 export const CartItemsContainer = styled.div`
 display: flex;
 padding: 2rem;
-box-shadow: 0 0.4rem 0.4rem -0.2rem ${Colors.shadow},
-`
+margin: 0.5rem;
+box-shadow: ${Colors.shadow} 0px 1rem 1rem -1rem;`
 
 export const DescriptionContainer = styled.div`
 display: flex;
 flex-direction: column;
-margin: 0 2rem;
+margin: 0 1rem;
 `
+
 export const EmptyCartContainer = styled(DescriptionContainer)`
 align-items: center;
 justify-content: center;
@@ -27,7 +28,8 @@ export const cartButton: SxProps = {
     fontSize: FontSizes.extraSmall,
     fontWeight: FontWeights.bold,
     color: Colors.white,
-    minWidth: '15rem'
+    padding: '0.5rem',
+    marginBottom: '2rem'
 };
 
 export const descriptionText: SxProps = {

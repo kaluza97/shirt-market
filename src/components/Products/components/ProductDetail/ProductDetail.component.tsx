@@ -30,10 +30,12 @@ interface Props {
 export const ProductDetail: FC<Props> = ({ id }) => {
     const dispatch = useDispatch();
     const { data, loading, error } = useSelector((state) => state.productById);
-    const [selectedSize, setSelectedSize] = useState<Size>('S');
+    const [selectedSize, setSelectedSize] = useState<Size | null>(null);
     const selectedSizeQuantity = useSelector((state) => {
         const item = state.cart.cart.find((item) => item.id === id);
-        return item?.quantities[selectedSize] || 0;
+        if (selectedSize !== null) {
+            return item?.quantities[selectedSize] || 0;
+        }
     });
 
     useEffect(() => {
@@ -41,13 +43,15 @@ export const ProductDetail: FC<Props> = ({ id }) => {
     }, [dispatch]);
 
     const handleAddToCart = () => {
-        if (data && selectedSizeQuantity < data.totalQuantity[selectedSize]) {
+        if (data && (selectedSize !== null) && (selectedSizeQuantity !== undefined) && selectedSizeQuantity < data.totalQuantity[selectedSize]) {
             dispatch(addToCart({ id, img: data.img, name: data.name, price: data.price, size: selectedSize }));
         }
     };
 
     const handleRemoveFromCart = () => {
-        dispatch(removeFromCart({ id, size: selectedSize }));
+        if (selectedSize !== null) {
+            dispatch(removeFromCart({ id, size: selectedSize }));
+        }
     };
 
     const handleSizeChange = (e: SelectChangeEvent<Size>) => {

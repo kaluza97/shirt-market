@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { CartItems } from '../CartItems/CartItems.component';
+import { CartItemsList } from '../CartItemsList/CartItemsList.component';
 import { useSelector } from '@/redux/hooks';
 import { Typography } from '@mui/material';
 import { EmptyCartContainer, headerText } from '../../Cart.styles';
@@ -22,7 +22,7 @@ export const CartWrapper: FC = () => {
           />
         </EmptyCartContainer>
       ) : (
-        <CartItems />
+        <CartItemsList />
       )}
     </>
   );

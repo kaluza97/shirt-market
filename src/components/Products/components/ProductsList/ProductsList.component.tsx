@@ -1,7 +1,7 @@
 import React, { FC, Suspense, useEffect } from 'react';
 import { CircularProgress, Typography } from '@mui/material';
 import { fetchProducts } from '@/redux/slices/Products/Products.thunk';
-import ProductItem from '@/components/Products/components/ProductItem/ProductItem.component';
+import { ProductsItem } from '@/components/Products/components/ProductsItem/ProductsItem.component';
 import { useDispatch, useSelector } from '@/redux/hooks';
 
 export const ProductsList: FC = () => {
@@ -28,7 +28,7 @@ export const ProductsList: FC = () => {
     <Suspense fallback={<CircularProgress />}>
       {data.map(({ id, img, name, price, totalQuantity }) => (
         <div key={name}>
-          <ProductItem
+          <ProductsItem
             id={id}
             img={img}
             name={name}

@@ -10,7 +10,7 @@ import {
 import { useRouter } from 'next/router';
 import { ProductType } from '@/components/Products/Products.types';
 
-const ProductItem: FC<ProductType> = ({ id, img, name, price }) => {
+export const ProductsItem: FC<ProductType> = ({ id, img, name, price }) => {
   const router = useRouter();
 
   const handleProductClick = () => {
@@ -25,4 +25,3 @@ const ProductItem: FC<ProductType> = ({ id, img, name, price }) => {
   );
 };
 
-export default ProductItem;

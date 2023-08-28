@@ -15,8 +15,13 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint --fix src/",
-    "*.{js,jsx,json,css,md}": "prettier --write"
+    "*.{js,jsx,ts,tsx}": [
+      "yarn format",
+      "yarn lint"
+    ],
+    "*.{json,css,md}": [
+      "yarn format"
+    ]
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

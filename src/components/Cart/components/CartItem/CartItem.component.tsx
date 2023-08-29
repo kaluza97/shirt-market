@@ -107,6 +107,7 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
                   Remove
                 </Button>
               </ButtonContainer>
+
               <ConfirmModal
                 open={isConfirmModalOpen}
                 onClose={handleCloseConfirmModal}

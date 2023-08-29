@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
-import { CartItemsList } from '../CartItemsList/CartItemsList.component';
 import { useSelector } from '@/redux/hooks';
 import { Typography } from '@mui/material';
 import { EmptyCartContainer, headerText } from '../../Cart.styles';
 import Image from 'next/image';
+import { CartItem } from '../CartItem/CartItem.component';
+import { calculateTotalCostForAllProducts } from '../../Cart.utils';
 
 export const CartWrapper: FC = () => {
   const cartItems = useSelector((state) => state.cart.cart);
+  const allProductsTotalCost = calculateTotalCostForAllProducts(cartItems);
 
   return (
     <>
@@ -22,7 +24,17 @@ export const CartWrapper: FC = () => {
           />
         </EmptyCartContainer>
       ) : (
-        <CartItemsList />
+        <>
+          <Typography component="h3" sx={headerText}>
+            Your Cart Items:
+          </Typography>
+          {cartItems.map((item) => (
+            <CartItem item={item} key={item.name} />
+          ))}
+          <Typography component="h3" sx={headerText}>
+            Total cost: {allProductsTotalCost} $
+          </Typography>
+        </>
       )}
     </>
   );

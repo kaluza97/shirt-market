@@ -40,7 +40,7 @@ export const ProductDetail: FC<Props> = ({ id }) => {
 
   useEffect(() => {
     dispatch(fetchProductById(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const handleAddToCart = () => {
     if (
@@ -110,7 +110,11 @@ export const ProductDetail: FC<Props> = ({ id }) => {
             />
           ))}
         </RadioGroup>
-        <Button onClick={handleAddToCart} sx={confirmButton}>
+        <Button
+          onClick={handleAddToCart}
+          sx={confirmButton}
+          disabled={!selectedSize}
+        >
           Add to cart
         </Button>
       </FormControl>

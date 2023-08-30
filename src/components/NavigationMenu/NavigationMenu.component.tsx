@@ -5,6 +5,7 @@ import {
   NavigationContainer,
 } from '@/components/NavigationMenu/NavigationMenu.styles';
 import MenuIcon from '@mui/icons-material/Menu';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Logo } from '@/components/Logo/Logo.component';
 import { useRouter } from 'next/router';
 import { navigationData } from '@/data/navigation.data';
@@ -13,9 +14,14 @@ export const NavigationMenu: FC = () => {
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const { push } = useRouter();
 
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
+  const handleMoreMenu = (event: MouseEvent<HTMLElement>) => {
     setMenuAnchor(event.currentTarget);
   };
+
+  const handleCartMenu = () => {
+    push('/cart');
+  };
+
   const handleClose = () => {
     setMenuAnchor(null);
   };
@@ -28,9 +34,14 @@ export const NavigationMenu: FC = () => {
   return (
     <NavigationContainer>
       <Logo />
-      <IconButton aria-label="more" onClick={handleClick}>
-        <MenuIcon />
-      </IconButton>
+      <div>
+        <IconButton aria-label="cart" onClick={handleCartMenu}>
+          <ShoppingCartOutlinedIcon />
+        </IconButton>
+        <IconButton aria-label="more" onClick={handleMoreMenu}>
+          <MenuIcon />
+        </IconButton>
+      </div>
       <Menu anchorEl={menuAnchor} open={!!menuAnchor} onClose={handleClose}>
         {navigationData.map(({ name, path, icon }) => (
           <MenuItem

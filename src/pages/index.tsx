@@ -11,8 +11,8 @@ const Home: FC = () => (
     content={
       <>
         <SliderCarousel />
-        <ProductsWrapper />
         <HomeBanner />
+        <ProductsWrapper />
       </>
     }
   />

@@ -11,7 +11,7 @@ import { ProductsList } from '@/components/Products/components/ProductsList/Prod
 export const ProductsWrapper: FC = () => {
   return (
     <ProductsListContainer>
-      <Typography component="h3" variant="h3" sx={headerTitle}>
+      <Typography component="h3" variant="h4" sx={headerTitle}>
         New bestsellers products
       </Typography>
       <Box sx={productContainer}>

@@ -37,7 +37,7 @@ export const headerTitle: SxProps = {
   fontFamily: FontFamily.sans,
   fontWeight: FontWeights.bold,
   color: Colors.blackLight,
-  marginBottom: '2rem',
+  margin: '1rem',
 };
 
 export const imgPrice: SxProps = {
@@ -64,7 +64,13 @@ export const descriptionText: SxProps = {
 };
 
 export const confirmButton: SxProps = {
+  fontFamily: FontFamily.sans,
   fontSize: FontSizes.middle,
+  fontWeight: FontWeights.bold,
+  color: Colors.white,
+  padding: '1rem',
+  marginTop: '1rem',
+  marginBottom: '1rem',
 };
 
 export const radioGroup: SxProps = {

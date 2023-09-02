@@ -7,9 +7,10 @@ import {
   Radio,
   RadioGroup,
   Button,
+  Alert,
 } from '@mui/material';
 import Image from 'next/image';
-import { addToCart, removeFromCart } from '@/redux/slices/Cart/Cart.slice';
+import { addToCart } from '@/redux/slices/Cart/Cart.slice';
 import { Size } from '@/redux/slices/Cart/Cart.types';
 import { SelectChangeEvent } from '@mui/material';
 import { useDispatch, useSelector } from '@/redux/hooks';
@@ -22,6 +23,8 @@ import {
   radio,
   radioGroup,
 } from '@/components/Products/Products.styles';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { Warning } from '@/components/Messages/components/Warning/Warning.component';
 
 interface Props {
   id: number;
@@ -31,23 +34,25 @@ export const ProductDetail: FC<Props> = ({ id }) => {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.productById);
   const [selectedSize, setSelectedSize] = useState<Size | null>(null);
+  const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
   const selectedSizeQuantity = useSelector((state) => {
     const item = state.cart.cart.find((item) => item.id === id);
     if (selectedSize !== null) {
       return item?.quantities[selectedSize] || 0;
     }
   });
+  const productIsTruthy =
+    data && selectedSize !== null && selectedSizeQuantity !== undefined;
 
   useEffect(() => {
     dispatch(fetchProductById(id));
   }, [dispatch, id]);
 
   const handleAddToCart = () => {
+    setIsAlertVisible(false);
     if (
-      data &&
-      selectedSize !== null &&
-      selectedSizeQuantity !== undefined &&
-      selectedSizeQuantity < data.totalQuantity[selectedSize]
+      productIsTruthy &&
+      selectedSizeQuantity <= data.totalQuantity[selectedSize]
     ) {
       dispatch(
         addToCart({
@@ -58,12 +63,8 @@ export const ProductDetail: FC<Props> = ({ id }) => {
           size: selectedSize,
         })
       );
-    }
-  };
-
-  const handleRemoveFromCart = () => {
-    if (selectedSize !== null) {
-      dispatch(removeFromCart({ id, size: selectedSize }));
+    } else {
+      setIsAlertVisible(true);
     }
   };
 
@@ -76,7 +77,11 @@ export const ProductDetail: FC<Props> = ({ id }) => {
   }
 
   if (error) {
-    return <Typography>Error: {error}</Typography>;
+    return (
+      <Alert>
+        <Typography>Error: {error}</Typography>
+      </Alert>
+    );
   }
 
   if (!data) {
@@ -111,23 +116,24 @@ export const ProductDetail: FC<Props> = ({ id }) => {
           ))}
         </RadioGroup>
         <Button
+          variant="contained"
           onClick={handleAddToCart}
           sx={confirmButton}
           disabled={!selectedSize}
+          endIcon={<ShoppingCartOutlinedIcon />}
         >
           Add to cart
         </Button>
+        <Warning
+          visibleProp={isAlertVisible}
+          alertMessage="There are no more products in this size."
+        />
       </FormControl>
       <Typography component="h3" sx={descriptionText}>
         Stay stylish and comfortable all day with this high-quality shirt. Its
         modern design and various sizes make it a versatile choice for any
         occasion.
       </Typography>
-
-      <Typography>
-        {selectedSize}: {selectedSizeQuantity}
-      </Typography>
-      <Button onClick={handleRemoveFromCart}>Remove from cart</Button>
     </ProductDetailContainer>
   );
 };

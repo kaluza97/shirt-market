@@ -4,11 +4,12 @@ import { Typography } from '@mui/material';
 import { EmptyCartContainer, headerText } from '../../Cart.styles';
 import Image from 'next/image';
 import { CartItem } from '../CartItem/CartItem.component';
-import { calculateTotalCostForAllProducts } from '../../Cart.utils';
+import { calculateTotalCost } from '../../Cart.utils';
+import { Divider } from '@mui/material';
 
 export const CartWrapper: FC = () => {
   const cartItems = useSelector((state) => state.cart.cart);
-  const allProductsTotalCost = calculateTotalCostForAllProducts(cartItems);
+  const allProductsTotalCost = calculateTotalCost(cartItems);
 
   return (
     <>
@@ -28,6 +29,7 @@ export const CartWrapper: FC = () => {
           <Typography component="h3" sx={headerText}>
             Your Cart Items:
           </Typography>
+          <Divider />
           {cartItems.map((item) => (
             <CartItem item={item} key={item.name} />
           ))}

@@ -9,7 +9,7 @@ export const ProductsList: FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProducts(8));
   }, [dispatch]);
 
   if (loading) {

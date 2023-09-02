@@ -4,19 +4,23 @@ import Carousel from 'react-material-ui-carousel';
 import { carouselData } from '@/data/carousel.data';
 import {
   LinkStyled,
+  carousel,
   carouselContent,
   carouselDescriptionText,
   carouselNameText,
 } from '@/components/Carousel/Carousel.styles';
+import { Pages } from '@/constants/pages';
 
 export const SliderCarousel: FC = () => {
   return (
-    <Carousel IndicatorIcon={null}>
+    <Carousel IndicatorIcon={null} sx={carousel}>
       {carouselData.map(({ name, description, link }) => (
         <Paper key={name} sx={carouselContent}>
           <Typography sx={carouselNameText}>{name}</Typography>
           <Typography sx={carouselDescriptionText}>{description}</Typography>
-          {link && <LinkStyled href="/about">Check offer!</LinkStyled>}
+          {link && (
+            <LinkStyled href={Pages.ABOUT_PAGE}>Check offer!</LinkStyled>
+          )}
         </Paper>
       ))}
     </Carousel>

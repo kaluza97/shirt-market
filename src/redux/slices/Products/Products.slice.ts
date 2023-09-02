@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductType } from '@/components/Products/Products.types';
 import { fetchProducts } from '@/redux/slices/Products/Products.thunk';
-import { ShirtType } from '@/redux/slices/Products/Product.types';
+import { ShirtType } from '@/redux/slices/Products/Products.types';
 
 const initialState: ShirtType = {
   data: [],

@@ -14,6 +14,8 @@ import {
 } from '@/components/Cart/Cart.styles';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { removeFromCart, addToCart } from '@/redux/slices/Cart/Cart.slice';
+import { useRouter } from 'next/router';
+import { Warning } from '@/components/Messages/components/Warning/Warning.component';
 
 interface CartItemProps {
   item: CartItemType;
@@ -22,9 +24,11 @@ interface CartItemProps {
 export const CartItem: FC<CartItemProps> = ({ item }) => {
   const { id, name, img, price, quantities } = item;
   const dispatch = useDispatch();
+  const { push } = useRouter();
   const { data } = useSelector((state) => state.productById);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
-  const [removedSize, setRemovedSize] = useState<Size>('S');
+  const [removedSize, setRemovedSize] = useState<Size | ''>('');
+  const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
 
   const handleRemoveFromCart = (id: number, size: Size, quantity: number) => {
     if (quantity === 1) {
@@ -43,13 +47,18 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
     price: number,
     quantity: number
   ) => {
+    setIsAlertVisible(false);
     if (data && data.totalQuantity[size] >= quantity) {
       dispatch(addToCart({ id, size, img, name, price }));
+    } else {
+      setIsAlertVisible(true);
     }
   };
 
   const handleConfirmModal = (id: number) => {
-    dispatch(removeFromCart({ id, size: removedSize }));
+    if (removedSize !== '') {
+      dispatch(removeFromCart({ id, size: removedSize }));
+    }
     setIsConfirmModalOpen(false);
   };
 
@@ -57,13 +66,28 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
     setIsConfirmModalOpen(false);
   };
 
+  const handleRedirectToDetail = (id: number) => {
+    push(`/products/${id}`);
+  };
+
   return (
-    <Box key={name + id}>
-      {Object.entries(quantities).map(([size, quantity]) => (
-        <>
+    <Box>
+      <Warning
+        visibleProp={isAlertVisible}
+        alertMessage="There are no more products in this size."
+      />
+      {Object.entries(quantities).map(([size, quantity], index) => (
+        <div key={name + index}>
           {quantity ? (
-            <CartItemsContainer key={name + id}>
-              <Image src={img} alt={name} width={100} height={120} priority />
+            <CartItemsContainer>
+              <Image
+                src={img}
+                alt={name}
+                width={100}
+                height={120}
+                priority
+                onClick={() => handleRedirectToDetail(id)}
+              />
               <DescriptionContainer>
                 <Typography component="h3" sx={descriptionText}>
                   Name: {name}
@@ -119,7 +143,7 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
           ) : (
             <></>
           )}
-        </>
+        </div>
       ))}
     </Box>
   );

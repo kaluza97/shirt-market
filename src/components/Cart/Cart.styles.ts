@@ -44,5 +44,5 @@ export const headerText: SxProps = {
   fontFamily: FontFamily.sans,
   color: Colors.blackLight,
   textAlign: 'center',
-  margin: '2rem',
+  margin: '1rem',
 };

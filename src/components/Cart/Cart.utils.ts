@@ -1,22 +1,13 @@
-import { CartItem, Size } from '@/redux/slices/Cart/Cart.types';
+import { CartItem } from '@/redux/slices/Cart/Cart.types';
 
-const calculateTotalCostForProduct = (
-  quantities: Record<Size, number>,
-  price: number
-): number => {
+export const calculateTotalCost = (cartItems: CartItem[]): number => {
   let totalCost = 0;
-  Object.entries(quantities).forEach(([_size, quantity]) => {
-    totalCost += price * quantity;
-  });
-  return totalCost;
-};
 
-export const calculateTotalCostForAllProducts = (
-  cartItems: CartItem[]
-): number => {
-  let totalCost = 0;
   cartItems.forEach((item) => {
-    totalCost += calculateTotalCostForProduct(item.quantities, item.price);
+    Object.values(item.quantities).forEach((quantity) => {
+      totalCost += item.price * quantity;
+    });
   });
+
   return totalCost;
 };

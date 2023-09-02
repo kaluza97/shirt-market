@@ -8,7 +8,7 @@ export const ProductsListContainer = styled.div`
 `;
 
 export const ProductDetailContainer = styled.div`
-  padding: 0 2rem 0 2rem;
+  padding: 0 2rem;
   textalign: 'center';
 `;
 

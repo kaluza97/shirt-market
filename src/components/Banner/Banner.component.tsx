@@ -2,7 +2,7 @@ import React, { FC, Suspense } from 'react';
 import { Card, CardMedia, CircularProgress } from '@mui/material';
 import { bannerData } from '@/data/banner.data';
 
-export const HomeBanner: FC = () => {
+export const Banner: FC = () => {
   return (
     <Card>
       {bannerData.map(({ src, alt }) => (

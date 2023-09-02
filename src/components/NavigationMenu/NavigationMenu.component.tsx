@@ -1,7 +1,9 @@
 import { FC, useState, MouseEvent, useEffect } from 'react';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import {
+  GapContainer,
   IconContainer,
+  Navigation,
   NavigationContainer,
   menuIcon,
 } from '@/components/NavigationMenu/NavigationMenu.styles';
@@ -50,28 +52,33 @@ export const NavigationMenu: FC = () => {
   };
 
   return (
-    <NavigationContainer>
-      <Logo />
-      <div>
-        <IconButton aria-label="cart" onClick={handleCartMenu}>
-          <ShoppingCartOutlinedIcon sx={menuIcon} /> {totalQuantity}
-        </IconButton>
-        <IconButton aria-label="more" onClick={handleMoreMenu}>
-          <MenuIcon sx={menuIcon} />
-        </IconButton>
-      </div>
-      <Menu anchorEl={menuAnchor} open={!!menuAnchor} onClose={handleClose}>
-        {navigationData.map(({ name, path, icon }) => (
-          <MenuItem
-            key={path}
-            onClick={() => handleMenuItemClick(path)}
-            disableRipple
-          >
-            <IconContainer>{icon}</IconContainer>
-            {name}
-          </MenuItem>
-        ))}
-      </Menu>
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <Navigation>
+          <Logo />
+          <div>
+            <IconButton aria-label="cart" onClick={handleCartMenu}>
+              <ShoppingCartOutlinedIcon sx={menuIcon} /> {totalQuantity}
+            </IconButton>
+            <IconButton aria-label="more" onClick={handleMoreMenu}>
+              <MenuIcon sx={menuIcon} />
+            </IconButton>
+          </div>
+          <Menu anchorEl={menuAnchor} open={!!menuAnchor} onClose={handleClose}>
+            {navigationData.map(({ name, path, icon }) => (
+              <MenuItem
+                key={path}
+                onClick={() => handleMenuItemClick(path)}
+                disableRipple
+              >
+                <IconContainer>{icon}</IconContainer>
+                {name}
+              </MenuItem>
+            ))}
+          </Menu>
+        </Navigation>
+      </NavigationContainer>
+      <GapContainer />
+    </>
   );
 };

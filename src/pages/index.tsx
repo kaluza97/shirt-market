@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { HomeBanner } from '@/components/Banners/HomeBanner.component';
+import { Banner } from '@/components/Banner/Banner.component';
 import { Layout } from '@/components/Layout/Layout.component';
 import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
 import { ProductsWrapper } from '@/components/Products/components/ProductsWrapper/ProductsWrapper.component';
@@ -11,7 +11,7 @@ const Home: FC = () => (
     content={
       <>
         <SliderCarousel />
-        <HomeBanner />
+        <Banner />
         <ProductsWrapper />
       </>
     }

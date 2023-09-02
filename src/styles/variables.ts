@@ -36,3 +36,11 @@ export const FontFamily = {
   sans: 'Open Sans, sans-serif',
   pacifico: 'Pacifico, cursive',
 };
+
+export const ZIndexes = {
+  background: 0,
+  base: 1,
+  modal: 100,
+  tooltip: 200,
+  menu: 300,
+};

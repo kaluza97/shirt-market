@@ -1,11 +1,7 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
+import { LayoutProps } from '@/components/Layout/Layout.types';
 
-type Props = {
-  header: ReactNode;
-  content: ReactNode;
-};
-
-export const Layout: FC<Props> = ({ header, content }) => (
+export const Layout: FC<LayoutProps> = ({ header, content }) => (
   <>
     {header}
     {content}

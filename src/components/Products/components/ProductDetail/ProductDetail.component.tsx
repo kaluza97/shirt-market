@@ -25,12 +25,9 @@ import {
 } from '@/components/Products/Products.styles';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Warning } from '@/components/Messages/components/Warning/Warning.component';
+import { ProductDetailProps } from '@/components/Products/Products.types';
 
-interface Props {
-  id: number;
-}
-
-export const ProductDetail: FC<Props> = ({ id }) => {
+export const ProductDetail: FC<ProductDetailProps> = ({ id }) => {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.productById);
   const [selectedSize, setSelectedSize] = useState<Size | null>(null);

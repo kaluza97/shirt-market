@@ -1,10 +1,15 @@
 import React, { FC, useState } from 'react';
-import { Box, Button, Typography } from '@mui/material';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import AddIcon from '@mui/icons-material/Add';
+import { Box, Button, Typography } from '@mui/material';
 import MinusIcon from '@mui/icons-material/Remove';
-import { CartItem as CartItemType, Size } from '@/redux/slices/Cart/Cart.types';
+import { Size } from '@/redux/slices/Cart/Cart.types';
+import { removeFromCart, addToCart } from '@/redux/slices/Cart/Cart.slice';
+import { useDispatch, useSelector } from '@/redux/hooks';
 import { ConfirmModal } from '@/components/ConfirmModal/ConfirmModal.component';
+import { Warning } from '@/components/Messages/components/Warning/Warning.component';
+import { CartItemProps } from '@/components/Cart/Cart.types';
 import {
   ButtonContainer,
   CartItemsContainer,
@@ -12,14 +17,6 @@ import {
   cartButton,
   descriptionText,
 } from '@/components/Cart/Cart.styles';
-import { useDispatch, useSelector } from '@/redux/hooks';
-import { removeFromCart, addToCart } from '@/redux/slices/Cart/Cart.slice';
-import { useRouter } from 'next/router';
-import { Warning } from '@/components/Messages/components/Warning/Warning.component';
-
-interface CartItemProps {
-  item: CartItemType;
-}
 
 export const CartItem: FC<CartItemProps> = ({ item }) => {
   const { id, name, img, price, quantities } = item;

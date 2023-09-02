@@ -7,14 +7,7 @@ import {
   DialogTitle,
   Button,
 } from '@mui/material';
-
-interface ConfirmModalProps {
-  open: boolean;
-  onClose: () => void;
-  onConfirm: () => void;
-  title: string;
-  message: string;
-}
+import { ConfirmModalProps } from '@/components/ConfirmModal/ConfirmModal.types';
 
 export const ConfirmModal: FC<ConfirmModalProps> = ({
   open,

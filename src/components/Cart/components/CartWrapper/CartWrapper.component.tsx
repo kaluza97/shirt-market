@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { useSelector } from '@/redux/hooks';
 import { Typography } from '@mui/material';
-import { EmptyCartContainer, headerText } from '../../Cart.styles';
+import { EmptyCartContainer, headerText } from '@/components/Cart/Cart.styles';
 import Image from 'next/image';
-import { CartItem } from '../CartItem/CartItem.component';
-import { calculateTotalCost } from '../../Cart.utils';
+import { CartItem } from '@/components/Cart/components/CartItem/CartItem.component';
+import { calculateTotalCost } from '@/components/Cart/Cart.utils';
 import { Divider } from '@mui/material';
 
 export const CartWrapper: FC = () => {

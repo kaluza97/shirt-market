@@ -45,7 +45,7 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
     quantity: number
   ) => {
     setIsAlertVisible(false);
-    if (data && data.totalQuantity[size] >= quantity) {
+    if (data && data.totalQuantity[size] > quantity) {
       dispatch(addToCart({ id, size, img, name, price }));
     } else {
       setIsAlertVisible(true);

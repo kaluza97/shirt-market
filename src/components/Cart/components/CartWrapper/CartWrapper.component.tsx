@@ -1,15 +1,23 @@
 import React, { FC } from 'react';
-import { useSelector } from '@/redux/hooks';
-import { Typography } from '@mui/material';
+import { useDispatch, useSelector } from '@/redux/hooks';
+import { Button, Typography } from '@mui/material';
 import { EmptyCartContainer, headerText } from '@/components/Cart/Cart.styles';
 import Image from 'next/image';
 import { CartItem } from '@/components/Cart/components/CartItem/CartItem.component';
 import { calculateTotalCost } from '@/components/Cart/Cart.utils';
 import { Divider } from '@mui/material';
+import { updateCartInDatabase } from '@/redux/slices/Cart/Cart.thunk';
+import { clearCart } from '@/redux/slices/Cart/Cart.slice';
 
 export const CartWrapper: FC = () => {
+  const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cart);
   const allProductsTotalCost = calculateTotalCost(cartItems);
+
+  const handleProceedPayment = () => {
+    dispatch(updateCartInDatabase(cartItems));
+    dispatch(clearCart());
+  };
 
   return (
     <>
@@ -36,6 +44,7 @@ export const CartWrapper: FC = () => {
           <Typography component="h3" sx={headerText}>
             Total cost: {allProductsTotalCost} $
           </Typography>
+          <Button onClick={handleProceedPayment}>Proceed to Payment</Button>
         </>
       )}
     </>

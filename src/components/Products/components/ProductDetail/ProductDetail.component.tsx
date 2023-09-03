@@ -49,7 +49,7 @@ export const ProductDetail: FC<ProductDetailProps> = ({ id }) => {
     setIsAlertVisible(false);
     if (
       productIsTruthy &&
-      selectedSizeQuantity <= data.totalQuantity[selectedSize]
+      selectedSizeQuantity < data.totalQuantity[selectedSize]
     ) {
       dispatch(
         addToCart({

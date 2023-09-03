@@ -21,3 +21,8 @@ export interface AddCartProps {
   price: number;
   size: Size;
 }
+
+export interface CartUpdatedItem {
+  id: number;
+  quantities: Quantities;
+}

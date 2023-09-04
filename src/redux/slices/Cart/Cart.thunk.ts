@@ -6,7 +6,7 @@ import {
   where,
   getDocs,
   DocumentReference,
-  writeBatch,
+  updateDoc,
 } from 'firebase/firestore';
 import { CartUpdatedItem } from '@/redux/slices/Cart/Cart.types';
 
@@ -20,27 +20,23 @@ export const updateCartInDatabase = createAsyncThunk(
         where('id', 'in', productIds)
       );
       const snapshot = await getDocs(queryRef);
-      const batch = writeBatch(firestore);
       snapshot.forEach((doc) => {
         const productId = doc.data().id;
         const cartItem = cartItems.find((item) => item.id === productId);
 
         if (cartItem) {
           const quantitiesInCart = cartItem.quantities;
-          const shirtRef: DocumentReference = doc.ref;
+          const quantitiesToUpdate = {
+            S: doc.data().totalQuantity.S - quantitiesInCart.S,
+            M: doc.data().totalQuantity.M - quantitiesInCart.M,
+            L: doc.data().totalQuantity.L - quantitiesInCart.L,
+            XL: doc.data().totalQuantity.XL - quantitiesInCart.XL,
+          };
 
-          batch.update(shirtRef, {
-            totalQuantity: {
-              S: doc.data().totalQuantity.S - quantitiesInCart.S,
-              M: doc.data().totalQuantity.M - quantitiesInCart.M,
-              L: doc.data().totalQuantity.L - quantitiesInCart.L,
-              XL: doc.data().totalQuantity.XL - quantitiesInCart.XL,
-            },
-          });
+          const shirtRef: DocumentReference = doc.ref;
+          updateDoc(shirtRef, { totalQuantity: quantitiesToUpdate });
         }
       });
-
-      await batch.commit();
     } catch (error) {
       return rejectWithValue(error);
     }

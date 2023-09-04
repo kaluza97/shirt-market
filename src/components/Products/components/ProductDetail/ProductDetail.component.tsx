@@ -107,7 +107,7 @@ export const ProductDetail: FC<ProductDetailProps> = ({ id }) => {
               key={size}
               value={size}
               label={size}
-              disabled={data.totalQuantity[size as Size] === 0}
+              disabled={data.totalQuantity[size as Size] < 0}
               control={<Radio sx={radio} />}
             />
           ))}

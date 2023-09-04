@@ -29,7 +29,6 @@ export const CartWrapper: FC = () => {
     try {
       const resultAction = await dispatch(updateCartInDatabase(cartItems));
       if (updateCartInDatabase.fulfilled.match(resultAction)) {
-        dispatch(updateCartInDatabase(cartItems));
         dispatch(clearCart());
         setPaymentStatus('success');
       }
@@ -81,7 +80,6 @@ export const CartWrapper: FC = () => {
             sx={confirmButton}
             endIcon={<PaymentIcon />}
           >
-            {' '}
             Proceed to Payment
           </Button>
         </>

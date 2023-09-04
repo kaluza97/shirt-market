@@ -5,6 +5,7 @@ import {
   IconContainer,
   Navigation,
   NavigationContainer,
+  QuantityContainer,
   menuIcon,
 } from '@/components/NavigationMenu/NavigationMenu.styles';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -58,7 +59,8 @@ export const NavigationMenu: FC = () => {
           <Logo />
           <div>
             <IconButton aria-label="cart" onClick={handleCartMenu}>
-              <ShoppingCartOutlinedIcon sx={menuIcon} /> {totalQuantity}
+              <ShoppingCartOutlinedIcon sx={menuIcon} />
+              <QuantityContainer>{totalQuantity}</QuantityContainer>
             </IconButton>
             <IconButton aria-label="more" onClick={handleMoreMenu}>
               <MenuIcon sx={menuIcon} />

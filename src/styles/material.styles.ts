@@ -9,6 +9,15 @@ export const mainTheme = createTheme({
     secondary: {
       main: Colors.secondary,
     },
+    success: {
+      main: Colors.primary,
+    },
+    error: {
+      main: Colors.red,
+    },
+    warning: {
+      main: Colors.yellow,
+    },
   },
   typography: {
     fontSize: 18,

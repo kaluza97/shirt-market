@@ -11,9 +11,23 @@ export const ErrorMessageContainer = styled.div<ErrorMessageInterface>`
   visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
 `;
 
-export const errorText: SxProps = {
+const text: SxProps = {
   textAlign: 'center',
   fontFamily: FontFamily.sans,
   fontSize: FontSizes.middle,
+};
+
+export const errorText: SxProps = {
+  ...text,
   color: Colors.red,
+};
+
+export const alertTextBlack: SxProps = {
+  ...text,
+  color: Colors.black,
+};
+
+export const alertTextWhite: SxProps = {
+  ...text,
+  color: Colors.white,
 };

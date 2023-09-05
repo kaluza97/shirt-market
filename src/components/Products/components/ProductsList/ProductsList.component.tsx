@@ -5,7 +5,7 @@ import { ProductsItem } from '@/components/Products/components/ProductsItem/Prod
 import { useDispatch, useSelector } from '@/redux/hooks';
 
 export const ProductsList: FC = () => {
-  const { data, loading, error } = useSelector((state) => state.shirts);
+  const { data, loading, error } = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
   useEffect(() => {

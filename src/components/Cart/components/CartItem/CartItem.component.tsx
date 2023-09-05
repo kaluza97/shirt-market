@@ -81,8 +81,8 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
               <Image
                 src={img}
                 alt={name}
-                width={100}
-                height={120}
+                width={110}
+                height={150}
                 priority
                 onClick={() => handleRedirectToDetail(id)}
               />

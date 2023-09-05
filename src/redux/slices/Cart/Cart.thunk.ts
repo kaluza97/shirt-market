@@ -12,7 +12,7 @@ import { CartUpdatedItem } from '@/redux/slices/Cart/Cart.types';
 
 export const updateCartInDatabase = createAsyncThunk(
   'cart/updateCartInDatabase',
-  async (cartItems: CartUpdatedItem[], { rejectWithValue }) => {
+  async (cartItems: Array<CartUpdatedItem>, { rejectWithValue }) => {
     try {
       const productIds = cartItems.map((cartItem) => cartItem.id);
       const queryRef = query(

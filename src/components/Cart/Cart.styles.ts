@@ -19,6 +19,7 @@ export const DescriptionContainer = styled(FlexContainer)`
 `;
 
 export const EmptyCartContainer = styled(FlexContainer)`
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 `;

@@ -14,7 +14,7 @@ import { useRouter } from 'next/router';
 import { navigationData } from '@/data/navigation.data';
 import { Pages } from '@/constants/pages';
 import { useSelector } from '@/redux/hooks';
-import { summedQuantities } from './NavigationMenu.utils';
+import { summedQuantities } from '@/components/NavigationMenu/NavigationMenu.utils';
 
 export const NavigationMenu: FC = () => {
   const cartItems = useSelector((state) => state.cart.cart);

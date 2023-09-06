@@ -15,7 +15,7 @@ import {
 import LogoutIcon from '@mui/icons-material/Logout';
 import { AuthContext } from '@/context/Auth.context';
 import { useRouter } from 'next/router';
-import { PagePaths, Pages } from '@/constants/pages';
+import { PagePaths } from '@/constants/pages';
 
 export const ProfileMenu: FC = () => {
   const { logout } = useContext(AuthContext);
@@ -25,13 +25,16 @@ export const ProfileMenu: FC = () => {
     logout();
   };
 
-  const handleNavigate = (path: keyof PagePaths) => {
-    push(Pages[path]);
+  const handleNavigate = (path: PagePaths) => {
+    push(path);
   };
 
   return (
     <List>
-      <ListItem disablePadding onClick={() => handleNavigate('CART_PAGE')}>
+      <ListItem
+        disablePadding
+        onClick={() => handleNavigate(PagePaths.CART_PAGE)}
+      >
         <ListItemButton>
           <ListItemIcon>
             <ShoppingCartOutlinedIcon />
@@ -39,7 +42,10 @@ export const ProfileMenu: FC = () => {
           <ListItemText primary="Cart" />
         </ListItemButton>
       </ListItem>
-      <ListItem disablePadding onClick={() => handleNavigate('ORDER_PAGE')}>
+      <ListItem
+        disablePadding
+        onClick={() => handleNavigate(PagePaths.ORDER_PAGE)}
+      >
         <ListItemButton>
           <ListItemIcon>
             <InventoryIcon />

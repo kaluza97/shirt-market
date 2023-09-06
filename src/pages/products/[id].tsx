@@ -7,23 +7,23 @@ import { Layout } from '@/components/Layout/Layout.component';
 import { ProductDetail } from '@/components/Products/components/ProductDetail/ProductDetail.component';
 
 const ProductDetailPage: FC = () => {
-    const router = useRouter();
-    const { id } = router.query;
+  const router = useRouter();
+  const { id } = router.query;
 
-    return (
-        <Layout
-            header={<NavigationMenu />}
-            content={
-                <Box sx={productBox}>
-                    {id ? (
-                        <ProductDetail id={Number(id)} />
-                    ) : (
-                        <Typography sx={imgTitle}>Product not found.</Typography>
-                    )}
-                </Box>
-            }
-        />
-    );
+  return (
+    <Layout
+      header={<NavigationMenu />}
+      content={
+        <Box sx={productBox}>
+          {id ? (
+            <ProductDetail id={Number(id)} />
+          ) : (
+            <Typography sx={imgTitle}>Product not found.</Typography>
+          )}
+        </Box>
+      }
+    />
+  );
 };
 
 export default ProductDetailPage;

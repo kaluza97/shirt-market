@@ -5,11 +5,11 @@ type BannerItem = {
 
 export const bannerData: Array<BannerItem> = [
   {
-    src: 'summerCollection',
+    src: '/assets/summerCollection.jpg',
     alt: 'Fasion model in summer collection',
   },
   {
-    src: 'sportCollection',
+    src: '/assets/sportCollection.jpg',
     alt: 'Fashion model in sports outfit',
   },
 ];

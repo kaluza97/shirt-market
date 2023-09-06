@@ -8,15 +8,13 @@ import {
 } from '@/components/Products/Products.styles';
 import { ProductsList } from '@/components/Products/components/ProductsList/ProductsList.component';
 
-export const ProductsWrapper: FC = () => {
-  return (
-    <ProductsListContainer>
-      <Typography component="h3" variant="h3" sx={headerTitle}>
-        New bestsellers products
-      </Typography>
-      <Box sx={productContainer}>
-        <ProductsList />
-      </Box>
-    </ProductsListContainer>
-  );
-};
+export const ProductsWrapper: FC = () => (
+  <ProductsListContainer>
+    <Typography component="h3" variant="h4" sx={headerTitle}>
+      New bestsellers products
+    </Typography>
+    <Box sx={productContainer}>
+      <ProductsList />
+    </Box>
+  </ProductsListContainer>
+);

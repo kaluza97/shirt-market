@@ -13,15 +13,16 @@ import {
   AuthProviderProps,
   AuthErrorSchema,
 } from '@/context/Auth.types';
+import { Pages } from '@/constants/pages';
 
 const initialAuthError: FirebaseError = { code: '', name: '', message: '' };
 
 const AuthContext = createContext<AuthContextProps>({
   authError: initialAuthError,
   user: null,
-  login: () => { },
-  register: () => { },
-  logout: () => { },
+  login: () => {},
+  register: () => {},
+  logout: () => {},
 });
 
 const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
@@ -35,7 +36,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         setUser(userData);
       } else {
         setUser(null);
-        push('/login');
+        push(Pages.LOGIN_PAGE);
       }
     });
     return () => unsubscribe();

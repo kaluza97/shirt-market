@@ -1,11 +1,8 @@
-import { FC, ReactNode, useContext } from 'react';
+import { FC, useContext } from 'react';
 import { AuthContext } from '@/context/Auth.context';
+import { SignOutWrapperProps } from '@/components/SignOut/SignOut.types';
 
-type Props = {
-  children: ReactNode;
-};
-
-export const SignOutWrapper: FC<Props> = ({ children }) => {
+export const SignOutWrapper: FC<SignOutWrapperProps> = ({ children }) => {
   const { logout } = useContext(AuthContext);
 
   const handleLogout = () => {

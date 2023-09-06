@@ -4,7 +4,7 @@ import { AuthContext } from '@/context/Auth.context';
 import {
   errorText,
   ErrorMessageContainer,
-} from '@/components/ErrorMessages/Error.styles';
+} from '@/components/Messages/Messages.styles';
 
 export const AuthError: FC = () => {
   const { authError } = useContext(AuthContext);

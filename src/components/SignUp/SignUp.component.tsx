@@ -6,7 +6,7 @@ import {
   inputText,
   submitButton,
 } from '@/components/SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.styles';
-import { AuthError } from '@/components/ErrorMessages/AuthError.component';
+import { AuthError } from '@/components/Messages/components/AuthError/AuthError.component';
 import { Terms } from '@/components/Terms/Terms.component';
 import { SignUpFormWrapper } from '@/components/SignUp/SingUp.styles';
 

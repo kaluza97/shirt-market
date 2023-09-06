@@ -1,5 +1,6 @@
 export interface CartType {
   cart: Array<CartItem>;
+  lastItemToDelete: null | { id: number; size: Size };
 }
 
 export type Size = 'S' | 'M' | 'L' | 'XL';
@@ -21,3 +22,7 @@ export interface AddCartProps {
   price: number;
   size: Size;
 }
+
+export type SizeAndQuantity = {
+  [key: string]: number;
+};

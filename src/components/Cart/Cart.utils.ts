@@ -5,7 +5,7 @@ export const calculateTotalCost = (cartItems: CartItem[]): number => {
 
   cartItems.forEach((item) => {
     Object.values(item.quantities).forEach((quantity) => {
-      totalCost += item.price * quantity;
+      totalCost = totalCost + item.price * quantity;
     });
   });
 

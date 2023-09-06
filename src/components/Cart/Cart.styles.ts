@@ -9,18 +9,21 @@ export const CartItemsContainer = styled.div`
   box-shadow: ${Colors.shadow} 0px 1rem 1rem -1rem;
 `;
 
-export const DescriptionContainer = styled.div`
+const FlexContainer = styled.div`
   display: flex;
-  flex-direction: column;
   margin: 0 1rem;
 `;
 
-export const EmptyCartContainer = styled(DescriptionContainer)`
+export const DescriptionContainer = styled(FlexContainer)`
+  flex-direction: column;
+`;
+
+export const EmptyCartContainer = styled(FlexContainer)`
   align-items: center;
   justify-content: center;
 `;
 
-export const ButtonContainer = styled(DescriptionContainer)`
+export const ButtonContainer = styled(FlexContainer)`
   flex-direction: space-evently;
 `;
 

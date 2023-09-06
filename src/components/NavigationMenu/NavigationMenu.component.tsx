@@ -1,4 +1,4 @@
-import { FC, useState, MouseEvent, useEffect } from 'react';
+import { FC, useState, MouseEvent } from 'react';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import {
   GapContainer,
@@ -14,25 +14,14 @@ import { useRouter } from 'next/router';
 import { navigationData } from '@/data/navigation.data';
 import { Pages } from '@/constants/pages';
 import { useSelector } from '@/redux/hooks';
+import { summedQuantities } from './NavigationMenu.utils';
 
 export const NavigationMenu: FC = () => {
   const cartItems = useSelector((state) => state.cart.cart);
+  const quantities = cartItems.map(({ quantities }) => quantities);
+  const totalQuantity = summedQuantities(quantities);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
-  const [totalQuantity, setTotalQuantity] = useState(0);
   const { push } = useRouter();
-
-  useEffect(() => {
-    const newTotalQuantity = cartItems.reduce(
-      (total, item) =>
-        total +
-        Object.values(item.quantities).reduce(
-          (sum, quantity) => sum + quantity,
-          0
-        ),
-      0
-    );
-    setTotalQuantity(newTotalQuantity);
-  }, [cartItems]);
 
   const handleMoreMenu = (event: MouseEvent<HTMLElement>) => {
     setMenuAnchor(event.currentTarget);

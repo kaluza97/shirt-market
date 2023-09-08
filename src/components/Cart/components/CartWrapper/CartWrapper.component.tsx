@@ -11,7 +11,7 @@ import Image from 'next/image';
 import { CartItem } from '@/components/Cart/components/CartItem/CartItem.component';
 import { calculateTotalCost } from '@/components/Cart/Cart.utils';
 import { Divider } from '@mui/material';
-import { updateCartInDatabase } from '@/redux/slices/Cart/Cart.thunk';
+import { buyCartsProducts } from '@/redux/slices/Cart/Cart.thunk';
 import { clearCart } from '@/redux/slices/Cart/Cart.slice';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
@@ -27,8 +27,8 @@ export const CartWrapper: FC = () => {
   const handleProceedPayment = async () => {
     setPaymentStatus('');
     try {
-      const resultAction = await dispatch(updateCartInDatabase(cartItems));
-      if (updateCartInDatabase.fulfilled.match(resultAction)) {
+      const resultAction = await dispatch(buyCartsProducts(cartItems));
+      if (buyCartsProducts.fulfilled.match(resultAction)) {
         dispatch(clearCart());
         setPaymentStatus('success');
       }

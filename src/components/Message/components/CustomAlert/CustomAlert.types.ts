@@ -1,5 +1,5 @@
 export interface AlertProps {
-  visibleProp?: boolean;
+  isVisible?: boolean;
   alertMessage: string;
   alertType: 'success' | 'info' | 'warning' | 'error';
 }

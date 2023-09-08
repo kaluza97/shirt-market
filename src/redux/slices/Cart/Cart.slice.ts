@@ -8,6 +8,7 @@ import {
 
 const initialState: CartType = {
   cart: [],
+  lastItemToDelete: null,
 };
 
 const initialQuantities: Quantities = {
@@ -60,12 +61,16 @@ const cartSlice = createSlice({
       if (cartItem && cartItem.quantities[size] > 0) {
         cartItem.quantities[size] = cartItem.quantities[size] - 1;
       }
-      if (
-        cartItem &&
-        Object.values(cartItem.quantities).every((quantity) => quantity === 0)
-      ) {
-        state.cart = state.cart.filter((item) => item.id !== id);
-      }
+      state.lastItemToDelete = null;
+    },
+    openConfirmModal: (
+      state,
+      action: PayloadAction<{ id: number; size: Size }>
+    ) => {
+      state.lastItemToDelete = action.payload;
+    },
+    closeConfirmModal: (state) => {
+      state.lastItemToDelete = null;
     },
     clearCart: (state) => {
       state.cart = [];
@@ -73,5 +78,11 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  clearCart,
+  openConfirmModal,
+  closeConfirmModal,
+} = cartSlice.actions;
 export default cartSlice.reducer;

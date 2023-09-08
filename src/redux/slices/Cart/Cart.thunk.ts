@@ -10,14 +10,14 @@ import {
 } from 'firebase/firestore';
 import { CartUpdatedItem } from '@/redux/slices/Cart/Cart.types';
 
-export const updateCartInDatabase = createAsyncThunk(
-  'cart/updateCartInDatabase',
-  async (cartItems: CartUpdatedItem[], { rejectWithValue }) => {
+export const buyCartsProducts = createAsyncThunk(
+  'cart/buyCartsProducts',
+  async (cartItems: Array<CartUpdatedItem>, { rejectWithValue }) => {
     try {
-      const productIds = cartItems.map((cartItem) => cartItem.id);
+      const productsIds = cartItems.map((cartItem) => cartItem.id);
       const queryRef = query(
         collection(firestore, 'shirts'),
-        where('id', 'in', productIds)
+        where('id', 'in', productsIds)
       );
       const snapshot = await getDocs(queryRef);
       snapshot.forEach((doc) => {
@@ -33,8 +33,8 @@ export const updateCartInDatabase = createAsyncThunk(
             XL: doc.data().totalQuantity.XL - quantitiesInCart.XL,
           };
 
-          const shirtRef: DocumentReference = doc.ref;
-          updateDoc(shirtRef, { totalQuantity: quantitiesToUpdate });
+          const productsRef: DocumentReference = doc.ref;
+          updateDoc(productsRef, { totalQuantity: quantitiesToUpdate });
         }
       });
     } catch (error) {

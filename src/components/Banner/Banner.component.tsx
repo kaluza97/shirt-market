@@ -6,12 +6,7 @@ export const Banner: FC = () => (
   <Card>
     {bannerData.map(({ src, alt }) => (
       <Suspense fallback={<CircularProgress />} key={src}>
-        <CardMedia
-          component="img"
-          height="640"
-          image={`/assets/${src}.jpg`}
-          alt={alt}
-        />
+        <CardMedia component="img" height="640" image={src} alt={alt} />
       </Suspense>
     ))}
   </Card>

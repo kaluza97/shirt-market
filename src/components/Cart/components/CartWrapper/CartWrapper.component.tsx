@@ -1,6 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from '@/redux/hooks';
-import { Button, Typography } from '@mui/material';
+import { Button, CircularProgress, Typography } from '@mui/material';
 import {
   CartContainer,
   EmptyCartContainer,
@@ -11,7 +11,7 @@ import Image from 'next/image';
 import { CartItem } from '@/components/Cart/components/CartItem/CartItem.component';
 import { calculateTotalCost } from '@/components/Cart/Cart.utils';
 import { Divider } from '@mui/material';
-import { updateCartInDatabase } from '@/redux/slices/Cart/Cart.thunk';
+import { buyCartsProducts } from '@/redux/slices/Cart/Cart.thunk';
 import { clearCart } from '@/redux/slices/Cart/Cart.slice';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
@@ -19,26 +19,22 @@ import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomA
 export const CartWrapper: FC = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cart);
+  const paymentStatus = useSelector((state) => state.cart.paymentStatus);
   const allProductsTotalCost = calculateTotalCost(cartItems);
-  const [paymentStatus, setPaymentStatus] = useState<'success' | 'error' | ''>(
-    ''
-  );
 
-  const handleProceedPayment = async () => {
-    setPaymentStatus('');
-    try {
-      const resultAction = await dispatch(updateCartInDatabase(cartItems));
-      if (updateCartInDatabase.fulfilled.match(resultAction)) {
-        dispatch(clearCart());
-        setPaymentStatus('success');
-      }
-    } catch (error) {
-      setPaymentStatus('error');
-    }
+  const handleProceedPayment = () => {
+    dispatch(buyCartsProducts(cartItems));
   };
+
+  useEffect(() => {
+    if (paymentStatus === 'success') {
+      dispatch(clearCart());
+    }
+  }, [paymentStatus]);
 
   return (
     <CartContainer>
+      {paymentStatus === 'loading' && <CircularProgress />}
       {paymentStatus === 'success' && (
         <CustomAlert
           alertType="success"

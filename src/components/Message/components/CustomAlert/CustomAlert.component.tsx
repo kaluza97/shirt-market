@@ -7,12 +7,12 @@ import {
 } from '@/components/Message/Message.styles';
 
 export const CustomAlert: FC<AlertProps> = ({
-  visibleProp = true,
+  isVisible = true,
   alertMessage,
   alertType,
 }) => (
   <>
-    {visibleProp && (
+    {isVisible && (
       <Alert variant="filled" severity={alertType}>
         <Typography
           component="h3"

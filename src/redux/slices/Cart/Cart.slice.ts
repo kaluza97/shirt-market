@@ -5,9 +5,12 @@ import {
   Quantities,
   Size,
 } from '@/redux/slices/Cart/Cart.types';
+import { buyCartsProducts } from '@/redux/slices/Cart/Cart.thunk';
 
 const initialState: CartType = {
   cart: [],
+  lastItemToDelete: null,
+  paymentStatus: null,
 };
 
 const initialQuantities: Quantities = {
@@ -24,7 +27,6 @@ const cartSlice = createSlice({
     addToCart: (state, action: PayloadAction<AddCartProps>) => {
       const { id, size, img, name, price } = action.payload;
       const existingCartItem = state.cart.find((item) => item.id === id);
-
       if (existingCartItem) {
         state.cart = state.cart.map((item) =>
           item.id === id
@@ -60,18 +62,44 @@ const cartSlice = createSlice({
       if (cartItem && cartItem.quantities[size] > 0) {
         cartItem.quantities[size] = cartItem.quantities[size] - 1;
       }
-      if (
-        cartItem &&
-        Object.values(cartItem.quantities).every((quantity) => quantity === 0)
-      ) {
-        state.cart = state.cart.filter((item) => item.id !== id);
-      }
+      state.lastItemToDelete = null;
+    },
+    openConfirmModal: (
+      state,
+      action: PayloadAction<{ id: number; size: Size }>
+    ) => {
+      state.lastItemToDelete = action.payload;
+    },
+    closeConfirmModal: (state) => {
+      state.lastItemToDelete = null;
     },
     clearCart: (state) => {
       state.cart = [];
     },
+    resetPaymentStatus: (state) => {
+      state.paymentStatus = null;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(buyCartsProducts.pending, (state) => {
+        state.paymentStatus = 'loading';
+      })
+      .addCase(buyCartsProducts.fulfilled, (state) => {
+        state.paymentStatus = 'success';
+      })
+      .addCase(buyCartsProducts.rejected, (state) => {
+        state.paymentStatus = 'error';
+      });
   },
 });
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  clearCart,
+  resetPaymentStatus,
+  openConfirmModal,
+  closeConfirmModal,
+} = cartSlice.actions;
 export default cartSlice.reducer;

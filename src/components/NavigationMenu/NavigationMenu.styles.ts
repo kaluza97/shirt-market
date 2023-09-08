@@ -17,7 +17,7 @@ export const QuantityContainer = styled.div`
 
 export const NavigationContainer = styled.div`
   position: fixed;
-  background-color: white;
+  background-color: ${Colors.white};
   width: 100%;
   z-index: ${ZIndexes.menu};
 `;

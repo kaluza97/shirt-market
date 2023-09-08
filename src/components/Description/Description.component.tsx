@@ -14,13 +14,7 @@ export const Description: FC = () => (
     <DesktopContent>
       {descriptionItems.map(({ src, alt, description }) => (
         <DesktopDescriptionItem key={src}>
-          <Image
-            src={`/assets/${src}.jpg`}
-            alt={alt}
-            width={150}
-            height={150}
-            priority
-          />
+          <Image src={src} alt={alt} width={150} height={150} priority />
           <Typography component="h2" sx={descriptionText}>
             {description}
           </Typography>

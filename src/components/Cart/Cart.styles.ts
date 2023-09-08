@@ -15,19 +15,24 @@ export const CartItemsContainer = styled.div`
   box-shadow: ${Colors.shadow} 0px 1rem 1rem -1rem;
 `;
 
-export const DescriptionContainer = styled.div`
+const FlexContainer = styled.div`
   display: flex;
-  flex-direction: column;
   margin: 0 1rem;
 `;
 
-export const EmptyCartContainer = styled(DescriptionContainer)`
+export const DescriptionContainer = styled(FlexContainer)`
+  flex-direction: column;
+`;
+
+export const EmptyCartContainer = styled(FlexContainer)`
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 
-export const ButtonContainer = styled(DescriptionContainer)`
-  flex-direction: space-evently;
+export const ButtonContainer = styled(FlexContainer)`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const cartButton: SxProps = {
@@ -35,8 +40,9 @@ export const cartButton: SxProps = {
   fontSize: FontSizes.extraSmall,
   fontWeight: FontWeights.bold,
   color: Colors.white,
-  padding: '0.5rem',
+  padding: '1rem',
   marginBottom: '2rem',
+  height: '4rem',
 };
 
 export const confirmButton: SxProps = {

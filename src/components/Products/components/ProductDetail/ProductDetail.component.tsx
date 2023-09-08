@@ -107,7 +107,7 @@ export const ProductDetail: FC<ProductDetailProps> = ({ id }) => {
               key={size}
               value={size}
               label={size}
-              disabled={data.totalQuantity[size as Size] < 1}
+              disabled={data.totalQuantity[size as Size] === 0}
               control={<Radio sx={radio} />}
             />
           ))}
@@ -123,7 +123,7 @@ export const ProductDetail: FC<ProductDetailProps> = ({ id }) => {
         </Button>
         <CustomAlert
           alertType="warning"
-          visibleProp={isAlertVisible}
+          isVisible={isAlertVisible}
           alertMessage="There are no more products in this size."
         />
       </FormControl>

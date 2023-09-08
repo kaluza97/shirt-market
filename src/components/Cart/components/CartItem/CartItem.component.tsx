@@ -5,7 +5,12 @@ import AddIcon from '@mui/icons-material/Add';
 import { Box, Button, Typography } from '@mui/material';
 import MinusIcon from '@mui/icons-material/Remove';
 import { Size } from '@/redux/slices/Cart/Cart.types';
-import { removeFromCart, addToCart } from '@/redux/slices/Cart/Cart.slice';
+import {
+  removeFromCart,
+  addToCart,
+  openConfirmModal,
+  closeConfirmModal,
+} from '@/redux/slices/Cart/Cart.slice';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { ConfirmModal } from '@/components/ConfirmModal/ConfirmModal.component';
 import { CartItemProps } from '@/components/Cart/Cart.types';
@@ -23,14 +28,12 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
   const dispatch = useDispatch();
   const { push } = useRouter();
   const { data } = useSelector((state) => state.productById);
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
-  const [removedSize, setRemovedSize] = useState<Size | ''>('');
+  const { lastItemToDelete } = useSelector((state) => state.cart);
   const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
 
   const handleRemoveFromCart = (id: number, size: Size, quantity: number) => {
     if (quantity === 1) {
-      setRemovedSize(size);
-      setIsConfirmModalOpen(true);
+      dispatch(openConfirmModal({ id, size }));
     } else {
       dispatch(removeFromCart({ id, size }));
     }
@@ -52,15 +55,14 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
     }
   };
 
-  const handleConfirmModal = (id: number) => {
-    if (removedSize !== '') {
-      dispatch(removeFromCart({ id, size: removedSize }));
+  const handleConfirmModal = () => {
+    if (lastItemToDelete) {
+      dispatch(removeFromCart(lastItemToDelete));
     }
-    setIsConfirmModalOpen(false);
   };
 
   const handleCloseConfirmModal = () => {
-    setIsConfirmModalOpen(false);
+    dispatch(closeConfirmModal());
   };
 
   const handleRedirectToDetail = (id: number) => {
@@ -71,7 +73,7 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
     <Box>
       <CustomAlert
         alertType="warning"
-        visibleProp={isAlertVisible}
+        isVisible={isAlertVisible}
         alertMessage="There are no more products in this size."
       />
       {Object.entries(quantities).map(([size, quantity], index) => (
@@ -131,9 +133,9 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
               </ButtonContainer>
 
               <ConfirmModal
-                open={isConfirmModalOpen}
+                open={!!lastItemToDelete}
                 onClose={handleCloseConfirmModal}
-                onConfirm={() => handleConfirmModal(id)}
+                onConfirm={handleConfirmModal}
                 title="Confirm Removal"
                 message="Are you sure you want to remove this item from the cart?"
               />

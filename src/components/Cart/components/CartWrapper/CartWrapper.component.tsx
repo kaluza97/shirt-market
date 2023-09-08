@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { Button, CircularProgress, Typography } from '@mui/material';
 import {
@@ -24,8 +24,13 @@ export const CartWrapper: FC = () => {
 
   const handleProceedPayment = () => {
     dispatch(buyCartsProducts(cartItems));
-    dispatch(clearCart());
   };
+
+  useEffect(() => {
+    if (paymentStatus === 'success') {
+      dispatch(clearCart());
+    }
+  }, [paymentStatus]);
 
   return (
     <CartContainer>

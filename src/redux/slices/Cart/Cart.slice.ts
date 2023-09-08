@@ -27,7 +27,6 @@ const cartSlice = createSlice({
     addToCart: (state, action: PayloadAction<AddCartProps>) => {
       const { id, size, img, name, price } = action.payload;
       const existingCartItem = state.cart.find((item) => item.id === id);
-      state.paymentStatus = null;
       if (existingCartItem) {
         state.cart = state.cart.map((item) =>
           item.id === id
@@ -77,6 +76,9 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.cart = [];
     },
+    resetPaymentStatus: (state) => {
+      state.paymentStatus = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -96,6 +98,7 @@ export const {
   addToCart,
   removeFromCart,
   clearCart,
+  resetPaymentStatus,
   openConfirmModal,
   closeConfirmModal,
 } = cartSlice.actions;

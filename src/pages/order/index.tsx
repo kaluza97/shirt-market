@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { Layout } from '@/components/Layout/Layout.component';
 import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
-import { Order } from '@/components/Order/Order.component';
+import { OrderWrapper } from '@/components/Order/OrderWrapper.component';
 
 const OrderPage: FC = () => (
-  <Layout header={<NavigationMenu />} content={<Order />} />
+  <Layout header={<NavigationMenu />} content={<OrderWrapper />} />
 );
 
 export default OrderPage;

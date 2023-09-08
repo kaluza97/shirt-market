@@ -17,7 +17,7 @@ import {
   submitButton,
 } from '@/components/SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.styles';
 import { AuthError } from '@/components/Message/components/AuthError/AuthError.component';
-import { Pages } from '@/constants/pages';
+import { PagePaths } from '@/constants/pages';
 
 export const SignInWithEmailPassword: FC = () => {
   const { login, user } = useContext(AuthContext);
@@ -27,7 +27,7 @@ export const SignInWithEmailPassword: FC = () => {
   const [password, setPassword] = useState<string>('');
 
   useEffect(() => {
-    user && push(Pages.HOME_PAGE);
+    user && push(PagePaths.HOME_PAGE);
   }, [user, push]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

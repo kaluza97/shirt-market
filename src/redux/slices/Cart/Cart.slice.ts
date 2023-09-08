@@ -5,10 +5,12 @@ import {
   Quantities,
   Size,
 } from '@/redux/slices/Cart/Cart.types';
+import { buyCartsProducts } from '@/redux/slices/Cart/Cart.thunk';
 
 const initialState: CartType = {
   cart: [],
   lastItemToDelete: null,
+  paymentStatus: null,
 };
 
 const initialQuantities: Quantities = {
@@ -25,7 +27,7 @@ const cartSlice = createSlice({
     addToCart: (state, action: PayloadAction<AddCartProps>) => {
       const { id, size, img, name, price } = action.payload;
       const existingCartItem = state.cart.find((item) => item.id === id);
-
+      state.paymentStatus = null;
       if (existingCartItem) {
         state.cart = state.cart.map((item) =>
           item.id === id
@@ -75,6 +77,18 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.cart = [];
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(buyCartsProducts.pending, (state) => {
+        state.paymentStatus = 'loading';
+      })
+      .addCase(buyCartsProducts.fulfilled, (state) => {
+        state.paymentStatus = 'success';
+      })
+      .addCase(buyCartsProducts.rejected, (state) => {
+        state.paymentStatus = 'error';
+      });
   },
 });
 

@@ -1,6 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { useDispatch, useSelector } from '@/redux/hooks';
-import { Button, Typography } from '@mui/material';
+import { Button, CircularProgress, Typography } from '@mui/material';
 import {
   CartContainer,
   EmptyCartContainer,
@@ -19,26 +19,17 @@ import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomA
 export const CartWrapper: FC = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cart);
+  const paymentStatus = useSelector((state) => state.cart.paymentStatus);
   const allProductsTotalCost = calculateTotalCost(cartItems);
-  const [paymentStatus, setPaymentStatus] = useState<'success' | 'error' | ''>(
-    ''
-  );
 
-  const handleProceedPayment = async () => {
-    setPaymentStatus('');
-    try {
-      const resultAction = await dispatch(buyCartsProducts(cartItems));
-      if (buyCartsProducts.fulfilled.match(resultAction)) {
-        dispatch(clearCart());
-        setPaymentStatus('success');
-      }
-    } catch (error) {
-      setPaymentStatus('error');
-    }
+  const handleProceedPayment = () => {
+    dispatch(buyCartsProducts(cartItems));
+    dispatch(clearCart());
   };
 
   return (
     <CartContainer>
+      {paymentStatus === 'loading' && <CircularProgress />}
       {paymentStatus === 'success' && (
         <CustomAlert
           alertType="success"

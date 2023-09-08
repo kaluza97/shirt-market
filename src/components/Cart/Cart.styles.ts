@@ -31,7 +31,8 @@ export const EmptyCartContainer = styled(FlexContainer)`
 `;
 
 export const ButtonContainer = styled(FlexContainer)`
-  flex-direction: space-evently;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const cartButton: SxProps = {
@@ -39,8 +40,9 @@ export const cartButton: SxProps = {
   fontSize: FontSizes.extraSmall,
   fontWeight: FontWeights.bold,
   color: Colors.white,
-  padding: '0.5rem',
+  padding: '1rem',
   marginBottom: '2rem',
+  height: '4rem',
 };
 
 export const confirmButton: SxProps = {

@@ -33,7 +33,7 @@ export const CartWrapper: FC = () => {
       items: cartItems,
     };
 
-    const previousOrders = orders.data;
+    const previousOrders = orders.data ? orders.data : [];
     const allOrders: SaveOrderItem[] = [...previousOrders, purchasedItem];
 
     if (user?.uid) {

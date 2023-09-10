@@ -16,7 +16,7 @@ import {
   paragraph,
   submitButton,
 } from '@/components/SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.styles';
-import { AuthError } from '@/components/Messages/components/AuthError/AuthError.component';
+import { AuthError } from '@/components/Message/components/AuthError/AuthError.component';
 import { Pages } from '@/constants/pages';
 
 export const SignInWithEmailPassword: FC = () => {

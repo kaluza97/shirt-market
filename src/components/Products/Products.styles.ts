@@ -74,6 +74,8 @@ export const confirmButton: SxProps = {
 };
 
 export const radioGroup: SxProps = {
+  display: 'flex',
+  justifyContent: 'center',
   paddingTop: '0.5rem',
 };
 

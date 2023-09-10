@@ -8,6 +8,13 @@ export const GapContainer = styled.div`
   height: 7rem;
 `;
 
+export const QuantityContainer = styled.div`
+  padding: 0.4rem;
+  background-color: ${Colors.primary};
+  color: ${Colors.white};
+  border-radius: 0.4rem;
+`;
+
 export const NavigationContainer = styled.div`
   position: fixed;
   background-color: ${Colors.white};

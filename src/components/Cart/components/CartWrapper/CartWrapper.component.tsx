@@ -1,18 +1,57 @@
-import React, { FC } from 'react';
-import { useSelector } from '@/redux/hooks';
-import { Typography } from '@mui/material';
-import { EmptyCartContainer, headerText } from '@/components/Cart/Cart.styles';
+import React, { FC, useEffect } from 'react';
+import { useDispatch, useSelector } from '@/redux/hooks';
+import { Button, CircularProgress, Typography } from '@mui/material';
+import {
+  CartContainer,
+  EmptyCartContainer,
+  confirmButton,
+  headerText,
+} from '@/components/Cart/Cart.styles';
 import Image from 'next/image';
 import { CartItem } from '@/components/Cart/components/CartItem/CartItem.component';
 import { calculateTotalCost } from '@/components/Cart/Cart.utils';
 import { Divider } from '@mui/material';
+import { buyCartsProducts } from '@/redux/slices/Cart/Cart.thunk';
+import { clearCart } from '@/redux/slices/Cart/Cart.slice';
+import PaymentIcon from '@mui/icons-material/Payment';
+import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 
 export const CartWrapper: FC = () => {
+  const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cart);
+  const { isPaymentSuccessful, loading, error } = useSelector(
+    (state) => state.cart
+  );
   const allProductsTotalCost = calculateTotalCost(cartItems);
 
+  const handleProceedPayment = () => {
+    dispatch(buyCartsProducts(cartItems));
+  };
+
+  useEffect(() => {
+    if (isPaymentSuccessful) {
+      dispatch(clearCart());
+    }
+  }, [isPaymentSuccessful]);
+
+  if (loading) {
+    return <CircularProgress />;
+  }
+
   return (
-    <>
+    <CartContainer>
+      {isPaymentSuccessful && (
+        <CustomAlert
+          alertType="success"
+          alertMessage="Congratulations! Your payment was successful."
+        />
+      )}
+      {error && (
+        <CustomAlert
+          alertType="error"
+          alertMessage="Error processing your payment. Please contact customer support."
+        />
+      )}
       {cartItems.length === 0 ? (
         <EmptyCartContainer>
           <Typography sx={headerText}>Your cart is empty.</Typography>
@@ -36,8 +75,16 @@ export const CartWrapper: FC = () => {
           <Typography component="h3" sx={headerText}>
             Total cost: {allProductsTotalCost} $
           </Typography>
+          <Button
+            variant="contained"
+            onClick={handleProceedPayment}
+            sx={confirmButton}
+            endIcon={<PaymentIcon />}
+          >
+            Proceed to Payment
+          </Button>
         </>
       )}
-    </>
+    </CartContainer>
   );
 };

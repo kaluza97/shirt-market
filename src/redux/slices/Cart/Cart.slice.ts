@@ -5,10 +5,14 @@ import {
   Quantities,
   Size,
 } from '@/redux/slices/Cart/Cart.types';
+import { buyCartsProducts } from '@/redux/slices/Cart/Cart.thunk';
 
 const initialState: CartType = {
   cart: [],
   lastItemToDelete: null,
+  isPaymentSuccessful: false,
+  loading: false,
+  error: false,
 };
 
 const initialQuantities: Quantities = {
@@ -25,7 +29,6 @@ const cartSlice = createSlice({
     addToCart: (state, action: PayloadAction<AddCartProps>) => {
       const { id, size, img, name, price } = action.payload;
       const existingCartItem = state.cart.find((item) => item.id === id);
-
       if (existingCartItem) {
         state.cart = state.cart.map((item) =>
           item.id === id
@@ -72,12 +75,36 @@ const cartSlice = createSlice({
     closeConfirmModal: (state) => {
       state.lastItemToDelete = null;
     },
+    clearCart: (state) => {
+      state.cart = [];
+    },
+    resetPaymentStatus: (state) => {
+      state.isPaymentSuccessful = false;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(buyCartsProducts.pending, (state) => {
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(buyCartsProducts.fulfilled, (state) => {
+        state.loading = false;
+        state.isPaymentSuccessful = true;
+        state.error = false;
+      })
+      .addCase(buyCartsProducts.rejected, (state) => {
+        state.loading = false;
+        state.error = true;
+      });
   },
 });
 
 export const {
   addToCart,
   removeFromCart,
+  clearCart,
+  resetPaymentStatus,
   openConfirmModal,
   closeConfirmModal,
 } = cartSlice.actions;

@@ -13,7 +13,6 @@ import {
 } from '@/redux/slices/Cart/Cart.slice';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { ConfirmModal } from '@/components/ConfirmModal/ConfirmModal.component';
-import { Warning } from '@/components/Messages/components/Warning/Warning.component';
 import { CartItemProps } from '@/components/Cart/Cart.types';
 import {
   ButtonContainer,
@@ -22,6 +21,7 @@ import {
   cartButton,
   descriptionText,
 } from '@/components/Cart/Cart.styles';
+import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 
 export const CartItem: FC<CartItemProps> = ({ item }) => {
   const { id, name, img, price, quantities } = item;
@@ -48,7 +48,7 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
     quantity: number
   ) => {
     setIsAlertVisible(false);
-    if (data && data.totalQuantity[size] >= quantity) {
+    if (data && data.totalQuantity[size] > quantity) {
       dispatch(addToCart({ id, size, img, name, price }));
     } else {
       setIsAlertVisible(true);
@@ -71,8 +71,9 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
 
   return (
     <Box>
-      <Warning
-        visibleProp={isAlertVisible}
+      <CustomAlert
+        alertType="warning"
+        isVisible={isAlertVisible}
         alertMessage="There are no more products in this size."
       />
       {Object.entries(quantities).map(([size, quantity], index) => (

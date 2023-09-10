@@ -2,10 +2,16 @@ import styled from '@emotion/styled';
 import { Colors, FontFamily, FontSizes, FontWeights } from '@/styles/variables';
 import { SxProps } from '@mui/material';
 
+export const CartContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const CartItemsContainer = styled.div`
   display: flex;
-  padding: 2rem;
-  margin: 0.5rem;
+  padding: 1rem;
   box-shadow: ${Colors.shadow} 0px 1rem 1rem -1rem;
 `;
 
@@ -25,7 +31,8 @@ export const EmptyCartContainer = styled(FlexContainer)`
 `;
 
 export const ButtonContainer = styled(FlexContainer)`
-  flex-direction: space-evently;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const cartButton: SxProps = {
@@ -33,12 +40,22 @@ export const cartButton: SxProps = {
   fontSize: FontSizes.extraSmall,
   fontWeight: FontWeights.bold,
   color: Colors.white,
-  padding: '0.5rem',
+  padding: '1rem',
   marginBottom: '2rem',
+  height: '4rem',
+};
+
+export const confirmButton: SxProps = {
+  fontFamily: FontFamily.sans,
+  fontSize: FontSizes.small,
+  fontWeight: FontWeights.bold,
+  color: Colors.white,
+  padding: '1rem',
 };
 
 export const descriptionText: SxProps = {
   fontSize: FontSizes.small,
+  fontWeight: FontWeights.bold,
   fontFamily: FontFamily.sans,
   color: Colors.blackLight,
 };

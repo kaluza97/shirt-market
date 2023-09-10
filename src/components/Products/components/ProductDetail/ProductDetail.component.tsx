@@ -7,7 +7,6 @@ import {
   Radio,
   RadioGroup,
   Button,
-  Alert,
 } from '@mui/material';
 import Image from 'next/image';
 import { addToCart } from '@/redux/slices/Cart/Cart.slice';
@@ -24,7 +23,7 @@ import {
   radioGroup,
 } from '@/components/Products/Products.styles';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { Warning } from '@/components/Messages/components/Warning/Warning.component';
+import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 import { ProductDetailProps } from '@/components/Products/Products.types';
 
 export const ProductDetail: FC<ProductDetailProps> = ({ id }) => {
@@ -49,7 +48,7 @@ export const ProductDetail: FC<ProductDetailProps> = ({ id }) => {
     setIsAlertVisible(false);
     if (
       productIsTruthy &&
-      selectedSizeQuantity <= data.totalQuantity[selectedSize]
+      selectedSizeQuantity < data.totalQuantity[selectedSize]
     ) {
       dispatch(
         addToCart({
@@ -75,9 +74,10 @@ export const ProductDetail: FC<ProductDetailProps> = ({ id }) => {
 
   if (error) {
     return (
-      <Alert>
-        <Typography>Error: {error}</Typography>
-      </Alert>
+      <CustomAlert
+        alertType="error"
+        alertMessage="The operation has failed. Please contact technical support."
+      />
     );
   }
 
@@ -121,8 +121,9 @@ export const ProductDetail: FC<ProductDetailProps> = ({ id }) => {
         >
           Add to cart
         </Button>
-        <Warning
-          visibleProp={isAlertVisible}
+        <CustomAlert
+          alertType="warning"
+          isVisible={isAlertVisible}
           alertMessage="There are no more products in this size."
         />
       </FormControl>

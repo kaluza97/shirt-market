@@ -47,15 +47,12 @@ export const OrderWrapper: FC = () => {
       <Typography variant="h5" sx={headerTitle}>
         Your orders:
       </Typography>
-      {data?.map(({ items, isActive, totalPrice }, index) => (
+      {data?.map(({ items, totalPrice }, index) => (
         <React.Fragment key={index}>
-          <Typography variant="h5" sx={descriptionText}>
-            IsActive: {isActive ? 'Yes' : 'No'}
-          </Typography>
           <Typography variant="h5" sx={descriptionText}>
             Total Price: {totalPrice} $
           </Typography>
-          {items.map(({ id, name, img, price, quantity }) => (
+          {items.map(({ id, name, img, price, quantities }) => (
             <Card key={id} sx={orderBox}>
               <OrderItemsContainer>
                 <Image src={img} alt={name} width={110} height={150} priority />
@@ -66,21 +63,6 @@ export const OrderWrapper: FC = () => {
                   <Typography variant="h5" sx={descriptionText}>
                     Quantity:
                   </Typography>
-                  {Object.keys(quantity)
-                    .filter(
-                      (size) => quantity[size as keyof typeof quantity] > 0
-                    )
-                    .map((size, sizeIndex) => {
-                      const quantityValue: number =
-                        quantity[size as keyof typeof quantity];
-                      return (
-                        <React.Fragment key={sizeIndex}>
-                          <Typography variant="h5" sx={descriptionText}>
-                            {size}: {quantityValue}
-                          </Typography>
-                        </React.Fragment>
-                      );
-                    })}
                   <Typography variant="h5" sx={descriptionText}>
                     Item Price: {price} $
                   </Typography>

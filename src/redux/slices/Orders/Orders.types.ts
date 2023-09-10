@@ -12,19 +12,18 @@ const itemSchema = z.object({
   img: z.string(),
   name: z.string(),
   price: z.number(),
-  quantity: sizeSchema,
+  quantities: sizeSchema,
 });
 
 const orderSchema = z.object({
-  isActive: z.boolean(),
   totalPrice: z.number(),
   items: z.array(itemSchema),
 });
 
-export type OrderItem = z.infer<typeof orderSchema>;
+export type OrderItemType = z.infer<typeof orderSchema>;
 
 export interface OrderType {
-  data: Array<OrderItem> | null;
+  data: Array<OrderItemType> | null;
   loading: boolean;
   error: boolean;
 }

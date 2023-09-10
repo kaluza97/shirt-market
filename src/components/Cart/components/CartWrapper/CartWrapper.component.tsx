@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { Button, CircularProgress, Typography } from '@mui/material';
 import {
@@ -15,15 +15,35 @@ import { buyCartsProducts } from '@/redux/slices/Cart/Cart.thunk';
 import { clearCart } from '@/redux/slices/Cart/Cart.slice';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
+import { saveOrder } from '@/redux/slices/Order/Order.thunk';
+import { AuthContext } from '@/context/Auth.context';
+import { OrderItemType } from '@/redux/slices/Order/Order.types';
 
 export const CartWrapper: FC = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cart);
   const paymentStatus = useSelector((state) => state.cart.paymentStatus);
+  const orders = useSelector((state) => state.orders);
   const allProductsTotalCost = calculateTotalCost(cartItems);
+  const { user } = useContext(AuthContext);
+
+  const handleAddOrder = () => {
+    const purchasedItem: OrderItemType = {
+      totalPrice: allProductsTotalCost,
+      items: cartItems,
+    };
+
+    const previousOrders = orders?.data;
+    const allOrders: OrderItemType[] = [...previousOrders, purchasedItem];
+
+    if (user?.uid) {
+      dispatch(saveOrder({ uid: user.uid, order: allOrders }));
+    }
+  };
 
   const handleProceedPayment = () => {
     dispatch(buyCartsProducts(cartItems));
+    handleAddOrder();
   };
 
   useEffect(() => {

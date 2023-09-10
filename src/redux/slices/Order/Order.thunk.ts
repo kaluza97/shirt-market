@@ -5,7 +5,7 @@ import { SaveOrderItem } from '@/redux/slices/Order/Order.types';
 
 export const saveOrder = createAsyncThunk<
   void,
-  { uid: string; order: SaveOrderItem[] }
+  { uid: string; order: Array<SaveOrderItem> }
 >('order/saveOrders', async ({ uid, order }) => {
   try {
     const userRef = doc(firestore, 'users', uid);

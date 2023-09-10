@@ -1,29 +1,33 @@
-import { z } from 'zod';
+import { Timestamp } from 'firebase/firestore';
 
-const sizeSchema = z.object({
-  S: z.number(),
-  M: z.number(),
-  L: z.number(),
-  XL: z.number(),
-});
+interface Sizes {
+  S: number;
+  M: number;
+  L: number;
+  XL: number;
+}
 
-const itemSchema = z.object({
-  id: z.number(),
-  img: z.string(),
-  name: z.string(),
-  price: z.number(),
-  quantities: sizeSchema,
-});
+interface Item {
+  id: number;
+  img: string;
+  name: string;
+  price: number;
+  quantities: Sizes;
+}
 
-const orderSchema = z.object({
-  totalPrice: z.number(),
-  items: z.array(itemSchema),
-});
+type DateType = {
+  nanoseconds: number;
+  seconds: number;
+};
 
-export type OrderItemType = z.infer<typeof orderSchema>;
+export interface OrderItem {
+  totalPrice: number;
+  orderDate: DateType;
+  items: Item[];
+}
 
-export interface OrderType {
-  data: Array<OrderItemType> | null;
+export interface OrderState {
+  data: Array<OrderItem> | null;
   loading: boolean;
   error: boolean;
 }

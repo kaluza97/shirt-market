@@ -17,24 +17,24 @@ import PaymentIcon from '@mui/icons-material/Payment';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 import { saveOrder } from '@/redux/slices/Order/Order.thunk';
 import { AuthContext } from '@/context/Auth.context';
-import { OrderItemType } from '@/redux/slices/Order/Order.types';
+import { SaveOrderItem } from '@/redux/slices/Order/Order.types';
 
 export const CartWrapper: FC = () => {
+  const { user } = useContext(AuthContext);
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cart);
   const paymentStatus = useSelector((state) => state.cart.paymentStatus);
   const orders = useSelector((state) => state.orders);
   const allProductsTotalCost = calculateTotalCost(cartItems);
-  const { user } = useContext(AuthContext);
 
   const handleAddOrder = () => {
-    const purchasedItem: OrderItemType = {
+    const purchasedItem: SaveOrderItem = {
       totalPrice: allProductsTotalCost,
       items: cartItems,
     };
 
-    const previousOrders = orders?.data;
-    const allOrders: OrderItemType[] = [...previousOrders, purchasedItem];
+    const previousOrders = orders.data;
+    const allOrders: SaveOrderItem[] = [...previousOrders, purchasedItem];
 
     if (user?.uid) {
       dispatch(saveOrder({ uid: user.uid, order: allOrders }));

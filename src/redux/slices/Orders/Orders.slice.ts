@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchOrders } from './Orders.thunk';
-import { OrderType } from './Orders.types';
+import { fetchOrders } from '@/redux/slices/Orders/Orders.thunk';
+import { OrderState } from '@/redux/slices/Orders/Orders.types';
 
-const initialState: OrderType = {
+const initialState: OrderState = {
   data: null,
   loading: false,
   error: false,

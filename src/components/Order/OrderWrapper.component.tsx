@@ -13,9 +13,12 @@ import {
   orderBox,
 } from '@/components/Order/Order.styles';
 import Image from 'next/image';
+import { format } from 'date-fns';
+import { useRouter } from 'next/router';
 
 export const OrderWrapper: FC = () => {
   const { user } = useContext(AuthContext);
+  const { push } = useRouter();
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.orders);
 
@@ -28,6 +31,10 @@ export const OrderWrapper: FC = () => {
   if (loading) {
     return <CircularProgress />;
   }
+
+  const handleRedirectToDetail = (id: number) => {
+    push(`/products/${id}`);
+  };
 
   if (error) {
     return (
@@ -47,13 +54,20 @@ export const OrderWrapper: FC = () => {
       <Typography variant="h5" sx={headerTitle}>
         Your orders:
       </Typography>
-      {data?.map(({ items, totalPrice }, index) => (
+      {data?.map(({ items, totalPrice, orderDate }, index) => (
         <React.Fragment key={index}>
           <Typography variant="h5" sx={descriptionText}>
             Total Price: {totalPrice} $
           </Typography>
+          <Typography variant="h5" sx={descriptionText}>
+            Order Date: {format(orderDate.seconds, 'dd.MM.yyyy HH:mm')}
+          </Typography>
           {items.map(({ id, name, img, price, quantities }) => (
-            <Card key={id} sx={orderBox}>
+            <Card
+              key={id}
+              sx={orderBox}
+              onClick={() => handleRedirectToDetail(id)}
+            >
               <OrderItemsContainer>
                 <Image src={img} alt={name} width={110} height={150} priority />
                 <DescriptionContainer>
@@ -66,9 +80,18 @@ export const OrderWrapper: FC = () => {
                   <Typography variant="h5" sx={descriptionText}>
                     Item Price: {price} $
                   </Typography>
-                  <Typography variant="h5" sx={descriptionText}>
-                    Order Date: 23.08.2012
-                  </Typography>
+                  {Object.entries(quantities).map(
+                    ([size, quantity]) =>
+                      quantity > 0 && (
+                        <Typography
+                          key={size}
+                          variant="h5"
+                          sx={descriptionText}
+                        >
+                          Size {size}: {quantity}
+                        </Typography>
+                      )
+                  )}
                 </DescriptionContainer>
               </OrderItemsContainer>
             </Card>

@@ -1,23 +1,23 @@
 import { firestore } from '@/firebase/firebaseConfig';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { doc, getDoc } from 'firebase/firestore';
-import { OrderItemType } from './Orders.types';
+import { OrderItem } from './Orders.types';
 
-export const fetchOrders = createAsyncThunk<
-  Array<OrderItemType> | null,
-  string
->('orders/fetchOrders', async (uid) => {
-  try {
-    const dataRef = doc(firestore, 'users', uid);
-    const snapshot = await getDoc(dataRef);
+export const fetchOrders = createAsyncThunk<Array<OrderItem> | null, string>(
+  'orders/fetchOrders',
+  async (uid) => {
+    try {
+      const dataRef = doc(firestore, 'users', uid);
+      const snapshot = await getDoc(dataRef);
 
-    if (snapshot.exists()) {
-      const orderData = snapshot.data();
-      return orderData.orders;
-    } else {
-      return null;
+      if (snapshot.exists()) {
+        const orderData = snapshot.data();
+        return orderData.orders;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      throw new Error('Error while fetching user data from Firestore.');
     }
-  } catch (error) {
-    throw new Error('Error while fetching user data from Firestore.');
   }
-});
+);

@@ -25,20 +25,17 @@ export const CartWrapper: FC = () => {
   const { user } = useContext(AuthContext);
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cart);
-  const orders = useSelector((state) => state.orders);
   const { isPaymentSuccessful, loading, error } = useSelector(
     (state) => state.cart
   );
   const allProductsTotalCost = calculateTotalCost(cartItems);
 
   const handleAddOrder = () => {
-    const purchasedItem: Array<SaveOrderItem> = [
-      {
-        orderDate: Timestamp.fromDate(new Date()),
-        totalPrice: allProductsTotalCost,
-        items: cartItems,
-      },
-    ];
+    const purchasedItem: SaveOrderItem = {
+      orderDate: Timestamp.fromDate(new Date()),
+      totalPrice: allProductsTotalCost,
+      items: cartItems,
+    };
 
     if (user?.uid) {
       dispatch(saveOrder({ uid: user.uid, order: purchasedItem }));

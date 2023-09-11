@@ -51,7 +51,7 @@ export const OrderWrapper: FC = () => {
             Total Price: {totalPrice} $
           </Typography>
           <Typography variant="h5" sx={descriptionText}>
-            Order Date: {format(orderDate.seconds, 'dd.MM.yyyy HH:mm')}
+            Order Date: {format(orderDate.toDate(), 'dd.MM.yyyy HH:mm')}
           </Typography>
           <OrderItem items={items} />
         </Fragment>

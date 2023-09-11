@@ -19,6 +19,8 @@ import { saveOrder } from '@/redux/slices/Order/Order.thunk';
 import { AuthContext } from '@/context/Auth.context';
 import { SaveOrderItem } from '@/redux/slices/Order/Order.types';
 
+import { Timestamp } from 'firebase/firestore';
+
 export const CartWrapper: FC = () => {
   const { user } = useContext(AuthContext);
   const dispatch = useDispatch();
@@ -30,16 +32,16 @@ export const CartWrapper: FC = () => {
   const allProductsTotalCost = calculateTotalCost(cartItems);
 
   const handleAddOrder = () => {
-    const purchasedItem: SaveOrderItem = {
-      totalPrice: allProductsTotalCost,
-      items: cartItems,
-    };
-
-    const previousOrders = orders.data ? orders.data : [];
-    const allOrders: SaveOrderItem[] = [...previousOrders, purchasedItem];
+    const purchasedItem: Array<SaveOrderItem> = [
+      {
+        orderDate: Timestamp.fromDate(new Date()),
+        totalPrice: allProductsTotalCost,
+        items: cartItems,
+      },
+    ];
 
     if (user?.uid) {
-      dispatch(saveOrder({ uid: user.uid, order: allOrders }));
+      dispatch(saveOrder({ uid: user.uid, order: purchasedItem }));
     }
   };
 

@@ -1,13 +1,9 @@
 import { ProductItem } from '@/redux/slices/Product/Product.types';
-
-type DateType = {
-  nanoseconds: number;
-  seconds: number;
-};
+import { Timestamp } from 'firebase/firestore';
 
 export interface OrderItem {
   totalPrice: number;
-  orderDate: DateType;
+  orderDate: Timestamp;
   items: Array<ProductItem>;
 }
 

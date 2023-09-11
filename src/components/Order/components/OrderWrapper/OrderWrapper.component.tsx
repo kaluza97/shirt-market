@@ -3,7 +3,6 @@ import { CircularProgress, Typography } from '@mui/material';
 import { AuthContext } from '@/context/Auth.context';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { fetchOrders } from '@/redux/slices/Orders/Orders.thunk';
-import { format } from 'date-fns';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 import { OrderItem } from '@/components/Order/components/OrderItem/OrderItem.component';
 import {
@@ -51,7 +50,7 @@ export const OrderWrapper: FC = () => {
             Total Price: {totalPrice} $
           </Typography>
           <Typography variant="h5" sx={descriptionText}>
-            Order Date: {format(orderDate.toDate(), 'dd.MM.yyyy HH:mm')}
+            Order Date: {orderDate.toDate().toLocaleString()}
           </Typography>
           <OrderItem items={items} />
         </Fragment>

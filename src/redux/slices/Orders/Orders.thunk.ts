@@ -1,7 +1,7 @@
 import { firestore } from '@/firebase/firebaseConfig';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { doc, getDoc } from 'firebase/firestore';
-import { OrderItem } from './Orders.types';
+import { OrderItem } from '@/redux/slices/Orders/Orders.types';
 
 export const fetchOrders = createAsyncThunk<Array<OrderItem> | null, string>(
   'orders/fetchOrders',

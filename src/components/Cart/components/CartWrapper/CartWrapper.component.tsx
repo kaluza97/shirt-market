@@ -18,26 +18,26 @@ import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomA
 import { saveOrder } from '@/redux/slices/Order/Order.thunk';
 import { AuthContext } from '@/context/Auth.context';
 import { SaveOrderItem } from '@/redux/slices/Order/Order.types';
+import { Timestamp } from 'firebase/firestore';
 
 export const CartWrapper: FC = () => {
   const { user } = useContext(AuthContext);
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cart);
-  const paymentStatus = useSelector((state) => state.cart.paymentStatus);
-  const orders = useSelector((state) => state.orders);
+  const { isPaymentSuccessful, loading, error } = useSelector(
+    (state) => state.cart
+  );
   const allProductsTotalCost = calculateTotalCost(cartItems);
 
   const handleAddOrder = () => {
     const purchasedItem: SaveOrderItem = {
+      orderDate: Timestamp.fromDate(new Date()),
       totalPrice: allProductsTotalCost,
       items: cartItems,
     };
 
-    const previousOrders = orders.data ? orders.data : [];
-    const allOrders: SaveOrderItem[] = [...previousOrders, purchasedItem];
-
     if (user?.uid) {
-      dispatch(saveOrder({ uid: user.uid, order: allOrders }));
+      dispatch(saveOrder({ uid: user.uid, order: purchasedItem }));
     }
   };
 
@@ -47,21 +47,24 @@ export const CartWrapper: FC = () => {
   };
 
   useEffect(() => {
-    if (paymentStatus === 'success') {
+    if (isPaymentSuccessful) {
       dispatch(clearCart());
     }
-  }, [paymentStatus]);
+  }, [isPaymentSuccessful]);
+
+  if (loading) {
+    return <CircularProgress />;
+  }
 
   return (
     <CartContainer>
-      {paymentStatus === 'loading' && <CircularProgress />}
-      {paymentStatus === 'success' && (
+      {isPaymentSuccessful && (
         <CustomAlert
           alertType="success"
           alertMessage="Congratulations! Your payment was successful."
         />
       )}
-      {paymentStatus === 'error' && (
+      {error && (
         <CustomAlert
           alertType="error"
           alertMessage="Error processing your payment. Please contact customer support."

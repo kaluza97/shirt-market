@@ -10,7 +10,9 @@ import { buyCartsProducts } from '@/redux/slices/Cart/Cart.thunk';
 const initialState: CartType = {
   cart: [],
   lastItemToDelete: null,
-  paymentStatus: null,
+  isPaymentSuccessful: false,
+  loading: false,
+  error: false,
 };
 
 const initialQuantities: Quantities = {
@@ -77,19 +79,23 @@ const cartSlice = createSlice({
       state.cart = [];
     },
     resetPaymentStatus: (state) => {
-      state.paymentStatus = null;
+      state.isPaymentSuccessful = false;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(buyCartsProducts.pending, (state) => {
-        state.paymentStatus = 'loading';
+        state.loading = true;
+        state.error = false;
       })
       .addCase(buyCartsProducts.fulfilled, (state) => {
-        state.paymentStatus = 'success';
+        state.loading = false;
+        state.isPaymentSuccessful = true;
+        state.error = false;
       })
       .addCase(buyCartsProducts.rejected, (state) => {
-        state.paymentStatus = 'error';
+        state.loading = false;
+        state.error = true;
       });
   },
 });

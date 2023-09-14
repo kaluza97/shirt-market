@@ -26,11 +26,5 @@ export interface ProductDetailProps {
 }
 
 export interface ProductDetailFormProps {
-  name: string;
-  price: number;
-  totalQuantity: QuantitiesType;
-  selectedSize: Size | null;
-  setSelectedSize: Dispatch<SetStateAction<Size | null>>;
-  handleAddToCart: () => void;
-  isAlertVisible: boolean;
+  id: number;
 }

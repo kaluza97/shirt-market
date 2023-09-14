@@ -1,5 +1,9 @@
 import { FC, useState, MouseEvent } from 'react';
 import { IconButton, Menu, MenuItem } from '@mui/material';
+import { useSelector } from '@/redux/hooks';
+import { useRouter } from 'next/router';
+import MenuIcon from '@mui/icons-material/Menu';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import {
   GapContainer,
   IconContainer,
@@ -8,15 +12,12 @@ import {
   QuantityContainer,
   cartMenuItem,
   menuIcon,
+  menuItem,
 } from '@/components/NavigationMenu/NavigationMenu.styles';
-import MenuIcon from '@mui/icons-material/Menu';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Logo } from '@/components/Logo/Logo.component';
-import { useRouter } from 'next/router';
+import { summedQuantities } from '@/components/NavigationMenu/NavigationMenu.utils';
 import { navigationData } from '@/data/navigation.data';
 import { PagePaths } from '@/constants/pages';
-import { useSelector } from '@/redux/hooks';
-import { summedQuantities } from '@/components/NavigationMenu/NavigationMenu.utils';
 
 export const NavigationMenu: FC = () => {
   const cartItems = useSelector((state) => state.cart.cart);
@@ -65,6 +66,7 @@ export const NavigationMenu: FC = () => {
               <MenuItem
                 key={path}
                 onClick={() => handleMenuItemClick(path)}
+                sx={menuItem}
                 disableRipple
               >
                 <IconContainer>{icon}</IconContainer>

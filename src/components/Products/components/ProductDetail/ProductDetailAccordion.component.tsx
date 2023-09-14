@@ -11,6 +11,7 @@ import {
 } from '@/data/product.data';
 import {
   AccordionContainer,
+  accordion,
   descriptionBoldText,
   descriptionText,
 } from '@/components/Products/Products.styles';
@@ -19,7 +20,7 @@ export const ProductDetailAccordion: FC = () => (
   <AccordionContainer>
     <Typography sx={descriptionText}>{productDetailPreText}</Typography>
     {productDetailDescription.map(({ title, description }) => (
-      <Accordion key={title}>
+      <Accordion key={title} sx={accordion}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls={title}

@@ -31,7 +31,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((userData) => {
+    auth.onAuthStateChanged((userData) => {
       if (userData) {
         setUser(userData);
       } else {
@@ -39,8 +39,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         push(PagePaths.LOGIN_PAGE);
       }
     });
-    return () => unsubscribe();
-  });
+  }, [auth]);
 
   const login = async (auth: Auth, email: string, password: string) => {
     try {

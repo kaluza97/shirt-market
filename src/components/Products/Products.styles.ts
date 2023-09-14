@@ -19,23 +19,36 @@ export const ProductDetailContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  @media (min-width: ${Breakpoints.tablet}) {
-    flex-direction: row;
-    padding: 0 1rem;
-  }
-  @media (min-width: ${Breakpoints.desktop}) {
+  @media (min-width: ${Breakpoints.tablet}),
+    @media (min-width: ${Breakpoints.desktop}) {
     flex-direction: row;
     padding: 0 1rem;
   }
 `;
 
 export const DetailContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  @media (min-width: ${Breakpoints.tablet}) {
+  @media (min-width: ${Breakpoints.tablet}),
+    @media (min-width: ${Breakpoints.desktop}) {
+    width: 60%;
     padding: 0 2rem;
   }
-  @media (min-width: ${Breakpoints.desktop}) {
+`;
+
+export const PanelContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  @media (min-width: ${Breakpoints.tablet}),
+    @media (min-width: ${Breakpoints.desktop}) {
+    width: 40%;
     padding: 0 2rem;
+    min-width: 350px;
   }
 `;
 
@@ -43,11 +56,9 @@ export const DetailImageContainer = styled.div`
   position: relative;
   width: 100%;
   max-width: 40rem;
-  height: 50rem;
-  @media (min-width: ${Breakpoints.tablet}) {
-    max-width: 42rem;
-  }
-  @media (min-width: ${Breakpoints.desktop}) {
+  height: 55rem;
+  @media (min-width: ${Breakpoints.tablet}),
+    @media (min-width: ${Breakpoints.desktop}) {
     max-width: 42rem;
   }
 `;
@@ -118,6 +129,10 @@ export const descriptionText: SxProps = {
 export const descriptionBoldText: SxProps = {
   ...descriptionText,
   fontWeight: FontWeights.bold,
+};
+
+export const accordion: SxProps = {
+  margin: '1rem 0',
 };
 
 export const confirmButton: SxProps = {

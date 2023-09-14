@@ -23,6 +23,7 @@ export const listLogoutContainer: SxProps = {
 };
 
 export const listItemText: SxProps = {
+  cursor: 'pointer',
   fontFamily: FontFamily.sans,
   fontSize: FontSizes.large,
 };

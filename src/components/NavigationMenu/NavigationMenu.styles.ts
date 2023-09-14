@@ -28,8 +28,8 @@ export const NavigationContainer = styled.div`
 `;
 
 export const Navigation = styled.div`
-  padding: 1rem;
   display: flex;
+  padding: 1rem;
   justify-content: space-between;
   align-items: center;
   height: 5rem;
@@ -45,6 +45,10 @@ export const menuIcon: SxProps = {
   height: '2.5rem',
   color: Colors.primaryDark,
   marginRight: '0.5rem',
+};
+
+export const menuItem: SxProps = {
+  minWidth: '15rem',
 };
 
 export const cartMenuItem: SxProps = {

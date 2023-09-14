@@ -6,6 +6,7 @@ import {
   Navigation,
   NavigationContainer,
   QuantityContainer,
+  cartMenuItem,
   menuIcon,
 } from '@/components/NavigationMenu/NavigationMenu.styles';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -47,7 +48,11 @@ export const NavigationMenu: FC = () => {
         <Navigation>
           <Logo />
           <div>
-            <IconButton aria-label="cart" onClick={handleCartMenu}>
+            <IconButton
+              aria-label="cart"
+              onClick={handleCartMenu}
+              sx={cartMenuItem}
+            >
               <ShoppingCartOutlinedIcon sx={menuIcon} />
               <QuantityContainer>{totalQuantity}</QuantityContainer>
             </IconButton>

@@ -16,7 +16,7 @@ export const Breakpoints = {
 };
 
 export const FontSizes = {
-  extraSmall: '1.2rem',
+  extraSmall: '1rem',
   small: '1.4rem',
   middle: '1.6rem',
   large: '1.8rem',

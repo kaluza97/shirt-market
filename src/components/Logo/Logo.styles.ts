@@ -7,6 +7,7 @@ export const LogoContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const LogoImage = styled(Image)`

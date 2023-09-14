@@ -1,4 +1,4 @@
-import { Colors, ZIndexes } from '@/styles/variables';
+import { Colors, FontSizes, ZIndexes } from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 
@@ -9,10 +9,15 @@ export const GapContainer = styled.div`
 `;
 
 export const QuantityContainer = styled.div`
+  position: absolute;
+  min-width: 1.2rem;
+  margin-left: 1.7rem;
+  margin-top: 1rem;
   padding: 0.4rem;
   background-color: ${Colors.primary};
   color: ${Colors.white};
-  border-radius: 0.4rem;
+  border-radius: 100%;
+  font-size: ${FontSizes.extraSmall};
 `;
 
 export const NavigationContainer = styled.div`
@@ -40,4 +45,8 @@ export const menuIcon: SxProps = {
   height: '2.5rem',
   color: Colors.primaryDark,
   marginRight: '0.5rem',
+};
+
+export const cartMenuItem: SxProps = {
+  marginRight: '1rem',
 };

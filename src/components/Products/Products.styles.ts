@@ -1,6 +1,7 @@
 import { Colors, FontFamily, FontSizes, FontWeights } from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
+import Image from 'next/image';
 
 export const ProductsListContainer = styled.div`
   padding: 0 1rem 0 1rem;
@@ -21,13 +22,18 @@ export const productContainer: SxProps = {
   },
 };
 
+export const Img = styled(Image)`
+  margin: 0 0 0.5rem 0;
+  cursor: pointer;
+`;
+
 export const productBox: SxProps = {
   textAlign: 'center',
   margin: '0.5rem',
 };
 
-export const imgTitle: SxProps = {
-  fontSize: FontSizes.small,
+export const imageText: SxProps = {
+  fontSize: FontSizes.large,
   fontFamily: FontFamily.sans,
   fontWeight: FontWeights.bold,
   color: Colors.blackLight,
@@ -38,12 +44,6 @@ export const headerTitle: SxProps = {
   fontWeight: FontWeights.bold,
   color: Colors.blackLight,
   margin: '1rem',
-};
-
-export const imgPrice: SxProps = {
-  fontSize: FontSizes.small,
-  fontFamily: FontFamily.sans,
-  color: Colors.blackLight,
 };
 
 export const headerText: SxProps = {

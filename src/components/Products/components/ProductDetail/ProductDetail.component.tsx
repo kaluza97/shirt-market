@@ -1,30 +1,19 @@
 import React, { FC, useEffect, useState } from 'react';
-import {
-  CircularProgress,
-  Typography,
-  FormControl,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
-  Button,
-} from '@mui/material';
-import Image from 'next/image';
+import { CircularProgress } from '@mui/material';
 import { addToCart } from '@/redux/slices/Cart/Cart.slice';
 import { Size } from '@/redux/slices/Cart/Cart.types';
-import { SelectChangeEvent } from '@mui/material';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { fetchProductById } from '@/redux/slices/Product/Product.thunk';
 import {
+  DetailContainer,
+  DetailImageContainer,
   ProductDetailContainer,
-  confirmButton,
-  descriptionText,
-  headerText,
-  radio,
-  radioGroup,
 } from '@/components/Products/Products.styles';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 import { ProductDetailProps } from '@/components/Products/Products.types';
+import Image from 'next/image';
+import { ProductDetailAccordion } from './ProductDetailAccordion.component';
+import { ProductDetailForm } from '@/components/Products/components/ProductDetail/ProductDetailForm.container';
 
 export const ProductDetail: FC<ProductDetailProps> = ({ id }) => {
   const dispatch = useDispatch();
@@ -64,10 +53,6 @@ export const ProductDetail: FC<ProductDetailProps> = ({ id }) => {
     }
   };
 
-  const handleSizeChange = (e: SelectChangeEvent<Size>) => {
-    setSelectedSize(e.target.value as Size);
-  };
-
   if (loading) {
     return <CircularProgress />;
   }
@@ -87,51 +72,21 @@ export const ProductDetail: FC<ProductDetailProps> = ({ id }) => {
 
   return (
     <ProductDetailContainer>
-      <Typography component="h2" sx={headerText}>
-        {data.name}
-      </Typography>
-      <Typography component="h2" sx={headerText}>
-        {data.price} $
-      </Typography>
-      <Image src={data.img} alt={data.name} width={350} height={500} priority />
-      <FormControl>
-        <RadioGroup
-          name="radio-size"
-          row
-          value={selectedSize}
-          onChange={handleSizeChange}
-          sx={radioGroup}
-        >
-          {Object.keys(data.totalQuantity).map((size) => (
-            <FormControlLabel
-              key={size}
-              value={size}
-              label={size}
-              disabled={data.totalQuantity[size as Size] === 0}
-              control={<Radio sx={radio} />}
-            />
-          ))}
-        </RadioGroup>
-        <Button
-          variant="contained"
-          onClick={handleAddToCart}
-          sx={confirmButton}
-          disabled={!selectedSize}
-          endIcon={<ShoppingCartOutlinedIcon />}
-        >
-          Add to cart
-        </Button>
-        <CustomAlert
-          alertType="warning"
-          isVisible={isAlertVisible}
-          alertMessage="There are no more products in this size."
-        />
-      </FormControl>
-      <Typography component="h3" sx={descriptionText}>
-        Stay stylish and comfortable all day with this high-quality shirt. Its
-        modern design and various sizes make it a versatile choice for any
-        occasion.
-      </Typography>
+      <DetailImageContainer>
+        <Image src={data.img} alt={data.name} fill priority />
+      </DetailImageContainer>
+      <ProductDetailForm
+        name={data.name}
+        price={data.price}
+        totalQuantity={data.totalQuantity}
+        selectedSize={selectedSize}
+        setSelectedSize={setSelectedSize}
+        handleAddToCart={handleAddToCart}
+        isAlertVisible={isAlertVisible}
+      />
+      <DetailContainer>
+        <ProductDetailAccordion />
+      </DetailContainer>
     </ProductDetailContainer>
   );
 };

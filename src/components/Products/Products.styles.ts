@@ -1,4 +1,10 @@
-import { Colors, FontFamily, FontSizes, FontWeights } from '@/styles/variables';
+import {
+  Breakpoints,
+  Colors,
+  FontFamily,
+  FontSizes,
+  FontWeights,
+} from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 import Image from 'next/image';
@@ -9,8 +15,41 @@ export const ProductsListContainer = styled.div`
 `;
 
 export const ProductDetailContainer = styled.div`
-  padding: 0 2rem;
-  textalign: 'center';
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  @media (min-width: ${Breakpoints.tablet}) {
+    flex-direction: row;
+    padding: 0 1rem;
+  }
+  @media (min-width: ${Breakpoints.desktop}) {
+    flex-direction: row;
+    padding: 0 1rem;
+  }
+`;
+
+export const DetailContainer = styled.div`
+  width: 100%;
+  @media (min-width: ${Breakpoints.tablet}) {
+    padding: 0 2rem;
+  }
+  @media (min-width: ${Breakpoints.desktop}) {
+    padding: 0 2rem;
+  }
+`;
+
+export const DetailImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+  height: 50rem;
+  @media (min-width: ${Breakpoints.tablet}) {
+    max-width: 42rem;
+  }
+  @media (min-width: ${Breakpoints.desktop}) {
+    max-width: 42rem;
+  }
 `;
 
 export const productContainer: SxProps = {
@@ -21,6 +60,14 @@ export const productContainer: SxProps = {
     display: 'none',
   },
 };
+
+export const AccordionContainer = styled.div`
+  max-width: 70rem;
+`;
+
+export const FormContainer = styled.div`
+  width: 100%;
+`;
 
 export const Img = styled(Image)`
   margin: 0 0 0.5rem 0;
@@ -53,14 +100,24 @@ export const headerText: SxProps = {
   fontWeight: FontWeights.bold,
   paddingBottom: '0.5rem',
   paddingTop: '0.5rem',
-  textAlign: 'left',
+  textAlign: 'center',
+  lineHeight: '2.8rem',
+};
+
+export const highlightedText: SxProps = {
+  ...headerText,
+  color: Colors.primary,
 };
 
 export const descriptionText: SxProps = {
   ...headerText,
   fontSize: FontSizes.middle,
   fontWeight: FontWeights.thin,
-  textAlign: 'center',
+};
+
+export const descriptionBoldText: SxProps = {
+  ...descriptionText,
+  fontWeight: FontWeights.bold,
 };
 
 export const confirmButton: SxProps = {

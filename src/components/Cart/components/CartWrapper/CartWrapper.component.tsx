@@ -50,7 +50,7 @@ export const CartWrapper: FC = () => {
     if (isPaymentSuccessful) {
       dispatch(clearCart());
     }
-  }, [isPaymentSuccessful]);
+  }, [isPaymentSuccessful, dispatch]);
 
   if (loading) {
     return <CircularProgress />;

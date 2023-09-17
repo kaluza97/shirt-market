@@ -4,6 +4,7 @@ import { fetchProducts } from '@/redux/slices/Products/Products.thunk';
 import { ProductsItem } from '@/components/Products/components/ProductsItem/ProductsItem.component';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { ProductsListProps } from '@/components/Products/Products.types';
+import { ProductsListContainer } from '@/components/Products/Products.styles';
 
 export const ProductsList: FC<ProductsListProps> = ({
   productsLimit,
@@ -38,7 +39,7 @@ export const ProductsList: FC<ProductsListProps> = ({
   }
 
   return (
-    <>
+    <ProductsListContainer>
       {data.map(({ id, img, name, price, totalQuantity, category }) => (
         <Fragment key={name}>
           <ProductsItem
@@ -51,6 +52,6 @@ export const ProductsList: FC<ProductsListProps> = ({
           />
         </Fragment>
       ))}
-    </>
+    </ProductsListContainer>
   );
 };

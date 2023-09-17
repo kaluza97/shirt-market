@@ -9,20 +9,25 @@ import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 import Image from 'next/image';
 
-export const ProductsListContainer = styled.div`
+export const ProductsWrapperContainer = styled.div`
   padding: 0 1rem 0 1rem;
   textalign: 'center';
 `;
 
+export const ProductsListContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 export const ProductDetailContainer = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
   @media (min-width: ${Breakpoints.tablet}),
     @media (min-width: ${Breakpoints.desktop}) {
     flex-direction: row;
-    padding: 0 1rem;
   }
 `;
 
@@ -33,8 +38,7 @@ export const DetailContainer = styled.div`
   width: 100%;
   @media (min-width: ${Breakpoints.tablet}),
     @media (min-width: ${Breakpoints.desktop}) {
-    width: 60%;
-    padding: 0 2rem;
+    padding-right: 10rem;
   }
 `;
 
@@ -46,7 +50,6 @@ export const PanelContainer = styled.div`
   width: 100%;
   @media (min-width: ${Breakpoints.tablet}),
     @media (min-width: ${Breakpoints.desktop}) {
-    width: 40%;
     padding: 0 2rem;
     min-width: 350px;
   }
@@ -86,6 +89,8 @@ export const Img = styled(Image)`
 `;
 
 export const productBox: SxProps = {
+  display: 'flex',
+  flexDirection: 'column',
   textAlign: 'center',
   margin: '0.5rem',
 };

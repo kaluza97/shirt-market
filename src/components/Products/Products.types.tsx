@@ -1,5 +1,3 @@
-import { Size } from '@/redux/slices/Cart/Cart.types';
-import { Dispatch, SetStateAction } from 'react';
 import { z } from 'zod';
 
 const sizeSchema = z.object({
@@ -10,6 +8,7 @@ const sizeSchema = z.object({
 });
 
 export const productSchema = z.object({
+  category: z.string(),
   id: z.number(),
   img: z.string(),
   name: z.string(),
@@ -19,7 +18,6 @@ export const productSchema = z.object({
 
 export const productsListSchema = z.array(productSchema);
 export type ProductType = z.infer<typeof productSchema>;
-type QuantitiesType = z.infer<typeof sizeSchema>;
 
 export interface ProductDetailProps {
   id: number;
@@ -27,4 +25,11 @@ export interface ProductDetailProps {
 
 export interface ProductDetailFormProps {
   id: number;
+}
+
+export type Categories = 'all' | 'men' | 'woman' | 'sale';
+
+export interface ProductsListProps {
+  productsLimit?: number;
+  category: Categories;
 }

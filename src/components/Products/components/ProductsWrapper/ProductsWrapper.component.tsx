@@ -14,7 +14,7 @@ export const ProductsWrapper: FC = () => (
       New bestsellers products
     </Typography>
     <Box sx={productContainer}>
-      <ProductsList />
+      <ProductsList productsLimit={7} category="all" />
     </Box>
   </ProductsListContainer>
 );

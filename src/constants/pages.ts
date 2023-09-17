@@ -4,4 +4,7 @@ export enum PagePaths {
   CART_PAGE = '/cart',
   ABOUT_PAGE = '/about',
   ORDER_PAGE = '/order',
+  BROWSE_PAGE = '/browse',
+  PROFILE_PAGE = '/profile',
+  FAVORITES_PAGE = '/favorites',
 }

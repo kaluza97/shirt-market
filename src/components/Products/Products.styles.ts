@@ -66,6 +66,11 @@ export const DetailImageContainer = styled.div`
   }
 `;
 
+export const TextBox = styled.div`
+  display: inline-flex;
+  justify-content: center;
+`;
+
 export const productContainer: SxProps = {
   display: 'flex',
   width: '100%',
@@ -102,10 +107,22 @@ export const imageText: SxProps = {
   color: Colors.blackLight,
 };
 
+export const crossedOutText: SxProps = {
+  ...imageText,
+  textDecoration: 'line-through',
+  marginRight: '0.5rem',
+};
+
+export const redText: SxProps = {
+  ...imageText,
+  color: Colors.red,
+};
+
 export const headerTitle: SxProps = {
   fontFamily: FontFamily.sans,
   fontWeight: FontWeights.bold,
   color: Colors.blackLight,
+  textAlign: 'center',
   margin: '1rem',
 };
 

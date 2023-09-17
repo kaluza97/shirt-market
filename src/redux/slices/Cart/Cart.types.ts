@@ -15,6 +15,7 @@ export interface CartItem {
   img: string;
   name: string;
   price: number;
+  specialPrice?: number;
   quantities: Quantities;
 }
 
@@ -23,6 +24,7 @@ export interface AddCartProps {
   img: string;
   name: string;
   price: number;
+  specialPrice?: number;
   size: Size;
 }
 

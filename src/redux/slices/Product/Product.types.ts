@@ -12,6 +12,7 @@ export interface ProductItem {
   img: string;
   name: string;
   price: number;
+  specialPrice?: number;
   quantities: Sizes;
 }
 

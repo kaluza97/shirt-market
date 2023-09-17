@@ -8,7 +8,7 @@ import { ProductsListContainer } from '@/components/Products/Products.styles';
 
 export const ProductsList: FC<ProductsListProps> = ({
   productsLimit,
-  category,
+  queryCondition,
 }) => {
   const { data, loading, error } = useSelector((state) => state.products);
   const dispatch = useDispatch();
@@ -17,11 +17,7 @@ export const ProductsList: FC<ProductsListProps> = ({
     dispatch(
       fetchProducts({
         limitValue: productsLimit ? productsLimit : undefined,
-        queryCondition: {
-          fieldPath: 'category',
-          opStr: '==',
-          value: category,
-        },
+        queryCondition: queryCondition ? queryCondition : undefined,
       })
     );
   }, [dispatch]);
@@ -40,18 +36,21 @@ export const ProductsList: FC<ProductsListProps> = ({
 
   return (
     <ProductsListContainer>
-      {data.map(({ id, img, name, price, totalQuantity, category }) => (
-        <Fragment key={name}>
-          <ProductsItem
-            id={id}
-            img={img}
-            name={name}
-            price={price}
-            totalQuantity={totalQuantity}
-            category={category}
-          />
-        </Fragment>
-      ))}
+      {data.map(
+        ({ id, img, name, price, specialPrice, totalQuantity, category }) => (
+          <Fragment key={name}>
+            <ProductsItem
+              id={id}
+              img={img}
+              name={name}
+              price={price}
+              specialPrice={specialPrice}
+              totalQuantity={totalQuantity}
+              category={category}
+            />
+          </Fragment>
+        )
+      )}
     </ProductsListContainer>
   );
 };

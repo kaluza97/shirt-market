@@ -1,3 +1,4 @@
+import { FieldPath, WhereFilterOp } from 'firebase/firestore';
 import { z } from 'zod';
 
 const sizeSchema = z.object({
@@ -13,6 +14,7 @@ export const productSchema = z.object({
   img: z.string(),
   name: z.string(),
   price: z.number(),
+  specialPrice: z.number().optional(),
   totalQuantity: sizeSchema,
 });
 
@@ -27,9 +29,15 @@ export interface ProductDetailFormProps {
   id: number;
 }
 
-export type Categories = 'all' | 'men' | 'woman' | 'sale';
+export type Categories = 'all' | 'men' | 'woman' | 'sale' | null;
+
+type QueryCondition = {
+  fieldPath: string | FieldPath;
+  opStr: WhereFilterOp;
+  value: Categories;
+};
 
 export interface ProductsListProps {
   productsLimit?: number;
-  category: Categories;
+  queryCondition?: QueryCondition | null;
 }

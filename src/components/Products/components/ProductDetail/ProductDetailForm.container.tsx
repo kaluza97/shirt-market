@@ -17,6 +17,9 @@ import {
   radioGroup,
   radio,
   confirmButton,
+  TextBox,
+  crossedOutText,
+  redText,
 } from '@/components/Products/Products.styles';
 import { ProductDetailFormProps } from '@/components/Products/Products.types';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
@@ -48,7 +51,7 @@ export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
           id,
           img: data.img,
           name: data.name,
-          price: data.price,
+          price: data.specialPrice ? data.specialPrice : data.price,
           size: selectedSize,
         })
       );
@@ -70,9 +73,14 @@ export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
       <Typography component="h2" sx={headerText}>
         {data.name}
       </Typography>
-      <Typography component="h2" sx={highlightedText}>
-        {data.price} $
-      </Typography>
+      {data.specialPrice ? (
+        <TextBox>
+          <Typography sx={crossedOutText}>{data.price} $</Typography>
+          <Typography sx={redText}>{data.specialPrice} $</Typography>
+        </TextBox>
+      ) : (
+        <Typography sx={highlightedText}>{data.price} $</Typography>
+      )}
       <FormContainer>
         <FormControl>
           <RadioGroup

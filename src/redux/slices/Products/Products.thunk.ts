@@ -17,7 +17,7 @@ import {
 
 type FetchProductsArgs = {
   limitValue?: number;
-  queryCondition: {
+  queryCondition?: {
     fieldPath: string | FieldPath;
     opStr: WhereFilterOp;
     value: Categories;
@@ -31,7 +31,7 @@ export const fetchProducts = createAsyncThunk<
   'products/fetchProducts',
   async ({ limitValue, queryCondition }: FetchProductsArgs) => {
     const dataRef =
-      queryCondition.value === 'all'
+      queryCondition === undefined
         ? query(
             collection(firestore, 'shirts'),
             limit(limitValue ? limitValue : 500)

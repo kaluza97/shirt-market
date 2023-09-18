@@ -13,7 +13,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Logo } from '@/components/Logo/Logo.component';
 import { useRouter } from 'next/router';
 import { navigationData } from '@/data/navigation.data';
-import { Pages } from '@/constants/pages';
+import { PagePaths } from '@/constants/pages';
 import { useSelector } from '@/redux/hooks';
 import { summedQuantities } from '@/components/NavigationMenu/NavigationMenu.utils';
 
@@ -29,7 +29,7 @@ export const NavigationMenu: FC = () => {
   };
 
   const handleCartMenu = () => {
-    push(Pages.CART_PAGE);
+    push(PagePaths.CART_PAGE);
   };
 
   const handleClose = () => {

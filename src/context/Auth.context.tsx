@@ -13,7 +13,7 @@ import {
   AuthProviderProps,
   AuthErrorSchema,
 } from '@/context/Auth.types';
-import { Pages } from '@/constants/pages';
+import { PagePaths } from '@/constants/pages';
 
 const initialAuthError: FirebaseError = { code: '', name: '', message: '' };
 
@@ -36,7 +36,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         setUser(userData);
       } else {
         setUser(null);
-        push(Pages.LOGIN_PAGE);
+        push(PagePaths.LOGIN_PAGE);
       }
     });
     return () => unsubscribe();

@@ -1,13 +1,23 @@
 import React, { FC, Suspense } from 'react';
-import { Card, CardMedia, CircularProgress } from '@mui/material';
+import { Card, CircularProgress } from '@mui/material';
 import { bannerData } from '@/data/banner.data';
+import Image from 'next/image';
+import {
+  BannerContainer,
+  BannerWrapper,
+  Img,
+} from '@/components/Banner/Banner.styles';
 
 export const Banner: FC = () => (
   <Card>
-    {bannerData.map(({ src, alt }) => (
-      <Suspense fallback={<CircularProgress />} key={src}>
-        <CardMedia component="img" height="640" image={src} alt={alt} />
-      </Suspense>
-    ))}
+    <Suspense fallback={<CircularProgress />}>
+      <BannerWrapper>
+        <BannerContainer>
+          {bannerData.map(({ src, alt }) => (
+            <Img key={src} alt={alt} src={src} width={500} height={600} />
+          ))}
+        </BannerContainer>
+      </BannerWrapper>
+    </Suspense>
   </Card>
 );

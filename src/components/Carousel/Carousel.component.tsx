@@ -9,20 +9,18 @@ import {
   carouselDescriptionText,
   carouselNameText,
 } from '@/components/Carousel/Carousel.styles';
-import { Pages } from '@/constants/pages';
+import { PagePaths } from '@/constants/pages';
 
-export const SliderCarousel: FC = () => {
-  return (
-    <Carousel IndicatorIcon={null} sx={carousel}>
-      {carouselData.map(({ name, description, link }) => (
-        <Paper key={name} sx={carouselContent}>
-          <Typography sx={carouselNameText}>{name}</Typography>
-          <Typography sx={carouselDescriptionText}>{description}</Typography>
-          {link && (
-            <LinkStyled href={Pages.ABOUT_PAGE}>Check offer!</LinkStyled>
-          )}
-        </Paper>
-      ))}
-    </Carousel>
-  );
-};
+export const SliderCarousel: FC = () => (
+  <Carousel IndicatorIcon={null} sx={carousel}>
+    {carouselData.map(({ name, description, link }) => (
+      <Paper key={name} sx={carouselContent}>
+        <Typography sx={carouselNameText}>{name}</Typography>
+        <Typography sx={carouselDescriptionText}>{description}</Typography>
+        {link && (
+          <LinkStyled href={PagePaths.ABOUT_PAGE}>Check offer!</LinkStyled>
+        )}
+      </Paper>
+    ))}
+  </Carousel>
+);

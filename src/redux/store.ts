@@ -1,14 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit';
-import shirtsReducer from '@/redux/slices/Products/Products.slice';
+import productsReducer from '@/redux/slices/Products/Products.slice';
 import cartReducer from '@/redux/slices/Cart/Cart.slice';
 import productByIdReducer from '@/redux/slices/Product/Product.slice';
+import ordersReducer from '@/redux/slices/Orders/Orders.slice';
 
 export const store = configureStore({
   reducer: {
-    shirts: shirtsReducer,
+    products: productsReducer,
     productById: productByIdReducer,
     cart: cartReducer,
+    orders: ordersReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

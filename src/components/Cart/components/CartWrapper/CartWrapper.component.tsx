@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { Button, CircularProgress, Typography } from '@mui/material';
 import {
@@ -15,8 +15,13 @@ import { buyCartsProducts } from '@/redux/slices/Cart/Cart.thunk';
 import { clearCart } from '@/redux/slices/Cart/Cart.slice';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
+import { saveOrder } from '@/redux/slices/Order/Order.thunk';
+import { AuthContext } from '@/context/Auth.context';
+import { SaveOrderItem } from '@/redux/slices/Order/Order.types';
+import { Timestamp } from 'firebase/firestore';
 
 export const CartWrapper: FC = () => {
+  const { user } = useContext(AuthContext);
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cart);
   const { isPaymentSuccessful, loading, error } = useSelector(
@@ -24,8 +29,21 @@ export const CartWrapper: FC = () => {
   );
   const allProductsTotalCost = calculateTotalCost(cartItems);
 
+  const handleAddOrder = () => {
+    const purchasedItem: SaveOrderItem = {
+      orderDate: Timestamp.fromDate(new Date()),
+      totalPrice: allProductsTotalCost,
+      items: cartItems,
+    };
+
+    if (user?.uid) {
+      dispatch(saveOrder({ uid: user.uid, order: purchasedItem }));
+    }
+  };
+
   const handleProceedPayment = () => {
     dispatch(buyCartsProducts(cartItems));
+    handleAddOrder();
   };
 
   useEffect(() => {

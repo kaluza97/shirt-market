@@ -11,10 +11,10 @@ import { useRouter } from 'next/router';
 import { ProductType } from '@/components/Products/Products.types';
 
 export const ProductsItem: FC<ProductType> = ({ id, img, name, price }) => {
-  const router = useRouter();
+  const { push } = useRouter();
 
   const handleProductClick = () => {
-    router.push(`/products/${id}`);
+    push(`/products/${id}`);
   };
   return (
     <Box sx={productBox} onClick={handleProductClick}>

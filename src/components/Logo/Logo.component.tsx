@@ -6,13 +6,13 @@ import {
   LogoImage,
 } from '@/components/Logo/Logo.styles';
 import { useRouter } from 'next/router';
-import { Pages } from '@/constants/pages';
+import { PagePaths } from '@/constants/pages';
 
 export const Logo: FC = () => {
   const { push } = useRouter();
 
   const handleClick = () => {
-    push(Pages.HOME_PAGE);
+    push(PagePaths.HOME_PAGE);
   };
 
   return (

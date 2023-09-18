@@ -5,6 +5,7 @@ import Image from 'next/image';
 import {
   BannerContainer,
   BannerWrapper,
+  Img,
 } from '@/components/Banner/Banner.styles';
 
 export const Banner: FC = () => (
@@ -13,16 +14,7 @@ export const Banner: FC = () => (
       <BannerWrapper>
         <BannerContainer>
           {bannerData.map(({ src, alt }) => (
-            <Image
-              key={src}
-              alt={alt}
-              src={src}
-              width={500}
-              height={600}
-              style={{
-                objectFit: 'contain',
-              }}
-            />
+            <Img key={src} alt={alt} src={src} width={500} height={600} />
           ))}
         </BannerContainer>
       </BannerWrapper>

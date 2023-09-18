@@ -1,5 +1,6 @@
 import { Breakpoints } from '@/styles/variables';
 import styled from '@emotion/styled';
+import Image from 'next/image';
 
 export const BannerWrapper = styled.div`
   display: flex;
@@ -10,8 +11,8 @@ export const BannerContainer = styled.div`
   display: flex;
   height: 600px;
   min-width: 50%;
-  @media (min-width: ${Breakpoints.tablet}) {
-  }
-  @media (min-width: ${Breakpoints.desktop}) {
-  }
+`;
+
+export const Img = styled(Image)`
+  object-fit: contain;
 `;

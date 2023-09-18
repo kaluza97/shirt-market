@@ -7,16 +7,7 @@ export const Banner: FC = () => (
   <Suspense fallback={<CircularProgress />}>
     <BannerContainer>
       {bannerData.map(({ src, alt }) => (
-        <Img
-          key={src}
-          alt={alt}
-          src={src}
-          width={400}
-          height={600}
-          style={{
-            objectFit: 'contain',
-          }}
-        />
+        <Img key={src} alt={alt} src={src} width={500} height={600} />
       ))}
     </BannerContainer>
   </Suspense>

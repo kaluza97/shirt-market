@@ -19,6 +19,7 @@ export const BannerContainer = styled.div`
 
 export const Img = styled(Image)`
 margin: 0 0 1rem 0;
+object-fit: contain;
 cursor: pointer;
 @media (min-width: ${Breakpoints.desktop}) {
   margin: 2rem 1rem 2rem 1rem;

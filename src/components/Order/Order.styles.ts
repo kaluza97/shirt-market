@@ -3,8 +3,7 @@ import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 
 export const OrderContainer = styled.div`
-  padding: 0 1rem 0 1rem;
-  textalign: 'center';
+  padding: 0 1rem;
 `;
 
 export const OrderItemsContainer = styled.div`

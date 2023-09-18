@@ -8,7 +8,7 @@ import { headerTitle } from '@/components/Order/Order.styles';
 import { Typography } from '@mui/material';
 import dynamic from 'next/dynamic';
 
-const DynamicProductsList = dynamic(
+const LazyProductsList = dynamic(
   () =>
     import(
       '@/components/Products/components/ProductsList/ProductsList.component'
@@ -37,7 +37,7 @@ const CategoryDetailPage: FC = () => {
           <Typography component="h3" variant="h4" sx={headerTitle}>
             You are in the category: {category}
           </Typography>
-          <DynamicProductsList queryCondition={queryCondition} />
+          <LazyProductsList queryCondition={queryCondition} />
         </>
       }
     />

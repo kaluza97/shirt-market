@@ -2,19 +2,11 @@ import React, { FC } from 'react';
 import { useRouter } from 'next/router';
 import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
 import { Layout } from '@/components/Layout/Layout.component';
+import { ProductsList } from '@/components/Products/components/ProductsList/ProductsList.component';
 import { Categories } from '@/components/Products/Products.types';
 import { categoryData } from '@/data/category.data';
 import { headerTitle } from '@/components/Order/Order.styles';
 import { Typography } from '@mui/material';
-import dynamic from 'next/dynamic';
-
-const LazyProductsList = dynamic(
-  () =>
-    import(
-      '@/components/Products/components/ProductsList/ProductsList.component'
-    ).then((module) => module.ProductsList),
-  { ssr: false }
-);
 
 const CategoryDetailPage: FC = () => {
   const router = useRouter();
@@ -37,7 +29,7 @@ const CategoryDetailPage: FC = () => {
           <Typography component="h3" variant="h4" sx={headerTitle}>
             You are in the category: {category}
           </Typography>
-          <LazyProductsList queryCondition={queryCondition} />
+          <ProductsList queryCondition={queryCondition} />
         </>
       }
     />

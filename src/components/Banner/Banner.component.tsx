@@ -22,9 +22,6 @@ export const Banner: FC = () => {
             width={400}
             height={600}
             onClick={() => handleNavigate(path)}
-            style={{
-              objectFit: 'contain',
-            }}
           />
         ))}
       </BannerContainer>

@@ -1,4 +1,7 @@
-import { Categories } from '@/components/Products/Products.types';
+import {
+  Categories,
+  QueryCondition,
+} from '@/components/Products/Products.types';
 import { FieldPath, WhereFilterOp } from 'firebase/firestore';
 
 type CategoryItem = {
@@ -36,3 +39,9 @@ export const categoryData: Array<CategoryItem> = [
     },
   },
 ];
+
+export const allCategories: QueryCondition = {
+  fieldPath: 'category',
+  opStr: 'in',
+  value: ['men', 'woman', 'sale'],
+};

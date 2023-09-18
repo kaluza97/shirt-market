@@ -17,10 +17,10 @@ export const ProductsList: FC<ProductsListProps> = ({
     dispatch(
       fetchProducts({
         limitValue: productsLimit ? productsLimit : undefined,
-        queryCondition: queryCondition ? queryCondition : undefined,
+        queryCondition: queryCondition,
       })
     );
-  }, [dispatch]);
+  }, [productsLimit, queryCondition]);
 
   if (loading) {
     return <CircularProgress />;

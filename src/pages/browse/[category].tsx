@@ -1,25 +1,30 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
 import { Layout } from '@/components/Layout/Layout.component';
 import { ProductsList } from '@/components/Products/components/ProductsList/ProductsList.component';
-import { Categories } from '@/components/Products/Products.types';
-import { categoryData } from '@/data/category.data';
+import { categoryData, allCategories } from '@/data/category.data';
 import { headerTitle } from '@/components/Order/Order.styles';
 import { Typography } from '@mui/material';
+import { QueryCondition } from '@/components/Products/Products.types';
 
 const CategoryDetailPage: FC = () => {
   const router = useRouter();
   const { category } = router.query;
-  const findQueryConditionByCategory = (category: Categories) => {
+  const [queryCondition, setQueryCondition] =
+    useState<QueryCondition>(allCategories);
+
+  useEffect(() => {
     const matchingCategory = categoryData.find(
       (item) => item.name === category
     );
-    return matchingCategory ? matchingCategory.queryCondition : null;
-  };
-  const queryCondition = category
-    ? findQueryConditionByCategory(category as Categories)
-    : null;
+
+    if (matchingCategory) {
+      setQueryCondition(matchingCategory.queryCondition);
+    } else {
+      setQueryCondition(allCategories);
+    }
+  }, [category]);
 
   return (
     <Layout

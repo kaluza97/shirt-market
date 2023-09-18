@@ -29,15 +29,15 @@ export interface ProductDetailFormProps {
   id: number;
 }
 
-export type Categories = 'all' | 'men' | 'woman' | 'sale' | null;
+export type Categories = 'men' | 'woman' | 'sale' | null;
 
-type QueryCondition = {
+export type QueryCondition = {
   fieldPath: string | FieldPath;
   opStr: WhereFilterOp;
-  value: Categories;
+  value: Categories | Array<Categories>;
 };
 
 export interface ProductsListProps {
   productsLimit?: number;
-  queryCondition?: QueryCondition | null;
+  queryCondition: QueryCondition;
 }

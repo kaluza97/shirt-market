@@ -11,10 +11,17 @@ import { ProductsList } from '@/components/Products/components/ProductsList/Prod
 export const ProductsWrapper: FC = () => (
   <ProductsWrapperContainer>
     <Typography component="h3" variant="h4" sx={headerTitle}>
-      New bestsellers products
+      Our most recomended products
     </Typography>
     <Box sx={productContainer}>
-      <ProductsList productsLimit={10} />
+      <ProductsList
+        productsLimit={10}
+        queryCondition={{
+          fieldPath: 'category',
+          opStr: '==',
+          value: ['men', 'woman'],
+        }}
+      />
     </Box>
   </ProductsWrapperContainer>
 );

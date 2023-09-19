@@ -1,18 +1,17 @@
 import { firestore } from '@/firebase/firebaseConfig';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { doc, getDoc } from 'firebase/firestore';
-import { OrderItem } from '@/redux/slices/Orders/Orders.types';
 
-export const fetchOrders = createAsyncThunk<Array<OrderItem> | null, string>(
-  'orders/fetchOrders',
+export const fetchFavorites = createAsyncThunk<Array<number> | null, string>(
+  'favorites/fetchFavorites',
   async (uid) => {
     try {
       const dataRef = doc(firestore, 'users', uid);
       const snapshot = await getDoc(dataRef);
 
       if (snapshot.exists()) {
-        const orderData = snapshot.data();
-        return orderData.orders;
+        const favoritesData = snapshot.data();
+        return favoritesData.favorites;
       } else {
         return null;
       }

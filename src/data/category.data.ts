@@ -1,16 +1,8 @@
-import {
-  Categories,
-  QueryCondition,
-} from '@/components/Products/Products.types';
-import { FieldPath, WhereFilterOp } from 'firebase/firestore';
+import { QueryCondition } from '@/redux/slices/Products/Products.types';
 
 type CategoryItem = {
-  name: Categories;
-  queryCondition: {
-    fieldPath: string | FieldPath;
-    opStr: WhereFilterOp;
-    value: Categories | null;
-  };
+  name: string;
+  queryCondition: QueryCondition;
 };
 
 export const categoryData: Array<CategoryItem> = [
@@ -34,8 +26,8 @@ export const categoryData: Array<CategoryItem> = [
     name: 'sale',
     queryCondition: {
       fieldPath: 'specialPrice',
-      opStr: '!=',
-      value: null,
+      opStr: '>=',
+      value: 1,
     },
   },
 ];

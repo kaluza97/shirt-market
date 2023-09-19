@@ -6,7 +6,7 @@ import { ProductsList } from '@/components/Products/components/ProductsList/Prod
 import { categoryData, allCategories } from '@/data/category.data';
 import { headerTitle } from '@/components/Order/Order.styles';
 import { Typography } from '@mui/material';
-import { QueryCondition } from '@/components/Products/Products.types';
+import { QueryCondition } from '@/redux/slices/Products/Products.types';
 
 const CategoryDetailPage: FC = () => {
   const router = useRouter();

@@ -1,4 +1,4 @@
-import { FieldPath, WhereFilterOp } from 'firebase/firestore';
+import { QueryCondition } from '@/redux/slices/Products/Products.types';
 import { z } from 'zod';
 
 const sizeSchema = z.object({
@@ -28,14 +28,6 @@ export interface ProductDetailProps {
 export interface ProductDetailFormProps {
   id: number;
 }
-
-export type Categories = 'men' | 'woman' | 'sale' | null;
-
-export type QueryCondition = {
-  fieldPath: string | FieldPath;
-  opStr: WhereFilterOp;
-  value: Categories | Array<Categories>;
-};
 
 export interface ProductsListProps {
   productsLimit?: number;

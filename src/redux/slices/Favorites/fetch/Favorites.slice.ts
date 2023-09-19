@@ -1,29 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchOrders } from '@/redux/slices/Orders/Orders.thunk';
-import { OrderState } from '@/redux/slices/Orders/Orders.types';
+import { FavoritesState } from './Favorites.types';
+import { fetchFavorites } from './Favorites.thunk';
 
-const initialState: OrderState = {
+const initialState: FavoritesState = {
   data: null,
   loading: false,
   error: false,
 };
 
 const ordersSlice = createSlice({
-  name: 'orders',
+  name: 'favories',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchOrders.pending, (state) => {
+      .addCase(fetchFavorites.pending, (state) => {
         state.loading = true;
         state.error = false;
       })
-      .addCase(fetchOrders.fulfilled, (state, action) => {
+      .addCase(fetchFavorites.fulfilled, (state, action) => {
         state.data = action.payload || null;
         state.loading = false;
         state.error = false;
       })
-      .addCase(fetchOrders.rejected, (state) => {
+      .addCase(fetchFavorites.rejected, (state) => {
         state.loading = false;
         state.error = true;
       });

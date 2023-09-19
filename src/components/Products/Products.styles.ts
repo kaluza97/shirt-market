@@ -88,10 +88,27 @@ export const FormContainer = styled.div`
   width: 100%;
 `;
 
+export const ProductImageWrapper = styled.div`
+  position: relative;
+`;
+
 export const Img = styled(Image)`
   margin: 0 0 0.5rem 0;
   cursor: pointer;
 `;
+
+export const favoriteIconButton: SxProps = {
+  position: 'absolute',
+  bottom: '1.5rem',
+  right: '0.5rem',
+  color: Colors.primary,
+  backgroundColor: Colors.white,
+};
+
+export const favoriteIcon: SxProps = {
+  width: '2.5rem',
+  height: '2.5rem',
+};
 
 export const productBox: SxProps = {
   display: 'flex',

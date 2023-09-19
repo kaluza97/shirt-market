@@ -1,4 +1,4 @@
-import React, { FC, Fragment, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { CircularProgress, Typography } from '@mui/material';
 import { fetchProducts } from '@/redux/slices/Products/Products.thunk';
 import { ProductsItem } from '@/components/Products/components/ProductsItem/ProductsItem.component';
@@ -38,17 +38,16 @@ export const ProductsList: FC<ProductsListProps> = ({
     <ProductsListContainer>
       {data.map(
         ({ id, img, name, price, specialPrice, totalQuantity, category }) => (
-          <Fragment key={name}>
-            <ProductsItem
-              id={id}
-              img={img}
-              name={name}
-              price={price}
-              specialPrice={specialPrice}
-              totalQuantity={totalQuantity}
-              category={category}
-            />
-          </Fragment>
+          <ProductsItem
+            key={name}
+            id={id}
+            img={img}
+            name={name}
+            price={price}
+            specialPrice={specialPrice}
+            totalQuantity={totalQuantity}
+            category={category}
+          />
         )
       )}
     </ProductsListContainer>

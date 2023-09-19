@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
 import { firestore } from '@/firebase/firebaseConfig';
-import { SaveOrderItem } from '@/redux/slices/Order/Order.types';
+import { SaveOrderItem } from '@/redux/slices/Orders/update/Orders.types';
 
 export const saveOrder = createAsyncThunk<
   void,

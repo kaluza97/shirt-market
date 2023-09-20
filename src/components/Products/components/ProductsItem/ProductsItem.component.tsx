@@ -8,9 +8,7 @@ import {
   crossedOutText,
   favoriteIcon,
   favoriteIconButton,
-  imageText,
   productBox,
-  redText,
 } from '@/components/Products/Products.styles';
 import { useRouter } from 'next/router';
 import { ProductType } from '@/components/Products/Products.types';
@@ -23,6 +21,7 @@ import {
 } from '@/redux/slices/Favorites/update/Favorites.thunk';
 import { AuthContext } from '@/context/Auth.context';
 import { fetchFavorites } from '@/redux/slices/Favorites/fetch/Favorites.thunk';
+import { normalTextBlack, normalTextRed } from '@/styles/global.styles';
 
 export const ProductsItem: FC<ProductType> = ({
   id,
@@ -68,14 +67,14 @@ export const ProductsItem: FC<ProductType> = ({
           )}
         </IconButton>
       </ProductImageWrapper>
-      <Typography sx={imageText}>{name}</Typography>
+      <Typography sx={normalTextBlack}>{name}</Typography>
       {specialPrice ? (
         <TextBox>
           <Typography sx={crossedOutText}>{price} $</Typography>
-          <Typography sx={redText}>{specialPrice} $</Typography>
+          <Typography sx={normalTextRed}>{specialPrice} $</Typography>
         </TextBox>
       ) : (
-        <Typography sx={imageText}>{price} $</Typography>
+        <Typography sx={normalTextBlack}>{price} $</Typography>
       )}
     </Box>
   );

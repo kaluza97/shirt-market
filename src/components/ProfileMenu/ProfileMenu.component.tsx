@@ -8,14 +8,12 @@ import {
 } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import InventoryIcon from '@mui/icons-material/Inventory';
-import {
-  listLogoutContainer,
-  listItemText,
-} from '@/components/ProfileMenu/ProfileMenu.styles';
+import { listLogoutContainer } from '@/components/ProfileMenu/ProfileMenu.styles';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { AuthContext } from '@/context/Auth.context';
 import { useRouter } from 'next/router';
 import { PagePaths } from '@/constants/pages';
+import { pointerText } from '@/styles/global.styles';
 
 export const ProfileMenu: FC = () => {
   const { logout } = useContext(AuthContext);
@@ -57,7 +55,7 @@ export const ProfileMenu: FC = () => {
         <ListItemIcon>
           <LogoutIcon />
         </ListItemIcon>
-        <ListItemText primary="Logout" sx={listItemText} />
+        <ListItemText primary="Logout" sx={pointerText} />
       </ListItem>
     </List>
   );

@@ -12,13 +12,12 @@ import {
 import {
   AccordionContainer,
   accordion,
-  descriptionBoldText,
-  descriptionText,
 } from '@/components/Products/Products.styles';
+import { boldText, normalTextBlack } from '@/styles/global.styles';
 
 export const ProductDetailAccordion: FC = () => (
   <AccordionContainer>
-    <Typography sx={descriptionText}>{productDetailPreText}</Typography>
+    <Typography sx={normalTextBlack}>{productDetailPreText}</Typography>
     {productDetailDescription.map(({ title, description }) => (
       <Accordion key={title} sx={accordion}>
         <AccordionSummary
@@ -26,13 +25,13 @@ export const ProductDetailAccordion: FC = () => (
           aria-controls={title}
           id={title}
         >
-          <Typography sx={descriptionBoldText}>{title}</Typography>
+          <Typography sx={boldText}>{title}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={descriptionText}>{description}</Typography>
+          <Typography sx={normalTextBlack}>{description}</Typography>
         </AccordionDetails>
       </Accordion>
     ))}
-    <Typography sx={descriptionText}>{productDetailPostText}</Typography>
+    <Typography sx={normalTextBlack}>{productDetailPostText}</Typography>
   </AccordionContainer>
 );

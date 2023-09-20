@@ -1,12 +1,9 @@
 import { FC } from 'react';
 import { Typography } from '@mui/material';
-import {
-  LogoContainer,
-  logoText,
-  LogoImage,
-} from '@/components/Logo/Logo.styles';
+import { LogoContainer, LogoImage } from '@/components/Logo/Logo.styles';
 import { useRouter } from 'next/router';
 import { PagePaths } from '@/constants/pages';
+import { logoText } from '@/styles/global.styles';
 
 export const Logo: FC = () => {
   const { push } = useRouter();

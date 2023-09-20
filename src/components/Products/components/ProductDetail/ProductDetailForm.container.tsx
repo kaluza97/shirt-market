@@ -11,20 +11,22 @@ import {
 } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import {
-  headerText,
-  highlightedText,
   FormContainer,
   radioGroup,
   radio,
-  confirmButton,
   TextBox,
   crossedOutText,
-  redText,
 } from '@/components/Products/Products.styles';
 import { ProductDetailFormProps } from '@/components/Products/Products.types';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { addToCart } from '@/redux/slices/Cart/Cart.slice';
+import {
+  button,
+  headerText,
+  normalTextBlack,
+  normalTextRed,
+} from '@/styles/global.styles';
 
 export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
   const dispatch = useDispatch();
@@ -76,10 +78,10 @@ export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
       {data.specialPrice ? (
         <TextBox>
           <Typography sx={crossedOutText}>{data.price} $</Typography>
-          <Typography sx={redText}>{data.specialPrice} $</Typography>
+          <Typography sx={normalTextRed}>{data.specialPrice} $</Typography>
         </TextBox>
       ) : (
-        <Typography sx={highlightedText}>{data.price} $</Typography>
+        <Typography sx={normalTextBlack}>{data.price} $</Typography>
       )}
       <FormContainer>
         <FormControl>
@@ -103,7 +105,7 @@ export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
           <Button
             variant="contained"
             onClick={handleAddToCart}
-            sx={confirmButton}
+            sx={button}
             disabled={!selectedSize}
             endIcon={<ShoppingCartOutlinedIcon />}
           >

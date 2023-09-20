@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import {
   Breakpoints,
   Colors,
-  FontFamily,
   FontSizes,
   FontWeights,
 } from '@/styles/variables';
@@ -20,12 +19,17 @@ export const AuthContainer = styled.div`
 
 export const FormContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 70vh;
   overflow: hidden;
   @media (min-width: ${Breakpoints.desktop}) {
     display: flex;
     width: 50%;
   }
+`;
+
+export const LogoContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 export const FormContent = styled.div`
@@ -47,14 +51,7 @@ export const tabPanel: SxProps = {
   marginTop: '5rem',
 };
 
-export const tabItem: SxProps = {
+export const tabPanelOption: SxProps = {
   fontSize: FontSizes.middle,
-  fontWeight: FontWeights.bold,
-};
-
-export const logoText: SxProps = {
-  fontFamily: FontFamily.pacifico,
-  marginTop: '0.5rem',
-  color: Colors.blackLight,
   fontWeight: FontWeights.bold,
 };

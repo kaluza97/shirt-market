@@ -1,18 +1,12 @@
-import { FontFamily, FontSizes, FontWeights } from '@/styles/variables';
 import styled from '@emotion/styled';
-import { SxProps } from '@mui/material';
 
-export const ImageContainer = styled.div`
-  width: 100%;
+export const CartContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
+  text-align: center;
+  flex-direction: column;
 `;
 
-export const button: SxProps = {
-  width: '100%',
-  textAlign: 'center',
-  fontSize: FontSizes.large,
-  fontFamily: FontFamily.sans,
-  fontWeight: FontWeights.bold,
-};
+export const ImageWrapper = styled.div`
+  margin-top: 3rem;
+`;

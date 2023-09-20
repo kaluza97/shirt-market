@@ -4,8 +4,6 @@ import { Button, CircularProgress, Typography } from '@mui/material';
 import {
   CartContainer,
   EmptyCartContainer,
-  confirmButton,
-  headerText,
 } from '@/components/Cart/Cart.styles';
 import Image from 'next/image';
 import { CartItem } from '@/components/Cart/components/CartItem/CartItem.component';
@@ -19,6 +17,7 @@ import { saveOrder } from '@/redux/slices/Orders/update/Orders.thunk';
 import { AuthContext } from '@/context/Auth.context';
 import { SaveOrderItem } from '@/redux/slices/Orders/update/Orders.types';
 import { Timestamp } from 'firebase/firestore';
+import { boldText, button, headerTextBlack } from '@/styles/global.styles';
 
 export const CartWrapper: FC = () => {
   const { user } = useContext(AuthContext);
@@ -72,7 +71,7 @@ export const CartWrapper: FC = () => {
       )}
       {cartItems.length === 0 ? (
         <EmptyCartContainer>
-          <Typography sx={headerText}>Your cart is empty.</Typography>
+          <Typography sx={headerTextBlack}>Your cart is empty.</Typography>
           <Image
             src={`/assets/emptyCart.jpg`}
             alt="empty shopping cart"
@@ -83,20 +82,20 @@ export const CartWrapper: FC = () => {
         </EmptyCartContainer>
       ) : (
         <>
-          <Typography component="h3" sx={headerText}>
+          <Typography component="h3" sx={headerTextBlack}>
             Your Cart Items:
           </Typography>
           <Divider />
           {cartItems.map((item) => (
             <CartItem item={item} key={item.name} />
           ))}
-          <Typography component="h3" sx={headerText}>
+          <Typography component="h3" sx={boldText}>
             Total cost: {allProductsTotalCost} $
           </Typography>
           <Button
             variant="contained"
             onClick={handleProceedPayment}
-            sx={confirmButton}
+            sx={button}
             endIcon={<PaymentIcon />}
           >
             Proceed to Payment

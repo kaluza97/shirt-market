@@ -3,11 +3,11 @@ import { CircularProgress, Typography } from '@mui/material';
 import { AuthContext } from '@/context/Auth.context';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
-import { headerTitle } from '@/components/Order/Order.styles';
 import { fetchFavorites } from '@/redux/slices/Favorites/fetch/Favorites.thunk';
 import { ProductsList } from '../Products/components/ProductsList/ProductsList.component';
 import Image from 'next/image';
 import { FavoritesWrapperContainer } from './Favorites.styles';
+import { headerTextBlack } from '@/styles/global.styles';
 
 export const FavoritesWrapper: FC = () => {
   const { user } = useContext(AuthContext);
@@ -37,7 +37,7 @@ export const FavoritesWrapper: FC = () => {
     <FavoritesWrapperContainer>
       {data?.length ? (
         <>
-          <Typography variant="h5" sx={headerTitle}>
+          <Typography component="h5" sx={headerTextBlack}>
             Your favorites:
           </Typography>
           <ProductsList
@@ -50,7 +50,7 @@ export const FavoritesWrapper: FC = () => {
         </>
       ) : (
         <>
-          <Typography variant="h5" sx={headerTitle}>
+          <Typography component="h5" sx={headerTextBlack}>
             No favorite products
           </Typography>
           <Image

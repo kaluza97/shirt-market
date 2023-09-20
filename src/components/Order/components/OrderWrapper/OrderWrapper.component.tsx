@@ -5,11 +5,8 @@ import { useDispatch, useSelector } from '@/redux/hooks';
 import { fetchOrders } from '@/redux/slices/Orders/fetch/Orders.thunk';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 import { OrderItem } from '@/components/Order/components/OrderItem/OrderItem.component';
-import {
-  OrderContainer,
-  descriptionText,
-  headerTitle,
-} from '@/components/Order/Order.styles';
+import { OrderContainer } from '@/components/Order/Order.styles';
+import { headerTextBlack, normalTextBlack } from '@/styles/global.styles';
 
 export const OrderWrapper: FC = () => {
   const { user } = useContext(AuthContext);
@@ -41,15 +38,15 @@ export const OrderWrapper: FC = () => {
 
   return (
     <OrderContainer>
-      <Typography variant="h5" sx={headerTitle}>
+      <Typography component="h5" sx={headerTextBlack}>
         Your orders:
       </Typography>
       {data?.map(({ items, totalPrice, orderDate }) => (
         <Fragment key={orderDate.nanoseconds}>
-          <Typography variant="h5" sx={descriptionText}>
+          <Typography component="h5" sx={normalTextBlack}>
             Total Price: {totalPrice} $
           </Typography>
-          <Typography variant="h5" sx={descriptionText}>
+          <Typography component="h5" sx={normalTextBlack}>
             Order Date: {orderDate.toDate().toLocaleString()}
           </Typography>
           <OrderItem items={items} />

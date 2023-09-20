@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
-import { Colors, FontFamily, FontSizes, FontWeights } from '@/styles/variables';
-import { SxProps } from '@mui/material';
+import { Colors } from '@/styles/variables';
 
 export const CartContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 50vh;
+  min-height: 60vh;
 `;
 
 export const CartItemsContainer = styled.div`
@@ -34,37 +33,5 @@ export const EmptyCartContainer = styled(FlexContainer)`
 export const ButtonContainer = styled(FlexContainer)`
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
 `;
-
-export const cartButton: SxProps = {
-  fontFamily: FontFamily.sans,
-  fontSize: FontSizes.extraSmall,
-  fontWeight: FontWeights.bold,
-  color: Colors.white,
-  padding: '1rem',
-  marginBottom: '2rem',
-  height: '4rem',
-};
-
-export const confirmButton: SxProps = {
-  fontFamily: FontFamily.sans,
-  fontSize: FontSizes.small,
-  fontWeight: FontWeights.bold,
-  color: Colors.white,
-  padding: '1rem',
-};
-
-export const descriptionText: SxProps = {
-  fontSize: FontSizes.small,
-  fontWeight: FontWeights.bold,
-  fontFamily: FontFamily.sans,
-  color: Colors.blackLight,
-};
-
-export const headerText: SxProps = {
-  fontSize: FontSizes.large,
-  fontFamily: FontFamily.sans,
-  color: Colors.blackLight,
-  textAlign: 'center',
-  margin: '1rem',
-};

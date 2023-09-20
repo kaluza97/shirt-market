@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Typography } from '@mui/material';
-import { imageText, productBox } from '@/components/Products/Products.styles';
+import { productBox } from '@/components/Products/Products.styles';
 import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
 import { Layout } from '@/components/Layout/Layout.component';
 import { ProductDetail } from '@/components/Products/components/ProductDetail/ProductDetail.component';
-import { ExtendedFooter } from '@/components/Footer/components/ExtendedFooter/ExtendedFooter.component';
+import { Footer } from '@/components/Footer/Footer.component';
+import { headerTextBlack } from '@/styles/global.styles';
 
 const ProductDetailPage: FC = () => {
   const router = useRouter();
@@ -19,11 +20,11 @@ const ProductDetailPage: FC = () => {
           {id ? (
             <ProductDetail id={Number(id)} />
           ) : (
-            <Typography sx={imageText}>Product not found.</Typography>
+            <Typography sx={headerTextBlack}>Product not found.</Typography>
           )}
         </Box>
       }
-      footer={<ExtendedFooter />}
+      footer={<Footer />}
     />
   );
 };

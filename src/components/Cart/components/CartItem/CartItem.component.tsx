@@ -18,10 +18,9 @@ import {
   ButtonContainer,
   CartItemsContainer,
   DescriptionContainer,
-  cartButton,
-  descriptionText,
 } from '@/components/Cart/Cart.styles';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
+import { button, normalTextBlack } from '@/styles/global.styles';
 
 export const CartItem: FC<CartItemProps> = ({ item }) => {
   const { id, name, img, price, quantities } = item;
@@ -89,23 +88,23 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
                 onClick={() => handleRedirectToDetail(id)}
               />
               <DescriptionContainer>
-                <Typography component="h3" sx={descriptionText}>
+                <Typography component="h3" sx={normalTextBlack}>
                   Name: {name}
                 </Typography>
-                <Typography component="h3" sx={descriptionText}>
+                <Typography component="h3" sx={normalTextBlack}>
                   Size: {size}
                 </Typography>
-                <Typography component="h3" sx={descriptionText}>
+                <Typography component="h3" sx={normalTextBlack}>
                   Quantity: {quantity}
                 </Typography>
-                <Typography component="h3" sx={descriptionText}>
+                <Typography component="h3" sx={normalTextBlack}>
                   Price: {price * quantity} $
                 </Typography>
               </DescriptionContainer>
               <ButtonContainer>
                 <Button
                   variant="contained"
-                  sx={cartButton}
+                  sx={button}
                   endIcon={<AddIcon />}
                   onClick={() =>
                     handleAddToCart(
@@ -122,7 +121,7 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
                 </Button>
                 <Button
                   variant="contained"
-                  sx={cartButton}
+                  sx={button}
                   endIcon={<MinusIcon />}
                   onClick={() =>
                     handleRemoveFromCart(id, size as Size, quantity)

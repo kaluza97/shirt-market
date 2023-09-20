@@ -4,10 +4,10 @@ import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.compo
 import { Layout } from '@/components/Layout/Layout.component';
 import { ProductsList } from '@/components/Products/components/ProductsList/ProductsList.component';
 import { categoryData, allCategories } from '@/data/category.data';
-import { headerTitle } from '@/components/Order/Order.styles';
 import { Typography } from '@mui/material';
 import { QueryCondition } from '@/redux/slices/Products/Products.types';
-import { ExtendedFooter } from '@/components/Footer/components/ExtendedFooter/ExtendedFooter.component';
+import { Footer } from '@/components/Footer/Footer.component';
+import { headerTextBlack } from '@/styles/global.styles';
 
 const CategoryDetailPage: FC = () => {
   const router = useRouter();
@@ -32,13 +32,13 @@ const CategoryDetailPage: FC = () => {
       header={<NavigationMenu />}
       content={
         <>
-          <Typography component="h3" variant="h4" sx={headerTitle}>
+          <Typography component="h3" sx={headerTextBlack}>
             You are in the category: {category}
           </Typography>
           <ProductsList queryCondition={queryCondition} />
         </>
       }
-      footer={<ExtendedFooter />}
+      footer={<Footer />}
     />
   );
 };

@@ -2,13 +2,11 @@ import React, { ChangeEvent, FC, FormEvent, useContext, useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import { AuthContext } from '@/context/Auth.context';
 import { TextField, Button } from '@mui/material';
-import {
-  inputText,
-  submitButton,
-} from '@/components/SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.styles';
+import { inputText } from '@/components/SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.styles';
 import { AuthError } from '@/components/Message/components/AuthError/AuthError.component';
 import { Terms } from '@/components/Terms/Terms.component';
 import { SignUpFormWrapper } from '@/components/SignUp/SingUp.styles';
+import { button } from '@/styles/global.styles';
 
 export const SignUp: FC = () => {
   const auth = getAuth();
@@ -41,8 +39,6 @@ export const SignUp: FC = () => {
           fullWidth
           name="registerEmail"
           autoFocus
-          size="small"
-          InputLabelProps={{ shrink: true }}
           sx={inputText}
         />
         <TextField
@@ -54,8 +50,6 @@ export const SignUp: FC = () => {
           fullWidth
           name="registerPassword"
           type="password"
-          size="small"
-          InputLabelProps={{ shrink: true }}
           sx={inputText}
         />
         <Terms />
@@ -64,8 +58,7 @@ export const SignUp: FC = () => {
           fullWidth
           variant="contained"
           color="primary"
-          size="large"
-          sx={submitButton}
+          sx={button}
         >
           Sign Up
         </Button>

@@ -2,7 +2,7 @@ import { Colors, FontSizes, ZIndexes } from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 
-export const GapContainer = styled.div`
+export const NavigationTopSpacer = styled.div`
   width: 100%;
   z-index: ${ZIndexes.background};
   height: 7rem;

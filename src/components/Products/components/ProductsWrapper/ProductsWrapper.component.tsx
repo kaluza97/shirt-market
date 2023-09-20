@@ -3,14 +3,14 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
 import {
   ProductsWrapperContainer,
-  headerTitle,
   productContainer,
 } from '@/components/Products/Products.styles';
 import { ProductsList } from '@/components/Products/components/ProductsList/ProductsList.component';
+import { headerTextBlack } from '@/styles/global.styles';
 
 export const ProductsWrapper: FC = () => (
   <ProductsWrapperContainer>
-    <Typography component="h3" variant="h4" sx={headerTitle}>
+    <Typography component="h3" sx={headerTextBlack}>
       Our most recomended products
     </Typography>
     <Box sx={productContainer}>

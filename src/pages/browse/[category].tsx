@@ -7,6 +7,7 @@ import { categoryData, allCategories } from '@/data/category.data';
 import { headerTitle } from '@/components/Order/Order.styles';
 import { Typography } from '@mui/material';
 import { QueryCondition } from '@/redux/slices/Products/Products.types';
+import { ExtendedFooter } from '@/components/Footer/components/ExtendedFooter/ExtendedFooter.component';
 
 const CategoryDetailPage: FC = () => {
   const router = useRouter();
@@ -37,6 +38,7 @@ const CategoryDetailPage: FC = () => {
           <ProductsList queryCondition={queryCondition} />
         </>
       }
+      footer={<ExtendedFooter />}
     />
   );
 };

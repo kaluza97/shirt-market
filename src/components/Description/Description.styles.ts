@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Breakpoints, Colors, FontFamily, FontSizes } from '@/styles/variables';
 import { SxProps } from '@mui/material';
+import Image from 'next/image';
 
 export const DesktopContainer = styled.div`
   display: none;
@@ -29,6 +30,10 @@ export const DesktopDescriptionItem = styled.div`
     padding: 1rem;
     margin-top: 2rem;
   }
+`;
+
+export const Img = styled(Image)`
+  object-fit: contain;
 `;
 
 export const descriptionText: SxProps = {

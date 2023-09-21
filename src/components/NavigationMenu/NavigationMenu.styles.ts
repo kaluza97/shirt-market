@@ -11,8 +11,8 @@ export const GapContainer = styled.div`
 export const QuantityContainer = styled.div`
   position: absolute;
   min-width: 1.2rem;
-  margin-left: 1.7rem;
   margin-top: 1rem;
+  margin-left: 1.7rem;
   padding: 0.4rem;
   background-color: ${Colors.primary};
   color: ${Colors.white};

@@ -3,7 +3,8 @@ import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 
 export const OrderContainer = styled.div`
-  padding: 0 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
 `;
 
 export const OrderItemsContainer = styled.div`
@@ -13,7 +14,8 @@ export const OrderItemsContainer = styled.div`
 export const DescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 2rem;
+  margin-right: 2rem;
+  margin-left: 2rem;
 `;
 
 export const orderBox: SxProps = {

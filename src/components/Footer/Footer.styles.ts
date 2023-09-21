@@ -5,6 +5,7 @@ import {
   FontFamily,
   FontSizes,
   FontWeights,
+  MediaForTabletAndDesktop,
 } from '@/styles/variables';
 import { SxProps } from '@mui/material';
 import Link from 'next/link';
@@ -51,13 +52,11 @@ export const basicFooterText: SxProps = {
   alignItems: 'center',
   justifyContent: 'center',
   backgroundColor: Colors.primary,
-  padding: '1rem 0',
-  [`@media screen and (min-width: ${Breakpoints.tablet})`]: {
-    padding: '1rem 0',
-    backgroundColor: Colors.blackLight,
-  },
-  [`@media screen and (min-width: ${Breakpoints.desktop})`]: {
-    padding: '2rem 0',
+  paddingTop: '1rem',
+  paddingBottom: '1rem',
+  [MediaForTabletAndDesktop]: {
+    paddingTop: '2rem',
+    paddingBottom: '2rem',
     backgroundColor: Colors.primary,
   },
 };

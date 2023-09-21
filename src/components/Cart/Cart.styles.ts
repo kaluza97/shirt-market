@@ -13,12 +13,13 @@ export const CartContainer = styled.div`
 export const CartItemsContainer = styled.div`
   display: flex;
   padding: 1rem;
-  box-shadow: ${Colors.shadow} 0px 1rem 1rem -1rem;
+  box-shadow: ${Colors.shadow} 0 1rem 1rem -1rem;
 `;
 
 const FlexContainer = styled.div`
   display: flex;
-  margin: 0 1rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
 `;
 
 export const DescriptionContainer = styled(FlexContainer)`

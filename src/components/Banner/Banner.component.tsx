@@ -12,8 +12,8 @@ export const Banner: FC = () => {
   };
 
   return (
-    <Suspense fallback={<CircularProgress />}>
-      <BannerContainer>
+    <BannerContainer>
+      <Suspense fallback={<CircularProgress />}>
         {bannerData.map(({ src, alt, path }) => (
           <Img
             key={src}
@@ -24,7 +24,7 @@ export const Banner: FC = () => {
             onClick={() => handleNavigate(path)}
           />
         ))}
-      </BannerContainer>
-    </Suspense>
+      </Suspense>
+    </BannerContainer>
   );
 };

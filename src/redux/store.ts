@@ -13,10 +13,6 @@ export const store = configureStore({
     orders: ordersReducer,
     favorites: favoritesReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

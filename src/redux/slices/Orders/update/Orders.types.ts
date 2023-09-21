@@ -1,8 +1,7 @@
 import { CartItem } from '@/redux/slices/Cart/Cart.types';
-import { Timestamp } from 'firebase/firestore';
 
 export type SaveOrderItem = {
-  orderDate: Timestamp;
+  orderDate: string;
   totalPrice: number;
   items: Array<CartItem>;
 };

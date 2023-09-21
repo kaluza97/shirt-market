@@ -8,7 +8,8 @@ export const OrderItemsContainer = styled.div`
 export const DescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 2rem;
+  margin-right: 2rem;
+  margin-left: 2rem;
 `;
 
 export const orderBox: SxProps = {

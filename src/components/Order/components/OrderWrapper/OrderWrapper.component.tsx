@@ -45,12 +45,12 @@ export const OrderWrapper: FC = () => {
         Your orders:
       </Typography>
       {data?.map(({ items, totalPrice, orderDate }) => (
-        <Fragment key={orderDate.nanoseconds}>
-          <Typography component="h5" sx={normalTextBlack}>
+        <Fragment key={orderDate}>
+          <Typography variant="h5" sx={normalTextBlack}>
             Total Price: {totalPrice} $
           </Typography>
-          <Typography component="h5" sx={normalTextBlack}>
-            Order Date: {orderDate.toDate().toLocaleString()}
+          <Typography variant="h5" sx={normalTextBlack}>
+            Order Date: {new Date(orderDate).toLocaleString()}
           </Typography>
           <OrderItem items={items} />
         </Fragment>

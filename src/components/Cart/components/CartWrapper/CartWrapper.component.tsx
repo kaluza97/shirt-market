@@ -13,12 +13,11 @@ import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomA
 import { saveOrder } from '@/redux/slices/Orders/update/Orders.thunk';
 import { AuthContext } from '@/context/Auth.context';
 import { SaveOrderItem } from '@/redux/slices/Orders/update/Orders.types';
-import { Timestamp } from 'firebase/firestore';
 import {
   FlexContainer,
+  headerTextBlack,
   boldText,
   button,
-  headerTextBlack,
 } from '@/styles/global.styles';
 
 export const CartWrapper: FC = () => {
@@ -32,7 +31,7 @@ export const CartWrapper: FC = () => {
 
   const handleAddOrder = () => {
     const purchasedItem: SaveOrderItem = {
-      orderDate: Timestamp.fromDate(new Date()),
+      orderDate: new Date().toISOString(),
       totalPrice: allProductsTotalCost,
       items: cartItems,
     };

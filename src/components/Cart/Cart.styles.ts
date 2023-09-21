@@ -9,7 +9,8 @@ export const CartItemsContainer = styled.div`
 
 const FlexContainer = styled.div`
   display: flex;
-  margin: 0 1rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
 `;
 
 export const DescriptionContainer = styled(FlexContainer)`

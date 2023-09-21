@@ -79,7 +79,7 @@ export const ProductImageWrapper = styled.div`
 `;
 
 export const Img = styled(Image)`
-  margin: 0 0 0.5rem 0;
+  margin-bottom: 0.5rem;
   cursor: pointer;
 `;
 
@@ -113,7 +113,8 @@ export const crossedOutText: SxProps = {
 };
 
 export const accordion: SxProps = {
-  margin: '1rem 0',
+  marginTop: '1rem',
+  marginBottom: '1rem',
 };
 
 export const radioGroup: SxProps = {

@@ -2,7 +2,6 @@ import React, { FC, useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { Button, CircularProgress, Typography } from '@mui/material';
 import { EmptyCartContainer } from '@/components/Cart/Cart.styles';
-import Image from 'next/image';
 import { CartItem } from '@/components/Cart/components/CartItem/CartItem.component';
 import { calculateTotalCost } from '@/components/Cart/Cart.utils';
 import { Divider } from '@mui/material';
@@ -19,6 +18,7 @@ import {
   boldText,
   button,
 } from '@/styles/global.styles';
+import Image from 'next/image';
 
 export const CartWrapper: FC = () => {
   const { user } = useContext(AuthContext);

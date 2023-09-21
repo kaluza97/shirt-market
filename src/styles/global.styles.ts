@@ -12,30 +12,17 @@ import {
   FooterHeight,
   FooterHeightDesktop,
 } from '@/components/Footer/Footer.styles';
-import {
-  NavigationMenuHeight,
-  NavigationMenuPadding,
-} from '@/components/NavigationMenu/NavigationMenu.styles';
+import { NavigationMenuHeight } from '@/components/NavigationMenu/NavigationMenu.styles';
 
 export const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(
-    100vh -
-      (
-        ${FooterHeight} + ${NavigationMenuHeight} +
-          (${NavigationMenuPadding} * 2)
-      )
-  );
+  min-height: calc(100vh - (${FooterHeight} + ${NavigationMenuHeight}));
   ${MediaForTabletAndDesktop} {
     min-height: calc(
-      100vh -
-        (
-          ${FooterHeightDesktop} + ${NavigationMenuHeight} +
-            (${NavigationMenuPadding} * 2)
-        )
+      100vh - (${FooterHeightDesktop} + ${NavigationMenuHeight})
     );
   }
 `;

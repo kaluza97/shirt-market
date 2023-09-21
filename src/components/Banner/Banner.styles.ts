@@ -1,6 +1,5 @@
 import { Breakpoints } from '@/styles/variables';
 import styled from '@emotion/styled';
-import Image from 'next/image';
 
 export const BannerContainer = styled.div`
   display: flex;
@@ -14,10 +13,13 @@ export const BannerContainer = styled.div`
   }
 `;
 
-export const Img = styled(Image)`
-margin-bottom: 1rem;
-object-fit: contain;
-cursor: pointer;
-@media (min-width: ${Breakpoints.desktop}) {
-  margin: 2rem 1rem;
+export const ImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+  height: 60rem;
+  margin: 0 1rem 2rem 1rem;
+  @media (min-width: ${Breakpoints.desktop}) {
+    margin: 2rem 1rem 2rem 1rem;
+  }
 `;

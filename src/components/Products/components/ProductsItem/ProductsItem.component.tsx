@@ -54,7 +54,6 @@ export const ProductsItem: FC<ProductType> = ({
     <Box sx={productBox} onClick={handleProductClick}>
       <ProductImageWrapper>
         <Img src={img} alt={name} width={250} height={350} priority />
-
         <IconButton
           aria-label={isFavorite ? 'remove from favorites' : 'add to favorites'}
           sx={favoriteIconButton}

@@ -7,7 +7,7 @@ import { categoryData, allCategories } from '@/data/category.data';
 import { Typography } from '@mui/material';
 import { QueryCondition } from '@/redux/slices/Products/Products.types';
 import { Footer } from '@/components/Footer/Footer.component';
-import { headerTextBlack } from '@/styles/global.styles';
+import { FlexContainer, headerTextBlack } from '@/styles/global.styles';
 
 const CategoryDetailPage: FC = () => {
   const router = useRouter();
@@ -31,12 +31,12 @@ const CategoryDetailPage: FC = () => {
     <Layout
       header={<NavigationMenu />}
       content={
-        <>
+        <FlexContainer>
           <Typography component="h3" sx={headerTextBlack}>
             You are in the category: {category}
           </Typography>
           <ProductsList queryCondition={queryCondition} />
-        </>
+        </FlexContainer>
       }
       footer={<Footer />}
     />

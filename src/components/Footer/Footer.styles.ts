@@ -2,7 +2,12 @@ import styled from '@emotion/styled';
 import { Breakpoints, Colors } from '@/styles/variables';
 import Link from 'next/link';
 
-export const FooterContainer = styled.footer`
+export const FooterContainer = styled.div`
+  display: flex;
+  height: 30rem;
+`;
+
+export const FooterContent = styled.footer`
   display: flex;
   flex-direction: column;
   width: 100%;

@@ -6,10 +6,9 @@ import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomA
 import { fetchFavorites } from '@/redux/slices/Favorites/fetch/Favorites.thunk';
 import { ProductsList } from '../Products/components/ProductsList/ProductsList.component';
 import Image from 'next/image';
-import { FavoritesWrapperContainer } from './Favorites.styles';
-import { headerTextBlack } from '@/styles/global.styles';
+import { FlexContainer, headerTextBlack } from '@/styles/global.styles';
 
-export const FavoritesWrapper: FC = () => {
+export const Favorites: FC = () => {
   const { user } = useContext(AuthContext);
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.favorites);
@@ -34,7 +33,7 @@ export const FavoritesWrapper: FC = () => {
   }
 
   return (
-    <FavoritesWrapperContainer>
+    <FlexContainer>
       {data?.length ? (
         <>
           <Typography component="h5" sx={headerTextBlack}>
@@ -62,6 +61,6 @@ export const FavoritesWrapper: FC = () => {
           />
         </>
       )}
-    </FavoritesWrapperContainer>
+    </FlexContainer>
   );
 };

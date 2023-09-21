@@ -1,14 +1,6 @@
 import styled from '@emotion/styled';
 import { Colors } from '@/styles/variables';
 
-export const CartContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-`;
-
 export const CartItemsContainer = styled.div`
   display: flex;
   padding: 1rem;

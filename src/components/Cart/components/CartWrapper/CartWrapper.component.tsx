@@ -1,10 +1,7 @@
 import React, { FC, useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { Button, CircularProgress, Typography } from '@mui/material';
-import {
-  CartContainer,
-  EmptyCartContainer,
-} from '@/components/Cart/Cart.styles';
+import { EmptyCartContainer } from '@/components/Cart/Cart.styles';
 import Image from 'next/image';
 import { CartItem } from '@/components/Cart/components/CartItem/CartItem.component';
 import { calculateTotalCost } from '@/components/Cart/Cart.utils';
@@ -17,7 +14,12 @@ import { saveOrder } from '@/redux/slices/Orders/update/Orders.thunk';
 import { AuthContext } from '@/context/Auth.context';
 import { SaveOrderItem } from '@/redux/slices/Orders/update/Orders.types';
 import { Timestamp } from 'firebase/firestore';
-import { boldText, button, headerTextBlack } from '@/styles/global.styles';
+import {
+  FlexContainer,
+  boldText,
+  button,
+  headerTextBlack,
+} from '@/styles/global.styles';
 
 export const CartWrapper: FC = () => {
   const { user } = useContext(AuthContext);
@@ -56,7 +58,7 @@ export const CartWrapper: FC = () => {
   }
 
   return (
-    <CartContainer>
+    <FlexContainer>
       {isPaymentSuccessful && (
         <CustomAlert
           alertType="success"
@@ -102,6 +104,6 @@ export const CartWrapper: FC = () => {
           </Button>
         </>
       )}
-    </CartContainer>
+    </FlexContainer>
   );
 };

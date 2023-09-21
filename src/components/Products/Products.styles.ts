@@ -1,19 +1,8 @@
 import { normalTextBlack } from '@/styles/global.styles';
-import {
-  Breakpoints,
-  Colors,
-  FontFamily,
-  FontSizes,
-  FontWeights,
-} from '@/styles/variables';
+import { Breakpoints, Colors } from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 import Image from 'next/image';
-
-export const ProductsWrapperContainer = styled.div`
-  padding: 0 1rem 0 1rem;
-  textalign: 'center';
-`;
 
 export const ProductsListContainer = styled.div`
   display: flex;
@@ -115,7 +104,7 @@ export const productBox: SxProps = {
   display: 'flex',
   flexDirection: 'column',
   textAlign: 'center',
-  margin: '0.5rem',
+  padding: '2rem',
 };
 
 export const crossedOutText: SxProps = {

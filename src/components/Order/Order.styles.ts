@@ -1,10 +1,6 @@
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 
-export const OrderContainer = styled.div`
-  padding: 0 1rem;
-`;
-
 export const OrderItemsContainer = styled.div`
   display: flex;
 `;

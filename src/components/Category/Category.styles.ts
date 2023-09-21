@@ -1,12 +1,11 @@
+import { Colors } from '@/styles/variables';
 import styled from '@emotion/styled';
 
-export const CartContainer = styled.div`
+export const CategoryBox = styled.div`
   display: flex;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-`;
-
-export const ImageWrapper = styled.div`
-  margin-top: 3rem;
+  width: 7rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: ${Colors.yellow};
 `;

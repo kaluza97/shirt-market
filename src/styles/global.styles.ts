@@ -3,6 +3,15 @@ import { FontSizes, FontFamily, FontWeights, Colors } from '@/styles/variables';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 
+export const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5rem;
+  min-height: calc(100vh - 42rem);
+`;
+
 export const LinkText = styled(Link)`
   font-size: ${FontSizes.small};
   font-family: ${FontFamily.sans};

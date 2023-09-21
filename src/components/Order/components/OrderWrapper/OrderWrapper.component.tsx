@@ -5,8 +5,11 @@ import { useDispatch, useSelector } from '@/redux/hooks';
 import { fetchOrders } from '@/redux/slices/Orders/fetch/Orders.thunk';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 import { OrderItem } from '@/components/Order/components/OrderItem/OrderItem.component';
-import { OrderContainer } from '@/components/Order/Order.styles';
-import { headerTextBlack, normalTextBlack } from '@/styles/global.styles';
+import {
+  FlexContainer,
+  headerTextBlack,
+  normalTextBlack,
+} from '@/styles/global.styles';
 
 export const OrderWrapper: FC = () => {
   const { user } = useContext(AuthContext);
@@ -37,7 +40,7 @@ export const OrderWrapper: FC = () => {
   }
 
   return (
-    <OrderContainer>
+    <FlexContainer>
       <Typography component="h5" sx={headerTextBlack}>
         Your orders:
       </Typography>
@@ -52,6 +55,6 @@ export const OrderWrapper: FC = () => {
           <OrderItem items={items} />
         </Fragment>
       ))}
-    </OrderContainer>
+    </FlexContainer>
   );
 };

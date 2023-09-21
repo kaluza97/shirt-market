@@ -1,16 +1,17 @@
 import {
-  Breakpoints,
   Colors,
   FontFamily,
   FontSizes,
   FontWeights,
+  MediaForTabletAndDesktop,
 } from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 import Image from 'next/image';
 
 export const ProductsWrapperContainer = styled.div`
-  padding: 0 1rem 0 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
   textalign: 'center';
 `;
 
@@ -25,8 +26,7 @@ export const ProductDetailContainer = styled.div`
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  @media (min-width: ${Breakpoints.tablet}),
-    @media (min-width: ${Breakpoints.desktop}) {
+  ${MediaForTabletAndDesktop} {
     flex-direction: row;
   }
 `;
@@ -36,8 +36,7 @@ export const DetailContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  @media (min-width: ${Breakpoints.tablet}),
-    @media (min-width: ${Breakpoints.desktop}) {
+  ${MediaForTabletAndDesktop} {
     padding-right: 10rem;
   }
 `;
@@ -48,10 +47,11 @@ export const PanelContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  @media (min-width: ${Breakpoints.tablet}),
-    @media (min-width: ${Breakpoints.desktop}) {
-    padding: 0 2rem;
-    min-width: 350px;
+  ${MediaForTabletAndDesktop} {
+    width: 40%;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    min-width: 35rem;
   }
 `;
 
@@ -60,8 +60,7 @@ export const DetailImageContainer = styled.div`
   width: 100%;
   max-width: 40rem;
   height: 55rem;
-  @media (min-width: ${Breakpoints.tablet}),
-    @media (min-width: ${Breakpoints.desktop}) {
+  ${MediaForTabletAndDesktop} {
     max-width: 42rem;
   }
 `;
@@ -89,7 +88,7 @@ export const FormContainer = styled.div`
 `;
 
 export const Img = styled(Image)`
-  margin: 0 0 0.5rem 0;
+  margin-bottom: 0.5rem;
   cursor: pointer;
 `;
 
@@ -154,7 +153,8 @@ export const descriptionBoldText: SxProps = {
 };
 
 export const accordion: SxProps = {
-  margin: '1rem 0',
+  marginTop: '1rem',
+  marginBottom: '1rem',
 };
 
 export const confirmButton: SxProps = {

@@ -16,8 +16,8 @@ export const SignInFormWrapper = styled.div`
 
 export const inputText: SxProps = {
   fontSize: FontSizes.middle,
-  paddingTop: '0.5rem',
   marginBottom: '2rem',
+  paddingTop: '0.5rem',
   color: Colors.blackLight,
   'input:-webkit-autofill': {
     WebkitBoxShadow: ResetAutofill,

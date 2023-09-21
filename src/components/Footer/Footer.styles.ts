@@ -1,19 +1,22 @@
 import styled from '@emotion/styled';
-import { Breakpoints, Colors } from '@/styles/variables';
+import {
+  Breakpoints,
+  Colors,
+  MediaForTabletAndDesktop,
+} from '@/styles/variables';
 import Link from 'next/link';
 
-export const FooterContainer = styled.div`
-  display: flex;
-  height: 30rem;
-`;
+export const FooterHeight = '80rem';
+export const FooterHeightDesktop = '26rem';
 
 export const FooterContent = styled.footer`
   display: flex;
+  height: ${FooterHeight};
   flex-direction: column;
   width: 100%;
   background-color: ${Colors.primary};
-  @media (min-width: ${Breakpoints.tablet}),
-    @media (min-width: ${Breakpoints.desktop}) {
+  ${MediaForTabletAndDesktop} {
+    height: ${FooterHeightDesktop};
     flex-direction: row;
     justify-content: space-evenly;
   }

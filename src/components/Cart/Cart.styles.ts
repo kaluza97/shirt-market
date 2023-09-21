@@ -4,7 +4,7 @@ import { Colors } from '@/styles/variables';
 export const CartItemsContainer = styled.div`
   display: flex;
   padding: 1rem;
-  box-shadow: ${Colors.shadow} 0px 1rem 1rem -1rem;
+  box-shadow: ${Colors.shadow} 0 1rem 1rem -1rem;
 `;
 
 const FlexContainer = styled.div`

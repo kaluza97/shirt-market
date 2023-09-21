@@ -9,9 +9,6 @@ export const BannerContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: no-wrap;
-  @media (min-width: ${Breakpoints.tablet}) {
-    flex-direction: column;
-  }
   @media (min-width: ${Breakpoints.desktop}) {
     flex-direction: row;
   }

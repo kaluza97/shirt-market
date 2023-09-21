@@ -2,10 +2,14 @@ import { Colors, FontSizes, ZIndexes } from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 
+export const NavigationMenuHeight = '5rem';
+export const NavigationMenuPadding = '1rem';
+
 export const NavigationTopSpacer = styled.div`
   width: 100%;
   z-index: ${ZIndexes.background};
-  height: 7rem;
+  padding: ${NavigationMenuPadding};
+  height: ${NavigationMenuHeight};
 `;
 
 export const QuantityContainer = styled.div`
@@ -29,10 +33,10 @@ export const NavigationContainer = styled.div`
 
 export const Navigation = styled.div`
   display: flex;
-  padding: 1rem;
   justify-content: space-between;
   align-items: center;
-  height: 5rem;
+  padding: ${NavigationMenuPadding};
+  height: ${NavigationMenuHeight};
 `;
 
 export const IconContainer = styled.div`

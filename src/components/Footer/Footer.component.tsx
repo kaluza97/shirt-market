@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import {
   Border,
-  FooterContainer,
   FooterContent,
   FooterSection,
   LinkStyled,
@@ -13,7 +12,7 @@ import { footerData } from '@/data/footer.data';
 import { headerTextWhite, normalTextWhite } from '@/styles/global.styles';
 
 export const Footer: FC = () => (
-  <FooterContainer>
+  <>
     <Svg viewBox="0 0 1440 320">
       <path
         fillOpacity="1"
@@ -47,5 +46,5 @@ export const Footer: FC = () => (
         </FooterSection>
       ))}
     </FooterContent>
-  </FooterContainer>
+  </>
 );

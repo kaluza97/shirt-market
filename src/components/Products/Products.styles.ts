@@ -1,5 +1,5 @@
 import { normalTextBlack } from '@/styles/global.styles';
-import { Breakpoints, Colors } from '@/styles/variables';
+import { Colors, MediaForTabletAndDesktop } from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 import Image from 'next/image';
@@ -15,8 +15,7 @@ export const ProductDetailContainer = styled.div`
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  @media (min-width: ${Breakpoints.tablet}),
-    @media (min-width: ${Breakpoints.desktop}) {
+  ${MediaForTabletAndDesktop} {
     flex-direction: row;
   }
 `;
@@ -26,8 +25,7 @@ export const DetailContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  @media (min-width: ${Breakpoints.tablet}),
-    @media (min-width: ${Breakpoints.desktop}) {
+  ${MediaForTabletAndDesktop} {
     padding-right: 10rem;
   }
 `;
@@ -38,10 +36,9 @@ export const PanelContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  @media (min-width: ${Breakpoints.tablet}),
-    @media (min-width: ${Breakpoints.desktop}) {
+  ${MediaForTabletAndDesktop} {
     padding: 0 2rem;
-    min-width: 350px;
+    min-width: 35rem;
   }
 `;
 
@@ -50,8 +47,7 @@ export const DetailImageContainer = styled.div`
   width: 100%;
   max-width: 40rem;
   height: 55rem;
-  @media (min-width: ${Breakpoints.tablet}),
-    @media (min-width: ${Breakpoints.desktop}) {
+  ${MediaForTabletAndDesktop} {
     max-width: 42rem;
   }
 `;
@@ -104,7 +100,10 @@ export const productBox: SxProps = {
   display: 'flex',
   flexDirection: 'column',
   textAlign: 'center',
-  padding: '2rem',
+  padding: '1rem',
+  [MediaForTabletAndDesktop]: {
+    padding: '2rem',
+  },
 };
 
 export const crossedOutText: SxProps = {

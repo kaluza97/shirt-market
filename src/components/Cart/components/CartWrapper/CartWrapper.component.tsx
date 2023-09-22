@@ -74,7 +74,7 @@ export const CartWrapper: FC = () => {
         <EmptyCartContainer>
           <Typography sx={headerTextBlack}>Your cart is empty.</Typography>
           <Image
-            src={`/assets/emptyCart.jpg`}
+            src="https://firebasestorage.googleapis.com/v0/b/shirt-market-8ba7b.appspot.com/o/emptyCart.jpg?alt=media&token=2e1d90f3-d267-4b10-bc3b-e0874fe80222"
             alt="empty shopping cart"
             width={200}
             height={120}

@@ -2,7 +2,6 @@ import { normalTextBlack } from '@/styles/global.styles';
 import { Colors, MediaForTabletAndDesktop } from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
-import Image from 'next/image';
 
 export const ProductsListContainer = styled.div`
   display: flex;
@@ -78,9 +77,6 @@ export const ImageWrapper = styled.div`
   position: relative;
   width: 30rem;
   height: 45rem;
-`;
-
-export const Img = styled(Image)`
   margin-bottom: 0.5rem;
   cursor: pointer;
 `;

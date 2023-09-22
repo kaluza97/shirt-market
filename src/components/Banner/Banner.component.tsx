@@ -7,6 +7,7 @@ import {
 } from '@/components/Banner/Banner.styles';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { Breakpoints } from '@/styles/variables';
 
 export const Banner: FC = () => {
   const { push } = useRouter();
@@ -24,6 +25,9 @@ export const Banner: FC = () => {
               alt={alt}
               src={src}
               fill
+              priority
+              loading="eager"
+              sizes={`(min-width: ${Breakpoints.desktop}) 40rem`}
               onClick={() => handleNavigate(path)}
             />
           </ImageWrapper>

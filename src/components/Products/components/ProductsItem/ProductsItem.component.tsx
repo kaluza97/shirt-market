@@ -2,7 +2,6 @@ import React, { FC, useContext } from 'react';
 import Typography from '@mui/material/Typography';
 import { Box, IconButton } from '@mui/material';
 import {
-  Img,
   ImageWrapper,
   TextBox,
   crossedOutText,
@@ -22,6 +21,8 @@ import {
 import { AuthContext } from '@/context/Auth.context';
 import { fetchFavorites } from '@/redux/slices/Favorites/fetch/Favorites.thunk';
 import { normalTextBlack, normalTextRed } from '@/styles/global.styles';
+import { Breakpoints } from '@/styles/variables';
+import Image from 'next/image';
 
 export const ProductsItem: FC<ProductType> = ({
   id,
@@ -53,7 +54,13 @@ export const ProductsItem: FC<ProductType> = ({
   return (
     <Box sx={productBox} onClick={handleProductClick}>
       <ImageWrapper>
-        <Img src={img} alt={name} fill priority />
+        <Image
+          src={img}
+          alt={name}
+          fill
+          sizes={`(min-width: ${Breakpoints.desktop}) 30rem`}
+          priority
+        />
         <IconButton
           aria-label={isFavorite ? 'remove from favorites' : 'add to favorites'}
           sx={favoriteIconButton}

@@ -9,6 +9,7 @@ import {
   CategoryBox,
   ImageWrapper,
 } from '@/components/Category/Category.styles';
+import { Breakpoints } from '@/styles/variables';
 
 export const Category: FC = () => (
   <FlexContainer>
@@ -17,7 +18,9 @@ export const Category: FC = () => (
         src="https://firebasestorage.googleapis.com/v0/b/shirt-market-8ba7b.appspot.com/o/friends.jpg?alt=media&token=35be86db-a6ed-46c9-b420-640537043375"
         alt="happy friends on vacation"
         fill
+        sizes={`(min-width: ${Breakpoints.desktop}) 50rem`}
         priority
+        loading="eager"
       />
     </ImageWrapper>
     {categoryData.map(({ name }) => (

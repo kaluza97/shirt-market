@@ -13,6 +13,7 @@ import { ProductDetailAccordion } from '@/components/Products/components/Product
 import { ProductDetailForm } from '@/components/Products/components/ProductDetail/ProductDetailForm.container';
 import { fetchProductById } from '@/redux/slices/Product/Product.thunk';
 import Image from 'next/image';
+import { Breakpoints } from '@/styles/variables';
 
 export const ProductDetail: FC<ProductDetailProps> = ({ id }) => {
   const dispatch = useDispatch();
@@ -43,7 +44,13 @@ export const ProductDetail: FC<ProductDetailProps> = ({ id }) => {
     <ProductDetailContainer>
       <PanelContainer>
         <DetailImageContainer>
-          <Image src={data.img} alt={data.name} fill priority />
+          <Image
+            src={data.img}
+            alt={data.name}
+            fill
+            sizes={`(min-width: ${Breakpoints.desktop}) 42rem`}
+            priority
+          />
         </DetailImageContainer>
         <ProductDetailForm id={id} />
       </PanelContainer>

@@ -7,7 +7,7 @@ export const fetchOrders = createAsyncThunk<Array<OrderItem> | null, string>(
   'orders/fetchOrders',
   async (uid) => {
     try {
-      const dataRef = doc(firestore, 'users', uid);
+      const dataRef = doc(firestore, 'orders', uid);
       const snapshot = await getDoc(dataRef);
 
       if (snapshot.exists()) {

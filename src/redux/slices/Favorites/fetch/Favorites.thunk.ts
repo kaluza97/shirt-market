@@ -6,7 +6,7 @@ export const fetchFavorites = createAsyncThunk<Array<number> | null, string>(
   'favorites/fetchFavorites',
   async (uid) => {
     try {
-      const dataRef = doc(firestore, 'users', uid);
+      const dataRef = doc(firestore, 'favorites', uid);
       const snapshot = await getDoc(dataRef);
 
       if (snapshot.exists()) {

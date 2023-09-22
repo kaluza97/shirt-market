@@ -8,7 +8,7 @@ export const saveOrder = createAsyncThunk<
   { uid: string; order: SaveOrderItem }
 >('order/saveOrder', async ({ uid, order }) => {
   try {
-    const userRef = doc(firestore, 'users', uid);
+    const userRef = doc(firestore, 'orders', uid);
     await updateDoc(userRef, { orders: arrayUnion(order) });
   } catch (error) {
     throw new Error('Error while fetching user data from Firestore.');

@@ -47,7 +47,6 @@ export const ProductsItem: FC<ProductType> = ({
       isFavorite
         ? dispatch(removeFavorite({ uid: user.uid, productId: id }))
         : dispatch(saveFavorite({ uid: user.uid, productId: id }));
-      dispatch(fetchFavorites(user.uid));
     }
   };
 

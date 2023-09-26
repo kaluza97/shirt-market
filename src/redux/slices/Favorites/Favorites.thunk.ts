@@ -1,3 +1,4 @@
+import { AuthContext } from '@/context/Auth.context';
 import { firestore } from '@/firebase/firebaseConfig';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
@@ -7,6 +8,7 @@ import {
   getDoc,
   updateDoc,
 } from 'firebase/firestore';
+import { useContext } from 'react';
 
 export const fetchFavorites = createAsyncThunk<Array<number> | null, string>(
   'favorites/fetchFavorites',
@@ -30,10 +32,11 @@ export const fetchFavorites = createAsyncThunk<Array<number> | null, string>(
 export const saveFavorite = createAsyncThunk<
   void,
   { uid: string; productId: number }
->('favorites/saveFavorite', async ({ uid, productId }) => {
+>('favorites/saveFavorite', async ({ uid, productId }, { dispatch }) => {
   try {
     const userRef = doc(firestore, 'favorites', uid);
     await updateDoc(userRef, { favorites: arrayUnion(productId) });
+    dispatch(fetchFavorites(uid));
   } catch (error) {
     throw new Error('Error while fetching user data from Firestore.');
   }
@@ -42,10 +45,11 @@ export const saveFavorite = createAsyncThunk<
 export const removeFavorite = createAsyncThunk<
   void,
   { uid: string; productId: number }
->('favorites/removeFavorite', async ({ uid, productId }) => {
+>('favorites/removeFavorite', async ({ uid, productId }, { dispatch }) => {
   try {
     const userRef = doc(firestore, 'favorites', uid);
     await updateDoc(userRef, { favorites: arrayRemove(productId) });
+    dispatch(fetchFavorites(uid));
   } catch (error) {
     throw new Error('Error while removing favorite from Firestore.');
   }

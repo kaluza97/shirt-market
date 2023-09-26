@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Typography } from '@mui/material';
-import { imgTitle, productBox } from '@/components/Products/Products.styles';
+import { imageText, productBox } from '@/components/Products/Products.styles';
 import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
 import { Layout } from '@/components/Layout/Layout.component';
 import { ProductDetail } from '@/components/Products/components/ProductDetail/ProductDetail.component';
@@ -18,7 +18,7 @@ const ProductDetailPage: FC = () => {
           {id ? (
             <ProductDetail id={Number(id)} />
           ) : (
-            <Typography sx={imgTitle}>Product not found.</Typography>
+            <Typography sx={imageText}>Product not found.</Typography>
           )}
         </Box>
       }

@@ -35,5 +35,6 @@ export const descriptionText: SxProps = {
   fontSize: FontSizes.middle,
   fontFamily: FontFamily.sans,
   color: Colors.blackLight,
-  margin: '0 5rem',
+  marginRight: '5rem',
+  marginLeft: '5rem',
 };

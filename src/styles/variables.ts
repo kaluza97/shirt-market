@@ -15,8 +15,10 @@ export const Breakpoints = {
   desktop: '1100px',
 };
 
+export const MediaForTabletAndDesktop = `@media (min-width: ${Breakpoints.tablet})`;
+
 export const FontSizes = {
-  extraSmall: '1.2rem',
+  extraSmall: '1rem',
   small: '1.4rem',
   middle: '1.6rem',
   large: '1.8rem',

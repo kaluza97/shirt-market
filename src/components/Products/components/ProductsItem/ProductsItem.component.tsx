@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
-import Image from 'next/image';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
 import {
-  imgPrice,
-  imgTitle,
+  Img,
+  imageText,
   productBox,
 } from '@/components/Products/Products.styles';
 import { useRouter } from 'next/router';
@@ -18,9 +17,9 @@ export const ProductsItem: FC<ProductType> = ({ id, img, name, price }) => {
   };
   return (
     <Box sx={productBox} onClick={handleProductClick}>
-      <Image src={img} alt={name} width={200} height={250} priority />
-      <Typography sx={imgTitle}>{name}</Typography>
-      <Typography sx={imgPrice}>{price} $</Typography>
+      <Img src={img} alt={name} width={250} height={350} priority />
+      <Typography sx={imageText}>{name}</Typography>
+      <Typography sx={imageText}>{price} $</Typography>
     </Box>
   );
 };

@@ -18,7 +18,6 @@ import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomA
 import { saveOrder } from '@/redux/slices/Order/Order.thunk';
 import { AuthContext } from '@/context/Auth.context';
 import { SaveOrderItem } from '@/redux/slices/Order/Order.types';
-import { Timestamp } from 'firebase/firestore';
 
 export const CartWrapper: FC = () => {
   const { user } = useContext(AuthContext);
@@ -31,7 +30,7 @@ export const CartWrapper: FC = () => {
 
   const handleAddOrder = () => {
     const purchasedItem: SaveOrderItem = {
-      orderDate: Timestamp.fromDate(new Date()),
+      orderDate: new Date().toISOString(),
       totalPrice: allProductsTotalCost,
       items: cartItems,
     };
@@ -50,7 +49,7 @@ export const CartWrapper: FC = () => {
     if (isPaymentSuccessful) {
       dispatch(clearCart());
     }
-  }, [isPaymentSuccessful]);
+  }, [isPaymentSuccessful, dispatch]);
 
   if (loading) {
     return <CircularProgress />;

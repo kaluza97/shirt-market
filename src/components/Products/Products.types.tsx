@@ -1,3 +1,5 @@
+import { Size } from '@/redux/slices/Cart/Cart.types';
+import { Dispatch, SetStateAction } from 'react';
 import { z } from 'zod';
 
 const sizeSchema = z.object({
@@ -16,9 +18,13 @@ export const productSchema = z.object({
 });
 
 export const productsListSchema = z.array(productSchema);
-
 export type ProductType = z.infer<typeof productSchema>;
+type QuantitiesType = z.infer<typeof sizeSchema>;
 
 export interface ProductDetailProps {
+  id: number;
+}
+
+export interface ProductDetailFormProps {
   id: number;
 }

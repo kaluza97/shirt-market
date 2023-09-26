@@ -3,7 +3,7 @@ import {
   ProductType,
 } from '@/components/Products/Products.types';
 
-export interface ShirtType {
+export interface ProductsState {
   data: Array<ProductType>;
   loading: boolean;
   error: boolean;

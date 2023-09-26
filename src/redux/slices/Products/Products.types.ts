@@ -1,5 +1,7 @@
-import { Categories, ProductType } from '@/components/Products/Products.types';
-import { FieldPath, WhereFilterOp } from 'firebase/firestore';
+import {
+  CategoryQuery,
+  ProductType,
+} from '@/components/Products/Products.types';
 
 export interface ShirtType {
   data: Array<ProductType>;
@@ -9,9 +11,5 @@ export interface ShirtType {
 
 export type FetchProductsArgs = {
   limitValue?: number;
-  categoryQuery: {
-    fieldPath: string | FieldPath;
-    opStr: WhereFilterOp;
-    value: Categories | Array<Categories>;
-  };
+  categoryQuery: CategoryQuery;
 };

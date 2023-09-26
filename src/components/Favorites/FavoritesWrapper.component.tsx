@@ -4,10 +4,10 @@ import { AuthContext } from '@/context/Auth.context';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 import { headerTitle } from '@/components/Order/Order.styles';
-import { fetchFavorites } from '@/redux/slices/Favorites/fetch/Favorites.thunk';
-import { ProductsList } from '../Products/components/ProductsList/ProductsList.component';
+import { ProductsList } from '@/components/Products/components/ProductsList/ProductsList.component';
 import Image from 'next/image';
-import { FavoritesWrapperContainer } from './Favorites.styles';
+import { FavoritesWrapperContainer } from '@/components/Favorites/Favorites.styles';
+import { fetchFavorites } from '@/redux/slices/Favorites/Favorites.thunk';
 
 export const FavoritesWrapper: FC = () => {
   const { user } = useContext(AuthContext);
@@ -35,13 +35,13 @@ export const FavoritesWrapper: FC = () => {
 
   return (
     <FavoritesWrapperContainer>
-      {data?.length ? (
+      {data && data.length > 0 ? (
         <>
           <Typography variant="h5" sx={headerTitle}>
             Your favorites:
           </Typography>
           <ProductsList
-            queryCondition={{
+            categoryQuery={{
               fieldPath: 'id',
               opStr: '==',
               value: data,

@@ -17,12 +17,12 @@ import { ProductType } from '@/components/Products/Products.types';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useDispatch, useSelector } from '@/redux/hooks';
+import { AuthContext } from '@/context/Auth.context';
 import {
+  fetchFavorites,
   removeFavorite,
   saveFavorite,
-} from '@/redux/slices/Favorites/update/Favorites.thunk';
-import { AuthContext } from '@/context/Auth.context';
-import { fetchFavorites } from '@/redux/slices/Favorites/fetch/Favorites.thunk';
+} from '@/redux/slices/Favorites/Favorites.thunk';
 
 export const ProductsItem: FC<ProductType> = ({
   id,

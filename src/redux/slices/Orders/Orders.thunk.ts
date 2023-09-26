@@ -1,7 +1,7 @@
 import { firestore } from '@/firebase/firebaseConfig';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { doc, getDoc } from 'firebase/firestore';
-import { OrderItem } from '@/redux/slices/Orders/fetch/Orders.types';
+import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
+import { OrderItem, SaveOrderItem } from '@/redux/slices/Orders/Orders.types';
 
 export const fetchOrders = createAsyncThunk<Array<OrderItem> | null, string>(
   'orders/fetchOrders',
@@ -21,3 +21,15 @@ export const fetchOrders = createAsyncThunk<Array<OrderItem> | null, string>(
     }
   }
 );
+
+export const saveOrder = createAsyncThunk<
+  void,
+  { uid: string; order: SaveOrderItem }
+>('order/saveOrder', async ({ uid, order }) => {
+  try {
+    const userRef = doc(firestore, 'users', uid);
+    await updateDoc(userRef, { orders: arrayUnion(order) });
+  } catch (error) {
+    throw new Error('Error while fetching user data from Firestore.');
+  }
+});

@@ -1,14 +1,14 @@
-import { QueryCondition } from '@/redux/slices/Products/Products.types';
+import { CategoryQuery } from '@/redux/slices/Products/Products.types';
 
 type CategoryItem = {
   name: string;
-  queryCondition: QueryCondition;
+  categoryQuery: CategoryQuery;
 };
 
 export const categoryData: Array<CategoryItem> = [
   {
     name: 'men',
-    queryCondition: {
+    categoryQuery: {
       fieldPath: 'category',
       opStr: '==',
       value: 'men',
@@ -16,7 +16,7 @@ export const categoryData: Array<CategoryItem> = [
   },
   {
     name: 'woman',
-    queryCondition: {
+    categoryQuery: {
       fieldPath: 'category',
       opStr: '==',
       value: 'woman',
@@ -24,7 +24,7 @@ export const categoryData: Array<CategoryItem> = [
   },
   {
     name: 'sale',
-    queryCondition: {
+    categoryQuery: {
       fieldPath: 'specialPrice',
       opStr: '>=',
       value: 1,
@@ -32,7 +32,7 @@ export const categoryData: Array<CategoryItem> = [
   },
 ];
 
-export const allCategories: QueryCondition = {
+export const allCategories: CategoryQuery = {
   fieldPath: 'category',
   opStr: 'in',
   value: ['men', 'woman', 'sale'],

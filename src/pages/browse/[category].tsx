@@ -6,13 +6,13 @@ import { ProductsList } from '@/components/Products/components/ProductsList/Prod
 import { categoryData, allCategories } from '@/data/category.data';
 import { headerTitle } from '@/components/Order/Order.styles';
 import { Typography } from '@mui/material';
-import { QueryCondition } from '@/redux/slices/Products/Products.types';
+import { CategoryQuery } from '@/redux/slices/Products/Products.types';
 
 const CategoryDetailPage: FC = () => {
   const router = useRouter();
   const { category } = router.query;
-  const [queryCondition, setQueryCondition] =
-    useState<QueryCondition>(allCategories);
+  const [categoryQuery, setCategoryQuery] =
+    useState<CategoryQuery>(allCategories);
 
   useEffect(() => {
     const matchingCategory = categoryData.find(
@@ -20,9 +20,9 @@ const CategoryDetailPage: FC = () => {
     );
 
     if (matchingCategory) {
-      setQueryCondition(matchingCategory.queryCondition);
+      setCategoryQuery(matchingCategory.categoryQuery);
     } else {
-      setQueryCondition(allCategories);
+      setCategoryQuery(allCategories);
     }
   }, [category]);
 
@@ -34,7 +34,7 @@ const CategoryDetailPage: FC = () => {
           <Typography component="h3" variant="h4" sx={headerTitle}>
             You are in the category: {category}
           </Typography>
-          <ProductsList queryCondition={queryCondition} />
+          <ProductsList categoryQuery={categoryQuery} />
         </>
       }
     />

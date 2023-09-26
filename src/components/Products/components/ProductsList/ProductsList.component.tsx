@@ -8,7 +8,7 @@ import { ProductsListContainer } from '@/components/Products/Products.styles';
 
 export const ProductsList: FC<ProductsListProps> = ({
   productsLimit,
-  queryCondition,
+  categoryQuery,
 }) => {
   const { data, loading, error } = useSelector((state) => state.products);
   const dispatch = useDispatch();
@@ -17,10 +17,10 @@ export const ProductsList: FC<ProductsListProps> = ({
     dispatch(
       fetchProducts({
         limitValue: productsLimit ? productsLimit : undefined,
-        queryCondition: queryCondition,
+        categoryQuery: categoryQuery,
       })
     );
-  }, [productsLimit, queryCondition]);
+  }, [productsLimit, categoryQuery]);
 
   if (loading) {
     return <CircularProgress />;

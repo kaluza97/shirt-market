@@ -19,7 +19,6 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { AuthContext } from '@/context/Auth.context';
 import {
-  fetchFavorites,
   removeFavorite,
   saveFavorite,
 } from '@/redux/slices/Favorites/Favorites.thunk';

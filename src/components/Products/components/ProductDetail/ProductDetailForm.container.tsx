@@ -12,19 +12,16 @@ import {
 import Typography from '@mui/material/Typography';
 import {
   headerText,
-  highlightedText,
   FormContainer,
   radioGroup,
   radio,
   confirmButton,
-  TextBox,
-  crossedOutText,
-  redText,
 } from '@/components/Products/Products.styles';
 import { ProductDetailFormProps } from '@/components/Products/Products.types';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { addToCart } from '@/redux/slices/Cart/Cart.slice';
+import { DisplayItemPrice } from '@/components/Products/components/ProductsItem/DisplayItemPrice.component';
 
 export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
   const dispatch = useDispatch();
@@ -73,14 +70,7 @@ export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
       <Typography component="h2" sx={headerText}>
         {data.name}
       </Typography>
-      {data.specialPrice ? (
-        <TextBox>
-          <Typography sx={crossedOutText}>{data.price} $</Typography>
-          <Typography sx={redText}>{data.specialPrice} $</Typography>
-        </TextBox>
-      ) : (
-        <Typography sx={highlightedText}>{data.price} $</Typography>
-      )}
+      {DisplayItemPrice}
       <FormContainer>
         <FormControl>
           <RadioGroup

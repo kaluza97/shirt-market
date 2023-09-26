@@ -12,25 +12,25 @@ export const fetchProducts = createAsyncThunk<
   FetchProductsArgs
 >(
   'products/fetchProducts',
-  async ({ limitValue, queryCondition }: FetchProductsArgs) => {
+  async ({ limitValue, categoryQuery }: FetchProductsArgs) => {
     let dataRef = query(
       collection(firestore, 'shirts'),
       limit(limitValue ? limitValue : 1000)
     );
 
-    if (queryCondition) {
-      if (Array.isArray(queryCondition.value)) {
+    if (categoryQuery) {
+      if (Array.isArray(categoryQuery.value)) {
         dataRef = query(
           dataRef,
-          where(queryCondition.fieldPath, 'in', queryCondition.value)
+          where(categoryQuery.fieldPath, 'in', categoryQuery.value)
         );
       } else {
         dataRef = query(
           dataRef,
           where(
-            queryCondition.fieldPath,
-            queryCondition.opStr,
-            queryCondition.value
+            categoryQuery.fieldPath,
+            categoryQuery.opStr,
+            categoryQuery.value
           )
         );
       }

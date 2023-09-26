@@ -1,13 +1,13 @@
 import { ProductType } from '@/components/Products/Products.types';
 import { FieldPath, WhereFilterOp } from 'firebase/firestore';
 
-export interface ShirtType {
+export interface ProductsState {
   data: Array<ProductType>;
   loading: boolean;
   error: boolean;
 }
 
-export type QueryCondition = {
+export type CategoryQuery = {
   fieldPath: string | FieldPath;
   opStr: WhereFilterOp;
   value: string | number | Array<string | number>;
@@ -15,5 +15,5 @@ export type QueryCondition = {
 
 export type FetchProductsArgs = {
   limitValue?: number;
-  queryCondition: QueryCondition;
+  categoryQuery: CategoryQuery;
 };

@@ -9,7 +9,7 @@ export interface ShirtType {
 
 export type FetchProductsArgs = {
   limitValue?: number;
-  queryCondition: {
+  categoryQuery: {
     fieldPath: string | FieldPath;
     opStr: WhereFilterOp;
     value: Categories | Array<Categories>;

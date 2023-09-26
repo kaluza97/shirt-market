@@ -31,7 +31,7 @@ export interface ProductDetailFormProps {
 
 export type Categories = 'men' | 'woman' | 'sale' | null;
 
-export type QueryCondition = {
+export type CategoryQuery = {
   fieldPath: string | FieldPath;
   opStr: WhereFilterOp;
   value: Categories | Array<Categories>;
@@ -39,5 +39,5 @@ export type QueryCondition = {
 
 export interface ProductsListProps {
   productsLimit?: number;
-  queryCondition: QueryCondition;
+  categoryQuery: CategoryQuery;
 }

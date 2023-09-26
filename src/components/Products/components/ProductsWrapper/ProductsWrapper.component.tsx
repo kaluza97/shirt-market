@@ -16,7 +16,7 @@ export const ProductsWrapper: FC = () => (
     <Box sx={productContainer}>
       <ProductsList
         productsLimit={10}
-        queryCondition={{
+        categoryQuery={{
           fieldPath: 'category',
           opStr: '==',
           value: ['men', 'woman'],

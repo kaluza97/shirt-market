@@ -1,4 +1,3 @@
-import { AuthContext } from '@/context/Auth.context';
 import { firestore } from '@/firebase/firebaseConfig';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
@@ -8,7 +7,6 @@ import {
   getDoc,
   updateDoc,
 } from 'firebase/firestore';
-import { useContext } from 'react';
 
 export const fetchFavorites = createAsyncThunk<Array<number> | null, string>(
   'favorites/fetchFavorites',

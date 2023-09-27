@@ -1,24 +1,16 @@
-import React, { FC, useContext, useEffect } from 'react';
+import React, { FC } from 'react';
 import { CircularProgress, Typography } from '@mui/material';
-import { AuthContext } from '@/context/Auth.context';
-import { useDispatch, useSelector } from '@/redux/hooks';
+import { useSelector } from '@/redux/hooks';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 import { headerTitle } from '@/components/Order/Order.styles';
-import { fetchFavorites } from '@/redux/slices/Favorites/fetch/Favorites.thunk';
-import { ProductsList } from '../Products/components/ProductsList/ProductsList.component';
 import Image from 'next/image';
-import { FavoritesWrapperContainer } from './Favorites.styles';
+import { FavoritesWrapperContainer } from '@/components/Favorites/Favorites.styles';
+import { ProductsItem } from '@/components/Products/components/ProductsItem/ProductsItem.component';
 
-export const FavoritesWrapper: FC = () => {
-  const { user } = useContext(AuthContext);
-  const dispatch = useDispatch();
+export const Favorites: FC = () => {
   const { data, loading, error } = useSelector((state) => state.favorites);
 
-  useEffect(() => {
-    if (user) {
-      dispatch(fetchFavorites(user.uid));
-    }
-  }, [dispatch, user]);
+  console.log(data);
 
   if (loading) {
     return <CircularProgress />;
@@ -35,18 +27,21 @@ export const FavoritesWrapper: FC = () => {
 
   return (
     <FavoritesWrapperContainer>
-      {data?.length ? (
+      {data && data.length > 0 ? (
         <>
           <Typography variant="h5" sx={headerTitle}>
             Your favorites:
           </Typography>
-          <ProductsList
-            queryCondition={{
-              fieldPath: 'id',
-              opStr: '==',
-              value: data,
-            }}
-          />
+          {data.map(({ id, img, name, price, specialPrice }) => (
+            <ProductsItem
+              key={name}
+              id={id}
+              img={img}
+              name={name}
+              price={price}
+              specialPrice={specialPrice}
+            />
+          ))}
         </>
       ) : (
         <>

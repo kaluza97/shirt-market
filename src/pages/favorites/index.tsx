@@ -1,15 +1,29 @@
-import React, { FC } from 'react';
+import React, { FC, useContext, useEffect } from 'react';
 import { Layout } from '@/components/Layout/Layout.component';
 import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
-import { FavoritesWrapper } from '@/components/Favorites/FavoritesWrapper.component';
+import { Favorites } from '@/components/Favorites/Favorites.component';
+import { useDispatch } from '@/redux/hooks';
+import { AuthContext } from '@/context/Auth.context';
+import { fetchFavorites } from '@/redux/slices/Favorites/Favorites.thunk';
 import { ExtendedFooter } from '@/components/Footer/components/ExtendedFooter/ExtendedFooter.component';
 
-const FavoritesPage: FC = () => (
-  <Layout
-    header={<NavigationMenu />}
-    content={<FavoritesWrapper />}
-    footer={<ExtendedFooter />}
-  />
-);
+const FavoritesPage: FC = () => {
+  const { user } = useContext(AuthContext);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (user) {
+      dispatch(fetchFavorites(user.uid));
+    }
+  });
+
+  return (
+    <Layout
+      header={<NavigationMenu />}
+      content={<Favorites />}
+      footer={<ExtendedFooter />}
+    />
+  );
+};
 
 export default FavoritesPage;

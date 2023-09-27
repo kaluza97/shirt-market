@@ -7,13 +7,14 @@ export interface ProductsState {
   error: boolean;
 }
 
+type CategoryValue = string | number | null;
+
 export type CategoryQuery = {
   fieldPath: string | FieldPath;
   opStr: WhereFilterOp;
-  value: string | number | Array<string | number>;
+  value: CategoryValue | Array<CategoryValue>;
 };
 
 export type FetchProductsArgs = {
-  limitValue?: number;
-  categoryQuery: CategoryQuery;
+  categoryQuery: Array<CategoryQuery>;
 };

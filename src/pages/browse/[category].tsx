@@ -13,13 +13,12 @@ const CategoryDetailPage: FC = () => {
   const router = useRouter();
   const { category } = router.query;
   const [categoryQuery, setCategoryQuery] =
-    useState<CategoryQuery>(allCategories);
+    useState<Array<CategoryQuery>>(allCategories);
 
   useEffect(() => {
     const matchingCategoryData = matchingCategory(category);
-
     if (matchingCategoryData) {
-      setCategoryQuery(matchingCategoryData.categoryQuery);
+      setCategoryQuery([matchingCategoryData.categoryQuery]);
     } else {
       setCategoryQuery(allCategories);
     }

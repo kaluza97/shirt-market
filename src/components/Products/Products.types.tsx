@@ -30,6 +30,5 @@ export interface ProductDetailFormProps {
 }
 
 export interface ProductsListProps {
-  productsLimit?: number;
-  categoryQuery: CategoryQuery;
+  categoryQuery: Array<CategoryQuery>;
 }

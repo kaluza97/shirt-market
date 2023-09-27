@@ -1,5 +1,23 @@
 import { CategoryQuery } from '@/redux/slices/Products/Products.types';
 
+export const saleCategory: CategoryQuery = {
+  fieldPath: 'specialPrice',
+  opStr: '!=',
+  value: null,
+};
+
+const menCategory: CategoryQuery = {
+  fieldPath: 'category',
+  opStr: '==',
+  value: 'men',
+};
+
+const womanCategory: CategoryQuery = {
+  fieldPath: 'category',
+  opStr: '==',
+  value: 'woman',
+};
+
 type CategoryItem = {
   name: string;
   categoryQuery: CategoryQuery;
@@ -8,32 +26,24 @@ type CategoryItem = {
 export const categoryData: Array<CategoryItem> = [
   {
     name: 'men',
-    categoryQuery: {
-      fieldPath: 'category',
-      opStr: '==',
-      value: 'men',
-    },
+    categoryQuery: menCategory,
   },
   {
     name: 'woman',
-    categoryQuery: {
-      fieldPath: 'category',
-      opStr: '==',
-      value: 'woman',
-    },
+    categoryQuery: womanCategory,
   },
   {
     name: 'sale',
-    categoryQuery: {
-      fieldPath: 'specialPrice',
-      opStr: '>=',
-      value: 1,
-    },
+    categoryQuery: saleCategory,
   },
 ];
 
-export const allCategories: CategoryQuery = {
-  fieldPath: 'category',
-  opStr: 'in',
-  value: ['men', 'woman', 'sale'],
-};
+export const menAndWomanCategories: Array<CategoryQuery> = [
+  menCategory,
+  womanCategory,
+];
+export const allCategories: Array<CategoryQuery> = [
+  menCategory,
+  womanCategory,
+  saleCategory,
+];

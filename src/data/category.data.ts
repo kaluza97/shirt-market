@@ -3,11 +3,6 @@ import {
   CategoryQuery,
 } from '@/components/Products/Products.types';
 
-type CategoryItem = {
-  name: Categories;
-  categoryQuery: CategoryQuery;
-};
-
 export const saleCategory: CategoryQuery = {
   fieldPath: 'specialPrice',
   opStr: '!=',
@@ -24,6 +19,11 @@ const womanCategory: CategoryQuery = {
   fieldPath: 'category',
   opStr: '==',
   value: 'woman',
+};
+
+type CategoryItem = {
+  name: Categories;
+  categoryQuery: CategoryQuery;
 };
 
 export const categoryData: Array<CategoryItem> = [

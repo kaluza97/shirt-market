@@ -11,7 +11,7 @@ export const Category: FC = () => (
     {categoryData.map(({ name }) => (
       <Button sx={button} key={name}>
         <Link href={`${PagePaths.BROWSE_PAGE}/${name}`}>
-          {name?.toUpperCase()}
+          {name.toUpperCase()}
         </Link>
       </Button>
     ))}

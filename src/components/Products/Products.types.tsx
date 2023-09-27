@@ -29,7 +29,7 @@ export interface ProductDetailFormProps {
   id: number;
 }
 
-export type Categories = 'men' | 'woman' | 'sale' | null;
+export type Categories = 'men' | 'woman' | 'sale';
 
 export type CategoryQuery = {
   fieldPath: string | FieldPath;
@@ -38,6 +38,5 @@ export type CategoryQuery = {
 };
 
 export interface ProductsListProps {
-  productsLimit?: number;
   categoryQuery: Array<CategoryQuery>;
 }

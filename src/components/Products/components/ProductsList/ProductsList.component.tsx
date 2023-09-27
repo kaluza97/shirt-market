@@ -6,21 +6,17 @@ import { useDispatch, useSelector } from '@/redux/hooks';
 import { ProductsListProps } from '@/components/Products/Products.types';
 import { ProductsListContainer } from '@/components/Products/Products.styles';
 
-export const ProductsList: FC<ProductsListProps> = ({
-  productsLimit,
-  categoryQuery,
-}) => {
+export const ProductsList: FC<ProductsListProps> = ({ categoryQuery }) => {
   const { data, loading, error } = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(
       fetchProducts({
-        limitValue: productsLimit ? productsLimit : undefined,
         categoryQuery: categoryQuery,
       })
     );
-  }, [productsLimit, categoryQuery]);
+  }, [categoryQuery]);
 
   if (loading) {
     return <CircularProgress />;

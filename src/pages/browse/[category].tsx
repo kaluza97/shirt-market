@@ -17,9 +17,8 @@ const CategoryDetailPage: FC = () => {
 
   useEffect(() => {
     const matchingCategoryData = matchingCategory(category);
-
     if (matchingCategoryData) {
-      setCategoryQuery(matchingCategoryData.categoryQuery);
+      setCategoryQuery([matchingCategoryData.categoryQuery]);
     } else {
       setCategoryQuery(allCategories);
     }

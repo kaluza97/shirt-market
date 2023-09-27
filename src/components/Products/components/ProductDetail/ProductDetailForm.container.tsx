@@ -14,19 +14,13 @@ import {
   FormContainer,
   radioGroup,
   radio,
-  TextBox,
-  crossedOutText,
 } from '@/components/Products/Products.styles';
 import { ProductDetailFormProps } from '@/components/Products/Products.types';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { addToCart } from '@/redux/slices/Cart/Cart.slice';
-import {
-  button,
-  headerText,
-  normalTextBlack,
-  normalTextRed,
-} from '@/styles/global.styles';
+import { DisplayItemPrice } from '@/components/Products/components/ProductsItem/DisplayItemPrice.component';
+import { button, headerText } from '@/styles/global.styles';
 
 export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
   const dispatch = useDispatch();
@@ -46,6 +40,8 @@ export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
     setIsAlertVisible(false);
     if (
       productIsTruthy &&
+      data.totalQuantity &&
+      data.totalQuantity[selectedSize] !== undefined &&
       selectedSizeQuantity < data.totalQuantity[selectedSize]
     ) {
       dispatch(
@@ -75,14 +71,7 @@ export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
       <Typography component="h2" sx={headerText}>
         {data.name}
       </Typography>
-      {data.specialPrice ? (
-        <TextBox>
-          <Typography sx={crossedOutText}>{data.price} $</Typography>
-          <Typography sx={normalTextRed}>{data.specialPrice} $</Typography>
-        </TextBox>
-      ) : (
-        <Typography sx={normalTextBlack}>{data.price} $</Typography>
-      )}
+      {DisplayItemPrice}
       <FormContainer>
         <FormControl>
           <RadioGroup
@@ -92,15 +81,16 @@ export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
             onChange={handleSizeChange}
             sx={radioGroup}
           >
-            {Object.keys(data.totalQuantity).map((size) => (
-              <FormControlLabel
-                key={size}
-                value={size}
-                label={size}
-                disabled={data.totalQuantity[size as Size] === 0}
-                control={<Radio sx={radio} />}
-              />
-            ))}
+            {data.totalQuantity &&
+              Object.keys(data.totalQuantity).map((size) => (
+                <FormControlLabel
+                  key={size}
+                  value={size}
+                  label={size}
+                  disabled={data.totalQuantity[size as Size] === 0}
+                  control={<Radio sx={radio} />}
+                />
+              ))}
           </RadioGroup>
           <Button
             variant="contained"

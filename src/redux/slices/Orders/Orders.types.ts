@@ -1,4 +1,5 @@
 import { ProductItem } from '@/redux/slices/Product/Product.types';
+import { CartItem } from '@/redux/slices/Cart/Cart.types';
 
 export interface OrderItem {
   totalPrice: number;
@@ -11,3 +12,9 @@ export interface OrderState {
   loading: boolean;
   error: boolean;
 }
+
+export type SaveOrderItem = {
+  orderDate: string;
+  totalPrice: number;
+  items: Array<CartItem>;
+};

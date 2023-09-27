@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import { productContainer } from '@/components/Products/Products.styles';
 import { ProductsList } from '@/components/Products/components/ProductsList/ProductsList.component';
 import { FlexContainer, headerTextBlack } from '@/styles/global.styles';
+import { menAndWomanCategories } from '@/data/category.data';
 
 export const ProductsWrapper: FC = () => (
   <FlexContainer>
@@ -11,14 +12,7 @@ export const ProductsWrapper: FC = () => (
       Our most recomended products
     </Typography>
     <Box sx={productContainer}>
-      <ProductsList
-        productsLimit={10}
-        queryCondition={{
-          fieldPath: 'category',
-          opStr: '==',
-          value: ['men', 'woman'],
-        }}
-      />
+      <ProductsList categoryQuery={menAndWomanCategories} />
     </Box>
   </FlexContainer>
 );

@@ -1,39 +1,49 @@
-import { QueryCondition } from '@/redux/slices/Products/Products.types';
+import { CategoryQuery } from '@/redux/slices/Products/Products.types';
+
+export const saleCategory: CategoryQuery = {
+  fieldPath: 'specialPrice',
+  opStr: '!=',
+  value: null,
+};
+
+const menCategory: CategoryQuery = {
+  fieldPath: 'category',
+  opStr: '==',
+  value: 'men',
+};
+
+const womanCategory: CategoryQuery = {
+  fieldPath: 'category',
+  opStr: '==',
+  value: 'woman',
+};
 
 type CategoryItem = {
   name: string;
-  queryCondition: QueryCondition;
+  categoryQuery: CategoryQuery;
 };
 
 export const categoryData: Array<CategoryItem> = [
   {
     name: 'men',
-    queryCondition: {
-      fieldPath: 'category',
-      opStr: '==',
-      value: 'men',
-    },
+    categoryQuery: menCategory,
   },
   {
     name: 'woman',
-    queryCondition: {
-      fieldPath: 'category',
-      opStr: '==',
-      value: 'woman',
-    },
+    categoryQuery: womanCategory,
   },
   {
     name: 'sale',
-    queryCondition: {
-      fieldPath: 'specialPrice',
-      opStr: '>=',
-      value: 1,
-    },
+    categoryQuery: saleCategory,
   },
 ];
 
-export const allCategories: QueryCondition = {
-  fieldPath: 'category',
-  opStr: 'in',
-  value: ['men', 'woman', 'sale'],
-};
+export const menAndWomanCategories: Array<CategoryQuery> = [
+  menCategory,
+  womanCategory,
+];
+export const allCategories: Array<CategoryQuery> = [
+  menCategory,
+  womanCategory,
+  saleCategory,
+];

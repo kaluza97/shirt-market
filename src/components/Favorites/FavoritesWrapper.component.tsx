@@ -1,24 +1,14 @@
-import React, { FC, useContext, useEffect } from 'react';
+import React, { FC } from 'react';
 import { CircularProgress, Typography } from '@mui/material';
-import { AuthContext } from '@/context/Auth.context';
-import { useDispatch, useSelector } from '@/redux/hooks';
+import { useSelector } from '@/redux/hooks';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 import { headerTitle } from '@/components/Order/Order.styles';
 import { ProductsList } from '@/components/Products/components/ProductsList/ProductsList.component';
 import Image from 'next/image';
 import { FavoritesWrapperContainer } from '@/components/Favorites/Favorites.styles';
-import { fetchFavorites } from '@/redux/slices/Favorites/Favorites.thunk';
 
 export const FavoritesWrapper: FC = () => {
-  const { user } = useContext(AuthContext);
-  const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.favorites);
-
-  useEffect(() => {
-    if (user) {
-      dispatch(fetchFavorites(user.uid));
-    }
-  }, [dispatch, user]);
 
   if (loading) {
     return <CircularProgress />;
@@ -41,11 +31,13 @@ export const FavoritesWrapper: FC = () => {
             Your favorites:
           </Typography>
           <ProductsList
-            categoryQuery={{
-              fieldPath: 'id',
-              opStr: '==',
-              value: data,
-            }}
+            categoryQuery={[
+              {
+                fieldPath: 'id',
+                opStr: '==',
+                value: data,
+              },
+            ]}
           />
         </>
       ) : (

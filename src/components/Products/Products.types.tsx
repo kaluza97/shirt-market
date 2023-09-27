@@ -34,10 +34,10 @@ export type Categories = 'men' | 'woman' | 'sale' | null;
 export type CategoryQuery = {
   fieldPath: string | FieldPath;
   opStr: WhereFilterOp;
-  value: Categories | Array<Categories>;
+  value: string | null;
 };
 
 export interface ProductsListProps {
   productsLimit?: number;
-  categoryQuery: CategoryQuery;
+  categoryQuery: Array<CategoryQuery>;
 }

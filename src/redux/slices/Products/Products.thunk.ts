@@ -18,23 +18,12 @@ export const fetchProducts = createAsyncThunk<
       limit(limitValue ? limitValue : 1000)
     );
 
-    if (categoryQuery) {
-      if (Array.isArray(categoryQuery.value)) {
-        dataRef = query(
-          dataRef,
-          where(categoryQuery.fieldPath, 'in', categoryQuery.value)
-        );
-      } else {
-        dataRef = query(
-          dataRef,
-          where(
-            categoryQuery.fieldPath,
-            categoryQuery.opStr,
-            categoryQuery.value
-          )
-        );
-      }
-    }
+    categoryQuery.forEach((condition) => {
+      dataRef = query(
+        dataRef,
+        where(condition.fieldPath, condition.opStr, condition.value)
+      );
+    });
 
     const snapshot = await getDocs(dataRef);
     const data = snapshot.docs.map((doc) => doc.data());

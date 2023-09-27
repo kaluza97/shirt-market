@@ -11,5 +11,5 @@ export interface ProductsState {
 
 export type FetchProductsArgs = {
   limitValue?: number;
-  categoryQuery: CategoryQuery;
+  categoryQuery: Array<CategoryQuery>;
 };

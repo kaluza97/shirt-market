@@ -7,6 +7,7 @@ import {
   productContainer,
 } from '@/components/Products/Products.styles';
 import { ProductsList } from '@/components/Products/components/ProductsList/ProductsList.component';
+import { menAndWomanCategories } from '@/data/category.data';
 
 export const ProductsWrapper: FC = () => (
   <ProductsWrapperContainer>
@@ -14,14 +15,7 @@ export const ProductsWrapper: FC = () => (
       Our most recomended products
     </Typography>
     <Box sx={productContainer}>
-      <ProductsList
-        productsLimit={10}
-        categoryQuery={{
-          fieldPath: 'category',
-          opStr: '==',
-          value: ['men', 'woman'],
-        }}
-      />
+      <ProductsList productsLimit={10} categoryQuery={menAndWomanCategories} />
     </Box>
   </ProductsWrapperContainer>
 );

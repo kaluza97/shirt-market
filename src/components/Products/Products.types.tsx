@@ -21,6 +21,14 @@ export const productSchema = z.object({
 export const productsListSchema = z.array(productSchema);
 export type ProductType = z.infer<typeof productSchema>;
 
+export interface ProductItemsProps {
+  id: number;
+  img: string;
+  name: string;
+  price: number;
+  specialPrice?: number;
+}
+
 export interface ProductDetailProps {
   id: number;
 }

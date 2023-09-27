@@ -13,7 +13,7 @@ import {
   redText,
 } from '@/components/Products/Products.styles';
 import { useRouter } from 'next/router';
-import { ProductType } from '@/components/Products/Products.types';
+import { ProductItemsProps } from '@/components/Products/Products.types';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useDispatch, useSelector } from '@/redux/hooks';
@@ -22,8 +22,9 @@ import {
   removeFavorite,
   saveFavorite,
 } from '@/redux/slices/Favorites/Favorites.thunk';
+import { FavoriteItem } from '@/redux/slices/Favorites/Favorites.types';
 
-export const ProductsItem: FC<ProductType> = ({
+export const ProductsItem: FC<ProductItemsProps> = ({
   id,
   img,
   name,
@@ -34,7 +35,6 @@ export const ProductsItem: FC<ProductType> = ({
   const dispatch = useDispatch();
   const { user } = useContext(AuthContext);
   const favorites = useSelector((state) => state.favorites.data);
-  const isFavorite = favorites?.includes(id);
 
   const handleProductClick = () => {
     push(`/products/${id}`);
@@ -42,10 +42,20 @@ export const ProductsItem: FC<ProductType> = ({
 
   const handleFavoriteClick = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
+
+    const favoriteItem: FavoriteItem = {
+      id: id,
+      img: img,
+      name: name,
+      price: specialPrice ? specialPrice : price,
+    };
+
     if (user) {
-      isFavorite
-        ? dispatch(removeFavorite({ uid: user.uid, productId: id }))
-        : dispatch(saveFavorite({ uid: user.uid, productId: id }));
+      if (favorites?.some((favorite) => favorite.id === id)) {
+        dispatch(removeFavorite({ uid: user.uid, favorite: favoriteItem }));
+      } else {
+        dispatch(saveFavorite({ uid: user.uid, favorite: favoriteItem }));
+      }
     }
   };
 
@@ -55,11 +65,15 @@ export const ProductsItem: FC<ProductType> = ({
         <Img src={img} alt={name} width={250} height={350} priority />
 
         <IconButton
-          aria-label={isFavorite ? 'remove from favorites' : 'add to favorites'}
+          aria-label={
+            favorites?.some((favorite) => favorite.id === id)
+              ? 'remove from favorites'
+              : 'add to favorites'
+          }
           sx={favoriteIconButton}
           onClick={handleFavoriteClick}
         >
-          {isFavorite ? (
+          {favorites?.some((favorite) => favorite.id === id) ? (
             <FavoriteIcon sx={favoriteIcon} />
           ) : (
             <FavoriteBorderIcon sx={favoriteIcon} />

@@ -3,12 +3,14 @@ import { CircularProgress, Typography } from '@mui/material';
 import { useSelector } from '@/redux/hooks';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 import { headerTitle } from '@/components/Order/Order.styles';
-import { ProductsList } from '@/components/Products/components/ProductsList/ProductsList.component';
 import Image from 'next/image';
 import { FavoritesWrapperContainer } from '@/components/Favorites/Favorites.styles';
+import { ProductsItem } from '@/components/Products/components/ProductsItem/ProductsItem.component';
 
-export const FavoritesWrapper: FC = () => {
+export const Favorites: FC = () => {
   const { data, loading, error } = useSelector((state) => state.favorites);
+
+  console.log(data);
 
   if (loading) {
     return <CircularProgress />;
@@ -30,15 +32,16 @@ export const FavoritesWrapper: FC = () => {
           <Typography variant="h5" sx={headerTitle}>
             Your favorites:
           </Typography>
-          <ProductsList
-            categoryQuery={[
-              {
-                fieldPath: 'id',
-                opStr: '==',
-                value: data,
-              },
-            ]}
-          />
+          {data.map(({ id, img, name, price, specialPrice }) => (
+            <ProductsItem
+              key={name}
+              id={id}
+              img={img}
+              name={name}
+              price={price}
+              specialPrice={specialPrice}
+            />
+          ))}
         </>
       ) : (
         <>

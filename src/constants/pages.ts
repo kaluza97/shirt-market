@@ -6,5 +6,5 @@ export enum PagePaths {
   ORDER_PAGE = '/order',
   BROWSE_PAGE = '/browse',
   PROFILE_PAGE = '/profile',
-  FAVORITES_PAGE = '/favorites',
+  FAVORITE_PAGE = '/favorites',
 }

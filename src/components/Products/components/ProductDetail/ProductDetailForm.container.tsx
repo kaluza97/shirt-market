@@ -24,32 +24,35 @@ import { button, headerText } from '@/styles/global.styles';
 
 export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.productById);
+  const { img, name, price, specialPrice, totalQuantity } =
+    useSelector((state) => state.productById.data) || {};
   const [selectedSize, setSelectedSize] = useState<Size | null>(null);
   const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
-  const selectedSizeQuantity = useSelector((state) => {
-    const item = state.cart.cart.find((item) => item.id === id);
-    if (selectedSize !== null) {
-      return item?.quantities[selectedSize] || 0;
-    }
-  });
+  const cartItems = useSelector((state) => state.cart.cart);
+  const itemById = cartItems.find((item) => item.id === id);
+  const selectedSizeQuantity =
+    (selectedSize && itemById?.quantities[selectedSize]) || 0;
   const productIsTruthy =
-    data && selectedSize !== null && selectedSizeQuantity !== undefined;
+    img &&
+    name &&
+    price &&
+    totalQuantity &&
+    selectedSize !== null &&
+    selectedSizeQuantity !== undefined;
 
   const handleAddToCart = () => {
     setIsAlertVisible(false);
     if (
       productIsTruthy &&
-      data.totalQuantity &&
-      data.totalQuantity[selectedSize] !== undefined &&
-      selectedSizeQuantity < data.totalQuantity[selectedSize]
+      totalQuantity &&
+      selectedSizeQuantity < totalQuantity[selectedSize]
     ) {
       dispatch(
         addToCart({
           id,
-          img: data.img,
-          name: data.name,
-          price: data.specialPrice ? data.specialPrice : data.price,
+          img: img,
+          name: name,
+          price: specialPrice ? specialPrice : price,
           size: selectedSize,
         })
       );
@@ -62,14 +65,10 @@ export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
     setSelectedSize(e.target.value as Size);
   };
 
-  if (!data) {
-    return null;
-  }
-
   return (
     <>
       <Typography component="h2" sx={headerText}>
-        {data.name}
+        {name}
       </Typography>
       {DisplayItemPrice}
       <FormContainer>
@@ -81,13 +80,13 @@ export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
             onChange={handleSizeChange}
             sx={radioGroup}
           >
-            {data.totalQuantity &&
-              Object.keys(data.totalQuantity).map((size) => (
+            {totalQuantity &&
+              Object.keys(totalQuantity).map((size) => (
                 <FormControlLabel
                   key={size}
                   value={size}
                   label={size}
-                  disabled={data.totalQuantity[size as Size] === 0}
+                  disabled={totalQuantity[size as Size] === 0}
                   control={<Radio sx={radio} />}
                 />
               ))}

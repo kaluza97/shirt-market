@@ -11,7 +11,6 @@ import {
   productBox,
 } from '@/components/Products/Products.styles';
 import { useRouter } from 'next/router';
-import { ProductItemsProps } from '@/components/Products/Products.types';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useDispatch, useSelector } from '@/redux/hooks';
@@ -22,8 +21,9 @@ import {
 } from '@/redux/slices/Favorites/Favorites.thunk';
 import { FavoriteItem } from '@/redux/slices/Favorites/Favorites.types';
 import { normalTextBlack, normalTextRed } from '@/styles/global.styles';
+import { ProductType } from '@/components/Products/Products.types';
 
-export const ProductsItem: FC<ProductItemsProps> = ({
+export const ProductsItem: FC<ProductType> = ({
   id,
   img,
   name,

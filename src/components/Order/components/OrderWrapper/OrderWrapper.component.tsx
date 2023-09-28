@@ -2,7 +2,7 @@ import React, { FC, Fragment, useContext, useEffect } from 'react';
 import { CircularProgress, Typography } from '@mui/material';
 import { AuthContext } from '@/context/Auth.context';
 import { useDispatch, useSelector } from '@/redux/hooks';
-import { fetchOrders } from '@/redux/slices/Orders/fetch/Orders.thunk';
+import { fetchOrders } from '@/redux/slices/Orders/Orders.thunk';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 import { OrderItem } from '@/components/Order/components/OrderItem/OrderItem.component';
 import {

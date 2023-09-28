@@ -10,8 +10,6 @@ import { ProductsItem } from '@/components/Products/components/ProductsItem/Prod
 export const Favorites: FC = () => {
   const { data, loading, error } = useSelector((state) => state.favorites);
 
-  console.log(data);
-
   if (loading) {
     return <CircularProgress />;
   }

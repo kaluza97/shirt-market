@@ -9,8 +9,6 @@ import { FlexContainer, headerTextBlack } from '@/styles/global.styles';
 export const Favorites: FC = () => {
   const { data, loading, error } = useSelector((state) => state.favorites);
 
-  console.log(data);
-
   if (loading) {
     return <CircularProgress />;
   }

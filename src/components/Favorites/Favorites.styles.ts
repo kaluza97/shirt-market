@@ -5,5 +5,5 @@ export const FavoritesWrapperContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  min-height: 50vh;
+  min-height: 50rem;
 `;

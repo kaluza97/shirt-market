@@ -25,8 +25,7 @@ export const ExtendedFooterContainer = styled.footer`
   flex-direction: column;
   width: 100%;
   background-color: ${Colors.primary};
-  @media (min-width: ${Breakpoints.tablet}),
-    @media (min-width: ${Breakpoints.desktop}) {
+  ${MediaForTabletAndDesktop} {
     flex-direction: row;
     justify-content: space-evenly;
   }

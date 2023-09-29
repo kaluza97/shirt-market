@@ -6,6 +6,7 @@ import { ProductsList } from '@/components/Products/components/ProductsList/Prod
 import { allCategories } from '@/data/category.data';
 import { headerTitle } from '@/components/Order/Order.styles';
 import { Typography } from '@mui/material';
+import { ExtendedFooter } from '@/components/Footer/components/ExtendedFooter/ExtendedFooter.component';
 import { CategoryQuery } from '@/redux/slices/Products/Products.types';
 import { matchingCategory } from '@/components/Category/Category.utils';
 
@@ -35,6 +36,7 @@ const CategoryDetailPage: FC = () => {
           <ProductsList categoryQuery={categoryQuery} />
         </>
       }
+      footer={<ExtendedFooter />}
     />
   );
 };

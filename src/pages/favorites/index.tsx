@@ -5,6 +5,7 @@ import { Favorites } from '@/components/Favorites/Favorites.component';
 import { useDispatch } from '@/redux/hooks';
 import { AuthContext } from '@/context/Auth.context';
 import { fetchFavorites } from '@/redux/slices/Favorites/Favorites.thunk';
+import { ExtendedFooter } from '@/components/Footer/components/ExtendedFooter/ExtendedFooter.component';
 
 const FavoritesPage: FC = () => {
   const { user } = useContext(AuthContext);
@@ -16,7 +17,13 @@ const FavoritesPage: FC = () => {
     }
   });
 
-  return <Layout header={<NavigationMenu />} content={<Favorites />} />;
+  return (
+    <Layout
+      header={<NavigationMenu />}
+      content={<Favorites />}
+      footer={<ExtendedFooter />}
+    />
+  );
 };
 
 export default FavoritesPage;

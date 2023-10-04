@@ -18,7 +18,9 @@ export const SliderCarousel: FC = () => (
         <Typography sx={carouselNameText}>{name}</Typography>
         <Typography sx={carouselDescriptionText}>{description}</Typography>
         {link && (
-          <LinkStyled href={PagePaths.ABOUT_PAGE}>Check offer!</LinkStyled>
+          <LinkStyled href={`${PagePaths.BROWSE_PAGE}/sale`}>
+            Check offer!
+          </LinkStyled>
         )}
       </Paper>
     ))}

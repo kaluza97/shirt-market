@@ -4,7 +4,7 @@ import {
   Colors,
   FontFamily,
   FontSizes,
-  MediaForTabletAndDesktop,
+  BiggerThanPhone,
 } from '@/styles/variables';
 import { SxProps } from '@mui/material';
 import Link from 'next/link';
@@ -32,7 +32,7 @@ export const textFooter: SxProps = {
   backgroundColor: Colors.primary,
   paddingTop: '1rem',
   paddingBottom: '1rem',
-  [MediaForTabletAndDesktop]: {
+  [BiggerThanPhone]: {
     paddingTop: '2rem',
     paddingBottom: '2rem',
     backgroundColor: Colors.primary,

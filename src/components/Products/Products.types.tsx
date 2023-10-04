@@ -40,3 +40,8 @@ export interface ProductDetailFormProps {
 export interface ProductsListProps {
   categoryQuery: Array<CategoryQuery>;
 }
+
+export interface displayPriceOrSpecialPriceProps {
+  price: number;
+  specialPrice?: number;
+}

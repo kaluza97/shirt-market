@@ -4,18 +4,14 @@ import { Box, IconButton } from '@mui/material';
 import {
   Img,
   ProductImageWrapper,
-  TextBox,
-  crossedOutText,
   favoriteIcon,
   favoriteIconButton,
   imageText,
   productBox,
-  redText,
 } from '@/components/Products/Products.styles';
 import { useRouter } from 'next/router';
 import { ProductItemsProps } from '@/components/Products/Products.types';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import { displayPriceOrSpecialPrice } from '@/components/Products/Products.utils';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { AuthContext } from '@/context/Auth.context';
 import {
@@ -23,6 +19,8 @@ import {
   saveFavorite,
 } from '@/redux/slices/Favorites/Favorites.thunk';
 import { FavoriteItem } from '@/redux/slices/Favorites/Favorites.types';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 export const ProductsItem: FC<ProductItemsProps> = ({
   id,
@@ -81,14 +79,7 @@ export const ProductsItem: FC<ProductItemsProps> = ({
         </IconButton>
       </ProductImageWrapper>
       <Typography sx={imageText}>{name}</Typography>
-      {specialPrice ? (
-        <TextBox>
-          <Typography sx={crossedOutText}>{price} $</Typography>
-          <Typography sx={redText}>{specialPrice} $</Typography>
-        </TextBox>
-      ) : (
-        <Typography sx={imageText}>{price} $</Typography>
-      )}
+      {displayPriceOrSpecialPrice({ price, specialPrice })}
     </Box>
   );
 };

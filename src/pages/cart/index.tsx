@@ -5,6 +5,7 @@ import { Layout } from '@/components/Layout/Layout.component';
 import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
 import { useDispatch } from '@/redux/hooks';
 import { useRouter } from 'next/router';
+import { ExtendedFooter } from '@/components/Footer/components/ExtendedFooter/ExtendedFooter.component';
 
 const Cart: FC = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,13 @@ const Cart: FC = () => {
     router.events.on('routeChangeStart', cleanup);
   }, []);
 
-  return <Layout header={<NavigationMenu />} content={<CartWrapper />} />;
+  return (
+    <Layout
+      header={<NavigationMenu />}
+      content={<CartWrapper />}
+      footer={<ExtendedFooter />}
+    />
+  );
 };
 
 export default Cart;

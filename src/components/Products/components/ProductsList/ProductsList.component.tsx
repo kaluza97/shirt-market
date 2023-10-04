@@ -5,10 +5,12 @@ import { ProductsItem } from '@/components/Products/components/ProductsItem/Prod
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { ProductsListProps } from '@/components/Products/Products.types';
 import { ProductsListContainer } from '@/components/Products/Products.styles';
+import { calculateIsFavorite } from '@/components/Favorites/Favorites.utils';
 
 export const ProductsList: FC<ProductsListProps> = ({ categoryQuery }) => {
-  const { data, loading, error } = useSelector((state) => state.products);
   const dispatch = useDispatch();
+  const { data, loading, error } = useSelector((state) => state.products);
+  const favorites = useSelector((state) => state.favorites.data);
 
   useEffect(() => {
     dispatch(
@@ -32,20 +34,17 @@ export const ProductsList: FC<ProductsListProps> = ({ categoryQuery }) => {
 
   return (
     <ProductsListContainer>
-      {data.map(
-        ({ id, img, name, price, specialPrice, totalQuantity, category }) => (
-          <ProductsItem
-            key={name}
-            id={id}
-            img={img}
-            name={name}
-            price={price}
-            specialPrice={specialPrice}
-            totalQuantity={totalQuantity}
-            category={category}
-          />
-        )
-      )}
+      {data.map(({ id, img, name, price, specialPrice }) => (
+        <ProductsItem
+          key={name}
+          id={id}
+          img={img}
+          name={name}
+          price={price}
+          specialPrice={specialPrice}
+          isFavorite={calculateIsFavorite(id, favorites)}
+        />
+      ))}
     </ProductsListContainer>
   );
 };

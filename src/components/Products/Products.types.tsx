@@ -1,4 +1,4 @@
-import { FieldPath, WhereFilterOp } from 'firebase/firestore';
+import { CategoryQuery } from '@/redux/slices/Products/Products.types';
 import { z } from 'zod';
 
 const sizeSchema = z.object({
@@ -21,20 +21,21 @@ export const productSchema = z.object({
 export const productsListSchema = z.array(productSchema);
 export type ProductType = z.infer<typeof productSchema>;
 
+export interface ProductItemsProps {
+  id: number;
+  img: string;
+  name: string;
+  price: number;
+  specialPrice?: number;
+  isFavorite: boolean | null | undefined;
+}
+
 export interface ProductDetailProps {
   id: number;
 }
 
 export interface ProductDetailFormProps {
   id: number;
-}
-
-export type Categories = 'men' | 'woman' | 'sale';
-
-export interface CategoryQuery {
-  fieldPath: string | FieldPath;
-  opStr: WhereFilterOp;
-  value: string | null;
 }
 
 export interface ProductsListProps {

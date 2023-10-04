@@ -1,7 +1,4 @@
-import {
-  Categories,
-  CategoryQuery,
-} from '@/components/Products/Products.types';
+import { CategoryQuery } from '@/redux/slices/Products/Products.types';
 
 export const saleCategory: CategoryQuery = {
   fieldPath: 'specialPrice',
@@ -22,7 +19,7 @@ const womanCategory: CategoryQuery = {
 };
 
 type CategoryItem = {
-  name: Categories;
+  name: string;
   categoryQuery: CategoryQuery;
 };
 

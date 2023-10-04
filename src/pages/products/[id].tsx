@@ -5,6 +5,7 @@ import { imageText, productBox } from '@/components/Products/Products.styles';
 import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
 import { Layout } from '@/components/Layout/Layout.component';
 import { ProductDetail } from '@/components/Products/components/ProductDetail/ProductDetail.component';
+import { ExtendedFooter } from '@/components/Footer/components/ExtendedFooter/ExtendedFooter.component';
 
 const ProductDetailPage: FC = () => {
   const router = useRouter();
@@ -22,6 +23,7 @@ const ProductDetailPage: FC = () => {
           )}
         </Box>
       }
+      footer={<ExtendedFooter />}
     />
   );
 };

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchOrders } from '@/redux/slices/Orders/Orders.thunk';
 import { OrderState } from '@/redux/slices/Orders/Orders.types';
+import { fetchOrders } from '@/redux/slices/Orders/Orders.thunk';
 
 const initialState: OrderState = {
   data: null,

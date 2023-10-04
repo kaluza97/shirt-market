@@ -10,7 +10,7 @@ import {
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 import { ProductDetailProps } from '@/components/Products/Products.types';
 import { ProductDetailAccordion } from '@/components/Products/components/ProductDetail/ProductDetailAccordion/ProductDetailAccordion.component';
-import { ProductDetailForm } from '@/components/Products/components/ProductDetail/ProductDetailForm/ProductDetailForm.container';
+import { ProductDetailForm } from '@/components/Products/components/ProductDetail/ProductDetailForm/ProductDetailForm.component';
 import { fetchProductById } from '@/redux/slices/Product/Product.thunk';
 import Image from 'next/image';
 

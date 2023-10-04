@@ -22,7 +22,10 @@ import {
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { addToCart } from '@/redux/slices/Cart/Cart.slice';
-import { displayPriceOrSpecialPrice } from '@/components/Products/Products.utils';
+import {
+  displayPriceOrSpecialPrice,
+  findCartItemById,
+} from '@/components/Products/Products.utils';
 import { button, headerText } from '@/styles/global.styles';
 
 export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
@@ -32,20 +35,17 @@ export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
   const [selectedSize, setSelectedSize] = useState<Size | null>(null);
   const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
   const cartItems = useSelector((state) => state.cart.cart);
-  const itemById = cartItems.find((item) => item.id === id);
+  const itemById = findCartItemById(cartItems, id);
   const selectedSizeQuantity =
     (selectedSize && itemById?.quantities[selectedSize]) || 0;
-  const productIsTruthy =
-    img &&
-    name &&
-    price &&
-    totalQuantity &&
-    selectedSize !== null &&
-    selectedSizeQuantity !== undefined;
 
   const handleAddToCart = () => {
     setIsAlertVisible(false);
-    if (productIsTruthy && selectedSizeQuantity < totalQuantity[selectedSize]) {
+    if (
+      totalQuantity &&
+      selectedSize &&
+      selectedSizeQuantity < totalQuantity[selectedSize]
+    ) {
       dispatch(
         addToCart({
           id,

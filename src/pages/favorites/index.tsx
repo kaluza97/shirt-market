@@ -5,7 +5,7 @@ import { Favorites } from '@/components/Favorites/Favorites.component';
 import { useDispatch } from '@/redux/hooks';
 import { AuthContext } from '@/context/Auth.context';
 import { fetchFavorites } from '@/redux/slices/Favorites/Favorites.thunk';
-import { Footer } from '@/components/Footer/Footer.component';
+import { Footer } from '@/components/Footer/components/Footer/Footer.component';
 
 const FavoritesPage: FC = () => {
   const { user } = useContext(AuthContext);

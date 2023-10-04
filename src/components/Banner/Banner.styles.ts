@@ -19,5 +19,5 @@ margin-bottom: 1rem;
 object-fit: contain;
 cursor: pointer;
 @media (min-width: ${Breakpoints.desktop}) {
-  margin: 2rem 1rem;
+  margin: 2rem 1rem 2rem 1rem;
 `;

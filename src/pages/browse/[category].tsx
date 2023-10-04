@@ -7,7 +7,7 @@ import { allCategories } from '@/data/category.data';
 import { Typography } from '@mui/material';
 import { FlexContainer, headerTextBlack } from '@/styles/global.styles';
 import { findCategoryByName } from '@/components/Category/Category.utils';
-import { Footer } from '@/components/Footer/Footer.component';
+import { Footer } from '@/components/Footer/components/Footer/Footer.component';
 import { CategoryQuery } from '@/redux/slices/Products/Products.types';
 
 const CategoryDetailPage: FC = () => {

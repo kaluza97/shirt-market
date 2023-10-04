@@ -7,7 +7,7 @@ import { allCategories } from '@/data/category.data';
 import { headerTitle } from '@/components/Order/Order.styles';
 import { Typography } from '@mui/material';
 import { CategoryQuery } from '@/components/Products/Products.types';
-import { matchingCategory } from '@/components/Category/Category.utils';
+import { findCategoryByName } from '@/components/Category/Category.utils';
 
 const CategoryDetailPage: FC = () => {
   const router = useRouter();
@@ -16,9 +16,9 @@ const CategoryDetailPage: FC = () => {
     useState<Array<CategoryQuery>>(allCategories);
 
   useEffect(() => {
-    const matchingCategoryData = matchingCategory(category);
-    if (matchingCategoryData) {
-      setCategoryQuery([matchingCategoryData.categoryQuery]);
+    const matchingCategory = findCategoryByName(category);
+    if (matchingCategory) {
+      setCategoryQuery([matchingCategory.categoryQuery]);
     } else {
       setCategoryQuery(allCategories);
     }

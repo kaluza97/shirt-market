@@ -31,12 +31,17 @@ export interface ProductDetailFormProps {
 
 export type Categories = 'men' | 'woman' | 'sale';
 
-export type CategoryQuery = {
+export interface CategoryQuery {
   fieldPath: string | FieldPath;
   opStr: WhereFilterOp;
   value: string | null;
-};
+}
 
 export interface ProductsListProps {
   categoryQuery: Array<CategoryQuery>;
+}
+
+export interface displayPriceOrSpecialPriceProps {
+  price: number;
+  specialPrice?: number;
 }

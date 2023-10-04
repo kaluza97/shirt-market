@@ -1,30 +1,33 @@
 import {
-  Breakpoints,
   Colors,
   FontFamily,
   FontSizes,
   FontWeights,
-  MediaForTabletAndDesktop,
+  BiggerThanPhone,
 } from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 import Image from 'next/image';
 
-export const ProductsListContainer = styled.div`
+export const ProductsWrapperContainer = styled.div`
   padding-right: 1rem;
   padding-left: 1rem;
   textalign: 'center';
 `;
 
+export const ProductsListContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 export const ProductDetailContainer = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  ${MediaForTabletAndDesktop} {
+  ${BiggerThanPhone} {
     flex-direction: row;
-    padding-right: 1rem;
-    padding-left: 1rem;
   }
 `;
 
@@ -33,10 +36,8 @@ export const DetailContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  ${MediaForTabletAndDesktop} {
-    width: 60%;
-    padding-right: 2rem;
-    padding-left: 2rem;
+  ${BiggerThanPhone} {
+    padding-right: 10rem;
   }
 `;
 
@@ -46,7 +47,7 @@ export const PanelContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  ${MediaForTabletAndDesktop} {
+  ${BiggerThanPhone} {
     width: 40%;
     padding-right: 2rem;
     padding-left: 2rem;
@@ -59,9 +60,14 @@ export const DetailImageContainer = styled.div`
   width: 100%;
   max-width: 40rem;
   height: 55rem;
-  ${MediaForTabletAndDesktop} {
+  ${BiggerThanPhone} {
     max-width: 42rem;
   }
+`;
+
+export const TextBox = styled.div`
+  display: inline-flex;
+  justify-content: center;
 `;
 
 export const productContainer: SxProps = {
@@ -87,6 +93,8 @@ export const Img = styled(Image)`
 `;
 
 export const productBox: SxProps = {
+  display: 'flex',
+  flexDirection: 'column',
   textAlign: 'center',
   margin: '0.5rem',
 };
@@ -98,10 +106,22 @@ export const imageText: SxProps = {
   color: Colors.blackLight,
 };
 
+export const crossedOutText: SxProps = {
+  ...imageText,
+  textDecoration: 'line-through',
+  marginRight: '0.5rem',
+};
+
+export const redText: SxProps = {
+  ...imageText,
+  color: Colors.red,
+};
+
 export const headerTitle: SxProps = {
   fontFamily: FontFamily.sans,
   fontWeight: FontWeights.bold,
   color: Colors.blackLight,
+  textAlign: 'center',
   margin: '1rem',
 };
 

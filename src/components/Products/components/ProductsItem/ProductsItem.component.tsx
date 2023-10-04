@@ -8,8 +8,15 @@ import {
 } from '@/components/Products/Products.styles';
 import { useRouter } from 'next/router';
 import { ProductType } from '@/components/Products/Products.types';
+import { displayPriceOrSpecialPrice } from '@/components/Products/Products.utils';
 
-export const ProductsItem: FC<ProductType> = ({ id, img, name, price }) => {
+export const ProductsItem: FC<ProductType> = ({
+  id,
+  img,
+  name,
+  price,
+  specialPrice,
+}) => {
   const { push } = useRouter();
 
   const handleProductClick = () => {
@@ -19,7 +26,7 @@ export const ProductsItem: FC<ProductType> = ({ id, img, name, price }) => {
     <Box sx={productBox} onClick={handleProductClick}>
       <Img src={img} alt={name} width={250} height={350} priority />
       <Typography sx={imageText}>{name}</Typography>
-      <Typography sx={imageText}>{price} $</Typography>
+      {displayPriceOrSpecialPrice({ price, specialPrice })}
     </Box>
   );
 };

@@ -4,6 +4,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { PagePaths } from '@/constants/pages';
 
 type NavigationItem = {
   name: string;
@@ -19,22 +20,22 @@ export const navigationData: Array<NavigationItem> = [
   },
   {
     name: 'Browse',
-    path: '/browse',
+    path: PagePaths.BROWSE_PAGE,
     icon: <SearchOutlinedIcon />,
   },
   {
     name: 'Favorites',
-    path: '/favorites',
+    path: PagePaths.FAVORITE_PAGE,
     icon: <FavoriteBorderOutlinedIcon />,
   },
   {
     name: 'Cart',
-    path: '/cart',
+    path: PagePaths.CART_PAGE,
     icon: <ShoppingCartOutlinedIcon />,
   },
   {
     name: 'Profile',
-    path: '/profile',
+    path: PagePaths.PROFILE_PAGE,
     icon: <PersonOutlineOutlinedIcon />,
   },
 ];

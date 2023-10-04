@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { CircularProgress, Typography } from '@mui/material';
 import { fetchProducts } from '@/redux/slices/Products/Products.thunk';
 import { ProductsItem } from '@/components/Products/components/ProductsItem/ProductsItem.component';

@@ -5,10 +5,10 @@ import { Layout } from '@/components/Layout/Layout.component';
 import { ProductsList } from '@/components/Products/components/ProductsList/ProductsList.component';
 import { allCategories } from '@/data/category.data';
 import { Typography } from '@mui/material';
-import { CategoryQuery } from '@/redux/slices/Products/Products.types';
-import { matchingCategory } from '@/components/Category/Category.utils';
-import { Footer } from '@/components/Footer/Footer.component';
 import { FlexContainer, headerTextBlack } from '@/styles/global.styles';
+import { findCategoryByName } from '@/components/Category/Category.utils';
+import { Footer } from '@/components/Footer/Footer.component';
+import { CategoryQuery } from '@/redux/slices/Products/Products.types';
 
 const CategoryDetailPage: FC = () => {
   const router = useRouter();
@@ -17,9 +17,9 @@ const CategoryDetailPage: FC = () => {
     useState<Array<CategoryQuery>>(allCategories);
 
   useEffect(() => {
-    const matchingCategoryData = matchingCategory(category);
-    if (matchingCategoryData) {
-      setCategoryQuery([matchingCategoryData.categoryQuery]);
+    const matchingCategory = findCategoryByName(category);
+    if (matchingCategory) {
+      setCategoryQuery([matchingCategory.categoryQuery]);
     } else {
       setCategoryQuery(allCategories);
     }

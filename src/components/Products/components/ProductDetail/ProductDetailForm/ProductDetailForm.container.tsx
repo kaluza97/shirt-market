@@ -15,17 +15,20 @@ import {
   radioGroup,
   radio,
 } from '@/components/Products/Products.styles';
-import { ProductDetailFormProps } from '@/components/Products/Products.types';
+import {
+  ProductDetailFormProps,
+  ProductType,
+} from '@/components/Products/Products.types';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { addToCart } from '@/redux/slices/Cart/Cart.slice';
-import { DisplayItemPrice } from '@/components/Products/components/ProductsItem/DisplayItemPrice.component';
+import { displayPriceOrSpecialPrice } from '@/components/Products/Products.utils';
 import { button, headerText } from '@/styles/global.styles';
 
 export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
   const dispatch = useDispatch();
-  const { img, name, price, specialPrice, totalQuantity } =
-    useSelector((state) => state.productById.data) || {};
+  const { data } = useSelector((state) => state.productById);
+  const { specialPrice, price, img, name, totalQuantity } = data as ProductType;
   const [selectedSize, setSelectedSize] = useState<Size | null>(null);
   const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
   const cartItems = useSelector((state) => state.cart.cart);
@@ -42,11 +45,7 @@ export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
 
   const handleAddToCart = () => {
     setIsAlertVisible(false);
-    if (
-      productIsTruthy &&
-      totalQuantity &&
-      selectedSizeQuantity < totalQuantity[selectedSize]
-    ) {
+    if (productIsTruthy && selectedSizeQuantity < totalQuantity[selectedSize]) {
       dispatch(
         addToCart({
           id,
@@ -70,7 +69,7 @@ export const ProductDetailForm: FC<ProductDetailFormProps> = ({ id }) => {
       <Typography component="h2" sx={headerText}>
         {name}
       </Typography>
-      {DisplayItemPrice}
+      {displayPriceOrSpecialPrice({ price, specialPrice })}
       <FormContainer>
         <FormControl>
           <RadioGroup

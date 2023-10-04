@@ -1,9 +1,5 @@
 import styled from '@emotion/styled';
-import {
-  Breakpoints,
-  Colors,
-  MediaForTabletAndDesktop,
-} from '@/styles/variables';
+import { Breakpoints, Colors, BiggerThanPhone } from '@/styles/variables';
 import Link from 'next/link';
 
 export const FooterHeight = '80rem';
@@ -15,7 +11,7 @@ export const FooterContent = styled.footer`
   flex-direction: column;
   width: 100%;
   background-color: ${Colors.primary};
-  ${MediaForTabletAndDesktop} {
+  ${BiggerThanPhone} {
     height: ${FooterHeightDesktop};
     flex-direction: row;
     justify-content: space-evenly;

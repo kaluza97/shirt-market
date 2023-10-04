@@ -33,8 +33,8 @@ export const saveFavorite = createAsyncThunk<
   { uid: string; favorite: FavoriteItem }
 >('favorites/saveFavorite', async ({ uid, favorite }, { dispatch }) => {
   try {
-    const userRef = doc(firestore, 'favorites', uid);
-    await updateDoc(userRef, { favorites: arrayUnion(favorite) });
+    const dataRef = doc(firestore, 'favorites', uid);
+    await updateDoc(dataRef, { favorites: arrayUnion(favorite) });
     dispatch(fetchFavorites(uid));
   } catch (error) {
     throw new Error('Error while fetching user data from Firestore.');
@@ -46,8 +46,8 @@ export const removeFavorite = createAsyncThunk<
   { uid: string; favorite: FavoriteItem }
 >('favorites/removeFavorite', async ({ uid, favorite }, { dispatch }) => {
   try {
-    const userRef = doc(firestore, 'favorites', uid);
-    await updateDoc(userRef, { favorites: arrayRemove(favorite) });
+    const dataRef = doc(firestore, 'favorites', uid);
+    await updateDoc(dataRef, { favorites: arrayRemove(favorite) });
     dispatch(fetchFavorites(uid));
   } catch (error) {
     throw new Error('Error while removing favorite from Firestore.');

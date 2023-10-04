@@ -5,9 +5,11 @@ import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomA
 import Image from 'next/image';
 import { ProductsItem } from '@/components/Products/components/ProductsItem/ProductsItem.component';
 import { FlexContainer, headerTextBlack } from '@/styles/global.styles';
+import { calculateIsFavorite } from '@/components/Favorites/Favorites.utils';
 
 export const Favorites: FC = () => {
   const { data, loading, error } = useSelector((state) => state.favorites);
+  const favorites = useSelector((state) => state.favorites.data);
 
   if (loading) {
     return <CircularProgress />;
@@ -37,6 +39,7 @@ export const Favorites: FC = () => {
               name={name}
               price={price}
               specialPrice={specialPrice}
+              isFavorite={calculateIsFavorite(id, favorites)}
             />
           ))}
         </>

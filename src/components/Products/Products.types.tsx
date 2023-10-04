@@ -21,6 +21,15 @@ export const productSchema = z.object({
 export const productsListSchema = z.array(productSchema);
 export type ProductType = z.infer<typeof productSchema>;
 
+export interface ProductItemsProps {
+  id: number;
+  img: string;
+  name: string;
+  price: number;
+  specialPrice?: number;
+  isFavorite: boolean | null | undefined;
+}
+
 export interface ProductDetailProps {
   id: number;
 }
@@ -31,4 +40,9 @@ export interface ProductDetailFormProps {
 
 export interface ProductsListProps {
   categoryQuery: Array<CategoryQuery>;
+}
+
+export interface displayPriceOrSpecialPriceProps {
+  price: number;
+  specialPrice?: number;
 }

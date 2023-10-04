@@ -27,6 +27,7 @@ export interface ProductItemsProps {
   name: string;
   price: number;
   specialPrice?: number;
+  isFavorite?: any;
 }
 
 export interface ProductDetailProps {

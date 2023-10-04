@@ -12,7 +12,7 @@ import {
 import { useRouter } from 'next/router';
 import { ProductItemsProps } from '@/components/Products/Products.types';
 import { displayPriceOrSpecialPrice } from '@/components/Products/Products.utils';
-import { useDispatch, useSelector } from '@/redux/hooks';
+import { useDispatch } from '@/redux/hooks';
 import { AuthContext } from '@/context/Auth.context';
 import {
   removeFavorite,
@@ -28,11 +28,11 @@ export const ProductsItem: FC<ProductItemsProps> = ({
   name,
   price,
   specialPrice,
+  isFavorite,
 }) => {
   const { push } = useRouter();
   const dispatch = useDispatch();
   const { user } = useContext(AuthContext);
-  const favorites = useSelector((state) => state.favorites.data);
 
   const handleProductClick = () => {
     push(`/products/${id}`);
@@ -49,7 +49,7 @@ export const ProductsItem: FC<ProductItemsProps> = ({
     };
 
     if (user) {
-      if (favorites?.some((favorite) => favorite.id === id)) {
+      if (isFavorite) {
         dispatch(removeFavorite({ uid: user.uid, favorite: favoriteItem }));
       } else {
         dispatch(saveFavorite({ uid: user.uid, favorite: favoriteItem }));
@@ -63,15 +63,11 @@ export const ProductsItem: FC<ProductItemsProps> = ({
         <Img src={img} alt={name} width={250} height={350} priority />
 
         <IconButton
-          aria-label={
-            favorites?.some((favorite) => favorite.id === id)
-              ? 'remove from favorites'
-              : 'add to favorites'
-          }
+          aria-label={isFavorite ? 'remove from favorites' : 'add to favorites'}
           sx={favoriteIconButton}
           onClick={handleFavoriteClick}
         >
-          {favorites?.some((favorite) => favorite.id === id) ? (
+          {isFavorite ? (
             <FavoriteIcon sx={favoriteIcon} />
           ) : (
             <FavoriteBorderIcon sx={favoriteIcon} />

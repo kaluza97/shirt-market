@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { FavoritesState } from './Favorites.types';
-import { fetchFavorites } from './Favorites.thunk';
+import { FavoritesState } from '@/redux/slices/Favorites/Favorites.types';
+import { fetchFavorites } from '@/redux/slices/Favorites/Favorites.thunk';
 
 const initialState: FavoritesState = {
   data: null,
@@ -8,8 +8,8 @@ const initialState: FavoritesState = {
   error: false,
 };
 
-const ordersSlice = createSlice({
-  name: 'favories',
+const favoritesSlice = createSlice({
+  name: 'favorites',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -30,4 +30,4 @@ const ordersSlice = createSlice({
   },
 });
 
-export default ordersSlice.reducer;
+export default favoritesSlice.reducer;

@@ -49,7 +49,7 @@ export const Favorites: FC = () => {
             No favorite products
           </Typography>
           <Image
-            src={`/assets/shirtWithBrokenHeart.jpg`}
+            src="https://firebasestorage.googleapis.com/v0/b/shirt-market-8ba7b.appspot.com/o/shirtWithBrokenHeart.jpg?alt=media&token=f094034a-3b3e-445c-9db9-cd31bbc29f06"
             alt="shirt with broken heart"
             width={120}
             height={120}

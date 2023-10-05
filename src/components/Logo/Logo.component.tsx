@@ -15,7 +15,7 @@ export const Logo: FC = () => {
   return (
     <LogoContainer onClick={handleClick}>
       <LogoImage
-        src="/assets/shirt.png"
+        src="https://firebasestorage.googleapis.com/v0/b/shirt-market-8ba7b.appspot.com/o/shirt.png?alt=media&token=3c077eb6-62a4-40eb-be04-7446121baf5b"
         width={50}
         height={50}
         alt="Green shirt"

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { AuthForm } from '@/components/Auth/AuthForm.component';
 import { AuthContext } from '@/context/Auth.context';
 import { PagePaths } from '@/constants/pages';
-import { Footer } from '@/components/Footer/Footer.component';
+import { Footer } from '@/components/Footer/components/Footer/Footer.component';
 
 const LoginPage: FC = () => {
   const { user } = useContext(AuthContext);

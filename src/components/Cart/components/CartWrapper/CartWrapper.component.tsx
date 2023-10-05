@@ -9,9 +9,8 @@ import { buyCartsProducts } from '@/redux/slices/Cart/Cart.thunk';
 import { clearCart } from '@/redux/slices/Cart/Cart.slice';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
-import { saveOrder } from '@/redux/slices/Orders/update/Orders.thunk';
+import { saveOrder } from '@/redux/slices/Orders/Orders.thunk';
 import { AuthContext } from '@/context/Auth.context';
-import { SaveOrderItem } from '@/redux/slices/Orders/update/Orders.types';
 import {
   FlexContainer,
   headerTextBlack,
@@ -19,6 +18,7 @@ import {
   button,
 } from '@/styles/global.styles';
 import Image from 'next/image';
+import { SaveOrderItem } from '@/redux/slices/Orders/Orders.types';
 
 export const CartWrapper: FC = () => {
   const { user } = useContext(AuthContext);

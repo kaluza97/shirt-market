@@ -1,4 +1,4 @@
-import { QueryCondition } from '@/redux/slices/Products/Products.types';
+import { CategoryQuery } from '@/redux/slices/Products/Products.types';
 import { z } from 'zod';
 
 const sizeSchema = z.object({
@@ -9,17 +9,26 @@ const sizeSchema = z.object({
 });
 
 export const productSchema = z.object({
-  category: z.string(),
+  category: z.string().optional(),
   id: z.number(),
   img: z.string(),
   name: z.string(),
   price: z.number(),
   specialPrice: z.number().optional(),
-  totalQuantity: sizeSchema,
+  totalQuantity: sizeSchema.optional(),
 });
 
 export const productsListSchema = z.array(productSchema);
 export type ProductType = z.infer<typeof productSchema>;
+
+export interface ProductItemsProps {
+  id: number;
+  img: string;
+  name: string;
+  price: number;
+  specialPrice?: number;
+  isFavorite: boolean | null | undefined;
+}
 
 export interface ProductDetailProps {
   id: number;
@@ -30,6 +39,10 @@ export interface ProductDetailFormProps {
 }
 
 export interface ProductsListProps {
-  productsLimit?: number;
-  queryCondition: QueryCondition;
+  categoryQuery: Array<CategoryQuery>;
+}
+
+export interface displayPriceOrSpecialPriceProps {
+  price: number;
+  specialPrice?: number;
 }

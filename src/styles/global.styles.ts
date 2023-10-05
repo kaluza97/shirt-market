@@ -1,30 +1,13 @@
 import { SxProps } from '@mui/material';
-import {
-  FontSizes,
-  FontFamily,
-  FontWeights,
-  Colors,
-  MediaForTabletAndDesktop,
-} from '@/styles/variables';
+import { FontSizes, FontFamily, FontWeights, Colors } from '@/styles/variables';
 import Link from 'next/link';
 import styled from '@emotion/styled';
-import {
-  FooterHeight,
-  FooterHeightDesktop,
-} from '@/components/Footer/Footer.styles';
-import { NavigationMenuHeight } from '@/components/NavigationMenu/NavigationMenu.styles';
 
 export const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - (${FooterHeight} + ${NavigationMenuHeight}));
-  ${MediaForTabletAndDesktop} {
-    min-height: calc(
-      100vh - (${FooterHeightDesktop} + ${NavigationMenuHeight})
-    );
-  }
 `;
 
 export const LinkText = styled(Link)`

@@ -5,12 +5,13 @@ import { productBox } from '@/components/Products/Products.styles';
 import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
 import { Layout } from '@/components/Layout/Layout.component';
 import { ProductDetail } from '@/components/Products/components/ProductDetail/ProductDetail.component';
-import { Footer } from '@/components/Footer/Footer.component';
+import { Footer } from '@/components/Footer/components/Footer/Footer.component';
 import { headerTextBlack } from '@/styles/global.styles';
 
 const ProductDetailPage: FC = () => {
   const router = useRouter();
   const { id } = router.query;
+  const productId: number = Number(id);
 
   return (
     <Layout
@@ -18,7 +19,7 @@ const ProductDetailPage: FC = () => {
       content={
         <Box sx={productBox}>
           {id ? (
-            <ProductDetail id={Number(id)} />
+            <ProductDetail id={productId} />
           ) : (
             <Typography sx={headerTextBlack}>Product not found.</Typography>
           )}

@@ -1,18 +1,11 @@
-import { FontFamily, FontSizes, FontWeights } from '@/styles/variables';
+import { Colors } from '@/styles/variables';
 import styled from '@emotion/styled';
-import { SxProps } from '@mui/material';
 
-export const ImageContainer = styled.div`
-  width: 100%;
+export const CategoryBox = styled.div`
   display: flex;
-  justify-content: center;
-  margin-top: 3rem;
+  width: 7rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: ${Colors.yellow};
 `;
-
-export const button: SxProps = {
-  width: '100%',
-  textAlign: 'center',
-  fontSize: FontSizes.large,
-  fontFamily: FontFamily.sans,
-  fontWeight: FontWeights.bold,
-};

@@ -1,12 +1,7 @@
 import React, { FC, useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from '@/redux/hooks';
 import { Button, CircularProgress, Typography } from '@mui/material';
-import {
-  CartContainer,
-  EmptyCartContainer,
-  confirmButton,
-  headerText,
-} from '@/components/Cart/Cart.styles';
+import { EmptyCartContainer } from '@/components/Cart/Cart.styles';
 import Image from 'next/image';
 import { CartItem } from '@/components/Cart/components/CartItem/CartItem.component';
 import { calculateTotalCost } from '@/components/Cart/Cart.utils';
@@ -17,6 +12,12 @@ import PaymentIcon from '@mui/icons-material/Payment';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
 import { saveOrder } from '@/redux/slices/Orders/Orders.thunk';
 import { AuthContext } from '@/context/Auth.context';
+import {
+  FlexContainer,
+  headerTextBlack,
+  boldText,
+  button,
+} from '@/styles/global.styles';
 import { SaveOrderItem } from '@/redux/slices/Orders/Orders.types';
 
 export const CartWrapper: FC = () => {
@@ -56,7 +57,7 @@ export const CartWrapper: FC = () => {
   }
 
   return (
-    <CartContainer>
+    <FlexContainer>
       {isPaymentSuccessful && (
         <CustomAlert
           alertType="success"
@@ -71,7 +72,7 @@ export const CartWrapper: FC = () => {
       )}
       {cartItems.length === 0 ? (
         <EmptyCartContainer>
-          <Typography sx={headerText}>Your cart is empty.</Typography>
+          <Typography sx={headerTextBlack}>Your cart is empty.</Typography>
           <Image
             src={`/assets/emptyCart.jpg`}
             alt="empty shopping cart"
@@ -82,26 +83,26 @@ export const CartWrapper: FC = () => {
         </EmptyCartContainer>
       ) : (
         <>
-          <Typography component="h3" sx={headerText}>
+          <Typography component="h3" sx={headerTextBlack}>
             Your Cart Items:
           </Typography>
           <Divider />
           {cartItems.map((item) => (
             <CartItem item={item} key={item.name} />
           ))}
-          <Typography component="h3" sx={headerText}>
+          <Typography component="h3" sx={boldText}>
             Total cost: {allProductsTotalCost} $
           </Typography>
           <Button
             variant="contained"
             onClick={handleProceedPayment}
-            sx={confirmButton}
+            sx={button}
             endIcon={<PaymentIcon />}
           >
             Proceed to Payment
           </Button>
         </>
       )}
-    </CartContainer>
+    </FlexContainer>
   );
 };

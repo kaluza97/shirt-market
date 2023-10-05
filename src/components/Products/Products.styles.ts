@@ -1,19 +1,8 @@
-import {
-  Colors,
-  FontFamily,
-  FontSizes,
-  FontWeights,
-  BiggerThanPhone,
-} from '@/styles/variables';
+import { normalTextBlack } from '@/styles/global.styles';
+import { Colors, BiggerThanPhone } from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 import Image from 'next/image';
-
-export const ProductsWrapperContainer = styled.div`
-  padding-right: 1rem;
-  padding-left: 1rem;
-  textalign: 'center';
-`;
 
 export const ProductsListContainer = styled.div`
   display: flex;
@@ -113,73 +102,19 @@ export const productBox: SxProps = {
   display: 'flex',
   flexDirection: 'column',
   textAlign: 'center',
-  margin: '0.5rem',
-};
-
-export const imageText: SxProps = {
-  fontSize: FontSizes.large,
-  fontFamily: FontFamily.sans,
-  fontWeight: FontWeights.bold,
-  color: Colors.blackLight,
+  padding: '1rem',
+  [BiggerThanPhone]: {
+    padding: '2rem',
+  },
 };
 
 export const crossedOutText: SxProps = {
-  ...imageText,
+  ...normalTextBlack,
   textDecoration: 'line-through',
   marginRight: '0.5rem',
 };
 
-export const redText: SxProps = {
-  ...imageText,
-  color: Colors.red,
-};
-
-export const headerTitle: SxProps = {
-  fontFamily: FontFamily.sans,
-  fontWeight: FontWeights.bold,
-  color: Colors.blackLight,
-  textAlign: 'center',
-  margin: '1rem',
-};
-
-export const headerText: SxProps = {
-  fontSize: FontSizes.xl,
-  fontFamily: FontFamily.sans,
-  color: Colors.blackLight,
-  fontWeight: FontWeights.bold,
-  paddingBottom: '0.5rem',
-  paddingTop: '0.5rem',
-  textAlign: 'center',
-  lineHeight: '2.8rem',
-};
-
-export const highlightedText: SxProps = {
-  ...headerText,
-  color: Colors.primary,
-};
-
-export const descriptionText: SxProps = {
-  ...headerText,
-  fontSize: FontSizes.middle,
-  fontWeight: FontWeights.thin,
-};
-
-export const descriptionBoldText: SxProps = {
-  ...descriptionText,
-  fontWeight: FontWeights.bold,
-};
-
 export const accordion: SxProps = {
-  marginTop: '1rem',
-  marginBottom: '1rem',
-};
-
-export const confirmButton: SxProps = {
-  fontFamily: FontFamily.sans,
-  fontSize: FontSizes.middle,
-  fontWeight: FontWeights.bold,
-  color: Colors.white,
-  padding: '1rem',
   marginTop: '1rem',
   marginBottom: '1rem',
 };

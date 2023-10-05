@@ -1,20 +1,20 @@
 import React, { FC, SyntheticEvent, useState } from 'react';
 import { SignInWithEmailPassword } from '@/components/SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.component';
 import SignUp from '@/components/SignUp/SignUp.component';
-import { Tab, Tabs, Typography } from '@mui/material';
-import Image from 'next/image';
+import { Tab, Tabs } from '@mui/material';
 import {
   AuthContainer,
   FormContainer,
   FormContent,
-  tabItem,
+  tabPanelOption,
   tabPanel,
-  logoText,
+  LogoContainer,
 } from '@/components/Auth/AuthForm.styles';
 import { LoginOrRegisterType } from '@/components/Auth/AuthForm.types';
 import { Description } from '@/components/Description/Description.component';
+import { Logo } from '../Logo/Logo.component';
 
-const AuthForm: FC = () => {
+export const AuthForm: FC = () => {
   const [auth, setAuth] = useState<LoginOrRegisterType>('login');
 
   const handleChange = (
@@ -28,15 +28,9 @@ const AuthForm: FC = () => {
     <AuthContainer>
       <FormContainer>
         <FormContent>
-          <Image
-            src="/assets/shirt.png"
-            width={50}
-            height={50}
-            alt="Green shirt"
-          />
-          <Typography component="h1" variant="h5" sx={logoText}>
-            Shirt Market
-          </Typography>
+          <LogoContainer>
+            <Logo />
+          </LogoContainer>
           <Tabs
             value={auth}
             onChange={handleChange}
@@ -44,8 +38,8 @@ const AuthForm: FC = () => {
             sx={tabPanel}
             variant="fullWidth"
           >
-            <Tab value="login" label="Login" sx={tabItem} />
-            <Tab value="register" label="Register" sx={tabItem} />
+            <Tab value="login" label="Login" sx={tabPanelOption} />
+            <Tab value="register" label="Register" sx={tabPanelOption} />
           </Tabs>
           {auth === 'login' && <SignInWithEmailPassword />}
           {auth === 'register' && <SignUp />}
@@ -55,5 +49,3 @@ const AuthForm: FC = () => {
     </AuthContainer>
   );
 };
-
-export default AuthForm;

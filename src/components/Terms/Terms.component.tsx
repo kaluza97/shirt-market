@@ -1,12 +1,13 @@
 import { FC } from 'react';
-import { Checkbox, FormControlLabel } from '@mui/material';
+import { Checkbox, FormControlLabel, Typography } from '@mui/material';
 import { LinkStyled, TermsContainer } from '@/components/Terms/Terms.styles';
 import { privacyPolicyLink } from '@/constants/links';
+import { normalTextBlack } from '@/styles/global.styles';
 
 export const Terms: FC = () => {
   const terms = () => (
     <TermsContainer>
-      <p>This is an example of</p>
+      <Typography sx={normalTextBlack}>This is an example of</Typography>
       <LinkStyled href={privacyPolicyLink}>terms</LinkStyled>
     </TermsContainer>
   );

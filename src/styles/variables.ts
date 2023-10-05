@@ -20,8 +20,8 @@ export const BiggerThanPhone = `@media (min-width: ${Breakpoints.tablet})`;
 export const FontSizes = {
   extraSmall: '1rem',
   small: '1.4rem',
-  middle: '1.6rem',
-  large: '1.8rem',
+  middle: '1.8rem',
+  large: '2rem',
   xl: '2.2rem',
 };
 

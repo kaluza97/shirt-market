@@ -9,13 +9,13 @@ const sizeSchema = z.object({
 });
 
 export const productSchema = z.object({
-  category: z.string(),
+  category: z.string().optional(),
   id: z.number(),
   img: z.string(),
   name: z.string(),
   price: z.number(),
   specialPrice: z.number().optional(),
-  totalQuantity: sizeSchema,
+  totalQuantity: sizeSchema.optional(),
 });
 
 export const productsListSchema = z.array(productSchema);

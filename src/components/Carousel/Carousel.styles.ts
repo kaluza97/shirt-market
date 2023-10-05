@@ -1,36 +1,22 @@
-import { Colors, FontFamily, FontSizes, FontWeights } from '@/styles/variables';
-import styled from '@emotion/styled';
+import { Colors, Breakpoints } from '@/styles/variables';
 import { SxProps } from '@mui/material';
-import Link from 'next/link';
 
-export const LinkStyled = styled(Link)`
-  font-size: ${FontSizes.small};
-  font-family: ${FontFamily.sans};
-  color: ${Colors.white};
-  text-decoration: underline;
-`;
+const commonStyles: SxProps = {
+  height: '15rem',
+  backgroundColor: Colors.primaryDark,
+  [`@media (min-width: ${Breakpoints.tablet})`]: {
+    height: '12rem',
+  },
+};
 
 export const carousel: SxProps = {
-  margin: '0',
-  backgroundColor: Colors.blackLight,
-  maxHeight: '9rem',
+  ...commonStyles,
 };
 
-export const carouselContent: SxProps = {
-  textAlign: 'center',
-  backgroundColor: Colors.primaryDark,
+export const paper: SxProps = {
+  ...commonStyles,
   color: Colors.white,
+  textAlign: 'center',
   padding: '1rem',
-  height: '7rem',
   borderRadius: '0',
-};
-
-export const carouselNameText: SxProps = {
-  fontSize: FontSizes.large,
-  fontWeight: FontWeights.bold,
-};
-
-export const carouselDescriptionText: SxProps = {
-  fontSize: FontSizes.small,
-  fontFamily: FontFamily.sans,
 };

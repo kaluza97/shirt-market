@@ -6,11 +6,9 @@ import {
   ProductImageWrapper,
   favoriteIcon,
   favoriteIconButton,
-  imageText,
   productBox,
 } from '@/components/Products/Products.styles';
 import { useRouter } from 'next/router';
-import { ProductItemsProps } from '@/components/Products/Products.types';
 import { displayPriceOrSpecialPrice } from '@/components/Products/Products.utils';
 import { useDispatch } from '@/redux/hooks';
 import { AuthContext } from '@/context/Auth.context';
@@ -21,6 +19,8 @@ import {
 import { FavoriteItem } from '@/redux/slices/Favorites/Favorites.types';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { ProductItemsProps } from '@/components/Products/Products.types';
+import { normalTextBlack } from '@/styles/global.styles';
 
 export const ProductsItem: FC<ProductItemsProps> = ({
   id,
@@ -61,7 +61,6 @@ export const ProductsItem: FC<ProductItemsProps> = ({
     <Box sx={productBox} onClick={handleProductClick}>
       <ProductImageWrapper>
         <Img src={img} alt={name} width={250} height={350} priority />
-
         <IconButton
           aria-label={isFavorite ? 'remove from favorites' : 'add to favorites'}
           sx={favoriteIconButton}
@@ -74,7 +73,7 @@ export const ProductsItem: FC<ProductItemsProps> = ({
           )}
         </IconButton>
       </ProductImageWrapper>
-      <Typography sx={imageText}>{name}</Typography>
+      <Typography sx={normalTextBlack}>{name}</Typography>
       {displayPriceOrSpecialPrice({ price, specialPrice })}
     </Box>
   );

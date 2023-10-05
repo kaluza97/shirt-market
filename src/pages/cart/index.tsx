@@ -5,7 +5,7 @@ import { Layout } from '@/components/Layout/Layout.component';
 import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
 import { useDispatch } from '@/redux/hooks';
 import { useRouter } from 'next/router';
-import { ExtendedFooter } from '@/components/Footer/components/ExtendedFooter/ExtendedFooter.component';
+import { Footer } from '@/components/Footer/components/Footer/Footer.component';
 
 const Cart: FC = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const Cart: FC = () => {
     <Layout
       header={<NavigationMenu />}
       content={<CartWrapper />}
-      footer={<ExtendedFooter />}
+      footer={<Footer />}
     />
   );
 };

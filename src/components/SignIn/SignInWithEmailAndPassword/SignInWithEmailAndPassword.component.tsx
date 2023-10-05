@@ -14,10 +14,10 @@ import {
   SignInFormWrapper,
   inputText,
   paragraph,
-  submitButton,
 } from '@/components/SignIn/SignInWithEmailAndPassword/SignInWithEmailAndPassword.styles';
 import { AuthError } from '@/components/Message/components/AuthError/AuthError.component';
 import { PagePaths } from '@/constants/pages';
+import { button } from '@/styles/global.styles';
 
 export const SignInWithEmailPassword: FC = () => {
   const { login, user } = useContext(AuthContext);
@@ -56,8 +56,6 @@ export const SignInWithEmailPassword: FC = () => {
           name="email"
           autoComplete="email"
           autoFocus
-          size="small"
-          InputLabelProps={{ shrink: true }}
           sx={inputText}
         />
         <TextField
@@ -70,8 +68,6 @@ export const SignInWithEmailPassword: FC = () => {
           name="password"
           type="password"
           autoComplete="password"
-          size="small"
-          InputLabelProps={{ shrink: true }}
           sx={inputText}
         />
         <Typography component="p" sx={paragraph}>
@@ -82,8 +78,7 @@ export const SignInWithEmailPassword: FC = () => {
           fullWidth
           variant="contained"
           color="primary"
-          size="large"
-          sx={submitButton}
+          sx={button}
         >
           Sign In
         </Button>

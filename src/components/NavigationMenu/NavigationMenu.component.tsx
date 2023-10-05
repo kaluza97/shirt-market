@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import {
-  GapContainer,
+  NavigationTopSpacer,
   IconContainer,
   Navigation,
   NavigationContainer,
@@ -76,7 +76,7 @@ export const NavigationMenu: FC = () => {
           </Menu>
         </Navigation>
       </NavigationContainer>
-      <GapContainer />
+      <NavigationTopSpacer />
     </>
   );
 };

@@ -4,10 +4,10 @@ import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.compo
 import { Layout } from '@/components/Layout/Layout.component';
 import { ProductsList } from '@/components/Products/components/ProductsList/ProductsList.component';
 import { allCategories } from '@/data/category.data';
-import { headerTitle } from '@/components/Order/Order.styles';
 import { Typography } from '@mui/material';
+import { FlexContainer, headerTextBlack } from '@/styles/global.styles';
 import { findCategoryByName } from '@/components/Category/Category.utils';
-import { ExtendedFooter } from '@/components/Footer/components/ExtendedFooter/ExtendedFooter.component';
+import { Footer } from '@/components/Footer/components/Footer/Footer.component';
 import { CategoryQuery } from '@/redux/slices/Products/Products.types';
 
 const CategoryDetailPage: FC = () => {
@@ -29,14 +29,14 @@ const CategoryDetailPage: FC = () => {
     <Layout
       header={<NavigationMenu />}
       content={
-        <>
-          <Typography component="h3" variant="h4" sx={headerTitle}>
+        <FlexContainer>
+          <Typography component="h3" sx={headerTextBlack}>
             You are in the category: {category}
           </Typography>
           <ProductsList categoryQuery={categoryQuery} />
-        </>
+        </FlexContainer>
       }
-      footer={<ExtendedFooter />}
+      footer={<Footer />}
     />
   );
 };

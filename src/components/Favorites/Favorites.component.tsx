@@ -2,10 +2,9 @@ import React, { FC } from 'react';
 import { CircularProgress, Typography } from '@mui/material';
 import { useSelector } from '@/redux/hooks';
 import { CustomAlert } from '@/components/Message/components/CustomAlert/CustomAlert.component';
-import { headerTitle } from '@/components/Order/Order.styles';
 import Image from 'next/image';
-import { FavoritesWrapperContainer } from '@/components/Favorites/Favorites.styles';
 import { ProductsItem } from '@/components/Products/components/ProductsItem/ProductsItem.component';
+import { FlexContainer, headerTextBlack } from '@/styles/global.styles';
 import { calculateIsFavorite } from '@/components/Favorites/Favorites.utils';
 
 export const Favorites: FC = () => {
@@ -26,10 +25,10 @@ export const Favorites: FC = () => {
   }
 
   return (
-    <FavoritesWrapperContainer>
+    <FlexContainer>
       {data && data.length > 0 ? (
         <>
-          <Typography variant="h5" sx={headerTitle}>
+          <Typography component="h5" sx={headerTextBlack}>
             Your favorites:
           </Typography>
           {data.map(({ id, img, name, price, specialPrice }) => (
@@ -46,7 +45,7 @@ export const Favorites: FC = () => {
         </>
       ) : (
         <>
-          <Typography variant="h5" sx={headerTitle}>
+          <Typography component="h5" sx={headerTextBlack}>
             No favorite products
           </Typography>
           <Image
@@ -58,6 +57,6 @@ export const Favorites: FC = () => {
           />
         </>
       )}
-    </FavoritesWrapperContainer>
+    </FlexContainer>
   );
 };

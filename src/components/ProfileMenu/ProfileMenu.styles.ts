@@ -1,4 +1,4 @@
-import { Colors, FontFamily, FontSizes } from '@/styles/variables';
+import { Colors } from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 import Image from 'next/image';
@@ -20,10 +20,4 @@ export const listContainer: SxProps = {
 export const listLogoutContainer: SxProps = {
   backgroundColor: Colors.primary,
   color: Colors.white,
-};
-
-export const listItemText: SxProps = {
-  cursor: 'pointer',
-  fontFamily: FontFamily.sans,
-  fontSize: FontSizes.large,
 };

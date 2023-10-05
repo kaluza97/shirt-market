@@ -5,17 +5,21 @@ import { Button } from '@mui/material';
 import Image from 'next/image';
 import { PagePaths } from '@/constants/pages';
 import { FlexContainer, button } from '@/styles/global.styles';
-import { CategoryBox } from '@/components/Category/Category.styles';
+import {
+  CategoryBox,
+  ImageWrapper,
+} from '@/components/Category/Category.styles';
 
 export const Category: FC = () => (
   <FlexContainer>
-    <Image
-      src="/assets/friends.jpg"
-      alt="happy friends on vacation"
-      width={500}
-      height={330}
-      priority
-    />
+    <ImageWrapper>
+      <Image
+        src="/assets/friends.jpg"
+        alt="happy friends on vacation"
+        fill
+        priority
+      />
+    </ImageWrapper>
     {categoryData.map(({ name }) => (
       <CategoryBox key={name}>
         <Button sx={button}>

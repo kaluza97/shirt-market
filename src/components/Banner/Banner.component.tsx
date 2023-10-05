@@ -1,8 +1,12 @@
 import React, { FC, Suspense } from 'react';
 import { CircularProgress } from '@mui/material';
 import { bannerData } from '@/data/banner.data';
-import { BannerContainer, Img } from '@/components/Banner/Banner.styles';
+import {
+  BannerContainer,
+  ImageWrapper,
+} from '@/components/Banner/Banner.styles';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 export const Banner: FC = () => {
   const { push } = useRouter();
@@ -15,14 +19,14 @@ export const Banner: FC = () => {
     <BannerContainer>
       <Suspense fallback={<CircularProgress />}>
         {bannerData.map(({ src, alt, path }) => (
-          <Img
-            key={src}
-            alt={alt}
-            src={src}
-            width={400}
-            height={600}
-            onClick={() => handleNavigate(path)}
-          />
+          <ImageWrapper key={src}>
+            <Image
+              alt={alt}
+              src={src}
+              fill
+              onClick={() => handleNavigate(path)}
+            />
+          </ImageWrapper>
         ))}
       </Suspense>
     </BannerContainer>

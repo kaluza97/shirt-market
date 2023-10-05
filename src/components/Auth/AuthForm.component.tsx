@@ -12,7 +12,7 @@ import {
 } from '@/components/Auth/AuthForm.styles';
 import { LoginOrRegisterType } from '@/components/Auth/AuthForm.types';
 import { Description } from '@/components/Description/Description.component';
-import { Logo } from '../Logo/Logo.component';
+import { Logo } from '@/components/Logo/Logo.component';
 
 export const AuthForm: FC = () => {
   const [auth, setAuth] = useState<LoginOrRegisterType>('login');

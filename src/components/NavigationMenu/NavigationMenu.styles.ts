@@ -8,8 +8,7 @@ export const NavigationMenuPadding = '1rem';
 export const NavigationTopSpacer = styled.div`
   width: 100%;
   z-index: ${ZIndexes.background};
-  padding: ${NavigationMenuPadding};
-  height: ${NavigationMenuHeight};
+  height: calc(${NavigationMenuHeight} + (${NavigationMenuPadding} * 2));
 `;
 
 export const QuantityContainer = styled.div`

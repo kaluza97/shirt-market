@@ -76,8 +76,10 @@ export const FormContainer = styled.div`
   width: 100%;
 `;
 
-export const ProductImageWrapper = styled.div`
+export const ImageWrapper = styled.div`
   position: relative;
+  width: 30rem;
+  height: 45rem;
 `;
 
 export const Img = styled(Image)`

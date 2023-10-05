@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import { Box, IconButton } from '@mui/material';
 import {
   Img,
-  ProductImageWrapper,
+  ImageWrapper,
   favoriteIcon,
   favoriteIconButton,
   productBox,
@@ -59,8 +59,8 @@ export const ProductsItem: FC<ProductItemsProps> = ({
 
   return (
     <Box sx={productBox} onClick={handleProductClick}>
-      <ProductImageWrapper>
-        <Img src={img} alt={name} width={250} height={350} priority />
+      <ImageWrapper>
+        <Img src={img} alt={name} fill priority />
         <IconButton
           aria-label={isFavorite ? 'remove from favorites' : 'add to favorites'}
           sx={favoriteIconButton}
@@ -72,7 +72,7 @@ export const ProductsItem: FC<ProductItemsProps> = ({
             <FavoriteBorderIcon sx={favoriteIcon} />
           )}
         </IconButton>
-      </ProductImageWrapper>
+      </ImageWrapper>
       <Typography sx={normalTextBlack}>{name}</Typography>
       {displayPriceOrSpecialPrice({ price, specialPrice })}
     </Box>

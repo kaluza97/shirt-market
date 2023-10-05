@@ -1,5 +1,5 @@
 import { normalTextBlack } from '@/styles/global.styles';
-import { Colors, MediaForTabletAndDesktop } from '@/styles/variables';
+import { Colors, BiggerThanPhone } from '@/styles/variables';
 import styled from '@emotion/styled';
 import { SxProps } from '@mui/material';
 import Image from 'next/image';
@@ -15,7 +15,7 @@ export const ProductDetailContainer = styled.div`
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  ${MediaForTabletAndDesktop} {
+  ${BiggerThanPhone} {
     flex-direction: row;
   }
 `;
@@ -25,7 +25,7 @@ export const DetailContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  ${MediaForTabletAndDesktop} {
+  ${BiggerThanPhone} {
     padding-right: 10rem;
   }
 `;
@@ -36,8 +36,10 @@ export const PanelContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  ${MediaForTabletAndDesktop} {
-    padding: 0 2rem;
+  ${BiggerThanPhone} {
+    width: 40%;
+    padding-right: 2rem;
+    padding-left: 2rem;
     min-width: 35rem;
   }
 `;
@@ -47,7 +49,7 @@ export const DetailImageContainer = styled.div`
   width: 100%;
   max-width: 40rem;
   height: 55rem;
-  ${MediaForTabletAndDesktop} {
+  ${BiggerThanPhone} {
     max-width: 42rem;
   }
 `;
@@ -103,7 +105,7 @@ export const productBox: SxProps = {
   flexDirection: 'column',
   textAlign: 'center',
   padding: '1rem',
-  [MediaForTabletAndDesktop]: {
+  [BiggerThanPhone]: {
     padding: '2rem',
   },
 };

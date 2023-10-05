@@ -25,7 +25,7 @@ export const navigationData: Array<NavigationItem> = [
   },
   {
     name: 'Favorites',
-    path: PagePaths.FAVORITES_PAGE,
+    path: PagePaths.FAVORITE_PAGE,
     icon: <FavoriteBorderOutlinedIcon />,
   },
   {

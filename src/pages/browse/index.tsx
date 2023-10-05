@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Layout } from '@/components/Layout/Layout.component';
 import { NavigationMenu } from '@/components/NavigationMenu/NavigationMenu.component';
 import { Category } from '@/components/Category/Category.component';
-import { Footer } from '@/components/Footer/Footer.component';
+import { Footer } from '@/components/Footer/components/Footer/Footer.component';
 
 const BrowsePage: FC = () => (
   <Layout

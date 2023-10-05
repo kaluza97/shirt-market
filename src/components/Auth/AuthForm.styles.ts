@@ -19,7 +19,6 @@ export const AuthContainer = styled.div`
 
 export const FormContainer = styled.div`
   width: 100%;
-  min-height: 70vh;
   overflow: hidden;
   @media (min-width: ${Breakpoints.desktop}) {
     display: flex;
